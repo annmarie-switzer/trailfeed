@@ -4,13 +4,13 @@ import dotenv from 'dotenv';
 import { data } from './data.js';
 import session from 'express-session';
 import cors from 'cors';
+import jwt from 'jsonwebtoken';
 
 dotenv.config();
 
 const app = express();
 const port = process.env.PORT || 5000;
 
-// middleware
 app.use(cors({
     origin: 'http://localhost:3000',
     credentials: true,
@@ -19,7 +19,7 @@ app.use(cors({
 
 app.use(session({
     resave: true,
-    saveUninitialized: false, // this should be ok for authenticated users
+    saveUninitialized: false,
     secret: 'changeme',
     cookie: {
         httpOnly: true,
@@ -30,16 +30,10 @@ app.use(session({
     }
 }));
 
-
-
-// endpoints
-app.get('/get', (req, res) => {
-    console.log(req.session.id);
-    res.json(data);
-});
-
+// Receives a Google authorization code and exchanges it for access and ID tokens.
+// The ID token is then decoded and its data is set in the user's session.
 app.get('/callback', async (req, res) => {
-    const resFromGoogle = await fetch('https://oauth2.googleapis.com/token', {
+    const response = await fetch('https://oauth2.googleapis.com/token', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -51,22 +45,67 @@ app.get('/callback', async (req, res) => {
         })
     });
 
-    // TODO - set up a store so we can save these token with the session id
-    // - when authenticated user makes a request, we should be able to use their session id to get their tokens
-    // - access token can be used to check with Google if the user is still "valid".
-    // - id token can be parsed to provide info like name, email, etc.
-    const { access_token, id_token } = await resFromGoogle.json();
+    const { access_token, id_token } = await response.json();
+
+    const headerEncoded = id_token.split('.')[0];
+    const buff = Buffer.from(headerEncoded, 'base64').toString('binary');
+    const kid = JSON.parse(buff).kid;
+    const certRes = await fetch('https://www.googleapis.com/oauth2/v1/certs');
+    const cert = (await certRes.json())[kid];
+
+    try {
+        req.session['profile'] = jwt.verify(id_token, cert);
+    } catch (err) {
+        console.error(`Validation Error: ${err}`);
+    }
 
     res.redirect(`http://localhost:3000`);
 })
 
+app.get('/data', async (req, res) => {
+    // TODO - check that the user's session is not expired
+    res.json(data);
+})
+
 app.all('*', (req, res) => {
     res.status(404).json({ message: 'Not found' });
-});
+})
 
-
-
-// server
 app.listen(port, () => {
     console.log(`~ Server is running at http://127.0.0.1:${port} ~`);
-});
+})
+
+
+
+// REFERENCE
+// These endpoints are for managing access tokens.
+// They're not used right not but may be useful in the future if authz is ever implemented.
+
+// // The /userinfo endpoint can be used to validate an access token.
+// // If the token is valid, returns 200 with user profile info.
+// // Otherwise, returns 401.
+// app.get('/userinfo', async (req, res) => {
+//     const accessToken = req.session['accessToken'];
+//     console.log('accessToken => ', accessToken);
+
+//     const userInfoRes = await fetch('https://openidconnect.googleapis.com/v1/userinfo', {
+//         headers: { 'Authorization': `Bearer ${accessToken}` }
+//     });
+
+//     console.log('status => ', userInfoRes.status);
+//     console.log('status text => ', userInfoRes.statusText);
+//     console.log('body => ', await userInfoRes.json());
+// })
+
+// // Revokes an access token.
+// app.get('/revoke', async (req, res) => {
+//     const accessToken = req.session['accessToken'];
+//     const revokeUrl = `https://oauth2.googleapis.com/revoke?token=${accessToken}`;
+
+//     const revokeRes = await fetch(revokeUrl, {
+//         method: 'POST',
+//         headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+//     });
+
+//     console.log(revokeRes.status);
+// })
