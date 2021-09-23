@@ -15,7 +15,7 @@ app.use(cors({
     origin: 'http://localhost:3000',
     credentials: true,
     optionsSuccessStatus: 200
-}));
+}))
 
 app.use(session({
     resave: true,
@@ -28,7 +28,12 @@ app.use(session({
         domain: 'localhost',
         maxAge: 86400000 // 24 hours
     }
-}));
+}))
+
+app.use((req, res, next) => {
+    // TODO - check that the user's session is not expired
+    next();
+})
 
 // Receives a Google authorization code and exchanges it for access and ID tokens.
 // The ID token is then decoded and its data is set in the user's session.
@@ -63,7 +68,6 @@ app.get('/callback', async (req, res) => {
 })
 
 app.get('/data', async (req, res) => {
-    // TODO - check that the user's session is not expired
     res.json(data);
 })
 
