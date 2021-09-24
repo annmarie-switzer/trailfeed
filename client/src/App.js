@@ -23,8 +23,8 @@ function App() {
         document.documentElement.setAttribute('data-theme', theme);
     });
 
-    const getData = async () => {
-        const res = await fetch ('http://localhost:5000/data', { credentials: 'include' });
+    const getUser = async () => {
+        const res = await fetch ('http://localhost:5000/user', { credentials: 'include' });
         console.log(await res.json());
     }
 
@@ -45,7 +45,7 @@ function App() {
                 Login with Google
             </a>
 
-            <button type="button" onClick={getData}>Get Data</button>
+            <button type="button" onClick={getUser}>Who am I?</button>
 
             <button type="button" onClick={logout}>Logout</button>
         </div>

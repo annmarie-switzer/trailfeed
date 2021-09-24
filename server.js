@@ -74,8 +74,15 @@ app.post('/logout', async (req, res) => {
     req.session.destroy(() => res.status(204).end());
 })
 
-app.get('/data', async (req, res) => {
-    res.json(data);
+app.get('/user', async (req, res) => {
+    res.json({
+        email: req.session['profile']['email'],
+        familyName: req.session['profile']['family_name'],
+        givenName: req.session['profile']['given_name'],
+        locale: req.session['profile']['locale'],
+        name: req.session['profile']['name'],
+        picture: req.session['profile']['picture'],
+    });
 })
 
 app.all('*', (req, res) => {
