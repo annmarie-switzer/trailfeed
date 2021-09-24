@@ -28,6 +28,11 @@ function App() {
         console.log(await res.json());
     }
 
+    const logout = async () => {
+        const res = await fetch ('http://localhost:5000/logout', { method: 'POST', credentials: 'include' });
+        console.log(res.status);
+    }
+
     return (
         <div className='App'>
             <div className="toggle-buttons">
@@ -41,6 +46,8 @@ function App() {
             </a>
 
             <button type="button" onClick={getData}>Get Data</button>
+
+            <button type="button" onClick={logout}>Logout</button>
         </div>
     );
 }

@@ -10,33 +10,36 @@ dotenv.config();
 
 const app = express();
 const port = process.env.PORT || 5000;
+const serverUrl = 'http://localhost:5000';
+const clientUrl = 'http://localhost:3000';
 
 app.use(cors({
-    origin: 'http://localhost:3000',
+    origin: clientUrl,
     credentials: true,
     optionsSuccessStatus: 200
 }))
 
 app.use(session({
-    resave: true,
+    cookie: {
+        domain: 'localhost',
+        httpOnly: true,
+        sameSite: true,
+        secure: process.env.NODE_ENV === 'production',
+    },
+    resave: false,
     saveUninitialized: false,
     secret: 'changeme',
-    cookie: {
-        httpOnly: true,
-        secure: false, // change for production
-        sameSite: true,
-        domain: 'localhost',
-        maxAge: 86400000 // 24 hours
-    }
+    unset: 'destroy'
 }))
 
 app.use((req, res, next) => {
-    // TODO - check that the user's session is not expired
-    next();
+    if (req.session['profile'] || req.path.includes('callback')) {
+        next();
+    } else {
+        res.status(401).end(); 
+    }
 })
 
-// Receives a Google authorization code and exchanges it for access and ID tokens.
-// The ID token is then decoded and its data is set in the user's session.
 app.get('/callback', async (req, res) => {
     const response = await fetch('https://oauth2.googleapis.com/token', {
         method: 'POST',
@@ -45,7 +48,7 @@ app.get('/callback', async (req, res) => {
             code: req.query.code,
             client_id: process.env.CLIENT_ID,
             client_secret: process.env.CLIENT_SECRET,
-            redirect_uri: 'http://localhost:5000/callback',
+            redirect_uri: `${serverUrl}/callback`,
             grant_type: 'authorization_code'
         })
     });
@@ -64,7 +67,11 @@ app.get('/callback', async (req, res) => {
         console.error(`Validation Error: ${err}`);
     }
 
-    res.redirect(`http://localhost:3000`);
+    res.redirect(clientUrl);
+})
+
+app.post('/logout', async (req, res) => {
+    req.session.destroy(() => res.status(204).end());
 })
 
 app.get('/data', async (req, res) => {
@@ -72,7 +79,7 @@ app.get('/data', async (req, res) => {
 })
 
 app.all('*', (req, res) => {
-    res.status(404).json({ message: 'Not found' });
+    res.status(404).end();
 })
 
 app.listen(port, () => {
@@ -82,8 +89,6 @@ app.listen(port, () => {
 
 
 // REFERENCE
-// These endpoints are for managing access tokens.
-// They're not used right not but may be useful in the future if authz is ever implemented.
 
 // // The /userinfo endpoint can be used to validate an access token.
 // // If the token is valid, returns 200 with user profile info.
