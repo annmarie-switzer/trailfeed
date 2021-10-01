@@ -13,6 +13,9 @@ const port = process.env.PORT || 5000;
 const serverUrl = 'http://localhost:5000';
 const clientUrl = 'http://localhost:3000';
 
+
+
+// middleware
 app.use(cors({
     origin: clientUrl,
     credentials: true,
@@ -40,6 +43,9 @@ app.use((req, res, next) => {
     }
 })
 
+
+
+// auth endpoints
 app.get('/callback', async (req, res) => {
     const response = await fetch('https://oauth2.googleapis.com/token', {
         method: 'POST',
@@ -85,10 +91,20 @@ app.get('/user', async (req, res) => {
     });
 })
 
+
+
+// data endpoints
+app.get('/data', async (req, res) => {
+    res.json(data);
+})
+
 app.all('*', (req, res) => {
     res.status(404).end();
 })
 
+
+
+// run server
 app.listen(port, () => {
     console.log(`~ Server is running at http://127.0.0.1:${port} ~`);
 })

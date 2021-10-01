@@ -1,0 +1,15 @@
+#app {
+    border: solid red;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+#app #toolbar {
+    border: solid blue;
+}
+
+#app #footer {
+    border: solid green;
+    margin-top: auto;
+}

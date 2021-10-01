@@ -3,5 +3,9 @@
         "baseUrl": "./src",
         "checkJs": true,
         "jsx": "react"
-    }
+    },
+    "exclude": [
+        "dist",
+        "node_modules"
+    ]
 }
