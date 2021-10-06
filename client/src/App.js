@@ -1,63 +1,78 @@
 import React, { useEffect, useState } from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import Home from 'Home';
-import Data from 'Data';
+import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
+import Login from 'components/Login';
+import AuthRoute from 'components/AuthRoute';
+import { getUser } from 'api';
+import Data from 'pages/Data';
+import Home from 'pages/Home';
+import Logout from 'components/Logout';
 
 function App() {
-    const storedTheme = localStorage.getItem('theme') ?
-        localStorage.getItem('theme') :
-        'dark';
-    const themes = ['light', 'dark'];
+    const storedTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : 'dark';
     const [theme, setTheme] = useState(storedTheme);
-
-    const buttons = themes.map((t, i) => (
-        <button
-            key={i}
-            type="button"
-            className={theme == t ? 'selected' : ''}
-            onClick={() => setTheme(t)}>
-            {t.toUpperCase()}
-        </button>
-    ));
+    const [user, setUser] = useState(null);
 
     useEffect(() => {
         localStorage.setItem('theme', theme);
         document.documentElement.setAttribute('data-theme', theme);
-    });
 
-    const getUser = async () => {
-        const res = await fetch('http://localhost:5000/user', { credentials: 'include' });
-        console.log(await res.json());
-    }
+        getUser()
+            .catch(() => setUser({}))
+            .then(res => setUser(res));
 
-    const logout = async () => {
-        const res = await fetch('http://localhost:5000/logout', { method: 'POST', credentials: 'include' });
-        console.log(res.status);
+    }, [theme]);
+
+    if (user === null) {
+        return null
     }
 
     return (
         <div id="app">
-            <div id="toolbar">
-                <div className="toggle-buttons">
-                    {buttons}
-                </div>
-            </div>
-
             <BrowserRouter>
-                <Switch>
-                    <Route path="/data">
-                        <Data />
-                    </Route>
-                    <Route path="/">
-                        <Home />
-                    </Route>
-                </Switch>
-            </BrowserRouter>
+                <div id="toolbar">
+                    <div className="toggle-buttons">
+                        <button
+                            key="light"
+                            type="button"
+                            className={theme == 'light' ? 'selected' : ''}
+                            onClick={() => setTheme('light')}>
+                            Light
+                        </button>
+                        <button
+                            key="dark"
+                            type="button"
+                            className={theme == 'dark' ? 'selected' : ''}
+                            onClick={() => setTheme('dark')}>
+                            Dark
+                        </button>
+                    </div>
+                </div>
 
-            <div id="footer">
-                <button type="button" onClick={getUser}>Who am I?</button>
-                <button type="button" onClick={logout}>Logout</button>
-            </div>
+                <pre>{JSON.stringify(user, null, 2)}</pre>
+
+                <nav>
+                    <ul>
+                        <li><Link to="/">Home</Link></li>
+                        <li><Link to="/data">Data</Link></li>
+                    </ul>
+                </nav>
+
+                <Switch>
+                    <Route exact path="/login">
+                        <Login />
+                    </Route>
+                    <AuthRoute exact user={user} path='/data'>
+                        <Data />
+                    </AuthRoute>
+                    <AuthRoute exact user={user} path='/'>
+                        <Home />
+                    </AuthRoute>
+                </Switch>
+
+                <div id="footer">
+                    <Logout />
+                </div>
+            </BrowserRouter>
         </div>
     );
 }

@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
 
 function Data() {
-    const [data] = useState(null);
+    const [data, setData] = useState(null);
 
     const getData = async () => {
         const res = await fetch('http://localhost:5000/data', { credentials: 'include' });
-        console.log(await res.json())
+        setData(await res.json());
     }
 
     return (
         <div id="data">
             <button type="button" onClick={getData}>Data</button>
-            <pre>{data}</pre>
+            <pre>{JSON.stringify(data, null, 2)}</pre>
         </div>
     )
 }

@@ -1,0 +1,15 @@
+#app {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+#app > #toolbar {
+    height: 60px;
+    background-color: var(--header);
+}
+
+#app > #footer {
+    margin-top: auto;
+    border: solid green 1px;
+}
