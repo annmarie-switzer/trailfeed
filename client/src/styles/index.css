@@ -2,34 +2,32 @@
 @import url('./Data.css');
 @import url('./Home.css');
 @import url('./Login.css');
+@import url('./ThemeSwitcher.css');
+@import url('./Toolbar.css');
 
-html[data-theme="light"] {
-    --background: #fff;
-    --text: #121416d8;
-    --link: #543fd7;
-    --header: #101416;
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap');
+
+body[data-theme="light"] {
+    --background-light: #FFF;
+    --background: #E6E6E6;
+    --background-dark: #CDCDCD;
+    --text: #2a2c2d;
+    --accent: #FF4B82;
 }
 
-html[data-theme="dark"] {
-    --background: #212a2e;
-    --text: #F7F8F8;
-    --link: #828fff;
-    --header: #101416;
+body[data-theme="dark"] {
+    --background-light: #31353a;
+    --background: #2a2c2d;
+    --background-dark: #222223;
+    --text: #E6E6E6;
+    --accent: #FF75B5;
 }
 
 body {
-  margin: 0;
-  background-color: var(--background);
-  color: var(--text);
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-    color: var(--link);
+    margin: 0;
+    background-color: var(--background);
+    color: var(--text);
+    font-family: 'Fira Sans', sans-serif;
 }
 
 button {
@@ -38,6 +36,11 @@ button {
     cursor: pointer;
     border-radius: 0.25rem;
     padding: 0.5rem 1rem;
+    font-weight: 500;
+    font-size: 0.875rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .toggle-buttons button.selected {

@@ -1,0 +1,12 @@
+#theme-switcher {
+    display: flex;
+}
+
+#theme-switcher button {
+    background-color: transparent;
+    padding: 0.5rem;
+}
+
+#theme-switcher button:hover >*:first-child {
+    stroke: var(--accent);
+}

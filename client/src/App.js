@@ -6,48 +6,28 @@ import { getUser } from 'api';
 import Data from 'pages/Data';
 import Home from 'pages/Home';
 import Logout from 'components/Logout';
+import Toolbar from 'components/Toolbar';
 
 function App() {
-    const storedTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : 'dark';
-    const [theme, setTheme] = useState(storedTheme);
     const [user, setUser] = useState(null);
 
     useEffect(() => {
-        localStorage.setItem('theme', theme);
-        document.documentElement.setAttribute('data-theme', theme);
-
         getUser()
             .catch(() => setUser({}))
             .then(res => setUser(res));
 
-    }, [theme]);
+    }, []);
 
+    // Don't render anything until `getUser()` has completed
     if (user === null) {
         return null
     }
 
     return (
         <div id="app">
-            <BrowserRouter>
-                <div id="toolbar">
-                    <div className="toggle-buttons">
-                        <button
-                            key="light"
-                            type="button"
-                            className={theme == 'light' ? 'selected' : ''}
-                            onClick={() => setTheme('light')}>
-                            Light
-                        </button>
-                        <button
-                            key="dark"
-                            type="button"
-                            className={theme == 'dark' ? 'selected' : ''}
-                            onClick={() => setTheme('dark')}>
-                            Dark
-                        </button>
-                    </div>
-                </div>
+            <Toolbar />
 
+            <BrowserRouter>
                 <pre>{JSON.stringify(user, null, 2)}</pre>
 
                 <nav>
