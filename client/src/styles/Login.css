@@ -1,7 +1,22 @@
-#login button .icon {
-    margin-right: 0.25rem;
+#login {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
-#login button a {
-    text-decoration: none;
+#login h1 {
+    font-weight: 300;
+    margin: 10rem auto;
+}
+
+#login button {
+    margin-left: auto;
+    margin-right: auto;
+    background-color: var(--bg-lighter);
+    color: var(--fg);
+    box-shadow: var(--small-box-shadow);
+}
+
+#login button .icon {
+    margin-right: 0.5rem;
 }

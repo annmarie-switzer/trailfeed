@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
+import { Route, Switch, useLocation } from 'react-router-dom';
 import Login from 'components/Login';
 import AuthRoute from 'components/AuthRoute';
 import { getUser } from 'api';
 import Data from 'pages/Data';
 import Home from 'pages/Home';
-import Logout from 'components/Logout';
 import Toolbar from 'components/Toolbar';
 
 function App() {
     const [user, setUser] = useState(null);
-
+    const location = useLocation();
+    
     useEffect(() => {
         getUser()
             .catch(() => setUser({}))
@@ -25,17 +25,10 @@ function App() {
 
     return (
         <div id="app">
-            <Toolbar />
+            
+                {/* <pre>{JSON.stringify(user, null, 2)}</pre> */}
 
-            <BrowserRouter>
-                <pre>{JSON.stringify(user, null, 2)}</pre>
-
-                <nav>
-                    <ul>
-                        <li><Link to="/">Home</Link></li>
-                        <li><Link to="/data">Data</Link></li>
-                    </ul>
-                </nav>
+                { location.pathname !== '/login' ? <Toolbar /> : null }
 
                 <Switch>
                     <Route exact path="/login">
@@ -48,11 +41,7 @@ function App() {
                         <Home />
                     </AuthRoute>
                 </Switch>
-
-                <div id="footer">
-                    <Logout />
-                </div>
-            </BrowserRouter>
+            
         </div>
     );
 }

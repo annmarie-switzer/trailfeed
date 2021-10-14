@@ -5,34 +5,84 @@
 @import url('./ThemeSwitcher.css');
 @import url('./Toolbar.css');
 
-@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap');
-
 body[data-theme="light"] {
-    --background-light: #FFF;
-    --background: #E6E6E6;
-    --background-dark: #CDCDCD;
-    --text: #2a2c2d;
-    --accent: #FF4B82;
+    --bg: var(--bg0);
+    --bg-lighter: var(--bg1);
+    --bg-darker: rgba(0, 0, 0, 0.1);
+    --fg: var(--fg1);
+
+    --red: #cc241d;
+    --ct-red: #9d0006;
+    --orange: #d65d0e;
+    --ct-orange: #af3a03;
+    --yellow: #d79921;
+    --ct-yellow: #b57614;
+    --green: #98971a;
+    --ct-green: #79740e;
+    --aqua: #689d6a;
+    --ct-aqua: #427b58;
+    --blue: #458588;
+    --ct-blue: #076678;
+    --purple: #b16286;
+    --ct-purple: #8f3f71;
+    --ct-grey: #928374;
+    --grey: #7c6f64;
+    --fg0: #282828;
+    --fg1: #3c3836; /* text */
+    --fg2: #504945; 
+    --fg3: #665c54;
+    --fg4: #7c6f64;
+    --bg0: #fbf1c7; /* background */
+    --bg1: #ebdbb2;
+    --bg2: #d5c4a1;
+    --bg3: #bdae93;
+    --bg4: #a89984;
 }
 
 body[data-theme="dark"] {
-    --background-light: #31353a;
-    --background: #2a2c2d;
-    --background-dark: #222223;
-    --text: #E6E6E6;
-    --accent: #FF75B5;
+    --bg: var(--bg0);
+    --bg-lighter: var(--bg1);
+    --bg-darker: rgba(0, 0, 0, 0.1);
+    --fg: var(--fg1);
+
+    --red: #cc241d;
+    --ct-red: #fb4934;
+    --orange: #d65d0e;
+    --ct-orange: #fe8019;
+    --yellow: #d79921;
+    --ct-yellow: #fabd2f;
+    --green: #98971a;
+    --ct-green: #b8bb26;
+    --aqua: #689d6a;
+    --ct-aqua: #8ec07c;
+    --blue: #458588;
+    --ct-blue: #83a598;
+    --purple: #b16286;
+    --ct-purple: #d3869b;
+    --ct-grey: #928374;
+    --grey: #a89984;
+    --fg0: #fbf1c7;
+    --fg1: #ebdbb2; /* text */
+    --fg2: #d5c4a1; 
+    --fg3: #bdae93;
+    --fg4: #a89984;
+    --bg0: #282828; /* background */
+    --bg1: #3c3836;
+    --bg2: #504945;
+    --bg3: #665c54;
+    --bg4: #7c6f64;
 }
 
 body {
     margin: 0;
-    background-color: var(--background);
-    color: var(--text);
+    padding: 0;
+    background-color: var(--bg);
+    color: var(--fg);
     font-family: 'Fira Sans', sans-serif;
 }
 
 button {
     border: 0;
-    outline: 0;
     cursor: pointer;
     border-radius: 0.25rem;
     padding: 0.5rem 1rem;
@@ -43,16 +93,72 @@ button {
     justify-content: center;
 }
 
-.toggle-buttons button.selected {
-    background-color: purple;
+button:hover {
+    filter: brightness(1.15);
 }
 
-.toggle-buttons button:first-of-type {
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
+button:active {
+    opacity: 0.8;
 }
 
-.toggle-buttons button:last-of-type {
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
+:root {
+    --small-box-shadow:
+        0 2px 1px -1px rgba(0,0,0,.2),
+        0 1px 1px 0 rgba(0,0,0,.14),
+        0 1px 3px 0 rgba(0,0,0,.12);
+    --medium-box-shadow:
+        0 3px 1px -2px rgba(0,0,0,.2),
+        0 2px 2px 0 rgba(0,0,0,.14),
+        0 1px 5px 0 rgba(0,0,0,.12);
 }
+
+/* fira-sans-300 - latin */
+@font-face {
+    font-family: 'Fira Sans';
+    font-style: normal;
+    font-weight: 300;
+    src: local(''),
+         url('../fonts/fira-sans-v11-latin-300.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+         url('../fonts/fira-sans-v11-latin-300.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+  
+/* fira-sans-300italic - latin */
+@font-face {
+    font-family: 'Fira Sans';
+    font-style: italic;
+    font-weight: 300;
+    src: local(''),
+         url('../fonts/fira-sans-v11-latin-300italic.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+         url('../fonts/fira-sans-v11-latin-300italic.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+  
+  /* fira-sans-regular - latin */
+@font-face {
+    font-family: 'Fira Sans';
+    font-style: normal;
+    font-weight: 400;
+    src: local(''),
+         url('../fonts/fira-sans-v11-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+         url('../fonts/fira-sans-v11-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+  
+/* fira-sans-500 - latin */
+@font-face {
+    font-family: 'Fira Sans';
+    font-style: normal;
+    font-weight: 500;
+    src: local(''),
+         url('../fonts/fira-sans-v11-latin-500.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+         url('../fonts/fira-sans-v11-latin-500.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+  
+/* fira-sans-italic - latin */
+@font-face {
+    font-family: 'Fira Sans';
+    font-style: italic;
+    font-weight: 400;
+    src: local(''),
+         url('../fonts/fira-sans-v11-latin-italic.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+         url('../fonts/fira-sans-v11-latin-italic.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+  

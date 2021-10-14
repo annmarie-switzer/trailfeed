@@ -8,5 +8,5 @@
 }
 
 #theme-switcher button:hover >*:first-child {
-    stroke: var(--accent);
+    stroke: var(--purple);
 }
