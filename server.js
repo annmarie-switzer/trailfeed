@@ -1,7 +1,6 @@
 import express from 'express';
 import fetch from 'node-fetch';
 import dotenv from 'dotenv';
-import { data } from './data.js';
 import session from 'express-session';
 import cors from 'cors';
 import jwt from 'jsonwebtoken';
@@ -12,10 +11,11 @@ const app = express();
 const port = process.env.PORT || 5000;
 const serverUrl = 'http://localhost:5000';
 const clientUrl = 'http://localhost:3000';
+const esUrl = 'http://localhost:9200';
+const authString = Buffer.from(`${process.env.ES_USER}:${process.env.ES_PW}`).toString('base64');
 
+app.use(express.json());
 
-
-// middleware
 app.use(cors({
     origin: clientUrl,
     credentials: true,
@@ -35,17 +35,18 @@ app.use(session({
     unset: 'destroy'
 }))
 
+// TODO - how can I secure `bulk-upload`?
 app.use((req, res, next) => {
-    if (req.session['profile'] || req.path.includes('callback')) {
+    if (req.session['profile'] || req.path.includes('callback') || req.path.includes('bulk-upload')) {
         next();
     } else {
-        res.status(401).end(); 
+        res.status(401).end();
     }
 })
 
 
 
-// auth endpoints
+// auth
 app.get('/callback', async (req, res) => {
     const response = await fetch('https://oauth2.googleapis.com/token', {
         method: 'POST',
@@ -93,10 +94,37 @@ app.get('/user', async (req, res) => {
 
 
 
-// data endpoints
-app.get('/data', async (req, res) => {
-    res.json(data);
+// elastic
+app.post('/bulk-upload', async (req, res) => {
+    const data = req.body.data;
+    const header = { "create": {} };
+    const ndJson = data
+        .flatMap(d => [header, d])
+        .map(d => JSON.stringify(d))
+        .join('\n')
+        .concat('\n');
+    
+    const esRes = await (await fetch(`${esUrl}/meals/_bulk`, {
+        method: 'POST',
+        body: ndJson,
+        headers: { 'Content-Type': 'application/json', 'Authorization': `Basic ${authString}` }
+    })).json();
+
+    if (esRes.error) {
+        res.status(400).send({'Bulk upload failed ': esRes})
+    } else {
+        res.status(200).end();
+    }
 })
+
+app.get('/search', async (req, res) => {
+    const esRes = await fetch(`${esUrl}/meals/_search`, {
+        headers: { 'Content-Type': 'application/json', 'Authorization': `Basic ${authString}` }
+    });
+    res.json(await esRes.json());
+})
+
+
 
 app.all('*', (req, res) => {
     res.status(404).end();
@@ -104,40 +132,6 @@ app.all('*', (req, res) => {
 
 
 
-// run server
-app.listen(port, () => {
+app.listen(port, async () => {
     console.log(`~ Server is running at http://127.0.0.1:${port} ~`);
 })
-
-
-
-// REFERENCE
-
-// // The /userinfo endpoint can be used to validate an access token.
-// // If the token is valid, returns 200 with user profile info.
-// // Otherwise, returns 401.
-// app.get('/userinfo', async (req, res) => {
-//     const accessToken = req.session['accessToken'];
-//     console.log('accessToken => ', accessToken);
-
-//     const userInfoRes = await fetch('https://openidconnect.googleapis.com/v1/userinfo', {
-//         headers: { 'Authorization': `Bearer ${accessToken}` }
-//     });
-
-//     console.log('status => ', userInfoRes.status);
-//     console.log('status text => ', userInfoRes.statusText);
-//     console.log('body => ', await userInfoRes.json());
-// })
-
-// // Revokes an access token.
-// app.get('/revoke', async (req, res) => {
-//     const accessToken = req.session['accessToken'];
-//     const revokeUrl = `https://oauth2.googleapis.com/revoke?token=${accessToken}`;
-
-//     const revokeRes = await fetch(revokeUrl, {
-//         method: 'POST',
-//         headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
-//     });
-
-//     console.log(revokeRes.status);
-// })

@@ -2,7 +2,7 @@ export const data = [
     {
         brand: "Backpacker's Pantry",
         name: 'Blueberry Walnut Oats',
-        type: ['breakfast'],
+        meal_type: ['breakfast'],
         calories: 420,
         waterML: 240,
         waterTemp: 'boiling',
@@ -13,7 +13,7 @@ export const data = [
     {
         brand: "Backpacker's Pantry",
         name: 'Cinnamon Apple Oats',
-        type: ['breakfast'],
+        meal_type: ['breakfast'],
         calories: 440,
         waterML: 300,
         waterTemp: 'boiling',
@@ -24,7 +24,7 @@ export const data = [
     {
         brand: "Backpacker's Pantry",
         name: 'Granola with Bananas & Milk',
-        type: ['breakfast'],
+        meal_type: ['breakfast'],
         calories: 620,
         waterML: 240,
         waterTemp: 'cold or hot',
@@ -35,7 +35,7 @@ export const data = [
     {
         brand: "Backpacker's Pantry",
         name: 'Granola with Blueberries, Almonds & Milk',
-        type: ['breakfast'],
+        meal_type: ['breakfast'],
         calories: 620,
         waterML: 240,
         waterTemp: 'cold or hot',
@@ -46,7 +46,7 @@ export const data = [
     {
         brand: "Backpacker's Pantry",
         name: 'Mango Sticky Rice',
-        type: ['breakfast', 'dessert'],
+        meal_type: ['breakfast', 'dessert'],
         calories: 620,
         waterML: 360,
         waterTemp: 'boiling',
@@ -57,7 +57,7 @@ export const data = [
     {
         brand: "Backpacker's Pantry",
         name: 'Peanut Butter Banana Oatmeal',
-        type: ['breakfast'],
+        meal_type: ['breakfast'],
         calories: 520,
         waterML: 240,
         waterTemp: 'boiling',
@@ -68,7 +68,7 @@ export const data = [
     {
         brand: "Backpacker's Pantry",
         name: 'Rocky Mountain Scramble',
-        type: ['breakfast'],
+        meal_type: ['breakfast'],
         calories: 280,
         waterML: 300,
         waterTemp: 'boiling',
@@ -79,7 +79,7 @@ export const data = [
     {
         brand: "Backpacker's Pantry",
         name: 'Summit Breakfast Scramble',
-        type: ['breakfast'],
+        meal_type: ['breakfast'],
         calories: 260,
         waterML: 300,
         waterTemp: 'boiling',
@@ -90,7 +90,7 @@ export const data = [
     {
         brand: "Backpacker's Pantry",
         name: 'Astro Neopolitan Ice Cream Sandwich',
-        type: ['dessert'],
+        meal_type: ['dessert'],
         calories: 130,
         waterML: 0,
         waterTemp: 'no rehydration necessary',
@@ -101,7 +101,7 @@ export const data = [
     {
         brand: "Backpacker's Pantry",
         name: 'Astro Vanilla Ice Cream Sandwich',
-        type: ['dessert'],
+        meal_type: ['dessert'],
         calories: 130,
         waterML: 0,
         waterTemp: 'no rehydration necessary',
@@ -112,7 +112,7 @@ export const data = [
     {
         brand: "Backpacker's Pantry",
         name: 'Creme Brulee',
-        type: ['dessert'],
+        meal_type: ['dessert'],
         calories: 610,
         waterML: 180,
         waterTemp: 'cold',
@@ -123,7 +123,7 @@ export const data = [
     {
         brand: "Backpacker's Pantry",
         name: 'Dark Chocolate Cheesecake Mix',
-        type: ['dessert'],
+        meal_type: ['dessert'],
         calories: 600,
         waterML: 160,
         waterTemp: 'cold',
@@ -134,7 +134,7 @@ export const data = [
     {
         brand: "Backpacker's Pantry",
         name: 'Chana Masala',
-        type: ['entree'],
+        meal_type: ['entree'],
         calories: 860,
         waterML: 540,
         waterTemp: 'boiling',
@@ -145,7 +145,7 @@ export const data = [
     {
         brand: "Backpacker's Pantry",
         name: 'Chicken Lasagna',
-        type: ['entree'],
+        meal_type: ['entree'],
         calories: 370,
         waterML: 300,
         waterTemp: 'boiling',
@@ -156,7 +156,7 @@ export const data = [
     {
         brand: "Backpacker's Pantry",
         name: 'Cuban Coconut Rice & Black Beans',
-        type: ['entree'],
+        meal_type: ['entree'],
         calories: 750,
         waterML: 540,
         waterTemp: 'boiling',
@@ -167,7 +167,7 @@ export const data = [
     {
         brand: "Backpacker's Pantry",
         name: 'Fetuccini Alfredo with Chicken',
-        type: ['entree'],
+        meal_type: ['entree'],
         calories: 720,
         waterML: 480,
         waterTemp: 'boiling',
@@ -178,7 +178,7 @@ export const data = [
     {
         brand: "Backpacker's Pantry",
         name: 'Hatch Green Chili Mac & Cheese',
-        type: ['entree'],
+        meal_type: ['entree'],
         calories: 300,
         waterML: 180,
         waterTemp: 'boiling',
@@ -189,7 +189,7 @@ export const data = [
     {
         brand: "Backpacker's Pantry",
         name: 'Kathmandu Curry',
-        type: ['entree'],
+        meal_type: ['entree'],
         calories: 670,
         waterML: 650,
         waterTemp: 'boiling',
@@ -200,7 +200,7 @@ export const data = [
     {
         brand: "Backpacker's Pantry",
         name: 'Lasagna',
-        type: ['entree'],
+        meal_type: ['entree'],
         calories: 680,
         waterML: 480,
         waterTemp: 'boiling',
@@ -211,7 +211,7 @@ export const data = [
     {
         brand: "Backpacker's Pantry",
         name: 'Louisiana Red Beans & Rice',
-        type: ['entree'],
+        meal_type: ['entree'],
         calories: 330,
         waterML: 300,
         waterTemp: 'boiling',
@@ -222,7 +222,7 @@ export const data = [
     {
         brand: "Backpacker's Pantry",
         name: 'Mashed Potatoes with Gravy & Beef',
-        type: ['entree'],
+        meal_type: ['entree'],
         calories: 360,
         waterML: 480,
         waterTemp: 'boiling',
@@ -233,7 +233,7 @@ export const data = [
     {
         brand: "Backpacker's Pantry",
         name: 'Mushroom Stroganoff',
-        type: ['entree'],
+        meal_type: ['entree'],
         calories: 590,
         waterML: 480,
         waterTemp: 'boiling',
@@ -244,7 +244,7 @@ export const data = [
     {
         brand: "Backpacker's Pantry",
         name: 'Pad Thai',
-        type: ['entree'],
+        meal_type: ['entree'],
         calories: 930,
         waterML: 540,
         waterTemp: 'boiling',
@@ -255,7 +255,7 @@ export const data = [
     {
         brand: "Backpacker's Pantry",
         name: 'Pad Thai with Chicken',
-        type: ['entree'],
+        meal_type: ['entree'],
         calories: 840,
         waterML: 480,
         waterTemp: 'boiling',
@@ -266,7 +266,7 @@ export const data = [
     {
         brand: "Backpacker's Pantry",
         name: 'Pasta Primavera',
-        type: ['entree'],
+        meal_type: ['entree'],
         calories: 330,
         waterML: 300,
         waterTemp: 'boiling',
@@ -277,7 +277,7 @@ export const data = [
     {
         brand: "Backpacker's Pantry",
         name: 'Rice & Chicken',
-        type: ['entree'],
+        meal_type: ['entree'],
         calories: 310,
         waterML: 180,
         waterTemp: 'boiling',
@@ -288,7 +288,7 @@ export const data = [
     {
         brand: "Backpacker's Pantry",
         name: 'Risotto with Chicken',
-        type: ['entree'],
+        meal_type: ['entree'],
         calories: 600,
         waterML: 470,
         waterTemp: 'boiling',
@@ -299,7 +299,7 @@ export const data = [
     {
         brand: "Backpacker's Pantry",
         name: 'Santa Fe Style Rice & Beans with Chicken',
-        type: ['entree'],
+        meal_type: ['entree'],
         calories: 680,
         waterML: 480,
         waterTemp: 'boiling',
@@ -310,7 +310,7 @@ export const data = [
     {
         brand: "Backpacker's Pantry",
         name: "Shepherd's Potato Stew with Beef",
-        type: ['entree'],
+        meal_type: ['entree'],
         calories: 460,
         waterML: 530,
         waterTemp: 'boiling',
@@ -321,7 +321,7 @@ export const data = [
     {
         brand: "Backpacker's Pantry",
         name: 'Stroganoff Sauce, Egg Noodles, Beef & Mushrooms',
-        type: ['entree'],
+        meal_type: ['entree'],
         calories: 600,
         waterML: 600,
         waterTemp: 'boiling',
@@ -332,7 +332,7 @@ export const data = [
     {
         brand: "Backpacker's Pantry",
         name: 'Three Amigos Veggie Stew',
-        type: ['entree'],
+        meal_type: ['entree'],
         calories: 560,
         waterML: 420,
         waterTemp: 'boiling',
@@ -343,17 +343,18 @@ export const data = [
     {
         brand: "Backpacker's Pantry",
         name: 'Three Cheese Mac & Cheese',
-        type: ['entree'],
+        meal_type: ['entree'],
         calories: 860,
         waterML: 480,
         waterTemp: 'boiling',
         minutes: 15,
         allergens: ['eggs', 'milk', 'wheat', 'gluten'],
         special: ['vegetarian']
-    },{
+    },
+    {
         brand: "Backpacker's Pantry",
         name: 'Three Sisters Stew',
-        type: ['entree'],
+        meal_type: ['entree'],
         calories: 720,
         waterML: 540,
         waterTemp: 'boiling',

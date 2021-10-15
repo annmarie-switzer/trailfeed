@@ -20,8 +20,3 @@
     color: var(--fg);
     margin-right: 1rem;
 }
-
-#toolbar nav .nav-link:hover {
-    background-color: var(--purple);
-    color: var(--fg);
-}

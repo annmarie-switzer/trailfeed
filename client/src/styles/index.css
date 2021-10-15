@@ -93,9 +93,9 @@ button {
     justify-content: center;
 }
 
-button:hover {
+/* button:hover {
     filter: brightness(1.15);
-}
+} */
 
 button:active {
     opacity: 0.8;
