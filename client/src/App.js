@@ -25,23 +25,18 @@ function App() {
 
     return (
         <div id="app">
-            
-                {/* <pre>{JSON.stringify(user, null, 2)}</pre> */}
-
-                { location.pathname !== '/login' ? <Toolbar /> : null }
-
-                <Switch>
-                    <Route exact path="/login">
-                        <Login />
-                    </Route>
-                    <AuthRoute exact user={user} path='/data'>
-                        <Data />
-                    </AuthRoute>
-                    <AuthRoute exact user={user} path='/'>
-                        <Home />
-                    </AuthRoute>
-                </Switch>
-            
+            <Switch>
+                <Route exact path="/login">
+                    <Login />
+                </Route>
+                <AuthRoute exact user={user} path='/data'>
+                    <Data />
+                </AuthRoute>
+                <AuthRoute exact user={user} path='/'>
+                    <Home />
+                </AuthRoute>
+            </Switch>
+            { location.pathname !== '/login' ? <Toolbar user={user} /> : null }
         </div>
     );
 }
