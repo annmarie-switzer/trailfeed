@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import SunIcon from 'icons/SunIcon';
-import MoonIcon from 'icons/MoonIcon';
+import SunIcon from 'static/icons/SunIcon';
+import MoonIcon from 'static/icons/MoonIcon';
 
 function ThemeSwitcher() {
     const storedTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : 'dark';
@@ -20,14 +20,14 @@ function ThemeSwitcher() {
                     type="button"
                     className={theme == 'light' ? 'selected' : ''}
                     onClick={() => selectTheme('dark')}>
-                    <SunIcon />
+                    <SunIcon stroke="var(--fg4)" />
                 </button>
                 :
                 <button
                     type="button"
                     className={theme == 'dark' ? 'selected' : ''}
                     onClick={() => selectTheme('light')}>
-                    <MoonIcon />
+                    <MoonIcon stroke="var(--fg4)" />
                 </button>
             }
         </div>

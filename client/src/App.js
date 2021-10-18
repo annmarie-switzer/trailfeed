@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import { Route, Switch, useLocation } from 'react-router-dom';
-import Login from 'components/Login';
+import { Route, Switch } from 'react-router-dom';
+import Login from 'pages/Login';
 import AuthRoute from 'components/AuthRoute';
 import { getUser } from 'api';
 import Data from 'pages/Data';
 import Home from 'pages/Home';
-import Toolbar from 'components/Toolbar';
+import ThemeSwitcher from "./components/ThemeSwitcher";
+import { logout } from "api";
 
 function App() {
     const [user, setUser] = useState(null);
-    const location = useLocation();
-    
+
     useEffect(() => {
         getUser()
             .catch(() => setUser({}))
@@ -18,7 +18,6 @@ function App() {
 
     }, []);
 
-    // Don't render anything until `getUser()` has completed
     if (user === null) {
         return null
     }
@@ -36,7 +35,21 @@ function App() {
                     <Home />
                 </AuthRoute>
             </Switch>
-            { location.pathname !== '/login' ? <Toolbar user={user} /> : null }
+
+            <div id="footer">
+                {user ?
+                    <button
+                        id="logout-button"
+                        className="tooltip-trigger"
+                        type="button"
+                        onClick={logout}>
+                        <span>{user.email}</span>
+                        <span className="tooltip above">Logout</span>
+                    </button>
+                    : null
+                }
+                <ThemeSwitcher />
+            </div>
         </div>
     );
 }

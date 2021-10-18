@@ -96,7 +96,7 @@ app.get('/user', async (req, res) => {
 
 // elastic
 app.post('/bulk-upload', async (req, res) => {
-    const data = req.body.data;
+    const data = req.body;
     const header = { "create": {} };
     const ndJson = data
         .flatMap(d => [header, d])

@@ -1,0 +1,41 @@
+#home {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+#searchbar {
+    padding: 1rem;
+    display: flex;
+    height: 50px;
+    position: relative;
+}
+
+#searchbar .icon {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 2rem;
+    display: flex;
+    align-items: center;
+}
+
+#searchbar input {
+    width: 100%;
+    margin: 0;
+    padding: 1rem 1rem 1rem 3rem;
+    font-size: inherit;
+    line-height: 1;
+    font-family: inherit;
+    color: inherit;
+    background-color: var(--bg-lighter);
+    box-shadow: var(--box-shadow);
+    border: 0px none;
+    appearance: none;
+    outline: currentcolor none 0px;
+    border-radius: 2rem;
+}
+
+#searchbar input:focus {
+    background-color: var(--bg3);
+}

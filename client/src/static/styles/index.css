@@ -3,7 +3,6 @@
 @import url('./Home.css');
 @import url('./Login.css');
 @import url('./ThemeSwitcher.css');
-@import url('./Toolbar.css');
 
 body[data-theme="light"] {
     --bg: var(--bg0);
@@ -87,7 +86,6 @@ button {
     border-radius: 0.25rem;
     padding: 0.5rem 1rem;
     font-weight: 500;
-    font-size: 0.875rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -103,7 +101,38 @@ button:active {
     opacity: 0.8;
 }
 
+.tooltip {
+    visibility: hidden;
+    background-color: black;
+    color: var(--fg);
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    position: absolute;
+    z-index: 1;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+.tooltip.below {
+    top: 120%;
+}
+
+.tooltip.above {
+    bottom: 120%;
+}
+
+.tooltip-trigger {
+    position: relative;
+}
+
+.tooltip-trigger:hover .tooltip {
+    visibility: visible;
+}
+
 :root {
+    --box-shadow:
+        rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
+        rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
     --small-box-shadow:
         0 2px 1px -1px rgba(0,0,0,.2),
         0 1px 1px 0 rgba(0,0,0,.14),
