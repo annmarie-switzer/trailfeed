@@ -6,14 +6,14 @@
             "breakfast"
         ],
         "calories": 420,
-        "waterML": 240,
-        "waterTemp": "boiling",
+        "water_ml": 240,
+        "water_temp": "boiling",
         "minutes": 5,
         "allergens": [
-            "tree nuts"
+            "tree nut"
         ],
         "special": [
-            "glutenFree",
+            "gluten_free",
             "vegan",
             "vegetarian"
         ]
@@ -25,14 +25,14 @@
             "breakfast"
         ],
         "calories": 440,
-        "waterML": 300,
-        "waterTemp": "boiling",
+        "water_ml": 300,
+        "water_temp": "boiling",
         "minutes": 5,
         "allergens": [
             "milk"
         ],
         "special": [
-            "glutenFree",
+            "gluten_free",
             "vegetarian"
         ]
     },
@@ -43,16 +43,16 @@
             "breakfast"
         ],
         "calories": 620,
-        "waterML": 240,
-        "waterTemp": "cold or hot",
+        "water_ml": 240,
+        "water_temp": "any",
         "minutes": 0,
         "allergens": [
             "milk",
             "coconut",
-            "almonds"
+            "almond"
         ],
         "special": [
-            "glutenFree",
+            "gluten_free",
             "vegetarian"
         ]
     },
@@ -63,16 +63,16 @@
             "breakfast"
         ],
         "calories": 620,
-        "waterML": 240,
-        "waterTemp": "cold or hot",
+        "water_ml": 240,
+        "water_temp": "any",
         "minutes": 0,
         "allergens": [
             "milk",
             "coconut",
-            "almonds"
+            "almond"
         ],
         "special": [
-            "glutenFree",
+            "gluten_free",
             "vegetarian"
         ]
     },
@@ -84,14 +84,14 @@
             "dessert"
         ],
         "calories": 620,
-        "waterML": 360,
-        "waterTemp": "boiling",
+        "water_ml": 360,
+        "water_temp": "boiling",
         "minutes": 8,
         "allergens": [
             "coconut"
         ],
         "special": [
-            "glutenFree",
+            "gluten_free",
             "vegan",
             "vegetarian"
         ]
@@ -103,14 +103,14 @@
             "breakfast"
         ],
         "calories": 520,
-        "waterML": 240,
-        "waterTemp": "boiling",
+        "water_ml": 240,
+        "water_temp": "boiling",
         "minutes": 5,
         "allergens": [
             "peanut"
         ],
         "special": [
-            "glutenFree",
+            "gluten_free",
             "vegan",
             "vegetarian"
         ]
@@ -122,15 +122,15 @@
             "breakfast"
         ],
         "calories": 280,
-        "waterML": 300,
-        "waterTemp": "boiling",
+        "water_ml": 300,
+        "water_temp": "boiling",
         "minutes": 15,
         "allergens": [
             "egg",
             "milk"
         ],
         "special": [
-            "glutenFree"
+            "gluten_free"
         ]
     },
     {
@@ -140,15 +140,15 @@
             "breakfast"
         ],
         "calories": 260,
-        "waterML": 300,
-        "waterTemp": "boiling",
+        "water_ml": 300,
+        "water_temp": "boiling",
         "minutes": 15,
         "allergens": [
             "egg",
             "milk"
         ],
         "special": [
-            "glutenFree"
+            "gluten_free"
         ]
     },
     {
@@ -158,8 +158,8 @@
             "dessert"
         ],
         "calories": 130,
-        "waterML": 0,
-        "waterTemp": "no rehydration necessary",
+        "water_ml": 0,
+        "water_temp": "none",
         "minutes": 0,
         "allergens": [
             "milk",
@@ -178,8 +178,8 @@
             "dessert"
         ],
         "calories": 130,
-        "waterML": 0,
-        "waterTemp": "no rehydration necessary",
+        "water_ml": 0,
+        "water_temp": "none",
         "minutes": 0,
         "allergens": [
             "milk",
@@ -198,15 +198,15 @@
             "dessert"
         ],
         "calories": 610,
-        "waterML": 180,
-        "waterTemp": "cold",
+        "water_ml": 180,
+        "water_temp": "cold",
         "minutes": 12,
         "allergens": [
             "milk",
             "soy"
         ],
         "special": [
-            "glutenFree",
+            "gluten_free",
             "vegetarian"
         ]
     },
@@ -217,8 +217,8 @@
             "dessert"
         ],
         "calories": 600,
-        "waterML": 160,
-        "waterTemp": "cold",
+        "water_ml": 160,
+        "water_temp": "cold",
         "minutes": 12,
         "allergens": [
             "milk",
@@ -237,14 +237,14 @@
             "entree"
         ],
         "calories": 860,
-        "waterML": 540,
-        "waterTemp": "boiling",
+        "water_ml": 540,
+        "water_temp": "boiling",
         "minutes": 15,
         "allergens": [
             "coconut"
         ],
         "special": [
-            "glutenFree",
+            "gluten_free",
             "vegan",
             "vegetarian"
         ]
@@ -256,8 +256,8 @@
             "entree"
         ],
         "calories": 370,
-        "waterML": 300,
-        "waterTemp": "boiling",
+        "water_ml": 300,
+        "water_temp": "boiling",
         "minutes": 15,
         "allergens": [
             "wheat",
@@ -273,14 +273,14 @@
             "entree"
         ],
         "calories": 750,
-        "waterML": 540,
-        "waterTemp": "boiling",
+        "water_ml": 540,
+        "water_temp": "boiling",
         "minutes": 15,
         "allergens": [
             "coconut"
         ],
         "special": [
-            "glutenFree",
+            "gluten_free",
             "vegan",
             "vegetarian"
         ]
@@ -292,8 +292,8 @@
             "entree"
         ],
         "calories": 720,
-        "waterML": 480,
-        "waterTemp": "boiling",
+        "water_ml": 480,
+        "water_temp": "boiling",
         "minutes": 20,
         "allergens": [
             "milk",
@@ -309,8 +309,8 @@
             "entree"
         ],
         "calories": 300,
-        "waterML": 180,
-        "waterTemp": "boiling",
+        "water_ml": 180,
+        "water_temp": "boiling",
         "minutes": 15,
         "allergens": [
             "wheat",
@@ -326,12 +326,12 @@
             "entree"
         ],
         "calories": 670,
-        "waterML": 650,
-        "waterTemp": "boiling",
+        "water_ml": 650,
+        "water_temp": "boiling",
         "minutes": 15,
         "allergens": [],
         "special": [
-            "glutenFree",
+            "gluten_free",
             "vegan",
             "vegetarian"
         ]
@@ -343,8 +343,8 @@
             "entree"
         ],
         "calories": 680,
-        "waterML": 480,
-        "waterTemp": "boiling",
+        "water_ml": 480,
+        "water_temp": "boiling",
         "minutes": 15,
         "allergens": [
             "wheat",
@@ -363,12 +363,12 @@
             "entree"
         ],
         "calories": 330,
-        "waterML": 300,
-        "waterTemp": "boiling",
+        "water_ml": 300,
+        "water_temp": "boiling",
         "minutes": 15,
         "allergens": [],
         "special": [
-            "glutenFree",
+            "gluten_free",
             "vegan",
             "vegetarian"
         ]
@@ -380,14 +380,14 @@
             "entree"
         ],
         "calories": 360,
-        "waterML": 480,
-        "waterTemp": "boiling",
+        "water_ml": 480,
+        "water_temp": "boiling",
         "minutes": 20,
         "allergens": [
             "milk"
         ],
         "special": [
-            "glutenFree"
+            "gluten_free"
         ]
     },
     {
@@ -397,8 +397,8 @@
             "entree"
         ],
         "calories": 590,
-        "waterML": 480,
-        "waterTemp": "boiling",
+        "water_ml": 480,
+        "water_temp": "boiling",
         "minutes": 15,
         "allergens": [
             "wheat",
@@ -414,15 +414,15 @@
             "entree"
         ],
         "calories": 930,
-        "waterML": 540,
-        "waterTemp": "boiling",
+        "water_ml": 540,
+        "water_temp": "boiling",
         "minutes": 15,
         "allergens": [
-            "peanuts",
+            "peanut",
             "soy"
         ],
         "special": [
-            "glutenFree",
+            "gluten_free",
             "vegan",
             "vegetarian"
         ]
@@ -434,14 +434,14 @@
             "entree"
         ],
         "calories": 840,
-        "waterML": 480,
-        "waterTemp": "boiling",
+        "water_ml": 480,
+        "water_temp": "boiling",
         "minutes": 20,
         "allergens": [
-            "peanuts"
+            "peanut"
         ],
         "special": [
-            "glutenFree"
+            "gluten_free"
         ]
     },
     {
@@ -451,12 +451,12 @@
             "entree"
         ],
         "calories": 330,
-        "waterML": 300,
-        "waterTemp": "boiling",
+        "water_ml": 300,
+        "water_temp": "boiling",
         "minutes": 15,
         "allergens": [
             "wheat",
-            "eggs",
+            "egg",
             "milk"
         ],
         "special": [
@@ -470,8 +470,8 @@
             "entree"
         ],
         "calories": 310,
-        "waterML": 180,
-        "waterTemp": "boiling",
+        "water_ml": 180,
+        "water_temp": "boiling",
         "minutes": 15,
         "allergens": [
             "milk"
@@ -485,15 +485,15 @@
             "entree"
         ],
         "calories": 600,
-        "waterML": 470,
-        "waterTemp": "boiling",
+        "water_ml": 470,
+        "water_temp": "boiling",
         "minutes": 20,
         "allergens": [
             "milk",
             "soy"
         ],
         "special": [
-            "glutenFree"
+            "gluten_free"
         ]
     },
     {
@@ -503,15 +503,15 @@
             "entree"
         ],
         "calories": 680,
-        "waterML": 480,
-        "waterTemp": "boiling",
+        "water_ml": 480,
+        "water_temp": "boiling",
         "minutes": 20,
         "allergens": [
             "milk",
             "soy"
         ],
         "special": [
-            "glutenFree"
+            "gluten_free"
         ]
     },
     {
@@ -521,14 +521,14 @@
             "entree"
         ],
         "calories": 460,
-        "waterML": 530,
-        "waterTemp": "boiling",
+        "water_ml": 530,
+        "water_temp": "boiling",
         "minutes": 20,
         "allergens": [
             "milk"
         ],
         "special": [
-            "glutenFree"
+            "gluten_free"
         ]
     },
     {
@@ -538,8 +538,8 @@
             "entree"
         ],
         "calories": 600,
-        "waterML": 600,
-        "waterTemp": "boiling",
+        "water_ml": 600,
+        "water_temp": "boiling",
         "minutes": 20,
         "allergens": [
             "milk",
@@ -555,12 +555,12 @@
             "entree"
         ],
         "calories": 560,
-        "waterML": 420,
-        "waterTemp": "boiling",
+        "water_ml": 420,
+        "water_temp": "boiling",
         "minutes": 15,
         "allergens": [],
         "special": [
-            "glutenFree",
+            "gluten_free",
             "vegan",
             "vegetarian"
         ]
@@ -572,11 +572,11 @@
             "entree"
         ],
         "calories": 860,
-        "waterML": 480,
-        "waterTemp": "boiling",
+        "water_ml": 480,
+        "water_temp": "boiling",
         "minutes": 15,
         "allergens": [
-            "eggs",
+            "egg",
             "milk",
             "wheat",
             "gluten"
@@ -592,12 +592,12 @@
             "entree"
         ],
         "calories": 720,
-        "waterML": 540,
-        "waterTemp": "boiling",
+        "water_ml": 540,
+        "water_temp": "boiling",
         "minutes": 15,
         "allergens": [],
         "special": [
-            "glutenFree",
+            "gluten_free",
             "vegan",
             "vegetarian"
         ]

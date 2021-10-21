@@ -7,7 +7,7 @@ function PowerIcon(props) {
             height={props.height || 24}
             viewBox="0 0 24 24"
             fill={props.fill || 'none'}
-            stroke={props.stroke || 'currentColor'}
+            stroke={props.stroke || 'var(--fg)'}
             strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"

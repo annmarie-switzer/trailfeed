@@ -6,7 +6,7 @@ function Home() {
 
     const handleRes = (res) => {
         const hits = res.hits.hits.map(h => h._source);
-        setRes(hits.map(h => h.name))
+        setRes(hits)
     };
 
     return (

@@ -2,6 +2,8 @@
 @import url('./Data.css');
 @import url('./Home.css');
 @import url('./Login.css');
+@import url('./Modal.css');
+@import url('./SearchBar.css');
 @import url('./ThemeSwitcher.css');
 
 body[data-theme="light"] {
@@ -9,6 +11,9 @@ body[data-theme="light"] {
     --bg-lighter: var(--bg1);
     --bg-darker: rgba(0, 0, 0, 0.1);
     --fg: var(--fg1);
+
+    --primary: var(--purple);
+    --accent: var(--yellow);
 
     --red: #cc241d;
     --ct-red: #9d0006;
@@ -44,6 +49,9 @@ body[data-theme="dark"] {
     --bg-darker: rgba(0, 0, 0, 0.1);
     --fg: var(--fg1);
 
+    --primary: var(--purple);
+    --accent: var(--yellow);
+    
     --red: #cc241d;
     --ct-red: #fb4934;
     --orange: #d65d0e;

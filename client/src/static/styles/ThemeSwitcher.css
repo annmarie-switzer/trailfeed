@@ -7,6 +7,6 @@
     padding: 0.5rem;
 }
 
-#theme-switcher button:hover >*:first-child {
-    stroke: var(--purple);
+#theme-switcher button:hover > * {
+    stroke: var(--primary);
 }

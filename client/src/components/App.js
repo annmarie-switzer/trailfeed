@@ -5,7 +5,7 @@ import AuthRoute from 'components/AuthRoute';
 import { getUser } from 'api';
 import Data from 'pages/Data';
 import Home from 'pages/Home';
-import ThemeSwitcher from "./components/ThemeSwitcher";
+import ThemeSwitcher from "./ThemeSwitcher";
 import { logout } from "api";
 
 function App() {
