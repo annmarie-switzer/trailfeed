@@ -78,6 +78,7 @@ body {
     background-color: var(--bg);
     color: var(--fg);
     font-family: 'Fira Sans', sans-serif;
+    font-size: 1rem;
 }
 
 button {
@@ -85,6 +86,7 @@ button {
     cursor: pointer;
     border-radius: 0.25rem;
     padding: 0.5rem 1rem;
+    font-size: 0.875rem;
     font-weight: 500;
     display: flex;
     align-items: center;

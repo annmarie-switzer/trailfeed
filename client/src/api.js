@@ -23,9 +23,12 @@ export const logout = async () => {
     }
 }
 
-export const search = async () => {
+export const search = async (query) => {
     const res = await fetch('http://localhost:5000/search', {
-        credentials: 'include'
+        credentials: 'include',
+        method: 'POST',
+        body: JSON.stringify(query),
+        headers: {'Content-Type': 'application/json'}
     });
 
     if (!res.ok) {

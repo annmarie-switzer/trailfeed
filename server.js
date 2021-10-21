@@ -107,7 +107,10 @@ app.post('/bulk-upload', async (req, res) => {
     const esRes = await (await fetch(`${esUrl}/meals/_bulk`, {
         method: 'POST',
         body: ndJson,
-        headers: { 'Content-Type': 'application/json', 'Authorization': `Basic ${authString}` }
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Basic ${authString}`
+        }
     })).json();
 
     if (esRes.error) {
@@ -117,9 +120,14 @@ app.post('/bulk-upload', async (req, res) => {
     }
 })
 
-app.get('/search', async (req, res) => {
+app.post('/search', async (req, res) => {
     const esRes = await fetch(`${esUrl}/meals/_search`, {
-        headers: { 'Content-Type': 'application/json', 'Authorization': `Basic ${authString}` }
+        method: 'POST',
+        body: JSON.stringify(req.body),
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Basic ${authString}`
+        }
     });
     res.json(await esRes.json());
 })

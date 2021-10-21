@@ -4,7 +4,10 @@ import React, { useState } from 'react';
 function Home() {
     const [res, setRes] = useState();
 
-    const handleRes = (res) => setRes(res);
+    const handleRes = (res) => {
+        const hits = res.hits.hits.map(h => h._source);
+        setRes(hits.map(h => h.name))
+    };
 
     return (
         <div id="home">
