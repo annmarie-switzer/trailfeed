@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import Login from 'pages/Login';
-import AuthRoute from 'components/AuthRoute';
+import Login from 'pages/login/Login';
+import AuthRoute from 'shared/AuthRoute';
 import { getUser } from 'api';
-import Data from 'pages/Data';
-import Home from 'pages/Home';
+import Data from 'pages/data/Data';
+import Home from 'pages/home/Home';
 import ThemeSwitcher from "./ThemeSwitcher";
 import { logout } from "api";
 
