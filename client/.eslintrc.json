@@ -19,22 +19,6 @@
         "react-hooks"
     ],
     "rules": {
-        // "indent": [
-        //     "warn",
-        //     4
-        // ],
-        // "linebreak-style": [
-        //     "warn",
-        //     "unix"
-        // ],
-        // "quotes": [
-        //     "warn",
-        //     "single"
-        // ],
-        // "comma-dangle": [
-        //     "error",
-        //     "never"
-        // ],
         "react/prop-types": 0,
         "react-hooks/rules-of-hooks": "error", // Checks rules of Hooks
         "react-hooks/exhaustive-deps": "warn" // Checks effect dependencies

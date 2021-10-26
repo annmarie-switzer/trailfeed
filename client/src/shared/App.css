@@ -3,9 +3,7 @@
     flex-direction: column;
     min-height: 100vh;
     box-sizing: border-box;
-    border: solid red;
 }
-
 
 #app #footer {
     margin-top: auto;

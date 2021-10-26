@@ -1,11 +1,15 @@
-#searchbar {
+#search-container {
+    position: relative;
     padding: 1rem;
+}
+
+#search-container .searchbar {
+    padding: 0 1rem;
     display: flex;
-    height: 50px;
     position: relative;
 }
 
-#searchbar .icon {
+#search-container .searchbar .icon {
     position: absolute;
     top: 0;
     bottom: 0;
@@ -13,21 +17,20 @@
     align-items: center;
 }
 
-#searchbar .icon:first-of-type {
+#search-container .searchbar .icon:first-of-type {
     left: 2rem;
 }
 
-#searchbar .icon:last-of-type {
+#search-container .searchbar .icon:last-of-type {
     right: 2rem;
     cursor: pointer;
 }
 
-#searchbar input {
+#search-container .searchbar input {
     width: 100%;
     margin: 0;
     padding: 1rem 1rem 1rem 3rem;
     font-size: inherit;
-    line-height: 1;
     font-family: inherit;
     color: inherit;
     background-color: var(--bg-lighter);
@@ -36,8 +39,44 @@
     appearance: none;
     outline: currentcolor none 0px;
     border-radius: 2rem;
+    transition: border-radius 150ms ease-in 40ms;
 }
 
-#searchbar input:focus {
+#search-container .searchbar input.open {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    transition: border-radius 1ms;
+}
+
+#search-container .searchbar input:focus {
     background-color: var(--bg3);
+}
+
+#search-container .filters {
+    padding: 0 1rem;
+    height: 0;
+    overflow: hidden;
+    transition: height 150ms ease-out;
+}
+
+#search-container .filters .filters-content {
+    background-color: var(--bg-lighter);
+    border-bottom-left-radius: 2rem;
+    border-bottom-right-radius: 2rem;
+    box-shadow: var(--box-shadow);
+    height: 99%;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+@media screen and (max-width: 1024px) {
+    #search-container .filters.open {
+        height: 75vh;
+    }
+}
+
+@media screen and (min-width: 1025px) {
+    #search-container .filters.open {
+        height: 15vh;
+    }   
 }

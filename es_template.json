@@ -52,7 +52,7 @@
                     }
                 }
             },
-            "meal_type": {
+            "ingredients": {
                 "type": "text",
                 "analyzer": "custom_analyzer",
                 "fields": {
@@ -60,6 +60,9 @@
                         "type": "keyword"
                     }
                 }
+            },
+            "meal_type": {
+                "type": "keyword"
             },
             "calories": {
                 "type": "integer"
@@ -68,34 +71,19 @@
                 "type": "integer"
             },
             "water_temp": {
-                "type": "text",
-                "analyzer": "custom_analyzer",
-                "fields": {
-                    "keyword": {
-                        "type": "keyword"
-                    }
-                }
+                "type": "keyword"
             },
             "minutes": {
                 "type": "integer"
             },
             "allergens": {
-                "type": "text",
-                "analyzer": "custom_analyzer",
-                "fields": {
-                    "keyword": {
-                        "type": "keyword"
-                    }
-                }
+                "type": "keyword"
             },
             "special": {
-                "type": "text",
-                "analyzer": "custom_analyzer",
-                "fields": {
-                    "keyword": {
-                        "type": "keyword"
-                    }
-                }
+                "type": "keyword"
+            },
+            "user": {
+                "type": "keyword"
             }
         }
     }
