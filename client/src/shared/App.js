@@ -3,7 +3,6 @@ import { Route, Switch } from 'react-router-dom';
 import Login from 'pages/login/Login';
 import AuthRoute from 'shared/AuthRoute';
 import { getUser } from 'api';
-import Data from 'pages/data/Data';
 import Home from 'pages/home/Home';
 import ThemeSwitcher from "./ThemeSwitcher";
 import { logout } from "api";
@@ -31,9 +30,6 @@ function App() {
                     <Route exact path="/login">
                         <Login />
                     </Route>
-                    <AuthRoute exact user={user} path='/data'>
-                        <Data />
-                    </AuthRoute>
                     <AuthRoute exact user={user} path='/'>
                         <Home />
                     </AuthRoute>
