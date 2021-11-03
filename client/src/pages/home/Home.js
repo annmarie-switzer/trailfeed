@@ -6,6 +6,7 @@ function Home() {
 
     const handleRes = (res) => {
         const hits = res.hits.hits.map(h => h._source);
+        console.log('number hits => ', hits.length)
         setRes(hits)
     };
 

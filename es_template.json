@@ -64,17 +64,8 @@
             "meal_type": {
                 "type": "keyword"
             },
-            "calories": {
-                "type": "integer"
-            },
-            "water_ml": {
-                "type": "integer"
-            },
             "water_temp": {
                 "type": "keyword"
-            },
-            "minutes": {
-                "type": "integer"
             },
             "allergens": {
                 "type": "keyword"
@@ -84,6 +75,15 @@
             },
             "user": {
                 "type": "keyword"
+            },
+            "calories": {
+                "type": "integer"
+            },
+            "water_ml": {
+                "type": "integer"
+            },
+            "minutes": {
+                "type": "integer"
             }
         }
     }
