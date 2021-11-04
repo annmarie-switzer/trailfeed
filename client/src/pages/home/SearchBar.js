@@ -4,6 +4,7 @@ import SearchIcon from 'static/icons/SearchIcon';
 import SlidersIcon from 'static/icons/SlidersIcon';
 import { AppContext } from 'shared/App';
 import CheckboxList from './CheckboxList';
+import Slider from '@mui/material/Slider';
 
 function SearchBar(props) {
     const user = useContext(AppContext);
@@ -13,9 +14,7 @@ function SearchBar(props) {
     const [waterTemps, setWaterTemps] = useState([]);
     const [allergens, setAllergens] = useState([]);
     const [special, setSpecial] = useState([]);
-    const [calories, setCalories] = useState({min: 0, max: 0, current: 0});
-    const [minutes, setMinutes] = useState({min: 0, max: 0, current: 0});
-    const [waterMl, setWaterMl] = useState({min: 0, max: 0, current: 0});
+    const [calories, setCalories] = useState({min: 0, max: 0, range: []});
     
     const [inputValue, setInputValue] = useState('');
     const [filters, setFilters] = useState([]); // array of terms queries
@@ -190,21 +189,15 @@ function SearchBar(props) {
             setCalories({
                 min: res.aggregations.min_calories.value,
                 max: res.aggregations.max_calories.value,
-                current: res.aggregations.min_calories.value
-            });
-            setMinutes({
-                min: res.aggregations.min_minutes.value,
-                max: res.aggregations.max_minutes.value,
-                current: res.aggregations.min_minutes.value
-            });
-            setWaterMl({
-                min: res.aggregations.min_water_ml.value,
-                max: res.aggregations.max_water_ml.value,
-                current: res.aggregations.min_water_ml.value
+                range: [res.aggregations.min_calories.value, res.aggregations.max_calories.value]
             });
         });
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
+
+    const handleCalories = (event) => {
+        setCalories({...calories, range: event.target.value})
+    }
 
     return (
         <div id="search-container">
@@ -228,46 +221,14 @@ function SearchBar(props) {
                 <div className="filters-content">
 
                     <div className="form-group">
-                        <div className="double-slider">
-                            <input
-                                type="range"
-                                id="calories"
-                                name="calories"
-                                min={calories.min}
-                                max={calories.max}
-                                onChange={(event) => setCalories({...calories, current: event.target.value})}/>
-                            <input
-                                type="range"
-                                id="calories"
-                                name="calories"
-                                min={calories.min}
-                                max={calories.max}
-                                value={calories.max}
-                                onChange={(event) => setCalories({...calories, current: event.target.value})}/>
-                        </div>
+                        <Slider
+                            min={calories.min}
+                            max={calories.max}
+                            value={calories.range}
+                            onChange={handleCalories}
+                            valueLabelDisplay="auto"
+                        />
                     </div>
-
-                    {/* <div className="form-group">
-                        <label htmlFor="minutes">Minutes - {JSON.stringify(minutes, null, 2)}</label>
-                        <input
-                            type="range"
-                            id="minutes"
-                            name="miutes"
-                            min={minutes.min}
-                            max={minutes.max}
-                            onChange={(event) => setMinutes({...minutes, current: event.target.value})}/>
-                    </div>
-
-                    <div className="form-group">
-                        <label htmlFor="waterMl">Water ML - {JSON.stringify(waterMl, null, 2)}</label>
-                        <input
-                            type="range"
-                            id="waterMl"
-                            name="waterMl"
-                            min={waterMl.min}
-                            max={waterMl.max}
-                            onChange={(event) => setWaterMl({...waterMl, current: event.target.value})}/>
-                    </div> */}
 
                     <div className="form-group">
                         <span className="title">Meal Type</span>
