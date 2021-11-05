@@ -10,7 +10,11 @@ function CheckboxList(props) {
 
         setSelection(newSelection);
 
-        props.setSelection({name: `${target.name}.keyword`, values: newSelection});
+        props.setSelection({
+            type: 'terms',
+            name: `${target.name}.keyword`,
+            values: newSelection
+        });
     }
 
     const checkboxes = props.buckets.map((bucket, i) => {

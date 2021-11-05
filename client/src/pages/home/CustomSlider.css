@@ -1,0 +1,13 @@
+.MuiSlider-thumb {
+    background-color: var(--purple) !important;
+    box-shadow: var(--box-shadow) !important;
+}
+
+.MuiSlider-track {
+    border-color: var(--purple) !important;
+    background-color: var(--purple) !important;
+}
+
+.MuiSlider-rail {
+    background-color: var(--purple) !important;
+}

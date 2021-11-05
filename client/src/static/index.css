@@ -4,6 +4,7 @@
 @import url('../shared/Modal.css');
 @import url('../pages/home/SearchBar.css');
 @import url('../shared/ThemeSwitcher.css');
+@import url('../pages/home/CustomSlider.css');
 
 body[data-theme="light"] {
     --bg: var(--bg0);

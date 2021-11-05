@@ -4,7 +4,7 @@ import SearchIcon from 'static/icons/SearchIcon';
 import SlidersIcon from 'static/icons/SlidersIcon';
 import { AppContext } from 'shared/App';
 import CheckboxList from './CheckboxList';
-import Slider from '@mui/material/Slider';
+import CustomSlider from './CustomSlider';
 
 function SearchBar(props) {
     const user = useContext(AppContext);
@@ -14,36 +14,48 @@ function SearchBar(props) {
     const [waterTemps, setWaterTemps] = useState([]);
     const [allergens, setAllergens] = useState([]);
     const [special, setSpecial] = useState([]);
-    const [calories, setCalories] = useState({min: 0, max: 0, range: []});
-    
+
+    const [calories, setCalories] = useState({ min: 0, max: 0, range: [] });
+    const [minutes, setMinutes] = useState({ min: 0, max: 0, range: [] });
+    const [waterMl, setWaterMl] = useState({ min: 0, max: 0, range: [] });
+
     const [inputValue, setInputValue] = useState('');
-    const [filters, setFilters] = useState([]); // array of terms queries
-    
-    const onFilter = (selectionObj) => {
-        const exists = filters.find(f => selectionObj.name in f.terms);
+    const [filters, setFilters] = useState([]); // term and range filters
 
-        if (exists) {
-            if (selectionObj.values.length > 0) {
-                const existingVals = exists.terms[selectionObj.name];
-                const filteredVals = existingVals.filter(val => selectionObj.values.includes(val))
+    const handleFilter = (filterObj) => {
+        // create the new filter
+        let newFilter;
 
-                exists.terms[selectionObj.name] = [...new Set([...filteredVals, ...selectionObj.values])];
-
-                setFilters([...filters]);
-            } else {
-                setFilters([...filters.filter(f => !(selectionObj.name in f.terms))])
-            }
-        } else {
-            const termsQuery = {
+        if (filterObj.type === 'terms') {
+            newFilter = {
                 "terms": {
-                    [selectionObj.name]: selectionObj.values
+                    [filterObj.name]: filterObj.values
                 }
             }
-            setFilters([...filters, termsQuery])
         }
+
+        if (filterObj.type === 'range') {
+            newFilter = {
+                "range": {
+                    [filterObj.name]: {
+                        "gte": filterObj.values[0],
+                        "lte": filterObj.values[1]
+                    }
+                }
+            }
+        }
+
+        // remove any existing filters with the same name
+        const filtered = filters.filter(f => {
+            const firstKey = Object.keys(f)[0];
+            return !(filterObj.name in f[firstKey])
+        });
+
+        // add new filter
+        setFilters([...filtered, newFilter]);
     }
 
-    const onInput = (event) => {
+    const handleInput = (event) => {
         setTimeout(() => {
             if (event.key === 'Enter' || event.target.value === '') {
                 setInputValue(event.target.value);
@@ -53,7 +65,6 @@ function SearchBar(props) {
 
     // search
     useEffect(() => {
-        console.log('searching')
         const query = {
             "query": {
                 "bool": {
@@ -115,7 +126,6 @@ function SearchBar(props) {
         filters.forEach(filter => query.query.bool.must.push(filter));
 
         search(query).then(res => props.searchRes(res));
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [inputValue, filters])
 
     // init
@@ -148,32 +158,32 @@ function SearchBar(props) {
                 },
                 "max_calories": {
                     "max": {
-                      "field": "calories"
+                        "field": "calories"
                     }
                 },
                 "min_calories": {
                     "min": {
-                      "field": "calories"
+                        "field": "calories"
                     }
                 },
                 "max_minutes": {
                     "max": {
-                      "field": "minutes"
+                        "field": "minutes"
                     }
                 },
                 "min_minutes": {
                     "min": {
-                      "field": "minutes"
+                        "field": "minutes"
                     }
                 },
                 "max_water_ml": {
                     "max": {
-                      "field": "water_ml"
+                        "field": "water_ml"
                     }
                 },
                 "min_water_ml": {
                     "min": {
-                      "field": "water_ml"
+                        "field": "water_ml"
                     }
                 }
             },
@@ -191,16 +201,23 @@ function SearchBar(props) {
                 max: res.aggregations.max_calories.value,
                 range: [res.aggregations.min_calories.value, res.aggregations.max_calories.value]
             });
+            setMinutes({
+                min: res.aggregations.min_minutes.value,
+                max: res.aggregations.max_minutes.value,
+                range: [res.aggregations.min_minutes.value, res.aggregations.max_minutes.value]
+            });
+            setWaterMl({
+                min: res.aggregations.min_water_ml.value,
+                max: res.aggregations.max_water_ml.value,
+                range: [res.aggregations.min_water_ml.value, res.aggregations.max_water_ml.value]
+            });
         });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
-
-    const handleCalories = (event) => {
-        setCalories({...calories, range: event.target.value})
-    }
 
     return (
         <div id="search-container">
+
+            {/* INPUT */}
             <div className="searchbar">
                 <span className="icon">
                     <SearchIcon width={20} height={20} />
@@ -215,36 +232,65 @@ function SearchBar(props) {
                     type="text"
                     id="search-input"
                     placeholder="Search"
-                    onKeyDown={onInput} />
+                    onKeyDown={handleInput} />
             </div>
-            <div className={open ? 'filters open' : 'filters'}>
-                <div className="filters-content">
 
-                    <div className="form-group">
-                        <Slider
+            {/* FILTERS */}
+            <div className={open ? 'filter-drawer open' : 'filter-drawer'}>
+                <div className="sliders">
+                    <div className="filter-group">
+                        <span>Calories</span>
+                        <CustomSlider
+                            name="calories"
                             min={calories.min}
                             max={calories.max}
-                            value={calories.range}
-                            onChange={handleCalories}
-                            valueLabelDisplay="auto"
-                        />
+                            setRange={handleFilter} />
                     </div>
-
-                    <div className="form-group">
+                    <div className="filter-group">
+                        <span>Cook Time (minutes)</span>
+                        <CustomSlider
+                            name="minutes"
+                            min={minutes.min}
+                            max={minutes.max}
+                            setRange={handleFilter} />
+                    </div>
+                    <div className="filter-group">
+                        <span>Water Needed (mL)</span>
+                        <CustomSlider
+                            name="waterMl"
+                            min={waterMl.min}
+                            max={waterMl.max}
+                            setRange={handleFilter} />
+                    </div>
+                </div>
+                <div className="checkboxes">
+                    <div className="filter-group">
                         <span className="title">Meal Type</span>
-                        <CheckboxList buckets={mealTypes} name="meal_type" setSelection={onFilter} />
+                        <CheckboxList
+                            buckets={mealTypes}
+                            name="meal_type"
+                            setSelection={handleFilter} />
                     </div>
-                    <div className="form-group">
+                    <div className="filter-group">
                         <span className="title">Water Temps</span>
-                        <CheckboxList buckets={waterTemps} name="water_temp" setSelection={onFilter} />
+                        <CheckboxList
+                            buckets={waterTemps}
+                            name="water_temp"
+                            setSelection={handleFilter} />
                     </div>
-                    <div className="form-group">
+                    <div className="filter-group">
                         <span className="title">Allergens</span>
-                        <CheckboxList buckets={allergens} name="allergens" setSelection={onFilter} />
+                        <CheckboxList
+                            buckets={allergens}
+                            name="allergens"
+                            setSelection={handleFilter} />
                     </div>
-                    <div className="form-group">
+                    <div className="filter-group">
                         <span className="title">Special</span>
-                        <CheckboxList buckets={special} name="special" setSelection={onFilter} />
+                        <CheckboxList
+                            buckets={special}
+                            name="special"
+                            setSelection={handleFilter} />
                     </div>
                 </div>
             </div>
