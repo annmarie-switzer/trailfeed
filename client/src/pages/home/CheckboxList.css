@@ -1,0 +1,23 @@
+.checkbox-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    height: 100%;
+    width: 100%;
+}
+
+.checkbox-list .item-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.checkbox-list .item-container input {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 18px;
+    height: 18px;
+    border: solid 2px var(--bg3);
+    border-radius: 0.25rem;
+}

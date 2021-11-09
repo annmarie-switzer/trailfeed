@@ -15,9 +15,9 @@ function SearchBar(props) {
     const [allergens, setAllergens] = useState([]);
     const [special, setSpecial] = useState([]);
 
-    const [calories, setCalories] = useState({ min: 0, max: 0, range: [] });
-    const [minutes, setMinutes] = useState({ min: 0, max: 0, range: [] });
-    const [waterMl, setWaterMl] = useState({ min: 0, max: 0, range: [] });
+    const [calories, setCalories] = useState({ min: 0, max: 0 });
+    const [minutes, setMinutes] = useState({ min: 0, max: 0 });
+    const [waterMl, setWaterMl] = useState({ min: 0, max: 0 });
 
     const [inputValue, setInputValue] = useState('');
     const [filters, setFilters] = useState([]); // term and range filters
@@ -198,18 +198,15 @@ function SearchBar(props) {
 
             setCalories({
                 min: res.aggregations.min_calories.value,
-                max: res.aggregations.max_calories.value,
-                range: [res.aggregations.min_calories.value, res.aggregations.max_calories.value]
+                max: res.aggregations.max_calories.value
             });
             setMinutes({
                 min: res.aggregations.min_minutes.value,
-                max: res.aggregations.max_minutes.value,
-                range: [res.aggregations.min_minutes.value, res.aggregations.max_minutes.value]
+                max: res.aggregations.max_minutes.value
             });
             setWaterMl({
                 min: res.aggregations.min_water_ml.value,
-                max: res.aggregations.max_water_ml.value,
-                range: [res.aggregations.min_water_ml.value, res.aggregations.max_water_ml.value]
+                max: res.aggregations.max_water_ml.value
             });
         });
     }, [])
@@ -239,25 +236,25 @@ function SearchBar(props) {
             <div className={open ? 'filter-drawer open' : 'filter-drawer'}>
                 <div className="sliders">
                     <div className="filter-group">
-                        <span>Calories</span>
                         <CustomSlider
                             name="calories"
+                            label="Calories"
                             min={calories.min}
                             max={calories.max}
                             setRange={handleFilter} />
                     </div>
                     <div className="filter-group">
-                        <span>Cook Time (minutes)</span>
                         <CustomSlider
                             name="minutes"
+                            label="Cook Time (min)"
                             min={minutes.min}
                             max={minutes.max}
                             setRange={handleFilter} />
                     </div>
                     <div className="filter-group">
-                        <span>Water Needed (mL)</span>
                         <CustomSlider
                             name="waterMl"
+                            label="Water Needed (mL)"
                             min={waterMl.min}
                             max={waterMl.max}
                             setRange={handleFilter} />

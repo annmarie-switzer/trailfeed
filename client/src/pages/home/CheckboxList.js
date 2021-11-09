@@ -4,8 +4,8 @@ function CheckboxList(props) {
     const [selection, setSelection] = useState([]);
 
     const toggle = (target) => {
-        const newSelection = target.checked ? 
-            [ ...selection, target.value] : 
+        const newSelection = target.checked ?
+            [...selection, target.value] :
             selection.filter(s => s != target.value)
 
         setSelection(newSelection);
@@ -19,7 +19,7 @@ function CheckboxList(props) {
 
     const checkboxes = props.buckets.map((bucket, i) => {
         return (
-            <div key={i} className="checkbox-list">
+            <div className="item-container" key={i}>
                 <input
                     type="checkbox"
                     id={bucket.key}
@@ -32,7 +32,9 @@ function CheckboxList(props) {
     })
 
     return (
-        <div>{checkboxes}</div>
+        <div className="checkbox-list">
+            {checkboxes}
+        </div>
     )
 }
 

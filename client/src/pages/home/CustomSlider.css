@@ -1,3 +1,15 @@
+.slider-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.slider-container .slider-label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
 .MuiSlider-thumb {
     background-color: var(--purple) !important;
     box-shadow: var(--box-shadow) !important;

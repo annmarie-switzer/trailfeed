@@ -21,14 +21,21 @@ function CustomSlider(props) {
     }, [min, max])
 
     return (
-        <Slider
-            name={props.name}
-            min={props.min}
-            max={props.max}
-            value={range}
-            onChange={handleChange}
-            valueLabelDisplay="auto"
-        />
+        <div className="slider-container">
+            <div className="slider-label">
+                <span>{props.label}</span>
+                <span>{range[0]} &ndash; {range[1]}</span>
+            </div>
+            
+            <Slider
+                name={props.name}
+                min={props.min}
+                max={props.max}
+                value={range}
+                onChange={handleChange}
+                valueLabelDisplay="auto"
+            />
+        </div>
     )
 }
 
