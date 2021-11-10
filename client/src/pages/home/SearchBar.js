@@ -3,8 +3,8 @@ import { search } from 'api';
 import SearchIcon from 'static/icons/SearchIcon';
 import SlidersIcon from 'static/icons/SlidersIcon';
 import { AppContext } from 'shared/App';
-import CheckboxList from './CheckboxList';
-import CustomSlider from './CustomSlider';
+import CheckboxList from 'shared/CheckboxList';
+import CustomSlider from 'shared/CustomSlider';
 
 function SearchBar(props) {
     const user = useContext(AppContext);
@@ -23,6 +23,7 @@ function SearchBar(props) {
     const [filters, setFilters] = useState([]); // term and range filters
 
     const handleFilter = (filterObj) => {
+        console.log('filtering...');
         // create the new filter
         let newFilter;
 

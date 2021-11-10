@@ -1,0 +1,50 @@
+.slider-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.slider-container .slider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.slider-container .slider > *:not(:nth-child(2)) {
+    width: 50px;
+    color: var(--fg4);
+    font-size: 0.875rem;
+}
+
+.slider-container .slider > * {
+    text-align: center;
+}
+
+.MuiSlider-thumb {
+    background-color: var(--primary) !important;
+    box-shadow: var(--box-shadow) !important;
+    height: 1.125rem !important;
+    width: 1.125rem !important;
+}
+
+.MuiSlider-thumb:hover {
+    background-color: var(--ct-purple) !important;
+}
+
+.MuiSlider-track {
+    border-color: var(--primary) !important;
+    background-color: var(--primary) !important;
+    opacity: 0.8 !important;
+}
+
+.MuiSlider-rail {
+    background-color: var(--primary) !important;
+    opacity: 0.4 !important;
+}
+
+.MuiSlider-valueLabelOpen {
+    border-radius: 0.25rem !important;
+    background-color: var(--fg2) !important;
+    color: var(--bg) !important;
+    font-family: inherit;
+}

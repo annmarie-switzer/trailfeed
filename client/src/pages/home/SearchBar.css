@@ -4,18 +4,9 @@
     flex-direction: column;
 }
 
-@media screen and (min-width: 1025px) {
-    #search-container .filter-drawer.open {
-        height: 40vh;
-        border-bottom: solid 1px var(--bg-lighter);
-    }   
-}
-
-@media screen and (max-width: 1024px) {
-    #search-container .filter-drawer.open {
-        height: 75vh;
-        border-bottom: solid 1px var(--bg-lighter);
-    }
+#search-container .filter-drawer.open {
+    height: 40vh;
+    border-bottom: solid 1px var(--bg-lighter);
 }
 
 #search-container .filter-drawer {
@@ -55,7 +46,7 @@
 #search-container .filter-drawer .sliders {
     flex-direction: column;
     width: 25%;
-    gap: 1rem;
+    gap: 2rem;
 }
 
 #search-container .searchbar {

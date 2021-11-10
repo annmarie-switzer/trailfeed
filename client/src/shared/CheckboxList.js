@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Checkbox from './Checkbox';
 
 function CheckboxList(props) {
     const [selection, setSelection] = useState([]);
@@ -20,13 +21,7 @@ function CheckboxList(props) {
     const checkboxes = props.buckets.map((bucket, i) => {
         return (
             <div className="item-container" key={i}>
-                <input
-                    type="checkbox"
-                    id={bucket.key}
-                    name={props.name}
-                    value={bucket.key}
-                    onChange={(event) => toggle(event.target)} />
-                <label htmlFor={bucket.key}>{bucket.key}</label>
+                <Checkbox label={bucket.key} />
             </div>
         )
     })

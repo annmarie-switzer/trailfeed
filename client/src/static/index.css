@@ -1,11 +1,25 @@
 @import url('../shared/App.css');
 @import url('../pages/home/Home.css');
 @import url('../pages/login/Login.css');
-@import url('../shared/Modal.css');
 @import url('../pages/home/SearchBar.css');
 @import url('../shared/ThemeSwitcher.css');
-@import url('../pages/home/CustomSlider.css');
-@import url('../pages/home/CheckboxList.css');
+@import url('../shared/CustomSlider.css');
+@import url('../shared/CheckboxList.css');
+@import url('../shared/Checkbox.css');
+
+:root {
+    --box-shadow:
+        rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
+        rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+    --small-box-shadow:
+        0 2px 1px -1px rgba(0,0,0,.2),
+        0 1px 1px 0 rgba(0,0,0,.14),
+        0 1px 3px 0 rgba(0,0,0,.12);
+    --medium-box-shadow:
+        0 3px 1px -2px rgba(0,0,0,.2),
+        0 2px 2px 0 rgba(0,0,0,.14),
+        0 1px 5px 0 rgba(0,0,0,.12);
+}
 
 body[data-theme="light"] {
     --bg: var(--bg0);
@@ -14,7 +28,7 @@ body[data-theme="light"] {
     --fg: var(--fg1);
 
     --primary: var(--purple);
-    --accent: var(--yellow);
+    --accent: var(--aqua);
 
     --red: #cc241d;
     --ct-red: #9d0006;
@@ -51,7 +65,7 @@ body[data-theme="dark"] {
     --fg: var(--fg1);
 
     --primary: var(--purple);
-    --accent: var(--yellow);
+    --accent: var(--ct-aqua);
     
     --red: #cc241d;
     --ct-red: #fb4934;
@@ -125,18 +139,14 @@ button {
     color: currentColor;
 }
 
-/* button:hover {
-    filter: brightness(1.15);
-} */
-
 button:active {
     opacity: 0.8;
 }
 
 .tooltip {
     visibility: hidden;
-    background-color: black;
-    color: var(--fg);
+    background-color: var(--fg2);
+    color: var(--bg);
     padding: 0.5rem 1rem;
     border-radius: 0.25rem;
     position: absolute;
@@ -146,11 +156,25 @@ button:active {
 }
 
 .tooltip.below {
-    top: 120%;
+    top: 110%;
 }
 
 .tooltip.above {
-    bottom: 120%;
+    bottom: 110%;
+}
+
+.tooltip.above::before {
+    position: absolute;
+    content: "";
+    width: 8px;
+    height: 8px;
+    bottom: 0;
+    left: 50%;
+    -webkit-transform: translate(-50%, 50%) rotate(45deg);
+    -moz-transform: translate(-50%, 50%) rotate(45deg);
+    -ms-transform: translate(-50%, 50%) rotate(45deg);
+    transform: translate(-50%, 50%) rotate(45deg);
+    background-color: inherit;
 }
 
 .tooltip-trigger {
@@ -159,23 +183,6 @@ button:active {
 
 .tooltip-trigger:hover .tooltip {
     visibility: visible;
-}
-
-:root {
-    /* --box-shadow:
-        rgba(250, 250, 0, 1) 0px 1px 3px 0px,
-        rgba(250, 250, 0, 1) 0px 1px 2px 0px; */
-    --box-shadow:
-        rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
-        rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
-    --small-box-shadow:
-        0 2px 1px -1px rgba(0,0,0,.2),
-        0 1px 1px 0 rgba(0,0,0,.14),
-        0 1px 3px 0 rgba(0,0,0,.12);
-    --medium-box-shadow:
-        0 3px 1px -2px rgba(0,0,0,.2),
-        0 2px 2px 0 rgba(0,0,0,.14),
-        0 1px 5px 0 rgba(0,0,0,.12);
 }
 
 /* fira-sans-300 - latin */
