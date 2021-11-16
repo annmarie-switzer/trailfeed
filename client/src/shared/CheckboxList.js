@@ -2,29 +2,31 @@ import React, { useState } from 'react';
 import Checkbox from './Checkbox';
 
 function CheckboxList(props) {
+    const { buckets, group } = props;
+
     const [selection, setSelection] = useState([]);
 
     const toggle = (target) => {
-        const newSelection = target.checked ?
-            [...selection, target.value] :
-            selection.filter(s => s != target.value)
+        const newSelection = target.checked
+            ? [...selection, target.value]
+            : selection.filter((s) => s !== target.value);
 
         setSelection(newSelection);
 
         props.setSelection({
             type: 'terms',
-            name: `${target.name}.keyword`,
-            values: newSelection
+            name: `${group}.keyword`,
+            values: newSelection,
         });
-    }
+    };
 
-    const checkboxes = props.buckets.map((bucket, i) => {
+    const checkboxes = buckets.map((bucket, i) => {
         return (
             <div className="item-container" key={i}>
-                <Checkbox label={bucket.key} />
+                <Checkbox value={bucket.key} label={bucket.key} onChange={toggle} />
             </div>
-        )
-    })
+        );
+    });
 
     return (
         <div className="checkbox-list">

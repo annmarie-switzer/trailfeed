@@ -14,47 +14,45 @@ function SearchBar(props) {
     const [waterTemps, setWaterTemps] = useState([]);
     const [allergens, setAllergens] = useState([]);
     const [special, setSpecial] = useState([]);
-
     const [calories, setCalories] = useState({ min: 0, max: 0 });
     const [minutes, setMinutes] = useState({ min: 0, max: 0 });
     const [waterMl, setWaterMl] = useState({ min: 0, max: 0 });
 
-    const [inputValue, setInputValue] = useState('');
+    const [inputValue, setInputValue] = useState(''); // text filters
     const [filters, setFilters] = useState([]); // term and range filters
 
     const handleFilter = (filterObj) => {
-        console.log('filtering...');
         // create the new filter
         let newFilter;
 
         if (filterObj.type === 'terms') {
             newFilter = {
-                "terms": {
-                    [filterObj.name]: filterObj.values
-                }
-            }
+                terms: {
+                    [filterObj.name]: filterObj.values,
+                },
+            };
         }
 
         if (filterObj.type === 'range') {
             newFilter = {
-                "range": {
+                range: {
                     [filterObj.name]: {
-                        "gte": filterObj.values[0],
-                        "lte": filterObj.values[1]
-                    }
-                }
-            }
+                        gte: filterObj.values[0],
+                        lte: filterObj.values[1],
+                    },
+                },
+            };
         }
 
         // remove any existing filters with the same name
-        const filtered = filters.filter(f => {
+        const filtered = filters.filter((f) => {
             const firstKey = Object.keys(f)[0];
-            return !(filterObj.name in f[firstKey])
+            return !(filterObj.name in f[firstKey]);
         });
 
         // add new filter
         setFilters([...filtered, newFilter]);
-    }
+    };
 
     const handleInput = (event) => {
         setTimeout(() => {
@@ -62,136 +60,136 @@ function SearchBar(props) {
                 setInputValue(event.target.value);
             }
         }, 1);
-    }
+    };
 
     // search
     useEffect(() => {
         const query = {
-            "query": {
-                "bool": {
-                    "must": [
+            query: {
+                bool: {
+                    must: [
                         {
-                            "bool": {
-                                "should": [
+                            bool: {
+                                should: [
                                     {
-                                        "term": {
-                                            "user.keyword": user.email
-                                        }
+                                        term: {
+                                            'user.keyword': user.email,
+                                        },
                                     },
                                     {
-                                        "bool": {
-                                            "must_not": {
-                                                "exists": {
-                                                    "field": "user"
-                                                }
-                                            }
-                                        }
-                                    }
-                                ]
-                            }
-                        }
-                    ]
-                }
+                                        bool: {
+                                            must_not: {
+                                                exists: {
+                                                    field: 'user',
+                                                },
+                                            },
+                                        },
+                                    },
+                                ],
+                            },
+                        },
+                    ],
+                },
             },
-            "size": 10000
-        }
+            size: 10000,
+        };
 
         if (inputValue && inputValue !== '') {
             query.query.bool.must.push({
-                "bool": {
-                    "should": [
+                bool: {
+                    should: [
                         {
-                            "match_bool_prefix": {
-                                "name": inputValue
-                            }
+                            match_bool_prefix: {
+                                name: inputValue,
+                            },
                         },
                         {
-                            "match_bool_prefix": {
-                                "brand": inputValue
-                            }
+                            match_bool_prefix: {
+                                brand: inputValue,
+                            },
                         },
                         {
-                            "match_bool_prefix": {
-                                "ingredients": inputValue
-                            }
-                        }
-                    ]
-                }
-            })
+                            match_bool_prefix: {
+                                ingredients: inputValue,
+                            },
+                        },
+                    ],
+                },
+            });
         } else {
             query.query.bool.must.push({
-                "match_all": {}
-            })
+                match_all: {},
+            });
         }
 
-        filters.forEach(filter => query.query.bool.must.push(filter));
+        filters.forEach((filter) => query.query.bool.must.push(filter));
 
-        search(query).then(res => props.searchRes(res));
-    }, [inputValue, filters])
+        search(query).then((res) => props.searchRes(res));
+    }, [inputValue, filters]);
 
-    // init
+    // on mount
     useEffect(() => {
         const q = {
-            "aggs": {
-                "meal_types": {
-                    "terms": {
-                        "field": "meal_type.keyword",
-                        "size": 10000
-                    }
+            aggs: {
+                meal_types: {
+                    terms: {
+                        field: 'meal_type.keyword',
+                        size: 10000,
+                    },
                 },
-                "water_temps": {
-                    "terms": {
-                        "field": "water_temp.keyword",
-                        "size": 10000
-                    }
+                water_temps: {
+                    terms: {
+                        field: 'water_temp.keyword',
+                        size: 10000,
+                    },
                 },
-                "allergens": {
-                    "terms": {
-                        "field": "allergens.keyword",
-                        "size": 10000
-                    }
+                allergens: {
+                    terms: {
+                        field: 'allergens.keyword',
+                        size: 10000,
+                    },
                 },
-                "special": {
-                    "terms": {
-                        "field": "special.keyword",
-                        "size": 10000
-                    }
+                special: {
+                    terms: {
+                        field: 'special.keyword',
+                        size: 10000,
+                    },
                 },
-                "max_calories": {
-                    "max": {
-                        "field": "calories"
-                    }
+                max_calories: {
+                    max: {
+                        field: 'calories',
+                    },
                 },
-                "min_calories": {
-                    "min": {
-                        "field": "calories"
-                    }
+                min_calories: {
+                    min: {
+                        field: 'calories',
+                    },
                 },
-                "max_minutes": {
-                    "max": {
-                        "field": "minutes"
-                    }
+                max_minutes: {
+                    max: {
+                        field: 'minutes',
+                    },
                 },
-                "min_minutes": {
-                    "min": {
-                        "field": "minutes"
-                    }
+                min_minutes: {
+                    min: {
+                        field: 'minutes',
+                    },
                 },
-                "max_water_ml": {
-                    "max": {
-                        "field": "water_ml"
-                    }
+                max_water_ml: {
+                    max: {
+                        field: 'water_ml',
+                    },
                 },
-                "min_water_ml": {
-                    "min": {
-                        "field": "water_ml"
-                    }
-                }
+                min_water_ml: {
+                    min: {
+                        field: 'water_ml',
+                    },
+                },
             },
-            "size": 0
-        }
+            size: 0,
+        };
 
-        search(q).then(res => {
+        search(q).then((res) => {
             setMealTypes(res.aggregations.meal_types.buckets);
             setWaterTemps(res.aggregations.water_temps.buckets);
             setAllergens(res.aggregations.allergens.buckets);
@@ -199,38 +197,42 @@ function SearchBar(props) {
 
             setCalories({
                 min: res.aggregations.min_calories.value,
-                max: res.aggregations.max_calories.value
+                max: res.aggregations.max_calories.value,
             });
             setMinutes({
                 min: res.aggregations.min_minutes.value,
-                max: res.aggregations.max_minutes.value
+                max: res.aggregations.max_minutes.value,
             });
             setWaterMl({
                 min: res.aggregations.min_water_ml.value,
-                max: res.aggregations.max_water_ml.value
+                max: res.aggregations.max_water_ml.value,
             });
         });
-    }, [])
+    }, []);
 
     return (
         <div id="search-container">
-
             {/* INPUT */}
             <div className="searchbar">
                 <span className="icon">
-                    <SearchIcon width={20} height={20} />
-                </span>
-                <span className="icon" onClick={() => setOpen(!open)}>
-                    <SlidersIcon
-                        width={20}
-                        height={20}
-                        stroke={open ? 'var(--primary)' : 'var(--fg)'} />
+                    <SearchIcon width={20} height={20} stroke="" />
                 </span>
                 <input
                     type="text"
                     id="search-input"
                     placeholder="Search"
-                    onKeyDown={handleInput} />
+                    onKeyDown={handleInput}
+                />
+                <button
+                    type="button"
+                    style={{ backgroundColor: open ? 'var(--bg3)' : '' }}
+                    onClick={() => setOpen(!open)}>
+                    <SlidersIcon
+                        width={20}
+                        height={20}
+                        stroke={open ? 'var(--ct-yellow)' : 'var(--fg)'}
+                    />
+                </button>
             </div>
 
             {/* FILTERS */}
@@ -242,7 +244,8 @@ function SearchBar(props) {
                             label="Calories"
                             min={calories.min}
                             max={calories.max}
-                            setRange={handleFilter} />
+                            setRange={handleFilter}
+                        />
                     </div>
                     <div className="filter-group">
                         <CustomSlider
@@ -250,7 +253,8 @@ function SearchBar(props) {
                             label="Cook Time (min)"
                             min={minutes.min}
                             max={minutes.max}
-                            setRange={handleFilter} />
+                            setRange={handleFilter}
+                        />
                     </div>
                     <div className="filter-group">
                         <CustomSlider
@@ -258,7 +262,8 @@ function SearchBar(props) {
                             label="Water Needed (mL)"
                             min={waterMl.min}
                             max={waterMl.max}
-                            setRange={handleFilter} />
+                            setRange={handleFilter}
+                        />
                     </div>
                 </div>
                 <div className="checkboxes">
@@ -266,34 +271,38 @@ function SearchBar(props) {
                         <span className="title">Meal Type</span>
                         <CheckboxList
                             buckets={mealTypes}
-                            name="meal_type"
-                            setSelection={handleFilter} />
+                            group="meal_type"
+                            setSelection={handleFilter}
+                        />
                     </div>
                     <div className="filter-group">
                         <span className="title">Water Temps</span>
                         <CheckboxList
                             buckets={waterTemps}
-                            name="water_temp"
-                            setSelection={handleFilter} />
+                            group="water_temp"
+                            setSelection={handleFilter}
+                        />
                     </div>
                     <div className="filter-group">
                         <span className="title">Allergens</span>
                         <CheckboxList
                             buckets={allergens}
-                            name="allergens"
-                            setSelection={handleFilter} />
+                            group="allergens"
+                            setSelection={handleFilter}
+                        />
                     </div>
                     <div className="filter-group">
                         <span className="title">Special</span>
                         <CheckboxList
                             buckets={special}
-                            name="special"
-                            setSelection={handleFilter} />
+                            group="special"
+                            setSelection={handleFilter}
+                        />
                     </div>
                 </div>
             </div>
         </div>
-    )
+    );
 }
 
 export default SearchBar;

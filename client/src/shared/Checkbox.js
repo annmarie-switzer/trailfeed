@@ -2,21 +2,24 @@ import React, { useState } from 'react';
 
 function Checkbox(props) {
     const {
+        value,
         color='var(--accent)',
-        label=''
+        label='',
     } = props;
     
     const [checked, setChecked] = useState(false);
 
     const onChange = (event) => {
         setChecked(event.target.checked);
-    }
+        props.onChange(event.target);
+    };
 
     return (
         <>
             <label className="checkbox" onClick={(event) => event.stopPropagation()}>
                 <input
                     type="checkbox"
+                    value={value}
                     style={{
                         backgroundColor: `${checked ? color : ''}`,
                         borderColor: `${checked ? color : 'var(--bg3)'}`

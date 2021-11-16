@@ -22,28 +22,22 @@ function CustomSlider(props) {
         })
     }
 
-    useEffect(() => {
-        setRange([min, max])
-    }, [min, max])
+    useEffect(() => setRange([min, max]), [min, max])
 
     return (
         <div className="slider-container">
-            <div className="slider-title">
-                {label}: &nbsp; {range[0]} &ndash; {range[1]}
-            </div>
+            <div className="slider-title">{label}</div>
             <div className="slider">
-                <span className="slider-value">{min}</span>
-
+                <span className="slider-value">{range[0]}</span>
                 <Slider
                     name={name}
                     min={min}
                     max={max}
                     value={range}
                     onChange={handleChange}
-                    valueLabelDisplay="auto"
+                    valueLabelDisplay="off"
                 />
-
-                <span className="slider-value">{max}</span>
+                <span className="slider-value">{range[1]}</span>
             </div>
         </div>
     )

@@ -121,6 +121,7 @@ app.post('/bulk-upload', async (req, res) => {
 })
 
 app.post('/search', async (req, res) => {
+    // TODO - return error response if ES isn't running
     const esRes = await fetch(`${esUrl}/meals/_search`, {
         method: 'POST',
         body: JSON.stringify(req.body),
