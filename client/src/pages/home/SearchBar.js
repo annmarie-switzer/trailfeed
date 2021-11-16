@@ -21,6 +21,7 @@ function SearchBar(props) {
     const [inputValue, setInputValue] = useState(''); // text filters
     const [filters, setFilters] = useState([]); // term and range filters
 
+    // TODO - de-selecting checkboxes produces no hits
     const handleFilter = (filterObj) => {
         // create the new filter
         let newFilter;
