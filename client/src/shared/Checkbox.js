@@ -3,10 +3,11 @@ import React, { useState } from 'react';
 function Checkbox(props) {
     const {
         value,
-        color='var(--accent)',
-        label='',
+        color = props.inverse ? 'var(--red)' : 'var(--accent)',
+        label = '',
+        inverse = false,
     } = props;
-    
+
     const [checked, setChecked] = useState(false);
 
     const onChange = (event) => {
@@ -16,20 +17,22 @@ function Checkbox(props) {
 
     return (
         <>
-            <label className="checkbox" onClick={(event) => event.stopPropagation()}>
+            <label
+                className={inverse ? 'checkbox inverse' : 'checkbox'}
+                onClick={(event) => event.stopPropagation()}>
                 <input
                     type="checkbox"
                     value={value}
                     style={{
                         backgroundColor: `${checked ? color : ''}`,
-                        borderColor: `${checked ? color : 'var(--bg3)'}`
+                        borderColor: `${checked ? color : 'var(--bg3)'}`,
                     }}
                     onChange={onChange}
                 />
                 <span>{label}</span>
             </label>
         </>
-    )
+    );
 }
 
 export default Checkbox;

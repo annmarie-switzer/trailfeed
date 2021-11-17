@@ -14,25 +14,26 @@ function CheckboxList(props) {
         setSelection(newSelection);
 
         props.setSelection({
-            type: 'terms',
             name: `${group}.keyword`,
             values: newSelection,
+            type: 'terms'
         });
     };
 
     const checkboxes = buckets.map((bucket, i) => {
         return (
             <div className="item-container" key={i}>
-                <Checkbox value={bucket.key} label={bucket.key} onChange={toggle} />
+                <Checkbox
+                    value={bucket.key}
+                    label={bucket.key}
+                    inverse={group === 'allergens'}
+                    onChange={toggle}
+                />
             </div>
         );
     });
 
-    return (
-        <div className="checkbox-list">
-            {checkboxes}
-        </div>
-    )
+    return <div className="checkbox-list">{checkboxes}</div>;
 }
 
 export default CheckboxList;

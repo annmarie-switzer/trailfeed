@@ -1,254 +1,254 @@
-@import url("../shared/App.css");
-@import url("../pages/home/Home.css");
-@import url("../pages/login/Login.css");
-@import url("../pages/home/SearchBar.css");
-@import url("../shared/ThemeSwitcher.css");
-@import url("../shared/CustomSlider.css");
-@import url("../shared/CheckboxList.css");
-@import url("../shared/Checkbox.css");
+@import url('../shared/App.css');
+@import url('../pages/home/Home.css');
+@import url('../pages/login/Login.css');
+@import url('../pages/home/SearchBar.css');
+@import url('../shared/ThemeSwitcher.css');
+@import url('../shared/CustomSlider.css');
+@import url('../shared/CheckboxList.css');
+@import url('../shared/Checkbox.css');
 
 :root {
-  --box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
-    rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+    --box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
+        rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
 }
 
-body[data-theme="dark"] {
-  --bg: var(--bg0);
-  --bg-lighter: var(--bg1);
-  --bg-darker: rgba(0, 0, 0, 0.1);
-  --fg: var(--fg1);
+body[data-theme='dark'] {
+    --bg: var(--bg0);
+    --bg-lighter: var(--bg1);
+    --bg-darker: rgba(0, 0, 0, 0.1);
+    --fg: var(--fg1);
 
-  --primary: var(--purple);
-  --accent: var(--ct-aqua);
+    --primary: var(--purple);
+    --accent: var(--ct-aqua);
 
-  --red: #cc241d;
-  --ct-red: #fb4934;
-  --orange: #d65d0e;
-  --ct-orange: #fe8019;
-  --yellow: #d79921;
-  --ct-yellow: #fabd2f;
-  --green: #98971a;
-  --ct-green: #b8bb26;
-  --aqua: #689d6a;
-  --ct-aqua: #8ec07c;
-  --blue: #458588;
-  --ct-blue: #83a598;
-  --purple: #b16286;
-  --ct-purple: #d3869b;
-  --ct-grey: #928374;
-  --grey: #a89984;
-  --fg0: #fbf1c7;
-  --fg1: #ebdbb2; /* text */
-  --fg2: #d5c4a1;
-  --fg3: #bdae93;
-  --fg4: #a89984;
-  --bg0: #282828; /* background */
-  --bg1: #3c3836;
-  --bg2: #504945;
-  --bg3: #665c54;
-  --bg4: #7c6f64;
+    --red: #cc241d;
+    --ct-red: #fb4934;
+    --orange: #d65d0e;
+    --ct-orange: #fe8019;
+    --yellow: #d79921;
+    --ct-yellow: #fabd2f;
+    --green: #98971a;
+    --ct-green: #b8bb26;
+    --aqua: #689d6a;
+    --ct-aqua: #8ec07c;
+    --blue: #458588;
+    --ct-blue: #83a598;
+    --purple: #b16286;
+    --ct-purple: #d3869b;
+    --ct-grey: #928374;
+    --grey: #a89984;
+    --fg0: #fbf1c7;
+    --fg1: #ebdbb2; /* text */
+    --fg2: #d5c4a1;
+    --fg3: #bdae93;
+    --fg4: #a89984;
+    --bg0: #282828; /* background */
+    --bg1: #3c3836;
+    --bg2: #504945;
+    --bg3: #665c54;
+    --bg4: #7c6f64;
 }
 
-body[data-theme="light"] {
-  --bg: var(--bg0);
-  --bg-lighter: var(--bg1);
-  --bg-darker: rgba(0, 0, 0, 0.1);
-  --fg: var(--fg1);
+body[data-theme='light'] {
+    --bg: var(--bg0);
+    --bg-lighter: var(--bg1);
+    --bg-darker: rgba(0, 0, 0, 0.1);
+    --fg: var(--fg1);
 
-  --primary: var(--purple);
-  --accent: var(--aqua);
+    --primary: var(--purple);
+    --accent: var(--aqua);
 
-  --red: #cc241d;
-  --ct-red: #9d0006;
-  --orange: #d65d0e;
-  --ct-orange: #af3a03;
-  --yellow: #d79921;
-  --ct-yellow: #b57614;
-  --green: #98971a;
-  --ct-green: #79740e;
-  --aqua: #689d6a;
-  --ct-aqua: #427b58;
-  --blue: #458588;
-  --ct-blue: #076678;
-  --purple: #b16286;
-  --ct-purple: #8f3f71;
-  --ct-grey: #928374;
-  --grey: #7c6f64;
-  --fg0: #282828;
-  --fg1: #3c3836; /* text */
-  --fg2: #504945;
-  --fg3: #665c54;
-  --fg4: #7c6f64;
-  --bg0: #fbf1c7; /* background */
-  --bg1: #ebdbb2;
-  --bg2: #d5c4a1;
-  --bg3: #bdae93;
-  --bg4: #a89984;
+    --red: #cc241d;
+    --ct-red: #9d0006;
+    --orange: #d65d0e;
+    --ct-orange: #af3a03;
+    --yellow: #d79921;
+    --ct-yellow: #b57614;
+    --green: #98971a;
+    --ct-green: #79740e;
+    --aqua: #689d6a;
+    --ct-aqua: #427b58;
+    --blue: #458588;
+    --ct-blue: #076678;
+    --purple: #b16286;
+    --ct-purple: #8f3f71;
+    --ct-grey: #928374;
+    --grey: #7c6f64;
+    --fg0: #282828;
+    --fg1: #3c3836; /* text */
+    --fg2: #504945;
+    --fg3: #665c54;
+    --fg4: #7c6f64;
+    --bg0: #fbf1c7; /* background */
+    --bg1: #ebdbb2;
+    --bg2: #d5c4a1;
+    --bg3: #bdae93;
+    --bg4: #a89984;
 }
 
-body[data-theme="smartwool"] {
-  --orange: #e45d25;
-  --blue: #1290ca;
-  --grey: #9ba5aa;
-  --dark-blue: #1e2f4a;
-  --green: #37a749;
+body[data-theme='smartwool'] {
+    --orange: #e45d25;
+    --blue: #1290ca;
+    --grey: #9ba5aa;
+    --dark-blue: #1e2f4a;
+    --green: #37a749;
 
-  /* blue/aqua/green */
-  fill: #89b79a;
-  fill: #018155;
-  fill: #89b1da;
-  fill: #70a4bd;
-  fill: #7fc8bf;
-  fill: #4bbcca;
-  fill: #058095;
+    /* blue/aqua/green */
+    fill: #89b79a;
+    fill: #018155;
+    fill: #89b1da;
+    fill: #70a4bd;
+    fill: #7fc8bf;
+    fill: #4bbcca;
+    fill: #058095;
 
-  /* orange & yellow */
-  fill: #9faa39;
-  fill: #f3a744;
-  fill: #df2b27;
-  fill: #b6262c;
-  fill: #4d4e42;
+    /* orange & yellow */
+    fill: #9faa39;
+    fill: #f3a744;
+    fill: #df2b27;
+    fill: #b6262c;
+    fill: #4d4e42;
 }
 
 body {
-  margin: 0;
-  padding: 0;
-  overflow-y: scroll;
-  background-color: var(--bg);
-  color: var(--fg);
-  font-family: "Fira Sans", sans-serif;
-  font-size: 1rem;
+    margin: 0;
+    padding: 0;
+    overflow-y: scroll;
+    background-color: var(--bg);
+    color: var(--fg);
+    font-family: 'Fira Sans', sans-serif;
+    font-size: 1rem;
 }
 
 /* custom scrollbar */
 *::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+    width: 8px;
+    height: 8px;
 }
 
 *::-webkit-scrollbar-track {
-  background: transparent !important;
+    background: transparent !important;
 }
 
 *::-webkit-scrollbar-thumb {
-  background: var(--bg4);
+    background: var(--bg4);
 }
 
 * {
-  scrollbar-width: auto;
-  scrollbar-color: #7c6f64 transparent;
+    scrollbar-width: auto;
+    scrollbar-color: #7c6f64 transparent;
 }
 /* end scrollbar */
 
 button {
-  border: 0;
-  cursor: pointer;
-  border-radius: 0.25rem;
-  padding: 0.5rem 1rem;
-  font-size: 0.875rem;
-  font-weight: 500;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: transparent;
-  color: currentColor;
+    border: 0;
+    cursor: pointer;
+    border-radius: 0.25rem;
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    color: currentColor;
 }
 
 button:active {
-  opacity: 0.8;
+    opacity: 0.8;
 }
 
 .tooltip {
-  visibility: hidden;
-  background-color: var(--fg2);
-  color: var(--bg);
-  padding: 0.5rem 1rem;
-  border-radius: 0.25rem;
-  position: absolute;
-  z-index: 1;
-  left: 50%;
-  transform: translate(-50%);
+    visibility: hidden;
+    background-color: var(--fg2);
+    color: var(--bg);
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    position: absolute;
+    z-index: 1;
+    left: 50%;
+    transform: translate(-50%);
 }
 
 .tooltip.below {
-  top: 110%;
+    top: 110%;
 }
 
 .tooltip.above {
-  bottom: 110%;
+    bottom: 110%;
 }
 
 .tooltip.above::before {
-  position: absolute;
-  content: "";
-  width: 8px;
-  height: 8px;
-  bottom: 0;
-  left: 50%;
-  -webkit-transform: translate(-50%, 50%) rotate(45deg);
-  -moz-transform: translate(-50%, 50%) rotate(45deg);
-  -ms-transform: translate(-50%, 50%) rotate(45deg);
-  transform: translate(-50%, 50%) rotate(45deg);
-  background-color: inherit;
+    position: absolute;
+    content: '';
+    width: 8px;
+    height: 8px;
+    bottom: 0;
+    left: 50%;
+    -webkit-transform: translate(-50%, 50%) rotate(45deg);
+    -moz-transform: translate(-50%, 50%) rotate(45deg);
+    -ms-transform: translate(-50%, 50%) rotate(45deg);
+    transform: translate(-50%, 50%) rotate(45deg);
+    background-color: inherit;
 }
 
 .tooltip-trigger {
-  position: relative;
+    position: relative;
 }
 
 .tooltip-trigger:hover .tooltip {
-  visibility: visible;
+    visibility: visible;
 }
 
 /* fira-sans-300 - latin */
 @font-face {
-  font-family: "Fira Sans";
-  font-style: normal;
-  font-weight: 300;
-  src: local(""), url("./fonts/fira-sans-v11-latin-300.woff2") format("woff2"),
-    /* Chrome 26+, Opera 23+, Firefox 39+ */
-      url("./fonts/fira-sans-v11-latin-300.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+    font-family: 'Fira Sans';
+    font-style: normal;
+    font-weight: 300;
+    src: local(''), url('./fonts/fira-sans-v11-latin-300.woff2') format('woff2'),
+        /* Chrome 26+, Opera 23+, Firefox 39+ */
+            url('./fonts/fira-sans-v11-latin-300.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 
 /* fira-sans-300italic - latin */
 @font-face {
-  font-family: "Fira Sans";
-  font-style: italic;
-  font-weight: 300;
-  src: local(""),
-    url("./fonts/fira-sans-v11-latin-300italic.woff2") format("woff2"),
-    /* Chrome 26+, Opera 23+, Firefox 39+ */
-      url("./fonts/fira-sans-v11-latin-300italic.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+    font-family: 'Fira Sans';
+    font-style: italic;
+    font-weight: 300;
+    src: local(''),
+        url('./fonts/fira-sans-v11-latin-300italic.woff2') format('woff2'),
+        /* Chrome 26+, Opera 23+, Firefox 39+ */
+            url('./fonts/fira-sans-v11-latin-300italic.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 
 /* fira-sans-regular - latin */
 @font-face {
-  font-family: "Fira Sans";
-  font-style: normal;
-  font-weight: 400;
-  src: local(""),
-    url("./fonts/fira-sans-v11-latin-regular.woff2") format("woff2"),
-    /* Chrome 26+, Opera 23+, Firefox 39+ */
-      url("./fonts/fira-sans-v11-latin-regular.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+    font-family: 'Fira Sans';
+    font-style: normal;
+    font-weight: 400;
+    src: local(''),
+        url('./fonts/fira-sans-v11-latin-regular.woff2') format('woff2'),
+        /* Chrome 26+, Opera 23+, Firefox 39+ */
+            url('./fonts/fira-sans-v11-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 
 /* fira-sans-500 - latin */
 @font-face {
-  font-family: "Fira Sans";
-  font-style: normal;
-  font-weight: 500;
-  src: local(""), url("./fonts/fira-sans-v11-latin-500.woff2") format("woff2"),
-    /* Chrome 26+, Opera 23+, Firefox 39+ */
-      url("./fonts/fira-sans-v11-latin-500.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+    font-family: 'Fira Sans';
+    font-style: normal;
+    font-weight: 500;
+    src: local(''), url('./fonts/fira-sans-v11-latin-500.woff2') format('woff2'),
+        /* Chrome 26+, Opera 23+, Firefox 39+ */
+            url('./fonts/fira-sans-v11-latin-500.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 
 /* fira-sans-italic - latin */
 @font-face {
-  font-family: "Fira Sans";
-  font-style: italic;
-  font-weight: 400;
-  src: local(""),
-    url("./fonts/fira-sans-v11-latin-italic.woff2") format("woff2"),
-    /* Chrome 26+, Opera 23+, Firefox 39+ */
-      url("./fonts/fira-sans-v11-latin-italic.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+    font-family: 'Fira Sans';
+    font-style: italic;
+    font-weight: 400;
+    src: local(''),
+        url('./fonts/fira-sans-v11-latin-italic.woff2') format('woff2'),
+        /* Chrome 26+, Opera 23+, Firefox 39+ */
+            url('./fonts/fira-sans-v11-latin-italic.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }

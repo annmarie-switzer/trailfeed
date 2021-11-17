@@ -2,13 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Slider from '@mui/material/Slider';
 
 function CustomSlider(props) {
-    const {
-        min,
-        max,
-        label,
-        name,
-        setRange: setUpstreamRange
-    } = props;
+    const { min, max, label, name, setRange: setUpstreamRange } = props;
 
     const [range, setRange] = useState([]);
 
@@ -16,13 +10,13 @@ function CustomSlider(props) {
         setRange(event.target.value);
 
         setUpstreamRange({
-            type: 'range',
             name: event.target.name,
-            values: [...range]
-        })
-    }
+            values: range,
+            type: 'range'
+        });
+    };
 
-    useEffect(() => setRange([min, max]), [min, max])
+    useEffect(() => setRange([min, max]), [min, max]);
 
     return (
         <div className="slider-container">
@@ -40,7 +34,7 @@ function CustomSlider(props) {
                 <span className="slider-value">{range[1]}</span>
             </div>
         </div>
-    )
+    );
 }
 
 export default CustomSlider;

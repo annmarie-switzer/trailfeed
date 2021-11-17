@@ -5,19 +5,19 @@ function Home() {
     const [res, setRes] = useState();
 
     const handleRes = (res) => {
-        const hits = res.hits.hits.map(h => h._source);
-        setRes(hits)
+        console.log(res.hits.total.value);
+        const hits = res.hits.hits.map((h) => h._source);
+        setRes(hits);
     };
 
     return (
         <div id="home">
             <SearchBar searchRes={handleRes} />
-            
             <div className="cards">
                 <pre>{JSON.stringify(res, null, 2)}</pre>
             </div>
         </div>
-    )
+    );
 }
 
 export default Home;

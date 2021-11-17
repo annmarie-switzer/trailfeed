@@ -17,42 +17,53 @@ function SearchBar(props) {
     const [calories, setCalories] = useState({ min: 0, max: 0 });
     const [minutes, setMinutes] = useState({ min: 0, max: 0 });
     const [waterMl, setWaterMl] = useState({ min: 0, max: 0 });
+    const [inputValue, setInputValue] = useState('');
+    const [filters, setFilters] = useState([]);
 
-    const [inputValue, setInputValue] = useState(''); // text filters
-    const [filters, setFilters] = useState([]); // term and range filters
-
-    // TODO - de-selecting checkboxes produces no hits
     const handleFilter = (filterObj) => {
-        // create the new filter
-        let newFilter;
-
-        if (filterObj.type === 'terms') {
-            newFilter = {
-                terms: {
-                    [filterObj.name]: filterObj.values,
-                },
-            };
-        }
-
-        if (filterObj.type === 'range') {
-            newFilter = {
-                range: {
-                    [filterObj.name]: {
-                        gte: filterObj.values[0],
-                        lte: filterObj.values[1],
-                    },
-                },
-            };
-        }
-
         // remove any existing filters with the same name
-        const filtered = filters.filter((f) => {
-            const firstKey = Object.keys(f)[0];
-            return !(filterObj.name in f[firstKey]);
-        });
+        const filtered = filters.filter((f) => f.name !== filterObj.name);
 
-        // add new filter
-        setFilters([...filtered, newFilter]);
+        // If the filter has values, normalize it and add it to the filters array
+        if (filterObj.values.length > 0) {
+            let newFilter = {
+                name: filterObj.name,
+                query: {}
+            };
+
+            if (filterObj.type === 'terms') {
+                const termsQuery = {
+                    terms: {
+                        [filterObj.name]: filterObj.values
+                    }
+                };
+
+                if (filterObj.name === 'allergens.keyword') {
+                    newFilter.query = {
+                        bool: {
+                            must_not: [termsQuery]
+                        }
+                    };
+                } else {
+                    newFilter.query = termsQuery;
+                }
+            }
+
+            if (filterObj.type === 'range') {
+                newFilter.query = {
+                    range: {
+                        [filterObj.name]: {
+                            gte: filterObj.values[0],
+                            lte: filterObj.values[1]
+                        }
+                    }
+                };
+            }
+
+            setFilters([...filtered, newFilter]);
+        } else {
+            setFilters(filtered);
+        }
     };
 
     const handleInput = (event) => {
@@ -74,25 +85,25 @@ function SearchBar(props) {
                                 should: [
                                     {
                                         term: {
-                                            'user.keyword': user.email,
-                                        },
+                                            'user.keyword': user.email
+                                        }
                                     },
                                     {
                                         bool: {
                                             must_not: {
                                                 exists: {
-                                                    field: 'user',
-                                                },
-                                            },
-                                        },
-                                    },
-                                ],
-                            },
-                        },
-                    ],
-                },
+                                                    field: 'user'
+                                                }
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
             },
-            size: 10000,
+            size: 10000
         };
 
         if (inputValue && inputValue !== '') {
@@ -101,29 +112,29 @@ function SearchBar(props) {
                     should: [
                         {
                             match_bool_prefix: {
-                                name: inputValue,
-                            },
+                                name: inputValue
+                            }
                         },
                         {
                             match_bool_prefix: {
-                                brand: inputValue,
-                            },
+                                brand: inputValue
+                            }
                         },
                         {
                             match_bool_prefix: {
-                                ingredients: inputValue,
-                            },
-                        },
-                    ],
-                },
+                                ingredients: inputValue
+                            }
+                        }
+                    ]
+                }
             });
         } else {
             query.query.bool.must.push({
-                match_all: {},
+                match_all: {}
             });
         }
 
-        filters.forEach((filter) => query.query.bool.must.push(filter));
+        filters.forEach((filter) => query.query.bool.must.push(filter.query));
 
         search(query).then((res) => props.searchRes(res));
     }, [inputValue, filters]);
@@ -135,59 +146,59 @@ function SearchBar(props) {
                 meal_types: {
                     terms: {
                         field: 'meal_type.keyword',
-                        size: 10000,
-                    },
+                        size: 10000
+                    }
                 },
                 water_temps: {
                     terms: {
                         field: 'water_temp.keyword',
-                        size: 10000,
-                    },
+                        size: 10000
+                    }
                 },
                 allergens: {
                     terms: {
                         field: 'allergens.keyword',
-                        size: 10000,
-                    },
+                        size: 10000
+                    }
                 },
                 special: {
                     terms: {
                         field: 'special.keyword',
-                        size: 10000,
-                    },
+                        size: 10000
+                    }
                 },
                 max_calories: {
                     max: {
-                        field: 'calories',
-                    },
+                        field: 'calories'
+                    }
                 },
                 min_calories: {
                     min: {
-                        field: 'calories',
-                    },
+                        field: 'calories'
+                    }
                 },
                 max_minutes: {
                     max: {
-                        field: 'minutes',
-                    },
+                        field: 'minutes'
+                    }
                 },
                 min_minutes: {
                     min: {
-                        field: 'minutes',
-                    },
+                        field: 'minutes'
+                    }
                 },
                 max_water_ml: {
                     max: {
-                        field: 'water_ml',
-                    },
+                        field: 'water_ml'
+                    }
                 },
                 min_water_ml: {
                     min: {
-                        field: 'water_ml',
-                    },
-                },
+                        field: 'water_ml'
+                    }
+                }
             },
-            size: 0,
+            size: 0
         };
 
         search(q).then((res) => {
@@ -198,15 +209,15 @@ function SearchBar(props) {
 
             setCalories({
                 min: res.aggregations.min_calories.value,
-                max: res.aggregations.max_calories.value,
+                max: res.aggregations.max_calories.value
             });
             setMinutes({
                 min: res.aggregations.min_minutes.value,
-                max: res.aggregations.max_minutes.value,
+                max: res.aggregations.max_minutes.value
             });
             setWaterMl({
                 min: res.aggregations.min_water_ml.value,
-                max: res.aggregations.max_water_ml.value,
+                max: res.aggregations.max_water_ml.value
             });
         });
     }, []);

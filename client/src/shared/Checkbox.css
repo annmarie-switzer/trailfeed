@@ -27,8 +27,8 @@
     cursor: pointer;
 }
 
-/* Custom checkmark */
-.checkbox > span::after {
+/* Custom checkmark - tick */
+.checkbox:not(.inverse) > span::after {
     content: '';
     display: block;
     position: absolute;
@@ -36,16 +36,42 @@
     left: 1px;
     width: 10px;
     height: 5px;
-    border: solid 2px transparent; /* checkmark is invisible by default */
+    border: solid 2px transparent;
     border-right: none;
     border-top: none;
     transform: translate(3px, 4px) rotate(-45deg);
+}
+
+/* Custom checkmark - cross */
+.checkbox.inverse > span::before, 
+.checkbox.inverse > span::after {
+    content:'';
+    position:absolute;
+    top: 11px;
+    left: 3px;
+    width: 14px;
+    height: 2px; /* cross thickness */
+    background-color: transparent;
+    transform: translate(3px, 4px);
+}
+
+.checkbox.inverse > span:before {
+    transform:rotate(45deg);
+}
+
+.checkbox.inverse > span:after {
+    transform:rotate(-45deg);
 }
 
 /* Make checkmark visible when checked or indeterminate */
 .checkbox > input:checked + span::after,
 .checkbox > input:indeterminate + span::after {
     border-color: #000000;
+}
+
+.checkbox.inverse > input:checked + span::before,
+.checkbox.inverse > input:checked + span::after {
+    background-color: #000000;
 }
 
 /* Change checkmark to a dash when indeterminate */
