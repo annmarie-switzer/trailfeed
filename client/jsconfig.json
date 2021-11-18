@@ -7,8 +7,5 @@
         "checkJs": true,
         "jsx": "react"
     },
-    "exclude": [
-        "dist",
-        "node_modules"
-    ]
+    "exclude": ["dist", "node_modules"]
 }

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import SunIcon from 'static/icons/SunIcon';
-import MoonIcon from 'static/icons/MoonIcon';
+import SunIcon from 'lib/icons/SunIcon';
+import MoonIcon from 'lib/icons/MoonIcon';
 
 function ThemeSwitcher() {
     const storedTheme = localStorage.getItem('theme')

@@ -1,11 +1,10 @@
 import React, { createContext, useEffect, useState } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Login from 'pages/login/Login';
-import AuthRoute from 'shared/AuthRoute';
+import AuthRoute from 'lib/AuthRoute';
 import { getUser } from 'api';
 import Home from 'pages/home/Home';
-import ThemeSwitcher from './shared/ThemeSwitcher';
-import { logout } from 'api';
+import Footer from './Footer';
 
 export const AppContext = createContext(null);
 
@@ -23,7 +22,14 @@ function App() {
     }
 
     return (
-        <div id="app">
+        <div
+            id="app"
+            style={{
+                display: 'flex',
+                flexDirection: 'column',
+                minHeight: '100vh',
+                boxSizing: 'border-box'
+            }}>
             <AppContext.Provider value={user}>
                 <Switch>
                     <Route exact path="/login">
@@ -34,19 +40,7 @@ function App() {
                     </AuthRoute>
                 </Switch>
 
-                <div id="footer">
-                    {user ? (
-                        <button
-                            id="logout-button"
-                            className="tooltip-trigger"
-                            type="button"
-                            onClick={logout}>
-                            <span>{user.email}</span>
-                            <span className="tooltip above">Logout</span>
-                        </button>
-                    ) : null}
-                    <ThemeSwitcher />
-                </div>
+                <Footer user={user} />
             </AppContext.Provider>
         </div>
     );

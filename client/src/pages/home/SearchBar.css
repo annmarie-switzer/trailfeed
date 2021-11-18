@@ -95,8 +95,10 @@
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
     background-color: var(--bg-lighter);
+    color: var(--fg);
 }
 
 #search-container .searchbar input + button:hover {
     background-color: var(--bg3);
+    color: var(--ct-aqua) !important;
 }

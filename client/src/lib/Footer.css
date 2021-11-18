@@ -1,0 +1,25 @@
+#footer {
+    color: var(--fg4);
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0.5rem 1rem;
+    height: 60px;
+    box-sizing: border-box;
+    border-top: solid 1px var(--bg1);
+}
+
+#footer #logout {
+    margin-right: auto;
+    display: flex;
+    align-items: center;
+    font-size: 0.875rem;
+}
+
+#footer #logout button:hover {
+    color: var(--red);
+}
+
+#footer #logout span {
+    margin: -0.5rem;
+}

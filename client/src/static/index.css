@@ -1,11 +1,11 @@
-@import url('../App.css');
 @import url('../pages/home/Home.css');
 @import url('../pages/login/Login.css');
 @import url('../pages/home/SearchBar.css');
-@import url('../shared/ThemeSwitcher.css');
-@import url('../shared/CustomSlider.css');
-@import url('../shared/CheckboxList.css');
-@import url('../shared/Checkbox.css');
+@import url('../lib/ThemeSwitcher.css');
+@import url('../lib/CustomSlider.css');
+@import url('../lib/CheckboxList.css');
+@import url('../lib/Checkbox.css');
+@import url('../lib/Footer.css');
 
 :root {
     --box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
@@ -198,6 +198,12 @@ button:active {
 
 .tooltip-trigger:hover .tooltip {
     visibility: visible;
+}
+
+.vr {
+    height: 70%;
+    border-left: solid 1px var(--bg2);
+    margin: 0 0.4rem;
 }
 
 /* fira-sans-300 - latin */

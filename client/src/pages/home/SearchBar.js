@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { search } from 'api';
-import SearchIcon from 'static/icons/SearchIcon';
-import SlidersIcon from 'static/icons/SlidersIcon';
-import { AppContext } from 'App';
-import CheckboxList from 'shared/CheckboxList';
-import CustomSlider from 'shared/CustomSlider';
+import SearchIcon from 'lib/icons/SearchIcon';
+import SlidersIcon from 'lib/icons/SlidersIcon';
+import { AppContext } from 'lib/App';
+import CheckboxList from 'lib/CheckboxList';
+import CustomSlider from 'lib/CustomSlider';
 
 function SearchBar(props) {
     const user = useContext(AppContext);
@@ -237,13 +237,12 @@ function SearchBar(props) {
                 />
                 <button
                     type="button"
-                    style={{ backgroundColor: open ? 'var(--bg3)' : '' }}
+                    style={{
+                        backgroundColor: open ? 'var(--bg3)' : '',
+                        color: open ? 'var(--ct-aqua)' : 'var(--fg)'
+                    }}
                     onClick={() => setOpen(!open)}>
-                    <SlidersIcon
-                        width={20}
-                        height={20}
-                        stroke={open ? 'var(--ct-yellow)' : 'var(--fg)'}
-                    />
+                    <SlidersIcon width={20} height={20} stroke="currentColor" />
                 </button>
             </div>
 
