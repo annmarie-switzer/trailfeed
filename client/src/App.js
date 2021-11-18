@@ -4,8 +4,8 @@ import Login from 'pages/login/Login';
 import AuthRoute from 'shared/AuthRoute';
 import { getUser } from 'api';
 import Home from 'pages/home/Home';
-import ThemeSwitcher from "./ThemeSwitcher";
-import { logout } from "api";
+import ThemeSwitcher from './shared/ThemeSwitcher';
+import { logout } from 'api';
 
 export const AppContext = createContext(null);
 
@@ -14,13 +14,12 @@ function App() {
 
     useEffect(() => {
         getUser()
-            .catch(() => setUser({}))
-            .then(res => setUser(res));
-
+            .catch(() => setUser(null))
+            .then((res) => setUser(res));
     }, []);
 
     if (user === null) {
-        return null
+        return null;
     }
 
     return (
@@ -30,13 +29,13 @@ function App() {
                     <Route exact path="/login">
                         <Login />
                     </Route>
-                    <AuthRoute exact user={user} path='/'>
+                    <AuthRoute exact user={user} path="/">
                         <Home />
                     </AuthRoute>
                 </Switch>
 
                 <div id="footer">
-                    {user ?
+                    {user ? (
                         <button
                             id="logout-button"
                             className="tooltip-trigger"
@@ -45,8 +44,7 @@ function App() {
                             <span>{user.email}</span>
                             <span className="tooltip above">Logout</span>
                         </button>
-                        : null
-                    }
+                    ) : null}
                     <ThemeSwitcher />
                 </div>
             </AppContext.Provider>

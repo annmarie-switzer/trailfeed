@@ -12,39 +12,47 @@ const port = process.env.PORT || 5000;
 const serverUrl = 'http://localhost:5000';
 const clientUrl = 'http://localhost:3000';
 const esUrl = 'http://localhost:9200';
-const authString = Buffer.from(`${process.env.ES_USER}:${process.env.ES_PW}`).toString('base64');
+const authString = Buffer.from(
+    `${process.env.ES_USER}:${process.env.ES_PW}`
+).toString('base64');
 
 app.use(express.json());
 
-app.use(cors({
-    origin: clientUrl,
-    credentials: true,
-    optionsSuccessStatus: 200
-}))
+app.use(
+    cors({
+        origin: clientUrl,
+        credentials: true,
+        optionsSuccessStatus: 200
+    })
+);
 
-app.use(session({
-    cookie: {
-        domain: 'localhost',
-        httpOnly: true,
-        sameSite: true,
-        secure: process.env.NODE_ENV === 'production',
-    },
-    resave: false,
-    saveUninitialized: false,
-    secret: 'changeme',
-    unset: 'destroy'
-}))
+app.use(
+    session({
+        cookie: {
+            domain: 'localhost',
+            httpOnly: true,
+            sameSite: true,
+            secure: process.env.NODE_ENV === 'production'
+        },
+        resave: false,
+        saveUninitialized: false,
+        secret: 'changeme',
+        unset: 'destroy'
+    })
+);
 
 // TODO - how can I secure `bulk-upload`?
 app.use((req, res, next) => {
-    if (req.session['profile'] || req.path.includes('callback') || req.path.includes('bulk-upload')) {
+    if (
+        req.session['profile'] ||
+        req.path.includes('callback') ||
+        req.path.includes('bulk-upload')
+    ) {
         next();
     } else {
         res.status(401).end();
     }
-})
-
-
+});
 
 // auth
 app.get('/callback', async (req, res) => {
@@ -75,11 +83,11 @@ app.get('/callback', async (req, res) => {
     }
 
     res.redirect(clientUrl);
-})
+});
 
 app.post('/logout', async (req, res) => {
     req.session.destroy(() => res.status(204).end());
-})
+});
 
 app.get('/user', async (req, res) => {
     res.json({
@@ -88,37 +96,37 @@ app.get('/user', async (req, res) => {
         givenName: req.session['profile']['given_name'],
         locale: req.session['profile']['locale'],
         name: req.session['profile']['name'],
-        picture: req.session['profile']['picture'],
+        picture: req.session['profile']['picture']
     });
-})
-
-
+});
 
 // elastic
 app.post('/bulk-upload', async (req, res) => {
     const data = req.body;
-    const header = { "create": {} };
+    const header = { create: {} };
     const ndJson = data
-        .flatMap(d => [header, d])
-        .map(d => JSON.stringify(d))
+        .flatMap((d) => [header, d])
+        .map((d) => JSON.stringify(d))
         .join('\n')
         .concat('\n');
-    
-    const esRes = await (await fetch(`${esUrl}/meals/_bulk`, {
-        method: 'POST',
-        body: ndJson,
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Basic ${authString}`
-        }
-    })).json();
+
+    const esRes = await (
+        await fetch(`${esUrl}/meals/_bulk`, {
+            method: 'POST',
+            body: ndJson,
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Basic ${authString}`
+            }
+        })
+    ).json();
 
     if (esRes.error) {
-        res.status(400).send({'Bulk upload failed ': esRes})
+        res.status(400).send({ 'Bulk upload failed ': esRes });
     } else {
         res.status(200).end();
     }
-})
+});
 
 app.post('/search', async (req, res) => {
     // TODO - return error response if ES isn't running
@@ -127,20 +135,16 @@ app.post('/search', async (req, res) => {
         body: JSON.stringify(req.body),
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Basic ${authString}`
+            Authorization: `Basic ${authString}`
         }
     });
     res.json(await esRes.json());
-})
-
-
+});
 
 app.all('*', (req, res) => {
     res.status(404).end();
-})
-
-
+});
 
 app.listen(port, async () => {
     console.log(`~ Server is running at http://127.0.0.1:${port} ~`);
-})
+});

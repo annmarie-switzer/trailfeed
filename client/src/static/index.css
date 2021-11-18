@@ -1,4 +1,4 @@
-@import url('../shared/App.css');
+@import url('../App.css');
 @import url('../pages/home/Home.css');
 @import url('../pages/login/Login.css');
 @import url('../pages/home/SearchBar.css');
@@ -18,8 +18,8 @@ body[data-theme='dark'] {
     --bg-darker: rgba(0, 0, 0, 0.1);
     --fg: var(--fg1);
 
-    --primary: var(--purple);
-    --accent: var(--ct-aqua);
+    --primary: var(--aqua);
+    --accent: var(--purple);
 
     --red: #cc241d;
     --ct-red: #fb4934;

@@ -3,11 +3,7 @@ export const getUser = async () => {
         credentials: 'include'
     });
 
-    if (!res.ok) {
-        throw new Error(res.statusText)
-    } else {
-        return await res.json();
-    }
+    return await res.json();
 }
 
 export const logout = async () => {
@@ -16,11 +12,7 @@ export const logout = async () => {
         credentials: 'include'
     });
     
-    if (!res.ok) {
-        throw new Error(res.statusText)
-    } else {
-        window.location.href = '/';
-    }
+    window.location.href = '/';
 }
 
 export const search = async (query) => {
@@ -31,9 +23,5 @@ export const search = async (query) => {
         headers: {'Content-Type': 'application/json'}
     });
 
-    if (!res.ok) {
-        throw new Error(res.statusText)
-    } else {
-        return await res.json();
-    }
+    return await res.json();
 }

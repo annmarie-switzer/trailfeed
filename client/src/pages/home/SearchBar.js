@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { search } from 'api';
 import SearchIcon from 'static/icons/SearchIcon';
 import SlidersIcon from 'static/icons/SlidersIcon';
-import { AppContext } from 'shared/App';
+import { AppContext } from 'App';
 import CheckboxList from 'shared/CheckboxList';
 import CustomSlider from 'shared/CustomSlider';
 
