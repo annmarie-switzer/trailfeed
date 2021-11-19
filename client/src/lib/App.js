@@ -10,8 +10,13 @@ export const AppContext = createContext(null);
 
 function App() {
     const [user, setUser] = useState(null);
+    const [theme, setTheme] = useState(
+        localStorage.getItem('theme') ? localStorage.getItem('theme') : 'dark'
+    );
 
     useEffect(() => {
+        document.body.dataset.theme = theme;
+
         getUser()
             .catch(() => setUser(null))
             .then((res) => setUser(res));
@@ -30,7 +35,7 @@ function App() {
                 minHeight: '100vh',
                 boxSizing: 'border-box'
             }}>
-            <AppContext.Provider value={user}>
+            <AppContext.Provider value={{ user, theme, setTheme }}>
                 <Switch>
                     <Route exact path="/login">
                         <Login />

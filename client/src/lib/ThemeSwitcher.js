@@ -1,35 +1,32 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
+import { AppContext } from 'lib/App';
 import SunIcon from 'lib/icons/SunIcon';
 import MoonIcon from 'lib/icons/MoonIcon';
 
-function ThemeSwitcher() {
-    const storedTheme = localStorage.getItem('theme')
-        ? localStorage.getItem('theme')
-        : 'dark';
-
-    const [theme, setTheme] = useState(storedTheme);
+function ThemeSwitcher(props) {
+    const { theme, setTheme } = useContext(AppContext);
 
     const selectTheme = (t) => {
         setTheme(t);
         localStorage.setItem('theme', t);
-        document.body.setAttribute('data-theme', t);
+        document.body.dataset.theme = t;
     };
 
     return (
         <div id="theme-switcher">
-            {theme == 'light' ? (
+            {theme === 'light' ? (
                 <button
                     type="button"
-                    className={theme == 'light' ? 'selected' : ''}
+                    className={theme === 'light' ? 'selected' : ''}
                     onClick={() => selectTheme('dark')}>
-                    <MoonIcon stroke="var(--fg4)" />
+                    <MoonIcon width={24} height={24} stroke="var(--fg4)" />
                 </button>
             ) : (
                 <button
                     type="button"
-                    className={theme == 'dark' ? 'selected' : ''}
+                    className={theme === 'dark' ? 'selected' : ''}
                     onClick={() => selectTheme('light')}>
-                    <SunIcon stroke="var(--fg4)" />
+                    <SunIcon width={24} height={24} stroke="var(--fg4)" />
                 </button>
             )}
         </div>

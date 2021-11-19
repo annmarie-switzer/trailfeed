@@ -1,24 +1,29 @@
 import React from 'react';
 import { logout } from 'api';
 import ThemeSwitcher from './ThemeSwitcher';
-import PowerIcon from './icons/PowerIcon';
+import LogoutIcon from './icons/LogoutIcon';
 
 function Footer(props) {
+    const { theme, user } = props;
+
     return (
         <div id="footer">
-            {props.user ? (
-                <div id="logout" title="Logout">
-                    <button type="button" onClick={logout}>
-                        <PowerIcon
-                            width={24}
-                            height={24}
-                            stroke="currentColor"
-                        />
-                    </button>
+            {user ? (
+                <button
+                    type="button"
+                    id="logout"
+                    title="Logout"
+                    onClick={logout}>
+                    <LogoutIcon
+                        width={24}
+                        height={24}
+                        stroke="currentColor"
+                        style={{ transform: 'scaleX(-1)' }}
+                    />
                     <span>{props.user.email}</span>
-                </div>
+                </button>
             ) : null}
-            <ThemeSwitcher />
+            <ThemeSwitcher theme={theme} />
         </div>
     );
 }

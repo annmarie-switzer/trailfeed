@@ -1,21 +1,35 @@
 import SearchBar from 'pages/home/SearchBar';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 function Home() {
-    const [res, setRes] = useState();
+    const [cards, setCards] = useState([]);
 
     const handleRes = (res) => {
         console.log(res.hits.total.value);
         const hits = res.hits.hits.map((h) => h._source);
-        setRes(hits);
+
+        const cards = hits.map((hit, i) => {
+            return (
+                <div className="card" key={i}>
+                    <div className="card-header">{hit.name}</div>
+                    <div className="card-content">
+                        {Object.entries(hit).map((entry, i) => (
+                            <div key={i} className="prop">
+                                {entry[0]} : {entry[1]}
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            );
+        });
+
+        setCards(cards);
     };
 
     return (
         <div id="home">
             <SearchBar searchRes={handleRes} />
-            <div className="cards">
-                <pre>{JSON.stringify(res, null, 2)}</pre>
-            </div>
+            <div className="cards">{cards}</div>
         </div>
     );
 }

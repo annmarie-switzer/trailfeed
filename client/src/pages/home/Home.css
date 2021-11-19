@@ -1,10 +1,21 @@
 #home {
     display: flex;
     flex-direction: column;
-    flex: auto;
 }
 
 #home .cards {
-    padding: 0.5rem 1rem;
+    padding: 2rem;
     display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-auto-rows: 300px;
+    gap: 1rem;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--box-shadow-deep);
+    border-radius: 0.25rem;
+    background-color: var(--bg1);
+    padding: 1rem;
 }

@@ -10,12 +10,12 @@
 :root {
     --box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
         rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+    --box-shadow-deep: 0 2px 1px -1px #0003, 0 1px 1px #00000024,
+        0 1px 3px #0000001f;
 }
 
 body[data-theme='dark'] {
     --bg: var(--bg0);
-    --bg-lighter: var(--bg1);
-    --bg-darker: rgba(0, 0, 0, 0.1);
     --fg: var(--fg1);
 
     --primary: var(--aqua);
@@ -51,12 +51,11 @@ body[data-theme='dark'] {
 
 body[data-theme='light'] {
     --bg: var(--bg0);
-    --bg-lighter: var(--bg1);
-    --bg-darker: rgba(0, 0, 0, 0.1);
+    --bg1: var(--bg1);
     --fg: var(--fg1);
 
-    --primary: var(--purple);
-    --accent: var(--aqua);
+    --primary: var(--aqua);
+    --accent: var(--purple);
 
     --red: #cc241d;
     --ct-red: #9d0006;

@@ -7,7 +7,7 @@ import CheckboxList from 'lib/CheckboxList';
 import CustomSlider from 'lib/CustomSlider';
 
 function SearchBar(props) {
-    const user = useContext(AppContext);
+    const { user } = useContext(AppContext);
 
     const [open, setOpen] = useState(false);
     const [mealTypes, setMealTypes] = useState([]);

@@ -6,7 +6,7 @@
 
 #search-container .filter-drawer.open {
     height: 40vh;
-    border-bottom: solid 1px var(--bg-lighter);
+    border-bottom: solid 1px var(--bg1);
 }
 
 #search-container .filter-drawer {
@@ -75,7 +75,7 @@
     font-family: inherit;
     width: 100%;
     color: var(--fg);
-    background-color: var(--bg-lighter);
+    background-color: var(--bg1);
     border-top-left-radius: 2rem;
     border-bottom-left-radius: 2rem;
 }
@@ -94,7 +94,7 @@
     border-bottom-right-radius: 2rem;
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
-    background-color: var(--bg-lighter);
+    background-color: var(--bg1);
     color: var(--fg);
 }
 
