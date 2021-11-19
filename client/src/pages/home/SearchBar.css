@@ -68,8 +68,8 @@
     border: none;
     outline: none;
     margin: 0;
-    padding: 1.2rem 1.2rem 1.2rem 3rem;
-    font-size: inherit;
+    padding: 1.2rem 1.2rem 1.2rem 3.5rem;
+    font-size: 1.2rem;
     font-family: inherit;
     width: 100%;
     color: var(--fg);
@@ -87,11 +87,12 @@
 
 #search-container .searchbar input + button {
     border-radius: 0;
+    padding: 1rem;
     background-color: var(--bg1);
     color: var(--fg);
 }
 
 #search-container .searchbar input + button:hover {
-    background-color: var(--bg3);
-    color: var(--ct-aqua) !important;
+    background-color: var(--accent);
+    color: var(--bg) !important;
 }

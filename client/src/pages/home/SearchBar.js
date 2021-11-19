@@ -227,22 +227,22 @@ function SearchBar(props) {
             {/* INPUT */}
             <div className="searchbar">
                 <span className="icon">
-                    <SearchIcon width={20} height={20} stroke="" />
+                    <SearchIcon width={24} height={24} />
                 </span>
                 <input
                     type="text"
                     id="search-input"
-                    placeholder="Search"
+                    placeholder="Search by name or brand"
                     onKeyDown={handleInput}
                 />
                 <button
                     type="button"
                     style={{
-                        backgroundColor: open ? 'var(--bg3)' : '',
-                        color: open ? 'var(--ct-aqua)' : 'var(--fg)'
+                        backgroundColor: open ? 'var(--accent)' : '',
+                        color: open ? 'var(--bg)' : 'var(--accent)'
                     }}
                     onClick={() => setOpen(!open)}>
-                    <SlidersIcon width={20} height={20} stroke="currentColor" />
+                    <SlidersIcon width={24} height={24} stroke="currentColor" />
                 </button>
             </div>
 
