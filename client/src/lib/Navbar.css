@@ -1,20 +1,23 @@
-#footer {
+#navbar {
     color: var(--fg4);
+    background-color: var(--bg);
     display: flex;
     align-items: center;
     justify-content: flex-end;
     height: 50px;
-    margin-top: auto;
     padding: 0.5rem;
     box-sizing: border-box;
-    border-top: solid 1px var(--bg1);
+    position: sticky;
+    bottom: 0;
+    z-index: 1;
+    box-shadow: var(--box-shadow-top);
 }
 
-#footer #logout {
+/* #navbar #logout {
     margin-right: auto;
     gap: 0.5rem;
-}
+} */
 
-#footer #logout:hover {
-    color: var(--accent);
+#navbar #logout:hover {
+    color: var(--red);
 }

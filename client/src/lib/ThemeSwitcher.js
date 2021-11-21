@@ -13,23 +13,17 @@ function ThemeSwitcher(props) {
     };
 
     return (
-        <div id="theme-switcher">
+        <button
+            id="theme-switcher"
+            type="button"
+            className={theme}
+            onClick={() => selectTheme(theme === 'dark' ? 'light' : 'dark')}>
             {theme === 'light' ? (
-                <button
-                    type="button"
-                    className={theme === 'light' ? 'selected' : ''}
-                    onClick={() => selectTheme('dark')}>
-                    <MoonIcon width={24} height={24} stroke="var(--fg4)" />
-                </button>
+                <MoonIcon width={24} height={24} stroke="var(--fg4)" />
             ) : (
-                <button
-                    type="button"
-                    className={theme === 'dark' ? 'selected' : ''}
-                    onClick={() => selectTheme('light')}>
-                    <SunIcon width={24} height={24} stroke="var(--fg4)" />
-                </button>
+                <SunIcon width={24} height={24} stroke="var(--fg4)" />
             )}
-        </div>
+        </button>
     );
 }
 

@@ -1,12 +1,14 @@
 #theme-switcher {
-    display: flex;
-}
-
-#theme-switcher button {
     background-color: transparent;
     padding: 0.5rem;
 }
 
-#theme-switcher button:hover > * {
-    stroke: var(--primary);
+#theme-switcher.dark:hover > svg {
+    fill: var(--ct-yellow);
+    stroke: var(--ct-yellow);
+}
+
+#theme-switcher.light:hover > svg {
+    fill: var(--purple);
+    stroke: var(--purple);
 }

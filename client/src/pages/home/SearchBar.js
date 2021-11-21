@@ -237,6 +237,7 @@ function SearchBar(props) {
                 />
                 <button
                     type="button"
+                    title={open ? 'Hide Filters' : 'Show Filters'}
                     style={{
                         backgroundColor: open ? 'var(--accent)' : '',
                         color: open ? 'var(--bg)' : 'var(--accent)'

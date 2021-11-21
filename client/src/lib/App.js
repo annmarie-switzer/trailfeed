@@ -4,7 +4,7 @@ import Login from 'pages/login/Login';
 import AuthRoute from 'lib/AuthRoute';
 import { getUser } from 'api';
 import Home from 'pages/home/Home';
-import Footer from './Footer';
+import Navbar from './Navbar';
 
 export const AppContext = createContext(null);
 
@@ -44,8 +44,7 @@ function App() {
                         <Home />
                     </AuthRoute>
                 </Switch>
-
-                <Footer user={user} />
+                <Navbar user={user} />
             </AppContext.Provider>
         </div>
     );
