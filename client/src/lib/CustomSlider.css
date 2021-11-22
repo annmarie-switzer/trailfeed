@@ -28,7 +28,7 @@
 }
 
 .MuiSlider-thumb:hover {
-    background-color: var(--ct-aqua) !important;
+    filter: brightness(1.2);
 }
 
 .MuiSlider-track {

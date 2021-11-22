@@ -1,6 +1,6 @@
-@import url('../pages/home/Home.css');
+@import url('../pages/home/Pantry.css');
 @import url('../pages/login/Login.css');
-@import url('../pages/home/SearchBar.css');
+@import url('../pages/home/Toolbar.css');
 @import url('../lib/ThemeSwitcher.css');
 @import url('../lib/CustomSlider.css');
 @import url('../lib/CheckboxList.css');
@@ -15,17 +15,18 @@
         0px -1px 3px 0px rgba(0, 0, 0, 0.1),
         0px -1px 2px 0px rgba(0, 0, 0, 0.06);
     --box-shadow-deep: 
-        0 2px 1px -1px rgba(0, 0, 0, 0.2),
-        0 1px 1px 0px rgba(0, 0, 0, 0.14),
-        0 1px 3px 0px rgba(0, 0, 0, 0.12);
+        0px 2px 1px -1px rgba(0, 0, 0, 0.2),
+        0px 1px 1px 0px rgba(0, 0, 0, 0.14),
+        0px 1px 3px 0px rgba(0, 0, 0, 0.12);
 }
 
 body[data-theme='dark'] {
     --bg: var(--bg0);
     --fg: var(--fg1);
 
-    --primary: var(--aqua);
-    --accent: var(--purple);
+    --primary: var(--purple);
+    --accent: var(--aqua);
+    --black: var(--bg0);
 
     --red: #cc241d;
     --ct-red: #fb4934;
@@ -57,11 +58,11 @@ body[data-theme='dark'] {
 
 body[data-theme='light'] {
     --bg: var(--bg0);
-    --bg1: var(--bg1);
     --fg: var(--fg1);
 
-    --primary: var(--aqua);
-    --accent: var(--purple);
+    --primary: var(--purple);
+    --accent: var(--aqua);
+    --black: var(--fg0);
 
     --red: #cc241d;
     --ct-red: #9d0006;
@@ -118,7 +119,6 @@ body[data-theme='smartwool'] {
 body {
     margin: 0;
     padding: 0;
-    overflow-y: scroll;
     background-color: var(--bg);
     color: var(--fg);
     font-family: 'Fira Sans', sans-serif;
@@ -155,6 +155,7 @@ button {
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 0.5rem;
     background-color: transparent;
     color: currentColor;
 }

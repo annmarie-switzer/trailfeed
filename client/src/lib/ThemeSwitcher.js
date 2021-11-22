@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import { AppContext } from 'lib/App';
-import SunIcon from 'lib/icons/SunIcon';
-import MoonIcon from 'lib/icons/MoonIcon';
+import { Moon, Sun } from 'react-feather';
 
 function ThemeSwitcher(props) {
     const { theme, setTheme } = useContext(AppContext);
@@ -19,9 +18,9 @@ function ThemeSwitcher(props) {
             className={theme}
             onClick={() => selectTheme(theme === 'dark' ? 'light' : 'dark')}>
             {theme === 'light' ? (
-                <MoonIcon width={24} height={24} stroke="var(--fg4)" />
+                <Moon width={24} height={24} stroke="var(--fg4)" />
             ) : (
-                <SunIcon width={24} height={24} stroke="var(--fg4)" />
+                <Sun width={24} height={24} stroke="var(--fg4)" />
             )}
         </button>
     );

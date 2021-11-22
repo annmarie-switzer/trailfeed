@@ -4,11 +4,11 @@
 }
 
 #theme-switcher.dark:hover > svg {
-    fill: var(--ct-yellow);
-    stroke: var(--ct-yellow);
+    fill: var(--accent);
+    stroke: var(--accent);
 }
 
 #theme-switcher.light:hover > svg {
-    fill: var(--purple);
-    stroke: var(--purple);
+    fill: var(--primary);
+    stroke: var(--primary);
 }

@@ -1,12 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { search } from 'api';
-import SearchIcon from 'lib/icons/SearchIcon';
-import SlidersIcon from 'lib/icons/SlidersIcon';
 import { AppContext } from 'lib/App';
 import CheckboxList from 'lib/CheckboxList';
 import CustomSlider from 'lib/CustomSlider';
+import { Search, Sliders } from 'react-feather';
 
-function SearchBar(props) {
+function Toolbar(props) {
     const { user } = useContext(AppContext);
 
     const [open, setOpen] = useState(false);
@@ -223,11 +222,10 @@ function SearchBar(props) {
     }, []);
 
     return (
-        <div id="search-container">
-            {/* INPUT */}
-            <div className="searchbar">
+        <div id="toolbar">
+            <div className="input-wrapper">
                 <span className="icon">
-                    <SearchIcon width={24} height={24} />
+                    <Search size={24} />
                 </span>
                 <input
                     type="text"
@@ -239,16 +237,15 @@ function SearchBar(props) {
                     type="button"
                     title={open ? 'Hide Filters' : 'Show Filters'}
                     style={{
-                        backgroundColor: open ? 'var(--accent)' : '',
-                        color: open ? 'var(--bg)' : 'var(--accent)'
+                        backgroundColor: open ? 'var(--primary)' : '',
+                        color: open ? 'var(--bg)' : 'var(--primary)'
                     }}
                     onClick={() => setOpen(!open)}>
-                    <SlidersIcon width={24} height={24} stroke="currentColor" />
+                    <Sliders size={24} stroke="currentColor" />
                 </button>
             </div>
 
-            {/* FILTERS */}
-            <div className={open ? 'filter-drawer open' : 'filter-drawer'}>
+            <div className={open ? 'filters open' : 'filters'}>
                 <div className="sliders">
                     <div className="filter-group">
                         <CustomSlider
@@ -317,4 +314,4 @@ function SearchBar(props) {
     );
 }
 
-export default SearchBar;
+export default Toolbar;

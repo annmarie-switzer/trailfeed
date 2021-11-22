@@ -1,10 +1,11 @@
 import React, { createContext, useEffect, useState } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Redirect, Route, Switch } from 'react-router-dom';
 import Login from 'pages/login/Login';
 import AuthRoute from 'lib/AuthRoute';
 import { getUser } from 'api';
-import Home from 'pages/home/Home';
+import Pantry from 'pages/home/Pantry';
 import Navbar from './Navbar';
+import { Hidden } from '@mui/material';
 
 export const AppContext = createContext(null);
 
@@ -32,7 +33,7 @@ function App() {
             style={{
                 display: 'flex',
                 flexDirection: 'column',
-                minHeight: '100vh',
+                height: '100vh',
                 boxSizing: 'border-box'
             }}>
             <AppContext.Provider value={{ user, theme, setTheme }}>
@@ -40,11 +41,15 @@ function App() {
                     <Route exact path="/login">
                         <Login />
                     </Route>
+                    <AuthRoute exact user={user} path="/pantry">
+                        <Pantry />
+                    </AuthRoute>
                     <AuthRoute exact user={user} path="/">
-                        <Home />
+                        <Redirect to="/pantry" />;
                     </AuthRoute>
                 </Switch>
-                <Navbar user={user} />
+
+                {user ? <Navbar user={user} /> : null}
             </AppContext.Provider>
         </div>
     );

@@ -1,4 +1,4 @@
-import GoogleIcon from 'lib/icons/GoogleIcon';
+import GoogleIcon from 'static/icons/GoogleIcon';
 import React from 'react';
 
 function Login() {

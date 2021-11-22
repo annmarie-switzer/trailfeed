@@ -1,7 +1,8 @@
-import SearchBar from 'pages/home/SearchBar';
+import Toolbar from 'pages/home/Toolbar';
 import React, { useEffect, useState } from 'react';
+import { Plus } from 'react-feather';
 
-function Home() {
+function Pantry() {
     const [cards, setCards] = useState([]);
 
     const handleRes = (res) => {
@@ -27,11 +28,19 @@ function Home() {
     };
 
     return (
-        <div id="home">
-            <SearchBar searchRes={handleRes} />
-            <div className="cards">{cards}</div>
+        <div id="pantry">
+            <Toolbar searchRes={handleRes} />
+            <div className="cards">
+                <div className="card custom">
+                    <div className="card-content">
+                        <Plus />
+                        <span>Custom Meal</span>
+                    </div>
+                </div>
+                {cards}
+            </div>
         </div>
     );
 }
 
-export default Home;
+export default Pantry;
