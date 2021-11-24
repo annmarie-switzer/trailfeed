@@ -231,7 +231,7 @@ function Toolbar(props) {
                 <input
                     type="text"
                     id="search-input"
-                    placeholder="Search by name or brand"
+                    placeholder="Search by name, ingredients, or brand"
                     onKeyDown={handleInput}
                 />
                 <button

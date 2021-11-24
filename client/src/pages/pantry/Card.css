@@ -1,6 +1,7 @@
 .card {
     display: flex;
     flex-direction: column;
+    gap: 1rem;
     box-shadow: var(--box-shadow-deep);
     border-radius: 0.25rem;
     background-color: var(--bg1);
@@ -8,11 +9,48 @@
 }
 
 .card .card-header {
-    border: solid blue;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    line-height: 1.5rem;
+}
+
+.card .card-header .name {
+    font-size: 1.2rem;
+}
+
+.card .card-header span.name {
+    color: var(--yellow)
+}
+
+.card .card-header a.name {
+    text-decoration: none;
+    color: var(--link);
+}
+
+.card .card-header a.name:hover {
+    text-decoration: underline;
+}
+
+.card .card-header .brand {
+    font-size: 0.875rem;
+    color: var(--fg4);
 }
 
 .card .card-content {
-    border: solid red;
+    height: 100%;
+}
+
+.card .card-content .list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.card .card-content .list .list-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
 }
 
 .card.custom {

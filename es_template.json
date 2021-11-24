@@ -61,6 +61,9 @@
                     }
                 }
             },
+            "link": {
+                "type": "keyword"
+            },
             "meal_type": {
                 "type": "keyword"
             },

@@ -29,6 +29,8 @@ body[data-theme='dark'] {
     --accent: var(--aqua);
     --black: var(--bg0);
 
+    --link: var(--blue);
+
     --red: #cc241d;
     --ct-red: #fb4934;
     --orange: #d65d0e;

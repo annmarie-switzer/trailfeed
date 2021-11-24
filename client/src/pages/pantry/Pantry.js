@@ -13,16 +13,6 @@ function Pantry() {
         const cards = hits.map((hit, i) => {
             return (
                 <Card hit={hit} key={i} />
-                // <div className="card" key={i}>
-                //     <div className="card-header">{hit.name}</div>
-                //     <div className="card-content">
-                //         {Object.entries(hit).map((entry, i) => (
-                //             <div key={i} className="prop">
-                //                 {entry[0]} : {entry[1]}
-                //             </div>
-                //         ))}
-                //     </div>
-                // </div>
             );
         });
 
