@@ -14,7 +14,7 @@ function CheckboxList(props) {
         setSelection(newSelection);
 
         props.setSelection({
-            name: `${group}.keyword`,
+            name: `${group}`,
             values: newSelection,
             type: 'terms'
         });

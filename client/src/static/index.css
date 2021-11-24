@@ -1,6 +1,7 @@
-@import url('../pages/home/Pantry.css');
+@import url('../pages/pantry/Pantry.css');
+@import url('../pages/pantry/Toolbar.css');
+@import url('../pages/pantry/Card.css');
 @import url('../pages/login/Login.css');
-@import url('../pages/home/Toolbar.css');
 @import url('../lib/ThemeSwitcher.css');
 @import url('../lib/CustomSlider.css');
 @import url('../lib/CheckboxList.css');

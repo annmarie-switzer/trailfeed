@@ -3,7 +3,7 @@ import { Redirect, Route, Switch } from 'react-router-dom';
 import Login from 'pages/login/Login';
 import AuthRoute from 'lib/AuthRoute';
 import { getUser } from 'api';
-import Pantry from 'pages/home/Pantry';
+import Pantry from 'pages/pantry/Pantry';
 import Navbar from './Navbar';
 import { Hidden } from '@mui/material';
 

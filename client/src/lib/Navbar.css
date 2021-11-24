@@ -25,7 +25,7 @@
 
 #navbar #pack-button:hover {
     background-color: var(--accent);
-    color: var(--black);
+    color: var(--bg);
 }
 
 #navbar #logout:hover {

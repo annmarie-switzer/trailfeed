@@ -1,6 +1,7 @@
-import Toolbar from 'pages/home/Toolbar';
 import React, { useEffect, useState } from 'react';
 import { Plus } from 'react-feather';
+import Toolbar from 'pages/pantry/Toolbar';
+import Card from 'pages/pantry/Card';
 
 function Pantry() {
     const [cards, setCards] = useState([]);
@@ -11,16 +12,17 @@ function Pantry() {
 
         const cards = hits.map((hit, i) => {
             return (
-                <div className="card" key={i}>
-                    <div className="card-header">{hit.name}</div>
-                    <div className="card-content">
-                        {Object.entries(hit).map((entry, i) => (
-                            <div key={i} className="prop">
-                                {entry[0]} : {entry[1]}
-                            </div>
-                        ))}
-                    </div>
-                </div>
+                <Card hit={hit} key={i} />
+                // <div className="card" key={i}>
+                //     <div className="card-header">{hit.name}</div>
+                //     <div className="card-content">
+                //         {Object.entries(hit).map((entry, i) => (
+                //             <div key={i} className="prop">
+                //                 {entry[0]} : {entry[1]}
+                //             </div>
+                //         ))}
+                //     </div>
+                // </div>
             );
         });
 

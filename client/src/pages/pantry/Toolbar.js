@@ -37,7 +37,7 @@ function Toolbar(props) {
                     }
                 };
 
-                if (filterObj.name === 'allergens.keyword') {
+                if (filterObj.name === 'allergens') {
                     newFilter.query = {
                         bool: {
                             must_not: [termsQuery]
@@ -84,7 +84,7 @@ function Toolbar(props) {
                                 should: [
                                     {
                                         term: {
-                                            'user.keyword': user.email
+                                            'user': user.email
                                         }
                                     },
                                     {
@@ -144,25 +144,25 @@ function Toolbar(props) {
             aggs: {
                 meal_types: {
                     terms: {
-                        field: 'meal_type.keyword',
+                        field: 'meal_type',
                         size: 10000
                     }
                 },
                 water_temps: {
                     terms: {
-                        field: 'water_temp.keyword',
+                        field: 'water_temp',
                         size: 10000
                     }
                 },
                 allergens: {
                     terms: {
-                        field: 'allergens.keyword',
+                        field: 'allergens',
                         size: 10000
                     }
                 },
                 special: {
                     terms: {
-                        field: 'special.keyword',
+                        field: 'special',
                         size: 10000
                     }
                 },
@@ -201,6 +201,7 @@ function Toolbar(props) {
         };
 
         search(q).then((res) => {
+            console.log(res);
             setMealTypes(res.aggregations.meal_types.buckets);
             setWaterTemps(res.aggregations.water_temps.buckets);
             setAllergens(res.aggregations.allergens.buckets);
