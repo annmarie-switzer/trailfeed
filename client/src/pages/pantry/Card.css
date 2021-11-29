@@ -34,7 +34,7 @@
 
 .card .card-header .brand {
     font-size: 0.875rem;
-    color: var(--fg4);
+    color: var(--fg0);
 }
 
 .card .card-content {
@@ -44,7 +44,7 @@
 .card .card-content .list {
     display: flex;
     flex-direction: column;
-    gap: 0.8rem;
+    gap: 1rem;
 }
 
 .card .card-content .list .list-item {
