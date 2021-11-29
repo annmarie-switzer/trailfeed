@@ -20,12 +20,12 @@
 }
 
 .card .card-header span.name {
-    color: var(--custom-meal)
+    color: var(--accent);
 }
 
 .card .card-header a.name {
     text-decoration: none;
-    color: var(--link);
+    color: var(--primary);
 }
 
 .card .card-header a.name:hover {

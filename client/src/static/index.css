@@ -29,10 +29,7 @@ body[data-theme='dark'] {
     --accent: var(--aqua);
     --warn: var(--orange);
     --danger: var(--red);
-
     --black: var(--bg0);
-    --link: var(--blue);
-    --custom-meal: var(--yellow);
 
     --red: #cc241d;
     --ct-red: #fb4934;
@@ -67,14 +64,11 @@ body[data-theme='light'] {
     --bg: var(--bg0);
     --fg: var(--fg3);
 
-    --primary: var(--purple);
-    --accent: var(--aqua);
-    --warn: var(--orange);
-    --danger: var(--red);
-
+    --primary: var(--ct-purple);
+    --accent: var(--ct-aqua);
+    --warn: var(--ct-orange);
+    --danger: var(--ct-red);
     --black: var(--fg4);
-    --link: var(--blue);
-    --custom-meal: var(--yellow);
 
     --red: #cc241d;
     --ct-red: #9d0006;
@@ -113,10 +107,7 @@ body[data-theme='sierra'] {
     --accent: var(--green);
     --warn: var(--yellow);
     --danger: var(--red);
-
     --black: var(--bg0);
-    --link: var(--ct-blue);
-    --custom-meal: var(--purple);
     
     --bg0: #1e2f4a; /* background */
     --bg1: #35445c;
