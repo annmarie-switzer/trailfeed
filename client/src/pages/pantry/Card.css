@@ -20,7 +20,7 @@
 }
 
 .card .card-header span.name {
-    color: var(--yellow)
+    color: var(--custom-meal)
 }
 
 .card .card-header a.name {
@@ -55,7 +55,7 @@
 
 .card.custom {
     border: dashed 2px var(--bg3);
-    color: var(--fg4);
+    color: var(--fg0);
     box-shadow: none;
     cursor: pointer;
 }

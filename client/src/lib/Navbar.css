@@ -29,5 +29,5 @@
 }
 
 #navbar #logout:hover {
-    color: var(--red);
+    color: var(--danger);
 }
