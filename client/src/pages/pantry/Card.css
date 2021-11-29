@@ -5,7 +5,7 @@
     box-shadow: var(--box-shadow-deep);
     border-radius: 0.25rem;
     background-color: var(--bg1);
-    padding: 1rem;
+    padding: 1rem 1.2rem;
 }
 
 .card .card-header {
@@ -34,7 +34,7 @@
 
 .card .card-header .brand {
     font-size: 0.875rem;
-    color: var(--fg0);
+    color: var(--fg2);
 }
 
 .card .card-content {
