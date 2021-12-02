@@ -1,26 +1,34 @@
-import React, { useContext } from 'react';
-import { AppContext } from 'lib/App';
+import React, { useState } from 'react';
 import {
     Activity,
     Award,
+    CheckCircle,
     Coffee,
     Droplet,
     Frown,
-    Smile,
     Thermometer,
     Watch
 } from 'react-feather';
 
 function Card(props) {
-    const { user } = useContext(AppContext);
-
     const { hit } = props;
+
+    // array of IDs
+    const [selected, setSelected] = useState([]);
+
+    const toggle = (id) => {
+        setSelected(
+            selected.includes(id)
+                ? selected.filter((s) => s !== id)
+                : [...selected, id]
+        );
+    };
 
     return (
         <div className="card">
             <div className="card-header">
-                {hit.link ? (
-                    <>
+                <div>
+                    {hit.link ? (
                         <a
                             href={hit.link}
                             target="_blank"
@@ -28,14 +36,31 @@ function Card(props) {
                             className="name">
                             {hit.name}
                         </a>
-                        <span className="brand">{hit.brand}</span>
-                    </>
-                ) : (
-                    <>
+                    ) : (
                         <span className="name">{hit.name}</span>
-                        <span className="brand">{`${user.name}'s Kitchen`}</span>
-                    </>
-                )}
+                    )}
+                    <button
+                        type="button"
+                        title={
+                            selected.includes(hit.id)
+                                ? 'Remove from pack'
+                                : 'Add to pack'
+                        }
+                        onClick={() => toggle(hit.id)}>
+                        <CheckCircle
+                            color={
+                                selected.includes(hit.id)
+                                    ? 'var(--success)'
+                                    : 'currentColor'
+                            }
+                        />
+                    </button>
+                </div>
+                <span className="brand">
+                    {hit.brand === 'TRAILFEED_USER_CUSTOM'
+                        ? 'You made this!'
+                        : hit.brand}
+                </span>
             </div>
             <div className="card-content">
                 <div className="list">

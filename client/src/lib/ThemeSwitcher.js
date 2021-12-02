@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { AppContext } from 'lib/App';
 import { Moon, Sun } from 'react-feather';
 
-function ThemeSwitcher(props) {
+function ThemeSwitcher() {
     const { theme, setTheme } = useContext(AppContext);
 
     const selectTheme = (t) => {

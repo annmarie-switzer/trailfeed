@@ -1,11 +1,11 @@
 import React from 'react';
 import { logout } from 'api';
 import ThemeSwitcher from './ThemeSwitcher';
-import { LogOut, Database } from 'react-feather';
+import { LogOut } from 'react-feather';
 import BackpackIcon from 'static/icons/BackpackIcon';
 
 function Navbar(props) {
-    const { theme, user } = props;
+    const { theme } = props;
 
     return (
         <div id="navbar">

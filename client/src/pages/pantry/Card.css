@@ -15,12 +15,24 @@
     line-height: 1.5rem;
 }
 
+.card .card-header > *:first-child {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.card .card-header button {
+    padding: 0.5rem;
+    color: var(--fg0);
+}
+
 .card .card-header .name {
     font-size: 1.2rem;
 }
 
 .card .card-header span.name {
-    color: var(--accent);
+    color: var(--info);
 }
 
 .card .card-header a.name {

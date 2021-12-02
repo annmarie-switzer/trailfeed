@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Plus } from 'react-feather';
 import Toolbar from 'pages/pantry/Toolbar';
 import Card from 'pages/pantry/Card';
@@ -8,14 +8,12 @@ function Pantry() {
 
     const handleRes = (res) => {
         console.log(res.hits.total.value);
-        const hits = res.hits.hits.map((h) => h._source);
 
-        const cards = hits.map((hit, i) => {
-            return (
-                <Card hit={hit} key={i} />
-            );
+        const cards = res.hits.hits.map((h, i) => {
+            h = { ...h._source, id: h._id };
+            return <Card hit={h} key={i} />;
         });
-
+        
         setCards(cards);
     };
 

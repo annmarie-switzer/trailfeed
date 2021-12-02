@@ -7,7 +7,7 @@ export const getUser = async () => {
 }
 
 export const logout = async () => {
-    const res = await fetch('http://localhost:5000/logout', {
+    await fetch('http://localhost:5000/logout', {
         method: 'POST',
         credentials: 'include'
     });

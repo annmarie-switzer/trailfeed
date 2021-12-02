@@ -27,10 +27,13 @@ body[data-theme='dark'] {
 
     --primary: var(--purple);
     --accent: var(--aqua);
-    --warn: var(--orange);
-    --danger: var(--red);
     --black: var(--bg0);
 
+    --danger: var(--red);
+    --warn: var(--orange);
+    --success: var(--ct-aqua);
+    --info: var(--blue);
+    
     --red: #cc241d;
     --ct-red: #fb4934;
     --orange: #d65d0e;
@@ -66,9 +69,12 @@ body[data-theme='light'] {
 
     --primary: var(--ct-purple);
     --accent: var(--ct-aqua);
-    --warn: var(--ct-orange);
-    --danger: var(--ct-red);
     --black: var(--fg4);
+
+    --danger: var(--ct-red);
+    --warn: var(--ct-orange);
+    --success: var(--ct-aqua);
+    --info: var(--ct-blue);
 
     --red: #cc241d;
     --ct-red: #9d0006;

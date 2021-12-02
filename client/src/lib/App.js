@@ -5,7 +5,6 @@ import AuthRoute from 'lib/AuthRoute';
 import { getUser } from 'api';
 import Pantry from 'pages/pantry/Pantry';
 import Navbar from './Navbar';
-import { Hidden } from '@mui/material';
 
 export const AppContext = createContext(null);
 
