@@ -12,8 +12,6 @@ import {
 
 function Card(props) {
     const { hit } = props;
-
-    // array of IDs
     const [selected, setSelected] = useState([]);
 
     const toggle = (id) => {
