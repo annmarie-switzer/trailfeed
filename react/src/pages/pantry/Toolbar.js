@@ -6,6 +6,8 @@ import CustomSlider from 'lib/CustomSlider';
 import { Search, Sliders } from 'react-feather';
 
 function Toolbar(props) {
+    const { handleSearchRes } = props;
+
     const { user } = useContext(AppContext);
 
     const [open, setOpen] = useState(false);
@@ -84,7 +86,7 @@ function Toolbar(props) {
                                 should: [
                                     {
                                         term: {
-                                            'user': user.email
+                                            user: user.email
                                         }
                                     },
                                     {
@@ -135,7 +137,7 @@ function Toolbar(props) {
 
         filters.forEach((filter) => query.query.bool.must.push(filter.query));
 
-        search(query).then((res) => props.searchRes(res));
+        search(query).then((res) => handleSearchRes(res));
     }, [inputValue, filters]);
 
     // on mount
@@ -201,7 +203,6 @@ function Toolbar(props) {
         };
 
         search(q).then((res) => {
-            console.log(res);
             setMealTypes(res.aggregations.meal_types.buckets);
             setWaterTemps(res.aggregations.water_temps.buckets);
             setAllergens(res.aggregations.allergens.buckets);

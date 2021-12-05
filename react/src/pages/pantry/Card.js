@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
     Activity,
     Award,
@@ -11,16 +11,7 @@ import {
 } from 'react-feather';
 
 function Card(props) {
-    const { hit } = props;
-    const [selected, setSelected] = useState([]);
-
-    const toggle = (id) => {
-        setSelected(
-            selected.includes(id)
-                ? selected.filter((s) => s !== id)
-                : [...selected, id]
-        );
-    };
+    const { hit, selection, handleSelection } = props;
 
     return (
         <div className="card">
@@ -40,14 +31,14 @@ function Card(props) {
                     <button
                         type="button"
                         title={
-                            selected.includes(hit.id)
+                            selection.includes(hit.id)
                                 ? 'Remove from pack'
                                 : 'Add to pack'
                         }
-                        onClick={() => toggle(hit.id)}>
+                        onClick={() => handleSelection(hit.id)}>
                         <CheckCircle
                             color={
-                                selected.includes(hit.id)
+                                selection.includes(hit.id)
                                     ? 'var(--success)'
                                     : 'currentColor'
                             }

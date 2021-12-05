@@ -13,6 +13,7 @@ function App() {
     const [theme, setTheme] = useState(
         localStorage.getItem('theme') ? localStorage.getItem('theme') : 'dark'
     );
+    const [selection, setSelection] = useState([]);
 
     useEffect(() => {
         document.body.dataset.theme = theme;
@@ -35,7 +36,8 @@ function App() {
                 height: '100vh',
                 boxSizing: 'border-box'
             }}>
-            <AppContext.Provider value={{ user, theme, setTheme }}>
+            <AppContext.Provider
+                value={{ user, theme, setTheme, selection, setSelection }}>
                 <Switch>
                     <Route exact path="/login">
                         <Login />
