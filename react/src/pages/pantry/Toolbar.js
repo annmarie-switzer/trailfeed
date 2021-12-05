@@ -6,7 +6,7 @@ import CustomSlider from 'lib/CustomSlider';
 import { Search, Sliders } from 'react-feather';
 
 function Toolbar(props) {
-    const { handleSearchRes } = props;
+    const { setQuery } = props;
 
     const { user } = useContext(AppContext);
 
@@ -137,7 +137,7 @@ function Toolbar(props) {
 
         filters.forEach((filter) => query.query.bool.must.push(filter.query));
 
-        search(query).then((res) => handleSearchRes(res));
+        setQuery(query);
     }, [inputValue, filters]);
 
     // on mount
@@ -212,10 +212,12 @@ function Toolbar(props) {
                 min: res.aggregations.min_calories.value,
                 max: res.aggregations.max_calories.value
             });
+
             setMinutes({
                 min: res.aggregations.min_minutes.value,
                 max: res.aggregations.max_minutes.value
             });
+            
             setWaterMl({
                 min: res.aggregations.min_water_ml.value,
                 max: res.aggregations.max_water_ml.value
