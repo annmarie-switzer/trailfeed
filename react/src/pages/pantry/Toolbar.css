@@ -30,7 +30,7 @@
     font-family: inherit;
     width: 100%;
     color: var(--fg);
-    background-color: var(--bg1);
+    background-color: var(--bg-lighter);
 }
 
 #toolbar .input-wrapper input:focus {
@@ -45,7 +45,7 @@
 #toolbar .input-wrapper input + button {
     border-radius: 0;
     padding: 1rem;
-    background-color: var(--bg1);
+    background-color: var(--bg-lighter);
     color: var(--fg);
 }
 
@@ -56,7 +56,7 @@
 
 #toolbar .filters.open {
     height: 40vh;
-    border-bottom: solid 1px var(--bg1);
+    border-bottom: solid 1px var(--bg-lighter);
 }
 
 #toolbar .filters {

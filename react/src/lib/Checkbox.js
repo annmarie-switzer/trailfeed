@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 function Checkbox(props) {
     const {
         value,
-        color = props.inverse ? 'var(--warn)' : 'var(--accent)',
+        color = props.inverse ? 'var(--inverse-checkbox)' : 'var(--checkbox)',
         label = '',
         inverse = false,
     } = props;

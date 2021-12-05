@@ -4,7 +4,7 @@
     gap: 1rem;
     box-shadow: var(--box-shadow-deep);
     border-radius: 0.25rem;
-    background-color: var(--bg1);
+    background-color: var(--bg-lighter);
     padding: 1rem 1.2rem;
 }
 
@@ -32,7 +32,7 @@
 }
 
 .card .card-header span.name {
-    color: var(--info);
+    color: var(--blue);
 }
 
 .card .card-header a.name {
