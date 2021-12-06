@@ -1,31 +1,17 @@
 #navbar {
-    color: var(--fg0);
+    position: sticky;
+    bottom: 0;
+    left: 0;
+    right: 0;
     background-color: var(--bg);
     display: flex;
     align-items: center;
-    justify-content: center;
-    height: 60px;
+    justify-content: space-between;
+    height: 50px;
     padding: 0.5rem 1rem;
     box-sizing: border-box;
-    margin-top: auto;
     z-index: 1;
     box-shadow: var(--box-shadow-top);
-    position: relative;
-}
-
-#navbar > *:first-child {
-    position: absolute;
-    left: 1rem;
-}
-
-#navbar > *:last-child {
-    position: absolute;
-    right: 1rem;
-}
-
-#navbar #pack-button:hover {
-    background-color: var(--accent);
-    color: var(--bg);
 }
 
 #navbar #logout:hover {

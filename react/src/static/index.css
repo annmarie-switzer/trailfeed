@@ -19,17 +19,23 @@
 
 body[data-theme='dark'] {
     --bg: var(--bg0);
-    --fg: var(--fg3);
+    --fg: var(--fg1);
     --primary: var(--purple);
+    --ct-primary: var(--ct-purple);
     --accent: var(--aqua);
+    --ct-accent: var(--ct-aqua);
 
-    --bg-lighter: var(--bg1);
-    
-    --black: var(--bg0);
+    --bg-lighter: var(--bg0_lighter);
+    --black: var(--bg0_darker);
+
+    --badge: var(--ct-orange);
+    --checkbox: var(--accent);
+    --check-icon: var(--fg4);
+    --inverse-checkbox: var(--orange);
+    --meal-name-custom: var(--yellow);
+    --meal-name-link: var(--primary);
     --success: var(--ct-aqua);
     
-    --checkbox: var(--accent);
-    --inverse-checkbox: var(--orange);
 
     --red: #cc241d;
     --ct-red: #fb4934;
@@ -48,31 +54,37 @@ body[data-theme='dark'] {
     --ct-grey: #928374;
     --grey: #a89984;
 
+    --bg0_darker: #1d2021;
+    --bg0_lighter: #32302f;
+
     --bg0: #282828;
     --bg1: #3c3836;
     --bg2: #504945;
     --bg3: #665c54;
     --bg4: #7c6f64;
-    --fg0: #a89984;
-    --fg1: #bdae93;
+    --fg4: #a89984;
+    --fg3: #bdae93;
     --fg2: #d5c4a1;
-    --fg3: #ebdbb2;
-    --fg4: #fbf1c7;
+    --fg1: #ebdbb2;
+    --fg0: #fbf1c7;
 }
 
 body[data-theme='light'] {
     --bg: var(--bg0);
-    --fg: var(--fg3);
+    --fg: var(--fg1);
     --primary: var(--purple);
     --accent: var(--aqua);
 
-    --bg-lighter: var(--bg1);
+    --bg-lighter: var(--bg0_lighter);
+    --black: var(--bg0_darker);
 
-    --black: var(--fg4);
-    --success: var(--green);
-
+    --badge: var(--ct-orange);
     --checkbox: var(--accent);
+    --card-icon: var(--bg4);
     --inverse-checkbox: var(--orange);
+    --meal-name-custom: var(--yellow);
+    --meal-name-link: var(--primary);
+    --success: var(--ct-aqua);
 
     --red: #cc241d;
     --ct-red: #9d0006;
@@ -91,16 +103,19 @@ body[data-theme='light'] {
     --ct-grey: #928374;
     --grey: #7c6f64;
     
+    --bg0_lighter: #f9f5d7;
+    --bg0_darker: #f2e5bc;
+
     --bg0: #fbf1c7;
     --bg1: #ebdbb2;
     --bg2: #d5c4a1;
     --bg3: #bdae93;
     --bg4: #a89984;
-    --fg0: #7c6f64;
-    --fg1: #665c54;
+    --fg4: #7c6f64;
+    --fg3: #665c54;
     --fg2: #504945;
-    --fg3: #3c3836;
-    --fg4: #282828;
+    --fg1: #3c3836;
+    --fg0: #282828;
 }
 
 body[data-theme='sierra-dark'] {
@@ -213,6 +228,10 @@ button {
     background-color: transparent;
     color: currentColor;
 }
+
+/* button:hover {
+    filter: brightness(1.2);
+} */
 
 button:active {
     opacity: 0.8;

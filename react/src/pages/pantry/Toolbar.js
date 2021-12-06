@@ -4,13 +4,15 @@ import { AppContext } from 'lib/App';
 import CheckboxList from 'lib/CheckboxList';
 import CustomSlider from 'lib/CustomSlider';
 import { Search, Sliders } from 'react-feather';
+import BackpackIcon from 'static/icons/BackpackIcon';
 
 function Toolbar(props) {
-    const { setQuery } = props;
+    const { setQuery, packOpen, setPackOpen } = props;
 
-    const { user } = useContext(AppContext);
+    const { user, selection } = useContext(AppContext);
 
-    const [open, setOpen] = useState(false);
+    const [filtersOpen, setFiltersOpen] = useState(false);
+
     const [mealTypes, setMealTypes] = useState([]);
     const [waterTemps, setWaterTemps] = useState([]);
     const [allergens, setAllergens] = useState([]);
@@ -217,7 +219,7 @@ function Toolbar(props) {
                 min: res.aggregations.min_minutes.value,
                 max: res.aggregations.max_minutes.value
             });
-            
+
             setWaterMl({
                 min: res.aggregations.min_water_ml.value,
                 max: res.aggregations.max_water_ml.value
@@ -239,17 +241,28 @@ function Toolbar(props) {
                 />
                 <button
                     type="button"
-                    title={open ? 'Hide Filters' : 'Show Filters'}
-                    style={{
-                        backgroundColor: open ? 'var(--primary)' : '',
-                        color: open ? 'var(--bg)' : 'var(--primary)'
-                    }}
-                    onClick={() => setOpen(!open)}>
+                    id="filter-button"
+                    className={filtersOpen ? 'open' : ''}
+                    title={filtersOpen ? 'Hide Filters' : 'Show Filters'}
+                    onClick={() => setFiltersOpen(!filtersOpen)}>
                     <Sliders size={24} stroke="currentColor" />
+                </button>
+                <button
+                    type="button"
+                    id="pack-button"
+                    className={packOpen ? 'open' : ''}
+                    title={packOpen ? 'Close Pack' : 'Open Pack'}
+                    onClick={() => setPackOpen(!packOpen)}>
+                    <div>
+                        <BackpackIcon width={28} height={28} />
+                        {selection.length > 0 ? (
+                            <span className="badge">{selection.length}</span>
+                        ) : null}
+                    </div>
                 </button>
             </div>
 
-            <div className={open ? 'filters open' : 'filters'}>
+            <div className={filtersOpen ? 'filters open' : 'filters'}>
                 <div className="sliders">
                     <div className="filter-group">
                         <CustomSlider

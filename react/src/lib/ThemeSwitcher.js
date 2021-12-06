@@ -18,9 +18,9 @@ function ThemeSwitcher() {
             className={theme}
             onClick={() => selectTheme(theme === 'dark' ? 'light' : 'dark')}>
             {theme === 'light' ? (
-                <Moon width={24} height={24} stroke="var(--fg0)" />
+                <Moon width={24} height={24} />
             ) : (
-                <Sun width={24} height={24} stroke="var(--fg0)" />
+                <Sun width={24} height={24} />
             )}
         </button>
     );

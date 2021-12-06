@@ -1,7 +1,24 @@
 #pantry {
     display: flex;
+    height: 100%;
+}
+
+#pantry .drawer {
+    overflow: hidden;
+    width: 0%;
+    border-left: solid 1px var(--bg-lighter);
+}
+
+#pantry .drawer.open {
+    width: 25%;
+}
+
+#pantry .main {
+    display: flex;
     flex-direction: column;
     overflow: auto;
+    height: 100%;
+    width: 100%;
 }
 
 #pantry .cards {

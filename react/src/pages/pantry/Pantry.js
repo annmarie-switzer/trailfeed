@@ -7,9 +7,10 @@ import { search } from 'api';
 
 function Pantry() {
     const { selection, setSelection } = useContext(AppContext);
-    
-    const [query, setQuery] = useState({});
+
+    const [query, setQuery] = useState(null);
     const [res, setRes] = useState([]);
+    const [packOpen, setPackOpen] = useState(false);
 
     const handleSelection = (id) => {
         setSelection(
@@ -20,36 +21,44 @@ function Pantry() {
     };
 
     useEffect(() => {
-        search(query).then((res) => {
-            console.log(res.hits.total.value);
-            setRes(res);
-        });
+        if (query) {
+            search(query).then((res) => {
+                console.log(res.hits.total.value);
+                setRes(res);
+            });
+        }
     }, [query]);
 
     return (
         <div id="pantry">
-            <pre>{JSON.stringify(selection, null, 2)}</pre>
-
-            <Toolbar setQuery={setQuery} />
-
-            <div className="cards">
-                <div className="card custom">
-                    <div className="card-content">
-                        <Plus />
-                        <span>Custom Meal</span>
+            <div className="main">
+                <Toolbar
+                    setQuery={setQuery}
+                    packOpen={packOpen}
+                    setPackOpen={setPackOpen}
+                />
+                <div className="cards">
+                    <div className="card custom">
+                        <div className="card-content">
+                            <Plus />
+                            <span>Custom Meal</span>
+                        </div>
                     </div>
+                    {res.hits?.hits.map((h, i) => {
+                        h = { ...h._source, id: h._id };
+                        return (
+                            <Card
+                                hit={h}
+                                key={i}
+                                selection={selection}
+                                handleSelection={handleSelection}
+                            />
+                        );
+                    })}
                 </div>
-                {res.hits?.hits.map((h, i) => {
-                    h = { ...h._source, id: h._id };
-                    return (
-                        <Card
-                            hit={h}
-                            key={i}
-                            selection={selection}
-                            handleSelection={handleSelection}
-                        />
-                    );
-                })}
+            </div>
+            <div className={packOpen ? 'drawer open' : 'drawer'}>
+                I am a drawer!
             </div>
         </div>
     );

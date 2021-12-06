@@ -33,8 +33,7 @@ function App() {
             style={{
                 display: 'flex',
                 flexDirection: 'column',
-                height: '100vh',
-                boxSizing: 'border-box'
+                height: '100vh'
             }}>
             <AppContext.Provider
                 value={{ user, theme, setTheme, selection, setSelection }}>
