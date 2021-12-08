@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
     Activity,
     Award,
@@ -12,6 +12,12 @@ import {
 
 function Card(props) {
     const { hit, selection, handleSelection } = props;
+
+    const [ids, setIds] = useState([]);
+
+    useEffect(() => {
+        setIds(selection.map(s => s.id));
+    }, [selection])
 
     return (
         <div className="card">
@@ -31,14 +37,14 @@ function Card(props) {
                     <button
                         type="button"
                         title={
-                            selection.includes(hit.id)
+                            ids.includes(hit.id)
                                 ? 'Remove from pack'
                                 : 'Add to pack'
                         }
-                        onClick={() => handleSelection(hit.id)}>
+                        onClick={() => handleSelection(hit)}>
                         <CheckCircle
                             color={
-                                selection.includes(hit.id)
+                                ids.includes(hit.id)
                                     ? 'var(--success)'
                                     : 'currentColor'
                             }

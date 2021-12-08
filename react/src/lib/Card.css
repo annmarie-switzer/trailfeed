@@ -64,24 +64,3 @@
     align-items: center;
     gap: 1rem;
 }
-
-.card.custom {
-    border: dashed 2px var(--bg3);
-    box-shadow: none;
-    cursor: pointer;
-}
-
-.card.custom:hover {
-    border: none;
-    color: var(--bg);
-    box-shadow: var(--box-shadow-deep);
-    background-color: var(--primary);
-}
-
-.card.custom .card-content {
-    margin: auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.4rem;
-}

@@ -4,13 +4,17 @@
     background-color: var(--bg);
 }
 
-#toolbar .input-wrapper {
-    position: relative;
-    width: 100%;
+#toolbar .search-bar {
     display: flex;
 }
 
-#toolbar .input-wrapper .icon {
+#toolbar .search-bar .input-wrapper {
+    position: relative;
+    display: flex;
+    flex: auto;
+}
+
+#toolbar .search-bar .input-wrapper .icon {
     position: absolute;
     top: 0;
     bottom: 0;
@@ -20,7 +24,7 @@
     opacity: 0.4;
 }
 
-#toolbar .input-wrapper input {
+#toolbar .search-bar input {
     appearance: none;
     border: none;
     outline: none;
@@ -33,12 +37,11 @@
     background-color: var(--bg-lighter);
 }
 
-/* TODO - looks bad in light theme */
-#toolbar .input-wrapper input:focus {
-    background-color: var(--bg3);
+#toolbar .search-bar input:focus {
+    background-color: var(--bg2);
 }
 
-#toolbar .input-wrapper button {
+#toolbar .search-bar button {
     border-radius: 0;
     padding: 1rem;
     background-color: var(--bg-lighter);
@@ -46,6 +49,7 @@
 
 #toolbar #pack-button {
     color: var(--accent);
+    width: 56px;
 }
 
 #toolbar #pack-button:hover,
@@ -74,12 +78,13 @@
     box-shadow: var(--box-shadow);
 }
 
-#toolbar #filter-button {
+#toolbar button:not(#pack-button) {
     color: var(--primary);
 }
 
-#toolbar #filter-button:hover,
-#toolbar #filter-button.open {
+#toolbar button:not(#pack-button).open,
+#toolbar button:not(#pack-button):active,
+#toolbar button:not(#pack-button):hover {
     background-color: var(--primary);
     color: var(--bg);
 }

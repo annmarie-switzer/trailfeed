@@ -1,12 +1,13 @@
 @import url('../pages/pantry/Pantry.css');
 @import url('../pages/pantry/Toolbar.css');
-@import url('../pages/pantry/Card.css');
+@import url('../pages/pantry/Pack.css');
 @import url('../pages/login/Login.css');
 @import url('../lib/ThemeSwitcher.css');
 @import url('../lib/CustomSlider.css');
 @import url('../lib/CheckboxList.css');
 @import url('../lib/Checkbox.css');
 @import url('../lib/Navbar.css');
+@import url('../lib/Card.css');
 
 :root {
     --box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.1),
@@ -36,7 +37,6 @@ body[data-theme='dark'] {
     --meal-name-link: var(--primary);
     --success: var(--ct-aqua);
     
-
     --red: #cc241d;
     --ct-red: #fb4934;
     --orange: #d65d0e;

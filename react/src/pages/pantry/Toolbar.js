@@ -3,15 +3,16 @@ import { search } from 'api';
 import { AppContext } from 'lib/App';
 import CheckboxList from 'lib/CheckboxList';
 import CustomSlider from 'lib/CustomSlider';
-import { Search, Sliders } from 'react-feather';
-import BackpackIcon from 'static/icons/BackpackIcon';
+import { FileText, Search, Sliders } from 'react-feather';
+import BackpackIcon from 'lib/icons/BackpackIcon';
 
 function Toolbar(props) {
-    const { setQuery, packOpen, setPackOpen } = props;
+    const { setQuery, packOpen, setPackOpen, selection } = props;
 
-    const { user, selection } = useContext(AppContext);
+    const { user } = useContext(AppContext);
 
     const [filtersOpen, setFiltersOpen] = useState(false);
+    const [modalOpen, setModalOpen] = useState(false);
 
     const [mealTypes, setMealTypes] = useState([]);
     const [waterTemps, setWaterTemps] = useState([]);
@@ -229,23 +230,30 @@ function Toolbar(props) {
 
     return (
         <div id="toolbar">
-            <div className="input-wrapper">
-                <span className="icon">
-                    <Search size={24} />
-                </span>
-                <input
-                    type="text"
-                    id="search-input"
-                    placeholder="Search by name, ingredients, or brand"
-                    onKeyDown={handleInput}
-                />
+            <div className="search-bar">
+                <div className="input-wrapper">
+                    <span className="icon">
+                        <Search />
+                    </span>
+                    <input
+                        type="text"
+                        id="search-input"
+                        placeholder="Search by name, ingredients, or brand"
+                        onKeyDown={handleInput}
+                    />
+                </div>
                 <button
                     type="button"
-                    id="filter-button"
                     className={filtersOpen ? 'open' : ''}
                     title={filtersOpen ? 'Hide Filters' : 'Show Filters'}
                     onClick={() => setFiltersOpen(!filtersOpen)}>
-                    <Sliders size={24} stroke="currentColor" />
+                    <Sliders color="currentColor" />
+                </button>
+                <button
+                    type="button"
+                    title="Create Custom Meal"
+                    onClick={() => setModalOpen(true)}>
+                    <FileText color="currentColor" />
                 </button>
                 <button
                     type="button"
@@ -254,12 +262,13 @@ function Toolbar(props) {
                     title={packOpen ? 'Close Pack' : 'Open Pack'}
                     onClick={() => setPackOpen(!packOpen)}>
                     <div>
-                        <BackpackIcon width={28} height={28} />
+                        <BackpackIcon size={28} />
                         {selection.length > 0 ? (
                             <span className="badge">{selection.length}</span>
                         ) : null}
                     </div>
                 </button>
+                
             </div>
 
             <div className={filtersOpen ? 'filters open' : 'filters'}>

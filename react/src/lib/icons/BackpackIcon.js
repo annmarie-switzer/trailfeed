@@ -2,15 +2,17 @@ import React from 'react';
 
 function BackpackIcon(props) {
     return (
+        // https://fonts.google.com/icons?selected=Material+Icons&icon.query=backpack
+        // filled/rounded
         <svg
             viewBox="0 0 24 24"
-            width={props.width || 24}
-            fill={props.fill || 'currentColor'}>
+            width={props.size || 24}
+            fill={props.color || 'currentColor'}>
             <g>
                 <rect
                     fill="none"
-                    width={props.width || 24}
-                    height={props.height || 24}
+                    width={props.size || 24}
+                    height={props.size || 24}
                 />
                 <g>
                     <g>
