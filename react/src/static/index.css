@@ -1,4 +1,5 @@
 @import url('../pages/pantry/Pantry.css');
+@import url('../pages/pantry/SearchBar.css');
 @import url('../pages/pantry/Toolbar.css');
 @import url('../pages/pantry/Pack.css');
 @import url('../pages/login/Login.css');
@@ -6,7 +7,6 @@
 @import url('../lib/CustomSlider.css');
 @import url('../lib/CheckboxList.css');
 @import url('../lib/Checkbox.css');
-@import url('../lib/Navbar.css');
 @import url('../lib/Card.css');
 
 :root {
@@ -31,9 +31,8 @@ body[data-theme='dark'] {
 
     --badge: var(--ct-orange);
     --checkbox: var(--accent);
-    --check-icon: var(--fg4);
-    --inverse-checkbox: var(--orange);
-    --meal-name-custom: var(--yellow);
+    --inverse-checkbox: var(--red);
+    --meal-name-custom: var(--blue);
     --meal-name-link: var(--primary);
     --success: var(--ct-aqua);
     
@@ -73,16 +72,17 @@ body[data-theme='light'] {
     --bg: var(--bg0);
     --fg: var(--fg1);
     --primary: var(--purple);
+    --ct-primary: var(--ct-purple);
     --accent: var(--aqua);
+    --ct-aqua: var(--ct-aqua);
 
     --bg-lighter: var(--bg0_lighter);
     --black: var(--bg0_darker);
 
     --badge: var(--ct-orange);
     --checkbox: var(--accent);
-    --card-icon: var(--bg4);
     --inverse-checkbox: var(--orange);
-    --meal-name-custom: var(--yellow);
+    --meal-name-custom: var(--blue);
     --meal-name-link: var(--primary);
     --success: var(--ct-aqua);
 

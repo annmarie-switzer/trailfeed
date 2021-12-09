@@ -1,9 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Plus } from 'react-feather';
-import Toolbar from 'pages/pantry/Toolbar';
+import SearchBar from 'pages/pantry/SearchBar';
 import Card from 'lib/Card';
 import { search } from 'api';
 import Pack from './Pack';
+import Toolbar from 'pages/pantry/Toolbar';
 
 function Pantry() {
     const [query, setQuery] = useState(null);
@@ -31,30 +32,32 @@ function Pantry() {
 
     return (
         <div id="pantry">
-            <div className="main">
-                <Toolbar
-                    setQuery={setQuery}
-                    packOpen={packOpen}
-                    setPackOpen={setPackOpen}
-                    selection={selection}
-                />
-                <div className="cards">
-                    {res.hits?.hits.map((h, i) => {
-                        h = { ...h._source, id: h._id };
-                        return (
-                            <Card
-                                hit={h}
-                                key={i}
-                                selection={selection}
-                                handleSelection={handleSelection}
-                            />
-                        );
-                    })}
+            <div className="drawer-wrapper">
+                <div className="main">
+                    <SearchBar setQuery={setQuery} />
+                    <div className="cards">
+                        {res.hits?.hits.map((h, i) => {
+                            h = { ...h._source, id: h._id };
+                            return (
+                                <Card
+                                    hit={h}
+                                    key={i}
+                                    selection={selection}
+                                    handleSelection={handleSelection}
+                                />
+                            );
+                        })}
+                    </div>
+                </div>
+                <div className={packOpen ? 'drawer open' : 'drawer'}>
+                    <Pack selection={selection} />
                 </div>
             </div>
-            <div className={packOpen ? 'drawer open' : 'drawer'}>
-                <Pack selection={selection} />
-            </div>
+            <Toolbar
+                packOpen={packOpen}
+                setPackOpen={setPackOpen}
+                selection={selection}
+            />
         </div>
     );
 }

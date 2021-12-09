@@ -1,5 +1,13 @@
 #pantry {
     display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+}
+
+#pantry .drawer-wrapper {
+    display: flex;
+    position: relative;
     height: 100%;
 }
 
@@ -16,13 +24,12 @@
 #pantry .main {
     display: flex;
     flex-direction: column;
-    overflow: auto;
-    height: 100%;
+    overflow-y: auto;
     width: 100%;
 }
 
 #pantry .cards {
-    padding: 2rem;
+    padding: 2rem 2rem calc(2rem + 50px) 2rem;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
     grid-auto-rows: 400px;

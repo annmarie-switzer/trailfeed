@@ -20,7 +20,7 @@
 }
 
 .MuiSlider-thumb {
-    background-color: var(--primary) !important;
+    background-color: var(--accent) !important;
     box-shadow: var(--box-shadow) !important;
     height: 1.125rem !important;
     width: 1.125rem !important;
@@ -31,13 +31,13 @@
 }
 
 .MuiSlider-track {
-    border-color: var(--primary) !important;
-    background-color: var(--primary) !important;
+    border-color: var(--accent) !important;
+    background-color: var(--accent) !important;
     opacity: 0.8 !important;
 }
 
 .MuiSlider-rail {
-    background-color: var(--primary) !important;
+    background-color: var(--accent) !important;
     opacity: 0.4 !important;
 }
 

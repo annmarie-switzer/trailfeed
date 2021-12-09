@@ -1,0 +1,100 @@
+#searchbar {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--bg);
+}
+
+#searchbar .top-bar {
+    display: flex;
+}
+
+#searchbar .top-bar .input-wrapper {
+    position: relative;
+    display: flex;
+    flex: auto;
+}
+
+#searchbar .top-bar .input-wrapper .icon {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 1rem;
+    display: flex;
+    align-items: center;
+    opacity: 0.4;
+}
+
+#searchbar .top-bar input {
+    appearance: none;
+    border: none;
+    outline: none;
+    margin: 0;
+    padding: 1.2rem 1.2rem 1.2rem 3.5rem;
+    font-size: 1.2rem;
+    font-family: inherit;
+    width: 100%;
+    color: var(--fg);
+    background-color: var(--bg-lighter);
+}
+
+#searchbar .top-bar input:focus {
+    background-color: var(--bg2);
+}
+
+#searchbar button {
+    border-radius: 0;
+    padding: 1rem;
+    background-color: var(--bg-lighter);
+}
+
+#searchbar button.open,
+#searchbar button:active,
+#searchbar button:hover {
+    background-color: var(--primary);
+    color: var(--bg);
+}
+
+#searchbar .filters.open {
+    height: 40vh;
+    border-bottom: solid 1px var(--bg-lighter);
+}
+
+#searchbar .filters {
+    padding: 0 1rem;
+    height: 0;
+    overflow: hidden;
+    flex: auto;
+    display: flex;
+    justify-content: space-between;
+    transition: height 200ms ease-in-out;
+}
+
+#searchbar .filters .sliders,
+#searchbar .filters .checkboxes {
+    height: 100%;
+    padding: 1rem;
+    box-sizing: border-box;
+    display: flex;
+}
+
+#searchbar .filters .sliders .filter-group,
+#searchbar .filters .checkboxes .filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+#searchbar .filters .checkboxes {
+    width: 70%;
+    gap: 1rem;
+}
+
+#searchbar .filters .checkboxes .filter-group {
+    flex: auto;
+}
+
+#searchbar .filters .sliders {
+    flex-direction: column;
+    width: 25%;
+    gap: 2rem;
+}

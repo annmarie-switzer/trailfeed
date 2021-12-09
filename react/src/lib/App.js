@@ -1,10 +1,9 @@
 import React, { createContext, useEffect, useState } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
-import Login from 'pages/login/Login';
-import AuthRoute from 'lib/AuthRoute';
 import { getUser } from 'api';
+import Login from 'pages/login/Login';
 import Pantry from 'pages/pantry/Pantry';
-import Navbar from './Navbar';
+import AuthRoute from 'lib/AuthRoute';
 
 export const AppContext = createContext(null);
 
@@ -34,21 +33,15 @@ function App() {
                 flexDirection: 'column',
                 height: '100vh'
             }}>
-            <AppContext.Provider
-                value={{ user, theme, setTheme }}>
+            <AppContext.Provider value={{ user, theme, setTheme }}>
                 <Switch>
                     <Route exact path="/login">
                         <Login />
                     </Route>
-                    <AuthRoute exact user={user} path="/pantry">
+                    <AuthRoute exact path="/">
                         <Pantry />
                     </AuthRoute>
-                    <AuthRoute exact user={user} path="/">
-                        <Redirect to="/pantry" />;
-                    </AuthRoute>
                 </Switch>
-
-                {user ? <Navbar user={user} /> : null}
             </AppContext.Provider>
         </div>
     );
