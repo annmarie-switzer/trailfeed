@@ -50,7 +50,7 @@ function Pantry() {
                     </div>
                 </div>
                 <div className={packOpen ? 'drawer open' : 'drawer'}>
-                    <Pack selection={selection} />
+                    <Pack selection={selection} setSelection={setSelection} />
                 </div>
             </div>
             <Toolbar

@@ -77,7 +77,7 @@ function Card(props) {
                     </div>
                     <div className="list-item">
                         <Watch />
-                        <span>{hit.minutes} min.</span>
+                        <span>{hit.minutes} min</span>
                     </div>
                     <div className="list-item">
                         <Frown />

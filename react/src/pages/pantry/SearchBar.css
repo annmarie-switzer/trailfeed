@@ -37,6 +37,11 @@
     background-color: var(--bg-lighter);
 }
 
+#searchbar .top-bar input::placeholder {
+    opacity: 0.54;
+    color: var(--fg);
+}
+
 #searchbar .top-bar input:focus {
     background-color: var(--bg2);
 }

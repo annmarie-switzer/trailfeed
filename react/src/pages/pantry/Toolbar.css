@@ -37,15 +37,8 @@
     color: var(--bg);
 }
 
-#toolbar .stat-counter {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
+#toolbar .stat-container {
     margin: 0 auto;
-}
-
-#toolbar .stat-clicker {
-    cursor: pointer;
 }
 
 #toolbar #pack-button {

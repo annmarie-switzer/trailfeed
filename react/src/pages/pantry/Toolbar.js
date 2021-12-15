@@ -1,15 +1,9 @@
 import React, { useEffect, useContext, useState } from 'react';
+import { AppContext } from 'lib/App';
 import { logout } from 'api';
 import ThemeSwitcher from '../../lib/ThemeSwitcher';
-import {
-    Activity,
-    Droplet,
-    FileText,
-    LogOut,
-    Settings,
-    Watch
-} from 'react-feather';
-import { AppContext } from 'lib/App';
+import Stats from '../../lib/Stats';
+import { FileText, LogOut, Settings } from 'react-feather';
 import BackpackIcon from 'lib/icons/BackpackIcon';
 
 function Toolbar(props) {
@@ -19,60 +13,6 @@ function Toolbar(props) {
 
     const [menuOpen, setMenuOpen] = useState(false);
     const [modalOpen, setModalOpen] = useState(false);
-
-    const [totalCalories, setTotalCalories] = useState(0);
-    const [totalWater, setTotalWater] = useState(0);
-    const [totalTime, setTotalTime] = useState(0);
-
-    const [currentStat, setStat] = useState(0);
-    const stats = [
-        {
-            name: 'Calories',
-            val: totalCalories,
-            suffix: '',
-            icon: <Activity color="var(--ct-orange)" />
-        },
-        {
-            name: 'Water',
-            val: totalWater,
-            suffix: 'mL',
-            icon: <Droplet color="var(--blue)" />
-        },
-        {
-            name: 'Time',
-            val: totalTime,
-            suffix: 'minutes',
-            icon: <Watch color="var(--green)" />
-        }
-    ];
-
-    const cycleStats = () => {
-        if (currentStat == stats.length - 1) {
-            setStat(0);
-        } else {
-            setStat(currentStat + 1);
-        }
-    };
-
-    useEffect(() => {
-        setTotalCalories(
-            selection
-                .map((s) => s.calories)
-                .reduce((total, next) => total + next, 0)
-        );
-
-        setTotalWater(
-            selection
-                .map((s) => s.water_ml)
-                .reduce((total, next) => total + next, 0)
-        );
-
-        setTotalTime(
-            selection
-                .map((s) => s.minutes)
-                .reduce((total, next) => total + next, 0)
-        );
-    }, [selection]);
 
     return (
         <div id="toolbar">
@@ -108,15 +48,8 @@ function Toolbar(props) {
                     </button>
                 </div>
 
-                <div className="stat-counter">
-                    <div className="stat-clicker" onClick={cycleStats}>
-                        {stats[currentStat].icon}
-                    </div>
-                    <span>
-                        Total {stats[currentStat].name}
-                        :&nbsp;{stats[currentStat].val.toLocaleString()}&nbsp;
-                        {stats[currentStat].suffix}
-                    </span>
+                <div className="stat-container">
+                    <Stats selection={selection} cycle={true} />
                 </div>
 
                 <button
