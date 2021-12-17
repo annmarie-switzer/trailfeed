@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Activity, Droplet, Watch } from 'react-feather';
 
-function Stats(props) {
-    const { selection } = props;
-
+function Stats({ selection }) {
     const [totalCalories, setTotalCalories] = useState(0);
     const [totalWater, setTotalWater] = useState(0);
     const [totalTime, setTotalTime] = useState(0);

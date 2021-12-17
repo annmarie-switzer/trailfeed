@@ -1,5 +1,5 @@
 #gauge {
-    border: solid red;
+    position: relative;
 }
 
 #gauge svg {
@@ -8,35 +8,18 @@
     border: solid blue;
 }
 
-#gauge path.arc {
-    opacity: 0.9;
+#gauge svg .arc {
+    opacity: 1;
     transition: opacity 0.5s;
 }
 
-#gauge path.arc:hover {
-    opacity: 0.7;
+#gauge svg .arc:hover {
+    opacity: 0.6;
 }
 
-#gauge .axis line,
-#gauge .axis circle {
-    stroke: #cccccc;
-    stroke-width: 1px;
-}
-
-#gauge .axis circle {
-    fill: none;
-}
-
-#gauge .r.axis text {
-    text-anchor: end;
-}
-
-#gauge .tooltip {
+#gauge div {
     position: absolute;
-    display: none;
-    background: rgba(0, 0, 0, 0.6);
-    border-radius: 3px;
-    box-shadow: -3px 3px 15px #888;
-    color: white;
-    padding: 6px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }

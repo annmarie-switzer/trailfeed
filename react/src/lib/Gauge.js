@@ -1,11 +1,10 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import * as d3 from 'd3';
 
 /**
  * Custom hook for D3
  * @param {*} renderChartFn a callback containing the D3.js code to be executed
  * @param {*} dependencies array of values to which `renderChartFn` should be reactive
- * @returns
  */
 export const useD3 = (renderChartFn, dependencies) => {
     const ref = useRef();
@@ -17,22 +16,45 @@ export const useD3 = (renderChartFn, dependencies) => {
     return ref;
 };
 
-function Gauge(props) {
-    const data = [
-        { name: 'Jan', value: 432 },
-        { name: 'Feb', value: 340 },
-        { name: 'Mar', value: 382 },
-        { name: 'Apr', value: 398 },
-        { name: 'May', value: 410 }
-    ];
+function Gauge({ selection }) {
+    const [selectedArc, setSelectedArc] = useState(null);
+
+    const color = d3.scaleOrdinal([
+        'var(--orange)',
+        'var(--blue)',
+        'var(--green)'
+    ]);
+
     const width = 500;
     const height = 500;
-    const chartRadius = height / 2 - 40;
-
-    const color = d3.scaleOrdinal(d3.schemeCategory10);
+    const userMaxCalories = 10000;
 
     const ref = useD3(
         (svg) => {
+            console.log('selection updated');
+            const data = ['calories', 'water_ml', 'minutes'].map((name) => {
+                const value =
+                    selection
+                        .map((s) => s[name])
+                        .reduce((total, next) => total + next, 0) || 0;
+                return { name, value };
+            });
+
+            const chartRadius = height / 2 - 50;
+            const arcMinRadius = 100;
+            const arcPadding = 10;
+            const labelPadding = -5;
+            const numArcs = data.map((d, i) => d.name).length;
+            const arcWidth =
+                (chartRadius - arcMinRadius - numArcs * arcPadding) / numArcs;
+
+            const getInnerRadius = (index) =>
+                arcMinRadius +
+                (numArcs - (index + 1)) * (arcWidth + arcPadding);
+
+            const getOuterRadius = (index) => getInnerRadius(index) + arcWidth;
+
+            // main chart container
             svg = svg
                 .append('g')
                 .attr(
@@ -40,91 +62,52 @@ function Gauge(props) {
                     'translate(' + width / 2 + ',' + height / 2 + ')'
                 );
 
-            let tooltip = d3
-                .select('body')
-                .append('div')
-                .attr('class', 'tooltip');
-
-            const PI = Math.PI,
-                arcMinRadius = 10,
-                arcPadding = 10,
-                labelPadding = -5;
-
-            let scale = d3
+            // set arc scale (effective min and max length)
+            const scale = d3
                 .scaleLinear()
-                .domain([0, d3.max(data, (d) => d.value) * 1.1])
-                .range([0, 2 * PI]);
+                // .domain([0, d3.max(data, (d) => d.value) * 1.1])
+                .domain([0, userMaxCalories])
+                .range([0, 2 * Math.PI]);
 
-            let keys = data.map((d, i) => d.name);
-
-            const numArcs = keys.length;
-
-            const arcWidth =
-                (chartRadius - arcMinRadius - numArcs * arcPadding) / numArcs;
-
-            let arc = d3
+            // create an arc generator
+            const arc = d3
                 .arc()
                 .innerRadius((d, i) => getInnerRadius(i))
                 .outerRadius((d, i) => getOuterRadius(i))
                 .startAngle(0)
                 .endAngle((d, i) => scale(d));
 
-            let arcs = svg
+            // define an arc for each item in `data`
+            const arcs = svg
                 .append('g')
-                .attr('class', 'data')
+                .attr('class', 'arcs')
                 .selectAll('path')
+                // .datum((d, i, nodes) => data[i])
                 .data(data)
-                .enter()
-                .append('path')
+                .join('path')
                 .attr('class', 'arc')
-                .style('fill', (d, i) => color(i));
+                .style('fill', (d, i) => color(i))
+                .on('mouseenter', (e, d) => setSelectedArc(d))
+                .on('mouseleave', () => setSelectedArc(null));
 
+            // draw the arcs
             arcs.transition()
-                .delay((d, i) => i * 200)
+                .delay((d, i) => i * 0)
                 .duration(1000)
-                .attrTween('d', arcTween);
-
-            arcs.on('mousemove', showTooltip);
-            arcs.on('mouseout', hideTooltip);
-
-            function arcTween(d, i) {
-                let interpolate = d3.interpolate(0, d.value);
-                return (t) => arc(interpolate(t), i);
-            }
-
-            function showTooltip(d) {
-                tooltip
-                    .style('left', d.pageX + 10 + 'px')
-                    .style('top', d.pageY - 25 + 'px')
-                    .style('display', 'inline-block')
-                    .html(d.value);
-            }
-
-            function hideTooltip() {
-                tooltip.style('display', 'none');
-            }
-
-            function rad2deg(angle) {
-                return (angle * 180) / PI;
-            }
-
-            function getInnerRadius(index) {
-                return (
-                    arcMinRadius +
-                    (numArcs - (index + 1)) * (arcWidth + arcPadding)
-                );
-            }
-
-            function getOuterRadius(index) {
-                return getInnerRadius(index) + arcWidth;
-            }
+                .attrTween('d', (d, i) => {
+                    let interpolate = d3.interpolate(0, d.value);
+                    return (t) => arc(interpolate(t), i);
+                });
         },
-        [data.length]
+        [selection]
     );
 
     return (
         <div id="gauge">
-            <svg ref={ref} width={width} height={height}></svg>
+            <svg ref={ref} viewBox={`0 0 ${height} ${width}`}></svg>
+            <div>
+                {selectedArc?.name} {selectedArc?.value}
+            </div>
         </div>
     );
 }

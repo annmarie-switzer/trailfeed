@@ -9,7 +9,7 @@ import Toolbar from 'pages/pantry/Toolbar';
 function Pantry() {
     const [query, setQuery] = useState(null);
     const [res, setRes] = useState([]);
-    const [packOpen, setPackOpen] = useState(false);
+    const [packOpen, setPackOpen] = useState(true);
     const [selection, setSelection] = useState([]);
 
     const handleSelection = (hit) => {

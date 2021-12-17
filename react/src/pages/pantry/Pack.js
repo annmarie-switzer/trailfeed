@@ -5,16 +5,14 @@ import { CheckCircle, X } from 'react-feather';
 import Checkbox from 'lib/Checkbox';
 import Gauge from 'lib/Gauge';
 
-function Pack(props) {
-    const { selection, setSelection } = props;
-
+function Pack({ selection, setSelection}) {
     const deselect = (meal) => {
         setSelection(selection.filter((s) => s.id !== meal.id));
     };
 
     return (
         <div id="pack">
-            <Gauge />
+            <Gauge selection={selection} />
             {/* <div className="top-bar"></div>
 
             <div className="list">
