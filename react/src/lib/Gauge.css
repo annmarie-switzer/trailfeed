@@ -2,7 +2,8 @@
     position: relative;
 }
 
-#gauge svg .arcs {
+#gauge svg .arcs,
+#gauge svg .tracks {
     transform: rotate(-90deg);
 }
 
