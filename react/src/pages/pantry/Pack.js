@@ -5,7 +5,7 @@ import { CheckCircle, X } from 'react-feather';
 import Checkbox from 'lib/Checkbox';
 import Gauge from 'lib/Gauge';
 
-function Pack({ selection, setSelection}) {
+function Pack({ selection, setSelection }) {
     const deselect = (meal) => {
         setSelection(selection.filter((s) => s.id !== meal.id));
     };
@@ -13,7 +13,6 @@ function Pack({ selection, setSelection}) {
     return (
         <div id="pack">
             <Gauge selection={selection} />
-            {/* <div className="top-bar"></div>
 
             <div className="list">
                 {selection.length === 0 ? (
@@ -28,7 +27,8 @@ function Pack({ selection, setSelection}) {
                                         color: meal.link
                                             ? 'var(--meal-name-link)'
                                             : 'var(--meal-name-custom)'
-                                    }}>
+                                    }}
+                                >
                                     {meal.name}
                                 </div>
                                 <div className="detail-row">{meal.brand}</div>
@@ -50,13 +50,14 @@ function Pack({ selection, setSelection}) {
                             <div
                                 className="icon"
                                 title="Remove from pack"
-                                onClick={() => deselect(meal)}>
+                                onClick={() => deselect(meal)}
+                            >
                                 <X />
                             </div>
                         </div>
                     ))
                 )}
-            </div> */}
+            </div>
         </div>
     );
 }

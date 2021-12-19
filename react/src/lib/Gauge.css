@@ -1,11 +1,10 @@
 #gauge {
     position: relative;
+    border: solid green;
 }
 
-#gauge svg {
-    margin: 0px auto;
-    display: block;
-    border: solid blue;
+#gauge svg .arcs {
+    transform: rotate(-90deg);
 }
 
 #gauge svg .arc {
@@ -19,7 +18,7 @@
 
 #gauge #center-text {
     position: absolute;
-    top: 50%;
+    bottom: 25%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, 0);
 }

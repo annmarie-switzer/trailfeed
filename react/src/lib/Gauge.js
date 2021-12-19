@@ -13,11 +13,12 @@ export const useD3 = (renderChartFn, dependencies) => {
 
 function Gauge({ selection }) {
     const [selectedArc, setSelectedArc] = useState(null);
+    const [dimensions, setDimensions] = useState({
+        width: 0,
+        height: 0
+    });
 
-    const width = 500;
-    const height = 500;
-
-    const userMaxCalories = 10000;
+    const userMaxCalories = 1380;
 
     const color = d3.scaleOrdinal([
         'var(--orange)',
@@ -27,17 +28,27 @@ function Gauge({ selection }) {
 
     const ref = useD3(
         (svg) => {
+            setDimensions(() => ({
+                width: window.innerWidth,
+                height: window.innerHeight
+            }));
+
             const data = ['calories', 'water_ml', 'minutes'].map((name) => {
-                const value =
+                let value =
                     selection
                         .map((s) => s[name])
                         .reduce((total, next) => total + next, 0) || 0;
+
+                if (name === 'minutes') {
+                    value = value * 60;
+                }
+
                 return { name, value };
             });
 
-            const chartRadius = height / 2 - 50;
-            const arcMinRadius = 100;
-            const arcPadding = 10;
+            const chartRadius = dimensions.height / 1.5;
+            const arcMinRadius = 400;
+            const arcPadding = 30;
             const numArcs = data.length;
             const arcWidth =
                 (chartRadius - arcMinRadius - numArcs * arcPadding) / numArcs;
@@ -52,7 +63,8 @@ function Gauge({ selection }) {
                 .scaleLinear()
                 // .domain([0, d3.max(data, (d) => d.value) * 1.1])
                 .domain([0, userMaxCalories])
-                .range([0, 2 * Math.PI]);
+                .range([0, Math.PI])
+                .clamp(true);
 
             const arc = d3
                 .arc()
@@ -84,16 +96,25 @@ function Gauge({ selection }) {
 
     return (
         <div id="gauge">
-            <svg ref={ref} viewBox={`0 0 ${height} ${width}`}>
+            <svg
+                ref={ref}
+                viewBox={`0 0 ${dimensions.width} ${dimensions.height}`}
+            >
                 <g
                     className="plot-area"
-                    transform={`translate(${width / 2}, ${height / 2})`}
+                    transform={`translate(
+                        ${dimensions.width / 2},
+                        ${dimensions.height / 1.25}
+                    )`}
                 >
                     <g className="arcs"></g>
                 </g>
             </svg>
             <div id="center-text">
-                {selectedArc?.name} {selectedArc?.value}
+                {selectedArc?.name}
+                {selectedArc?.name === 'minutes'
+                    ? selectedArc?.value / 60
+                    : selectedArc?.value}
             </div>
         </div>
     );
