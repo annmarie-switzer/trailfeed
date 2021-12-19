@@ -17,7 +17,7 @@
     opacity: 0.6;
 }
 
-#gauge div {
+#gauge #center-text {
     position: absolute;
     top: 50%;
     left: 50%;

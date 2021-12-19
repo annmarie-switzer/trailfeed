@@ -1,11 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import * as d3 from 'd3';
 
-/**
- * Custom hook for D3
- * @param {*} renderChartFn a callback containing the D3.js code to be executed
- * @param {*} dependencies array of values to which `renderChartFn` should be reactive
- */
 export const useD3 = (renderChartFn, dependencies) => {
     const ref = useRef();
     useEffect(() => {
@@ -19,19 +14,19 @@ export const useD3 = (renderChartFn, dependencies) => {
 function Gauge({ selection }) {
     const [selectedArc, setSelectedArc] = useState(null);
 
+    const width = 500;
+    const height = 500;
+
+    const userMaxCalories = 10000;
+
     const color = d3.scaleOrdinal([
         'var(--orange)',
         'var(--blue)',
         'var(--green)'
     ]);
 
-    const width = 500;
-    const height = 500;
-    const userMaxCalories = 10000;
-
     const ref = useD3(
         (svg) => {
-            console.log('selection updated');
             const data = ['calories', 'water_ml', 'minutes'].map((name) => {
                 const value =
                     selection
@@ -43,8 +38,7 @@ function Gauge({ selection }) {
             const chartRadius = height / 2 - 50;
             const arcMinRadius = 100;
             const arcPadding = 10;
-            const labelPadding = -5;
-            const numArcs = data.map((d, i) => d.name).length;
+            const numArcs = data.length;
             const arcWidth =
                 (chartRadius - arcMinRadius - numArcs * arcPadding) / numArcs;
 
@@ -54,22 +48,12 @@ function Gauge({ selection }) {
 
             const getOuterRadius = (index) => getInnerRadius(index) + arcWidth;
 
-            // main chart container
-            svg = svg
-                .append('g')
-                .attr(
-                    'transform',
-                    'translate(' + width / 2 + ',' + height / 2 + ')'
-                );
-
-            // set arc scale (effective min and max length)
             const scale = d3
                 .scaleLinear()
                 // .domain([0, d3.max(data, (d) => d.value) * 1.1])
                 .domain([0, userMaxCalories])
                 .range([0, 2 * Math.PI]);
 
-            // create an arc generator
             const arc = d3
                 .arc()
                 .innerRadius((d, i) => getInnerRadius(i))
@@ -77,12 +61,9 @@ function Gauge({ selection }) {
                 .startAngle(0)
                 .endAngle((d, i) => scale(d));
 
-            // define an arc for each item in `data`
-            const arcs = svg
-                .append('g')
-                .attr('class', 'arcs')
+            const arcs = d3
+                .select('.arcs')
                 .selectAll('path')
-                // .datum((d, i, nodes) => data[i])
                 .data(data)
                 .join('path')
                 .attr('class', 'arc')
@@ -90,7 +71,6 @@ function Gauge({ selection }) {
                 .on('mouseenter', (e, d) => setSelectedArc(d))
                 .on('mouseleave', () => setSelectedArc(null));
 
-            // draw the arcs
             arcs.transition()
                 .delay((d, i) => i * 0)
                 .duration(1000)
@@ -104,8 +84,15 @@ function Gauge({ selection }) {
 
     return (
         <div id="gauge">
-            <svg ref={ref} viewBox={`0 0 ${height} ${width}`}></svg>
-            <div>
+            <svg ref={ref} viewBox={`0 0 ${height} ${width}`}>
+                <g
+                    className="plot-area"
+                    transform={`translate(${width / 2}, ${height / 2})`}
+                >
+                    <g className="arcs"></g>
+                </g>
+            </svg>
+            <div id="center-text">
                 {selectedArc?.name} {selectedArc?.value}
             </div>
         </div>
