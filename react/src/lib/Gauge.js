@@ -47,8 +47,8 @@ function Gauge({ selection }) {
             });
 
             const chartRadius = dimensions.height / 1.5;
-            const arcMinRadius = 400;
-            const arcPadding = 30;
+            const arcMinRadius = 350;
+            const arcPadding = 35;
             const numArcs = data.length;
             const arcWidth =
                 (chartRadius - arcMinRadius - numArcs * arcPadding) / numArcs;
@@ -61,7 +61,6 @@ function Gauge({ selection }) {
 
             const scale = d3
                 .scaleLinear()
-                // .domain([0, d3.max(data, (d) => d.value) * 1.1])
                 .domain([0, userMaxCalories])
                 .range([0, Math.PI])
                 .clamp(true);
@@ -111,10 +110,12 @@ function Gauge({ selection }) {
                 </g>
             </svg>
             <div id="center-text">
-                {selectedArc?.name}
-                {selectedArc?.name === 'minutes'
-                    ? selectedArc?.value / 60
-                    : selectedArc?.value}
+                <span>{selectedArc?.name}</span>
+                <span>
+                    {selectedArc?.name === 'minutes'
+                        ? selectedArc?.value / 60
+                        : selectedArc?.value}
+                </span>
             </div>
         </div>
     );
