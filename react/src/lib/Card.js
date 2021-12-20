@@ -65,7 +65,7 @@ function Card(props) {
                     </div>
                     <div className="list-item">
                         <Activity />
-                        <span>{hit.calories} kCal</span>
+                        <span>{hit.calories} Cal</span>
                     </div>
                     <div className="list-item">
                         <Droplet />

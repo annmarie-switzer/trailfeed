@@ -1,55 +1,59 @@
 import React, { useEffect, useState } from 'react';
 import { Activity, Droplet, Watch } from 'react-feather';
 
-function Stats({ selection }) {
-    const [totalCalories, setTotalCalories] = useState(0);
-    const [totalWater, setTotalWater] = useState(0);
-    const [totalTime, setTotalTime] = useState(0);
+export const statData = [
+    {
+        id: 'calories',
+        name: 'Calories',
+        suffix: 'Cal',
+        icon: <Activity color="var(--ct-orange)" />,
+        color: 'var(--ct-orange)'
+    },
+    {
+        id: 'water_ml',
+        name: 'Water',
+        suffix: 'mL',
+        icon: <Droplet color="var(--blue)" />,
+        color: 'var(--blue)'
+    },
+    {
+        id: 'minutes',
+        name: 'Time',
+        suffix: 'min',
+        icon: <Watch color="var(--green)" />,
+        color: 'var(--green)'
+    }
+];
 
-    const [currentStat, setStat] = useState(0);
-    const stats = [
-        {
-            name: 'Calories',
-            val: totalCalories,
-            suffix: '',
-            icon: <Activity color="var(--ct-orange)" />
-        },
-        {
-            name: 'Water',
-            val: totalWater,
-            suffix: 'mL',
-            icon: <Droplet color="var(--blue)" />
-        },
-        {
-            name: 'Time',
-            val: totalTime,
-            suffix: 'minutes',
-            icon: <Watch color="var(--green)" />
+export const mappedStatData = (selection) => {
+    const newData = statData.map((stat) => {
+        let value =
+            selection
+                .map((s) => s[stat.id])
+                .reduce((total, next) => total + next, 0) || 0;
+
+        const displayValue = `${value.toLocaleString()}`;
+
+        if (stat.id === 'minutes') {
+            value *= 60;
         }
-    ];
+
+        return { ...stat, value, displayValue };
+    });
+
+    return newData;
+};
+
+function Stats({ selection }) {
+    const [stats, setStats] = useState(mappedStatData(selection));
+    const [currentStat, setStat] = useState(0);
 
     const cycleStats = () => {
         setStat(currentStat == stats.length - 1 ? 0 : currentStat + 1);
     };
 
     useEffect(() => {
-        setTotalCalories(
-            selection
-                .map((s) => s.calories)
-                .reduce((total, next) => total + next, 0)
-        );
-
-        setTotalWater(
-            selection
-                .map((s) => s.water_ml)
-                .reduce((total, next) => total + next, 0)
-        );
-
-        setTotalTime(
-            selection
-                .map((s) => s.minutes)
-                .reduce((total, next) => total + next, 0)
-        );
+        setStats(mappedStatData(selection));
     }, [selection]);
 
     return (
@@ -59,8 +63,9 @@ function Stats({ selection }) {
             </div>
             <span>
                 {stats[currentStat].name}
-                :&nbsp;{stats[currentStat].val.toLocaleString()}&nbsp;
-                {stats[currentStat].suffix}
+                :&nbsp;
+                {stats[currentStat].displayValue}{' '}
+                {currentStat === 0 ? null : stats[currentStat].suffix}
             </span>
         </div>
     );

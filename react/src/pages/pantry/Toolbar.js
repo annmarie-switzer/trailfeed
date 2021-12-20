@@ -6,9 +6,7 @@ import Stats from '../../lib/Stats';
 import { FileText, LogOut, Settings } from 'react-feather';
 import BackpackIcon from 'lib/icons/BackpackIcon';
 
-function Toolbar(props) {
-    const { packOpen, setPackOpen, selection } = props;
-
+function Toolbar({ packOpen, setPackOpen, selection }) {
     const { user } = useContext(AppContext);
 
     const [menuOpen, setMenuOpen] = useState(false);
@@ -23,7 +21,8 @@ function Toolbar(props) {
                         className={
                             menuOpen ? 'menu-trigger open' : 'menu-trigger'
                         }
-                        onClick={() => setMenuOpen(!menuOpen)}>
+                        onClick={() => setMenuOpen(!menuOpen)}
+                    >
                         <Settings />
                         {menuOpen ? (
                             <div className="menu">
@@ -33,7 +32,8 @@ function Toolbar(props) {
                                     type="button"
                                     id="logout"
                                     title="Logout"
-                                    onClick={logout}>
+                                    onClick={logout}
+                                >
                                     <span>{user.email}</span>
                                     <LogOut color="currentColor" />
                                 </button>
@@ -43,13 +43,14 @@ function Toolbar(props) {
                     <button
                         type="button"
                         title="Create Custom Meal"
-                        onClick={() => setModalOpen(true)}>
+                        onClick={() => setModalOpen(true)}
+                    >
                         <FileText color="currentColor" />
                     </button>
                 </div>
 
                 <div className="stat-container">
-                    <Stats selection={selection} cycle={true} />
+                    <Stats selection={selection} />
                 </div>
 
                 <button
@@ -57,7 +58,8 @@ function Toolbar(props) {
                     id="pack-button"
                     className={packOpen ? 'open' : ''}
                     title={packOpen ? 'Close Pack' : 'Open Pack'}
-                    onClick={() => setPackOpen(!packOpen)}>
+                    onClick={() => setPackOpen(!packOpen)}
+                >
                     <div>
                         <BackpackIcon size={28} />
                         {selection.length > 0 ? (

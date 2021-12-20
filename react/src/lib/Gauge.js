@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import * as d3 from 'd3';
+import Stats, { mappedStatData, statData } from './Stats';
 
 export const useD3 = (renderChartFn, dependencies) => {
     const ref = useRef();
@@ -12,69 +13,36 @@ export const useD3 = (renderChartFn, dependencies) => {
 };
 
 function Gauge({ selection }) {
+    const maxCalories = 1380;
+
     const [selectedArc, setSelectedArc] = useState(null);
     const [dimensions, setDimensions] = useState({
-        width: 0,
-        height: 0
+        width: window.innerWidth,
+        height: window.innerHeight
     });
 
-    const userMaxCalories = 1380;
+    // const handleResize = () => {
+    //     console.log('window resizing');
+    //     setDimensions(() => ({
+    //         width: window.innerWidth,
+    //         height: window.innerHeight
+    //     }));
+    // }
 
-    const color = d3.scaleOrdinal([
-        'var(--orange)',
-        'var(--blue)',
-        'var(--green)'
-    ]);
-
-    const arcMap = {
-        calories: 'Calories',
-        water_ml: 'Water',
-        minutes: 'Time'
-    };
-
-    const trackData = [
-        {name: 'calories', value: userMaxCalories},
-        {name: 'water_ml', value: userMaxCalories},
-        {name: 'minutes', value: userMaxCalories},
-    ]
+    // useEffect(() => {
+    //     handleResize();
+    //     window.addEventListener('resize', handleResize)
+    //     return _ => window.removeEventListener('resize', handleResize)
+    // }, []);
 
     const ref = useD3(
         (svg) => {
-            setDimensions(() => ({
-                width: window.innerWidth,
-                height: window.innerHeight
+            const data = mappedStatData(selection);
+
+            const trackData = statData.map((arc) => ({
+                ...arc,
+                value: maxCalories
             }));
-
-            let data = ['calories', 'water_ml', 'minutes'].map((name) => {
-                // value is the reult of reduce or 0
-                let value =
-                    selection
-                        .map((s) => s[name])
-                        .reduce((total, next) => total + next, 0) || 0;
-
-                // artificially decrease the scale of the `minutes` arc
-                if (name === 'minutes') {
-                    value *= 60;
-                }
-
-                const displayValue = (() => {
-                    switch (name) {
-                        case 'minutes':
-                            return `${value.toLocaleString() / 60} min`;
-                        case 'water_ml':
-                            return `${value.toLocaleString()} mL`;
-                        default:
-                            return value.toLocaleString();
-                    }
-                })();
-
-                return { name, value, displayName: arcMap[name], displayValue };
-            });
-
-            // const noData = data.every((d) => d.value === 0);
-            // if (noData) {
-            //     data = data.map((d) => ({ ...d, value: userMaxCalories }));
-            // }
 
             const chartRadius = dimensions.height / 1.5;
             const arcMinRadius = 350;
@@ -91,7 +59,7 @@ function Gauge({ selection }) {
 
             const scale = d3
                 .scaleLinear()
-                .domain([0, userMaxCalories])
+                .domain([0, maxCalories])
                 .range([0, Math.PI])
                 .clamp(true);
 
@@ -108,11 +76,10 @@ function Gauge({ selection }) {
                 .data(trackData)
                 .join('path')
                 .attr('class', 'track')
-                .style('fill', 'var(--bg-lighter)')
-                // .on('mouseenter', (e, d) => setSelectedArc(d))
-                // .on('mouseleave', () => setSelectedArc(null));
+                .style('fill', 'var(--bg-lighter)');
 
-            tracks.transition()
+            tracks
+                .transition()
                 .delay((d, i) => i * 0)
                 .duration(1000)
                 .attrTween('d', (d, i) => {
@@ -126,9 +93,17 @@ function Gauge({ selection }) {
                 .data(data)
                 .join('path')
                 .attr('class', 'arc')
-                .style('fill', (d, i) => color(i))
-                .on('mouseenter', (e, d) => setSelectedArc(d))
-                .on('mouseleave', () => setSelectedArc(null));
+                .style('fill', (d, i) => data[i].color)
+                .on('mouseenter', (e, d) => {
+                    setSelectedArc(d);
+                    d3.selectAll('.arc')
+                        .filter((a) => a.id !== d.id)
+                        .classed('not-hovered', true);
+                })
+                .on('mouseleave', (e, d) => {
+                    setSelectedArc(null);
+                    d3.selectAll('.arc').classed('not-hovered', false);
+                });
 
             arcs.transition()
                 .delay((d, i) => i * 0)
@@ -138,7 +113,7 @@ function Gauge({ selection }) {
                     return (t) => arc(interpolate(t), i);
                 });
         },
-        [selection]
+        [selection, dimensions]
     );
 
     return (
@@ -159,8 +134,10 @@ function Gauge({ selection }) {
                 </g>
             </svg>
             <div id="center-text">
-                <span>{selectedArc?.displayName}</span>
-                <span>{selectedArc?.displayValue}</span>
+                <span>{selectedArc?.icon}</span>
+                <span>
+                    {selectedArc?.displayValue} {selectedArc?.suffix}
+                </span>
             </div>
         </div>
     );
