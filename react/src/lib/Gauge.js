@@ -13,7 +13,7 @@ export const useD3 = (renderChartFn, dependencies) => {
 };
 
 function Gauge({ selection }) {
-    const maxCalories = 1380;
+    const maxCalories = 10000;
 
     const [selectedArc, setSelectedArc] = useState(null);
     const [dimensions, setDimensions] = useState({
@@ -21,28 +21,52 @@ function Gauge({ selection }) {
         height: window.innerHeight
     });
 
-    // const handleResize = () => {
-    //     console.log('window resizing');
-    //     setDimensions(() => ({
-    //         width: window.innerWidth,
-    //         height: window.innerHeight
-    //     }));
-    // }
-
-    // useEffect(() => {
-    //     handleResize();
-    //     window.addEventListener('resize', handleResize)
-    //     return _ => window.removeEventListener('resize', handleResize)
-    // }, []);
-
     const ref = useD3(
         (svg) => {
-            const data = mappedStatData(selection);
+            // tracks
+            const prevTrackData = d3.local();
+
+            d3.selectAll('.track').each(function (d) {
+                prevTrackData.set(this, d);
+            });
 
             const trackData = statData.map((arc) => ({
                 ...arc,
                 value: maxCalories
             }));
+
+            const tracks = d3
+                .select('.tracks')
+                .selectAll('path')
+                .data(trackData)
+                .join('path')
+                .attr('class', 'track')
+                .style('fill', 'var(--bg-lighter)');
+
+            tracks
+                .transition()
+                .delay((d, i) => i * 0)
+                .duration(1000)
+                .attrTween('d', (d, i, nodes) => {
+                    const old = prevTrackData.get(nodes[i], d);
+                    const interpolateFrom = old ? maxCalories : 0;
+                    const interpolate = d3.interpolate(
+                        interpolateFrom,
+                        d.value
+                    );
+                    return (t) => arc(interpolate(t), i);
+                });
+
+            // arcs
+            const prevData = d3.local();
+
+            d3.selectAll('.arc').each(function (d) {
+                prevData.set(this, d);
+            });
+
+            const data = mappedStatData(selection);
+
+            setSelectedArc(data[0]);
 
             const chartRadius = dimensions.height / 1.5;
             const arcMinRadius = 350;
@@ -70,23 +94,6 @@ function Gauge({ selection }) {
                 .startAngle(0)
                 .endAngle((d, i) => scale(d));
 
-            const tracks = d3
-                .select('.tracks')
-                .selectAll('path')
-                .data(trackData)
-                .join('path')
-                .attr('class', 'track')
-                .style('fill', 'var(--bg-lighter)');
-
-            tracks
-                .transition()
-                .delay((d, i) => i * 0)
-                .duration(1000)
-                .attrTween('d', (d, i) => {
-                    const interpolate = d3.interpolate(0, d.value);
-                    return (t) => arc(interpolate(t), i);
-                });
-
             const arcs = d3
                 .select('.arcs')
                 .selectAll('path')
@@ -101,19 +108,24 @@ function Gauge({ selection }) {
                         .classed('not-hovered', true);
                 })
                 .on('mouseleave', (e, d) => {
-                    setSelectedArc(null);
+                    setSelectedArc(data[0]);
                     d3.selectAll('.arc').classed('not-hovered', false);
                 });
 
             arcs.transition()
                 .delay((d, i) => i * 0)
                 .duration(1000)
-                .attrTween('d', (d, i) => {
-                    const interpolate = d3.interpolate(0, d.value);
+                .attrTween('d', (d, i, nodes) => {
+                    const old = prevData.get(nodes[i], d);
+                    const interpolateFrom = old ? old.value : 0;
+                    const interpolate = d3.interpolate(
+                        interpolateFrom,
+                        d.value
+                    );
                     return (t) => arc(interpolate(t), i);
                 });
         },
-        [selection, dimensions]
+        [selection]
     );
 
     return (
