@@ -1,32 +1,30 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { AppContext } from 'lib/App';
 import { Activity, Droplet, Watch } from 'react-feather';
 
-export const statData = [
+export const statMeta = [
     {
         id: 'calories',
-        name: 'Calories',
         suffix: 'Cal',
         icon: <Activity color="var(--ct-orange)" />,
         color: 'var(--ct-orange)'
     },
     {
         id: 'water_ml',
-        name: 'Water',
         suffix: 'mL',
         icon: <Droplet color="var(--blue)" />,
         color: 'var(--blue)'
     },
     {
         id: 'minutes',
-        name: 'Time',
         suffix: 'min',
         icon: <Watch color="var(--green)" />,
         color: 'var(--green)'
     }
 ];
 
-export const mappedStatData = (selection) => {
-    const newData = statData.map((stat) => {
+export const calculateStats = (selection) => {
+    const newData = statMeta.map((stat) => {
         let value =
             selection
                 .map((s) => s[stat.id])
@@ -45,27 +43,26 @@ export const mappedStatData = (selection) => {
 };
 
 function Stats({ selection }) {
-    const [stats, setStats] = useState(mappedStatData(selection));
-    const [currentStat, setStat] = useState(0);
+    const { currentStat, setCurrentStat } = useContext(AppContext);
+
+    const [data, setData] = useState(calculateStats(selection));
 
     const cycleStats = () => {
-        setStat(currentStat == stats.length - 1 ? 0 : currentStat + 1);
+        setCurrentStat(currentStat == data.length - 1 ? 0 : currentStat + 1);
     };
 
+    // recalculate when selection changes
     useEffect(() => {
-        setStats(mappedStatData(selection));
+        setData(calculateStats(selection));
     }, [selection]);
 
     return (
         <div id="stats">
             <div style={{ cursor: 'pointer' }} onClick={cycleStats}>
-                {stats[currentStat].icon}
+                {data[currentStat].icon}
             </div>
             <span>
-                {stats[currentStat].name}
-                :&nbsp;
-                {stats[currentStat].displayValue}{' '}
-                {currentStat === 0 ? null : stats[currentStat].suffix}
+                {data[currentStat].displayValue} {data[currentStat].suffix}
             </span>
         </div>
     );

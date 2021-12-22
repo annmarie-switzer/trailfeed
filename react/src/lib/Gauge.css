@@ -8,12 +8,7 @@
 }
 
 #gauge svg .arc {
-    opacity: 1;
     transition: opacity 0.3s;
-}
-
-#gauge svg .arc.not-hovered {
-    opacity: 0.4;
 }
 
 #gauge #center-text {

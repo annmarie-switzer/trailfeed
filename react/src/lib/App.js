@@ -12,6 +12,7 @@ function App() {
     const [theme, setTheme] = useState(
         localStorage.getItem('theme') ? localStorage.getItem('theme') : 'dark'
     );
+    const [currentStat, setCurrentStat] = useState(0);
 
     useEffect(() => {
         document.body.dataset.theme = theme;
@@ -33,7 +34,14 @@ function App() {
                 flexDirection: 'column',
                 height: '100vh'
             }}>
-            <AppContext.Provider value={{ user, theme, setTheme }}>
+            <AppContext.Provider
+                value={{
+                    user,
+                    theme,
+                    setTheme,
+                    currentStat,
+                    setCurrentStat
+                }}>
                 <Switch>
                     <Route exact path="/login">
                         <Login />

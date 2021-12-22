@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Plus } from 'react-feather';
 import SearchBar from 'pages/pantry/SearchBar';
 import Card from 'lib/Card';

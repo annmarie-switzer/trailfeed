@@ -1,6 +1,7 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
+import { AppContext } from 'lib/App';
 import * as d3 from 'd3';
-import Stats, { mappedStatData, statData } from './Stats';
+import Stats, { calculateStats, statMeta } from './Stats';
 
 export const useD3 = (renderChartFn, dependencies) => {
     const ref = useRef();
@@ -13,13 +14,21 @@ export const useD3 = (renderChartFn, dependencies) => {
 };
 
 function Gauge({ selection }) {
-    const maxCalories = 10000;
+    // global current stat
+    const { currentStat, setCurrentStat } = useContext(AppContext);
 
+    // calculated data
+    const [data, setData] = useState(calculateStats(selection));
+
+    // currently hovered arc
     const [selectedArc, setSelectedArc] = useState(null);
+
     const [dimensions, setDimensions] = useState({
         width: window.innerWidth,
         height: window.innerHeight
     });
+
+    const maxCalories = 10000;
 
     const ref = useD3(
         (svg) => {
@@ -30,7 +39,7 @@ function Gauge({ selection }) {
                 prevTrackData.set(this, d);
             });
 
-            const trackData = statData.map((arc) => ({
+            const trackData = statMeta.map((arc) => ({
                 ...arc,
                 value: maxCalories
             }));
@@ -64,9 +73,7 @@ function Gauge({ selection }) {
                 prevData.set(this, d);
             });
 
-            const data = mappedStatData(selection);
-
-            setSelectedArc(data[0]);
+            const data = calculateStats(selection);
 
             const chartRadius = dimensions.height / 1.5;
             const arcMinRadius = 350;
@@ -100,17 +107,23 @@ function Gauge({ selection }) {
                 .data(data)
                 .join('path')
                 .attr('class', 'arc')
+                .style('opacity', (d, i) => (i === currentStat ? 1 : 0.4))
                 .style('fill', (d, i) => data[i].color)
-                .on('mouseenter', (e, d) => {
-                    setSelectedArc(d);
-                    d3.selectAll('.arc')
-                        .filter((a) => a.id !== d.id)
-                        .classed('not-hovered', true);
+                .on('mouseenter', (e, hovered) => {
+                    setSelectedArc(hovered);
+                    d3.selectAll('.arc').style('opacity', (d, i) =>
+                        d.id === hovered.id ? 1 : 0.4
+                    );
                 })
                 .on('mouseleave', (e, d) => {
-                    setSelectedArc(data[0]);
-                    d3.selectAll('.arc').classed('not-hovered', false);
-                });
+                    setSelectedArc(null);
+                    d3.selectAll('.arc').style('opacity', (d, i) =>
+                        i === currentStat ? 1 : 0.4
+                    );
+                })
+                .on('click', (e, d) =>
+                    setCurrentStat(data.findIndex((datum) => datum.id === d.id))
+                );
 
             arcs.transition()
                 .delay((d, i) => i * 0)
@@ -125,31 +138,35 @@ function Gauge({ selection }) {
                     return (t) => arc(interpolate(t), i);
                 });
         },
-        [selection]
+        [selection, currentStat]
     );
 
     return (
         <div id="gauge">
             <svg
                 ref={ref}
-                viewBox={`0 0 ${dimensions.width} ${dimensions.height}`}
-            >
+                viewBox={`0 0 ${dimensions.width} ${dimensions.height}`}>
                 <g
                     className="plot-area"
                     transform={`translate(
                         ${dimensions.width / 2},
                         ${dimensions.height / 1.25}
-                    )`}
-                >
+                    )`}>
                     <g className="tracks"></g>
                     <g className="arcs"></g>
                 </g>
             </svg>
             <div id="center-text">
-                <span>{selectedArc?.icon}</span>
-                <span>
-                    {selectedArc?.displayValue} {selectedArc?.suffix}
-                </span>
+                {selectedArc ? (
+                    <>
+                        <span>{selectedArc.icon}</span>
+                        <span>
+                            {selectedArc.displayValue} {selectedArc.suffix}
+                        </span>
+                    </>
+                ) : (
+                    <Stats selection={selection} />
+                )}
             </div>
         </div>
     );
