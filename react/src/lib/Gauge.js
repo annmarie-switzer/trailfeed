@@ -28,7 +28,15 @@ function Gauge({ selection }) {
         height: window.innerHeight
     });
 
-    const maxCalories = 10000;
+    const [maxCalories, setMaxCalories] = useState(
+        Number(localStorage?.getItem('trailfeedMaxCals')) || 10000
+    );
+
+    const handleChange = (event) => {
+        const newVal = Number(event.target.value.replace(',', ''));
+        localStorage.setItem('trailfeedMaxCals', newVal);
+        setMaxCalories(newVal);
+    };
 
     const ref = useD3(
         (svg) => {
@@ -167,6 +175,14 @@ function Gauge({ selection }) {
                 ) : (
                     <Stats selection={selection} />
                 )}
+            </div>
+            <div className="input-container">
+                {/* <span>goal Cals</span> */}
+                <input
+                    type="text"
+                    onChange={handleChange}
+                    value={maxCalories.toLocaleString()}
+                />
             </div>
         </div>
     );

@@ -1,13 +1,18 @@
 #gauge {
     position: relative;
+    display: flex;
 }
 
-#gauge svg .arcs,
-#gauge svg .tracks {
+#gauge > svg {
+    flex: auto;
+}
+
+#gauge > svg .arcs,
+#gauge > svg .tracks {
     transform: rotate(-90deg);
 }
 
-#gauge svg .arc {
+#gauge > svg .arc {
     transition: opacity 0.3s;
 }
 
@@ -17,8 +22,43 @@
     left: 50%;
     transform: translate(-50%, 0);
     display: flex;
-    /* flex-direction: column; */
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
+}
+
+#gauge .input-container {
+    position: absolute;
+    bottom: 0.5rem;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 30%;
+    display: flex;
+    align-items: center;
+}
+
+#gauge .input-container input {
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    outline: none;
+    border: 0;
+    background-color: transparent;
+    color: var(--fg4);
+    font-size: 1rem;
+    padding: 0.5rem;
+    box-sizing: border-box;
+    margin: auto;
+    text-align: center;
+    width: 100%;
+}
+
+#gauge .input-container input:focus {
+    border-bottom: solid 1px var(--fg);
+}
+
+#gauge .input-container span {
+    font-size: 0.8rem;
+    color: var(--fg4);
+    display: flex;
 }

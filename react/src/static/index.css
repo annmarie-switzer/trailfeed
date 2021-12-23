@@ -231,10 +231,6 @@ button {
     color: currentColor;
 }
 
-/* button:hover {
-    filter: brightness(1.2);
-} */
-
 button:active {
     opacity: 0.8;
 }
