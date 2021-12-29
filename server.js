@@ -8,10 +8,11 @@ import jwt from 'jsonwebtoken';
 dotenv.config();
 
 const app = express();
-const port = process.env.PORT || 5000;
-const serverUrl = 'http://localhost:5000';
-const clientUrl = 'http://localhost:3000';
-const esUrl = 'http://localhost:9200';
+
+const port = process.env.PORT;
+const serverUrl = process.env.SERVER_URL;
+const clientUrl = process.env.CLIENT_URL;
+const esUrl = process.env.ES_URL;
 const authString = Buffer.from(
     `${process.env.ES_USER}:${process.env.ES_PW}`
 ).toString('base64');
@@ -29,13 +30,14 @@ app.use(
 app.use(
     session({
         cookie: {
-            domain: 'localhost',
+            domain: process.env.DOMAIN,
             httpOnly: true,
             sameSite: true,
             secure: process.env.NODE_ENV === 'production'
         },
         resave: false,
         saveUninitialized: false,
+        // TODO
         secret: 'changeme',
         unset: 'destroy'
     })
@@ -145,6 +147,10 @@ app.all('*', (req, res) => {
     res.status(404).end();
 });
 
-app.listen(port, async () => {
-    console.log(`~ Server is running at http://127.0.0.1:${port} ~`);
-});
+try {
+    app.listen(port, async () => {
+        console.log(`~ Server is running at ${serverUrl} ~`);
+    });
+} catch (_) {
+    console.log('Couldn\'t start server: Elasticsearch could not be reached.');
+}
