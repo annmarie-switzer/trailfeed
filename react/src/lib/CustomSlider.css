@@ -43,7 +43,7 @@
 
 /* .MuiSlider-valueLabelOpen {
     border-radius: 0.25rem !important;
-    background-color: var(--fg2) !important;
+    background-color: var(--light-text) !important;
     color: var(--bg) !important;
     font-family: inherit;
 } */

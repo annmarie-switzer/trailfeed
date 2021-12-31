@@ -15,7 +15,7 @@
     overflow: hidden;
     width: 0;
     display: flex;
-    border-left: solid 1px var(--bg-lighter);
+    border-left: solid 1px var(--bg-contrast);
 }
 
 #pantry .drawer.open {

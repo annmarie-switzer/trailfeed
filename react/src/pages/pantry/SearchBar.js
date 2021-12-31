@@ -237,6 +237,7 @@ function SearchBar(props) {
                         type="text"
                         id="search-input"
                         placeholder="Search by name, ingredients, or brand"
+                        autoComplete="off"
                         onKeyDown={handleInput}
                     />
                 </div>

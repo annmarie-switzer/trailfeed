@@ -6,8 +6,8 @@ export const statMeta = [
     {
         id: 'calories',
         suffix: 'Cal',
-        icon: <Activity color="var(--ct-orange)" />,
-        color: 'var(--ct-orange)'
+        icon: <Activity color="var(--calories)" />,
+        color: 'var(--calories)'
     },
     {
         id: 'water_ml',

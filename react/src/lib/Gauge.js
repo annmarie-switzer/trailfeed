@@ -58,7 +58,7 @@ function Gauge({ selection }) {
                 .data(trackData)
                 .join('path')
                 .attr('class', 'track')
-                .style('fill', 'var(--bg-lighter)');
+                .style('fill', 'var(--bg-contrast)');
 
             tracks
                 .transition()
