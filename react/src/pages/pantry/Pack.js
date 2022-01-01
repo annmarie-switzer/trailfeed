@@ -27,8 +27,7 @@ function Pack({ selection, setSelection }) {
                                         color: meal.link
                                             ? 'var(--meal-name-link)'
                                             : 'var(--meal-name-custom)'
-                                    }}
-                                >
+                                    }}>
                                     {meal.name}
                                 </div>
                                 <div className="detail-row">{meal.brand}</div>
@@ -50,8 +49,7 @@ function Pack({ selection, setSelection }) {
                             <div
                                 className="icon"
                                 title="Remove from pack"
-                                onClick={() => deselect(meal)}
-                            >
+                                onClick={() => deselect(meal)}>
                                 <X />
                             </div>
                         </div>

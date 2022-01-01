@@ -146,8 +146,10 @@ function Gauge({ selection }) {
                     return (t) => arc(interpolate(t), i);
                 });
         },
-        [selection, currentStat]
+        [selection, currentStat, maxCalories]
     );
+
+    let input = useRef();
 
     return (
         <div id="gauge">
@@ -176,14 +178,17 @@ function Gauge({ selection }) {
                     <Stats selection={selection} />
                 )}
             </div>
-            <div className="input-container">
-                {/* <span>goal Cals</span> */}
-                <input
-                    type="text"
-                    onChange={handleChange}
-                    value={maxCalories.toLocaleString()}
-                />
-            </div>
+            {currentStat === 0 ? (
+                <div className="input-container">
+                    <span onClick={() => input.focus()}>target: </span>
+                    <input
+                        ref={(i) => (input = i)}
+                        type="text"
+                        onChange={handleChange}
+                        value={maxCalories.toLocaleString()}
+                    />
+                </div>
+            ) : null}
         </div>
     );
 }
