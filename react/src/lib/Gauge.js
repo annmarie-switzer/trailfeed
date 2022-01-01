@@ -180,13 +180,13 @@ function Gauge({ selection }) {
             </div>
             {currentStat === 0 ? (
                 <div className="input-container">
-                    <span onClick={() => input.focus()}>target: </span>
                     <input
                         ref={(i) => (input = i)}
                         type="text"
                         onChange={handleChange}
                         value={maxCalories.toLocaleString()}
                     />
+                    <span onClick={() => input.focus()}>Target Cals: </span>
                 </div>
             ) : null}
         </div>

@@ -29,14 +29,13 @@
 
 #gauge .input-container {
     position: absolute;
-    bottom: 0.5rem;
+    bottom: -0.5rem;
     left: 50%;
     transform: translate(-50%, 0);
-    width: 9rem;
-}
-
-#gauge .input-container > div {
-    position: relative;
+    width: 11rem;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
 }
 
 #gauge .input-container input {
@@ -49,11 +48,10 @@
     background-color: var(--bg-contrast);
     color: var(--light-text);
     font-size: 1rem;
-    padding: 0.5rem 1rem 0.5rem 0.5rem;
-    box-sizing: border-box;
-    margin: auto;
+    font-family: inherit;
     width: 100%;
-    text-align: end;
+    padding: 0.5rem 0;
+    text-align: center;
 }
 
 #gauge .input-container input:focus {
@@ -61,12 +59,13 @@
     border-color: var(--fg);
 }
 
+#gauge .input-container input:focus + span {
+    color: var(--fg);
+}
+
 #gauge .input-container span {
-    font-size: 0.8rem;
-    color: var(--light-text);
-    position: absolute;
-    left: 0;
-    bottom: 50%;
-    transform: translate(0, 50%);
     padding-left: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--light-text);
+    width: 100%;
 }
