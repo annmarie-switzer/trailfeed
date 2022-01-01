@@ -28,14 +28,15 @@ body[data-theme='dark'] {
 
     --primary: var(--purple);
     --accent: var(--aqua);
-    --success: var(--ct-aqua);
+    --success: var(--green);
 
     --badge: var(--ct-orange);
     --calories: var(--ct-orange);
     --checkbox: var(--accent);
-    --inverse-checkbox: var(--red);
+    --inverse-checkbox: var(--orange);
     --meal-name-custom: var(--primary);
-    --meal-name-link: var(--blue);
+    --meal-name-link: var(--primary);
+    --spork: var(--ct-yellow);
 
     --red: #cc241d;
     --ct-red: #fb4934;
@@ -83,7 +84,7 @@ body[data-theme='light'] {
     --checkbox: var(--accent);
     --inverse-checkbox: var(--ct-red);
     --meal-name-custom: var(--primary);
-    --meal-name-link: var(--blue);
+    --meal-name-link: var(--accent);
     
     --red: #aa0982;
     --ct-red: #f16b66;

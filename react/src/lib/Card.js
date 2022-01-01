@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react';
+import Checkbox from './Checkbox';
 import {
     Activity,
     Award,
-    CheckCircle,
+    CheckSquare,
     Coffee,
     Droplet,
     Frown,
+    Square,
+    Star,
     Thermometer,
     Watch
 } from 'react-feather';
@@ -16,13 +19,13 @@ function Card(props) {
     const [ids, setIds] = useState([]);
 
     useEffect(() => {
-        setIds(selection.map(s => s.id));
-    }, [selection])
+        setIds(selection.map((s) => s.id));
+    }, [selection]);
 
     return (
         <div className="card">
             <div className="card-header">
-                <div>
+                <div className="name-container">
                     {hit.link ? (
                         <a
                             href={hit.link}
@@ -34,22 +37,23 @@ function Card(props) {
                     ) : (
                         <span className="name">{hit.name}</span>
                     )}
-                    <button
-                        type="button"
+                    <span
                         title={
                             ids.includes(hit.id)
                                 ? 'Remove from pack'
                                 : 'Add to pack'
-                        }
-                        onClick={() => handleSelection(hit)}>
-                        <CheckCircle
-                            color={
-                                ids.includes(hit.id)
-                                    ? 'var(--success)'
-                                    : 'currentColor'
-                            }
+                        }>
+                        <Checkbox
+                            color="var(--success)"
+                            onChange={() => handleSelection(hit)}
                         />
-                    </button>
+                    </span>
+                    <span className="sporks">
+                        <Star />
+                        <Star />
+                        <Star />
+                        <Star />
+                    </span>
                 </div>
                 <span className="brand">
                     {hit.brand === 'TRAILFEED_USER_CUSTOM'
