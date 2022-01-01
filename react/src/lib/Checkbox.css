@@ -14,11 +14,9 @@
 }
 
 .checkbox > input {
-    /* remove default */
     appearance: none;
     -moz-appearance: none;
     -webkit-appearance: none;
-    /* custom styles */
     margin-left: 1px;
     border: solid 2px;
     border-radius: 4px;
