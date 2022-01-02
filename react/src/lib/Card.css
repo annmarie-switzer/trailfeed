@@ -1,11 +1,25 @@
 .card {
     display: flex;
     flex-direction: column;
-    gap: 1.25rem;
     box-shadow: var(--box-shadow-deep);
     border-radius: 0.25rem;
     background-color: var(--bg-contrast);
-    padding: 1rem 1.2rem;
+    position: relative;
+}
+
+.card .card-footer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0.5rem;
+    box-sizing: border-box;
+}
+
+.card .select-icon {
+    cursor: pointer;
+    position:absolute;
+    bottom: 0;
+    right: 0;
 }
 
 .card .card-header {
@@ -13,6 +27,8 @@
     flex-direction: column;
     justify-content: center;
     gap: 0.375rem;
+    padding: 1rem;
+    box-sizing: border-box;
 }
 
 .card .card-header > .name-container {
@@ -23,7 +39,7 @@
 
 .card .card-header .name {
     font-size: 1.2rem;
-    max-width: 50%;
+    width: 100%;
 }
 
 .card .card-header span.name {
@@ -37,10 +53,6 @@
 
 .card .card-header a.name:hover {
     text-decoration: underline;
-}
-
-.card .select-icon {
-    cursor: pointer;
 }
 
 .card .card-header .brand {
@@ -65,6 +77,9 @@
 
 .card .card-content {
     height: 100%;
+    padding: 0.5rem 1rem;
+    box-sizing: border-box;
+    overflow: auto;
 }
 
 .card .card-content .list {

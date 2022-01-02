@@ -75,16 +75,17 @@ body[data-theme='light'] {
     --fg: var(--fg1);
     --light-text: var(--fg3);
     
-    --primary: var(--aqua);
-    --accent: var(--ct-purple);
+    --primary: var(--purple);
+    --accent: var(--aqua);
     --success: var(--green);
     
     --badge: var(--orange);
     --calories: var(--orange);
     --checkbox: var(--accent);
-    --inverse-checkbox: var(--ct-red);
+    --inverse-checkbox: var(--orange);
     --meal-name-custom: var(--primary);
-    --meal-name-link: var(--accent);
+    --meal-name-link: var(--primary);
+    --spork: var(--yellow);
     
     --red: #aa0982;
     --ct-red: #f16b66;

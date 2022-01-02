@@ -33,6 +33,7 @@
         }
     },
     "mappings": {
+        "dynamic": "strict",
         "properties": {
             "brand": {
                 "type": "text",

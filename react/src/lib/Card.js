@@ -37,17 +37,6 @@ function Card(props) {
                     ) : (
                         <span className="name">{hit.name}</span>
                     )}
-                    <span
-                        title={
-                            ids.includes(hit.id)
-                                ? 'Remove from pack'
-                                : 'Add to pack'
-                        }>
-                        <Checkbox
-                            color="var(--success)"
-                            onChange={() => handleSelection(hit)}
-                        />
-                    </span>
                     <span className="sporks">
                         <Star />
                         <Star />
@@ -64,34 +53,47 @@ function Card(props) {
             <div className="card-content">
                 <div className="list">
                     <div className="list-item">
-                        <Coffee />
+                        <Coffee size={20} />
                         <span>{hit.meal_type}</span>
                     </div>
                     <div className="list-item">
-                        <Activity />
+                        <Activity size={20} />
                         <span>{hit.calories} Cal</span>
                     </div>
                     <div className="list-item">
-                        <Droplet />
+                        <Droplet size={20} />
                         <span>{hit.water_ml} mL</span>
                     </div>
                     <div className="list-item">
-                        <Thermometer />
+                        <Thermometer size={20} />
                         <span>{hit.water_temp}</span>
                     </div>
                     <div className="list-item">
-                        <Watch />
+                        <Watch size={20} />
                         <span>{hit.minutes} min</span>
                     </div>
                     <div className="list-item">
-                        <Frown />
+                        <Frown size={20} />
                         <span>{hit.allergens}</span>
                     </div>
                     <div className="list-item">
-                        <Award />
+                        <Award size={20} />
                         <span>{hit.special}</span>
                     </div>
                 </div>
+            </div>
+            <div className="card-footer">
+                <span
+                    title={
+                        ids.includes(hit.id)
+                            ? 'Remove from pack'
+                            : 'Add to pack'
+                    }>
+                    <Checkbox
+                        color="var(--success)"
+                        onChange={() => handleSelection(hit)}
+                    />
+                </span>
             </div>
         </div>
     );
