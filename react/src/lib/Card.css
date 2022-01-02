@@ -7,22 +7,33 @@
     position: relative;
 }
 
-.card .card-footer {
+.card-footer {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
-    padding: 0.5rem;
+    padding: 1rem;
     box-sizing: border-box;
+}
+
+.sporks {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.sporks > * {
+    cursor: pointer;
+}
+
+.sporks > *:hover {
+    fill: var(--spork);
+    stroke: var(--spork);
 }
 
 .card .select-icon {
     cursor: pointer;
-    position:absolute;
-    bottom: 0;
-    right: 0;
 }
 
-.card .card-header {
+.card-header {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -31,64 +42,49 @@
     box-sizing: border-box;
 }
 
-.card .card-header > .name-container {
+.card-header > .name-container {
     display: flex;
     align-items: center;
     gap: 0.5rem;
 }
 
-.card .card-header .name {
+.card-header .name {
     font-size: 1.2rem;
     width: 100%;
 }
 
-.card .card-header span.name {
+.card-header span.name {
     color: var(--meal-name-custom);
 }
 
-.card .card-header a.name {
+.card-header a.name {
     text-decoration: none;
     color: var(--meal-name-link);
 }
 
-.card .card-header a.name:hover {
+.card-header a.name:hover {
     text-decoration: underline;
 }
 
-.card .card-header .brand {
+.card-header .brand {
     font-size: 0.875rem;
     color: var(--light-text);
 }
 
-.card .card-header .sporks {
-    margin-left: auto;
-    display: flex;
-    gap: 0.5rem;
-}
-
-.card .card-header .sporks > * {
-    cursor: pointer;
-}
-
-.card .card-header .sporks > *:hover {
-    fill: var(--spork);
-    stroke: var(--spork);
-}
-
-.card .card-content {
+.card-content {
     height: 100%;
     padding: 0.5rem 1rem;
     box-sizing: border-box;
     overflow: auto;
 }
 
-.card .card-content .list {
+.card-content .list {
     display: flex;
     flex-direction: column;
     gap: 1rem;
 }
 
-.card .card-content .list .list-item {
+.card-content .list .list-item {
     display: flex;
     align-items: center;
     gap: 1rem;

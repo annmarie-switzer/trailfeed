@@ -37,11 +37,16 @@ function Card(props) {
                     ) : (
                         <span className="name">{hit.name}</span>
                     )}
-                    <span className="sporks">
-                        <Star />
-                        <Star />
-                        <Star />
-                        <Star />
+                    <span
+                        title={
+                            ids.includes(hit.id)
+                                ? 'Remove from pack'
+                                : 'Add to pack'
+                        }>
+                        <Checkbox
+                            color="var(--success)"
+                            onChange={() => handleSelection(hit)}
+                        />
                     </span>
                 </div>
                 <span className="brand">
@@ -83,16 +88,12 @@ function Card(props) {
                 </div>
             </div>
             <div className="card-footer">
-                <span
-                    title={
-                        ids.includes(hit.id)
-                            ? 'Remove from pack'
-                            : 'Add to pack'
-                    }>
-                    <Checkbox
-                        color="var(--success)"
-                        onChange={() => handleSelection(hit)}
-                    />
+                <span>Your rating: </span>
+                <span className="sporks">
+                    <Star />
+                    <Star />
+                    <Star />
+                    <Star />
                 </span>
             </div>
         </div>
