@@ -1,9 +1,10 @@
 import React from 'react';
-import { AppContext } from 'lib/App';
-import Stats from '../../lib/Stats';
+import { AppContext } from 'components/App';
+import Stats from '../components/Stats';
 import { CheckCircle, X } from 'react-feather';
-import Checkbox from 'lib/Checkbox';
-import Gauge from 'lib/Gauge';
+import Checkbox from 'components/Checkbox';
+import Gauge from 'components/Gauge';
+import MealName from 'components/MealName';
 
 function Pack({ selection, setSelection }) {
     const deselect = (meal) => {
@@ -28,7 +29,7 @@ function Pack({ selection, setSelection }) {
                                             ? 'var(--meal-name-link)'
                                             : 'var(--meal-name-custom)'
                                     }}>
-                                    {meal.name}
+                                    <MealName name={meal.name} link={meal.link} />
                                 </div>
                                 <div className="detail-row">{meal.brand}</div>
                                 <div className="detail-row">

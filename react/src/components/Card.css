@@ -9,24 +9,10 @@
 
 .card-footer {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
-    padding: 1rem;
+    padding: 0.5rem 1rem;
     box-sizing: border-box;
-}
-
-.sporks {
-    display: flex;
-    gap: 0.5rem;
-}
-
-.sporks > * {
-    cursor: pointer;
-}
-
-.sporks > *:hover {
-    fill: var(--spork);
-    stroke: var(--spork);
 }
 
 .card .select-icon {
@@ -38,7 +24,7 @@
     flex-direction: column;
     justify-content: center;
     gap: 0.375rem;
-    padding: 1rem;
+    padding: 1rem 1rem 0.5rem 1rem;
     box-sizing: border-box;
 }
 
@@ -48,24 +34,6 @@
     gap: 0.5rem;
 }
 
-.card-header .name {
-    font-size: 1.2rem;
-    width: 100%;
-}
-
-.card-header span.name {
-    color: var(--meal-name-custom);
-}
-
-.card-header a.name {
-    text-decoration: none;
-    color: var(--meal-name-link);
-}
-
-.card-header a.name:hover {
-    text-decoration: underline;
-}
-
 .card-header .brand {
     font-size: 0.875rem;
     color: var(--light-text);
@@ -73,7 +41,7 @@
 
 .card-content {
     height: 100%;
-    padding: 0.5rem 1rem;
+    padding: 0 1rem;
     box-sizing: border-box;
     overflow: auto;
 }
@@ -81,11 +49,12 @@
 .card-content .list {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 0.75rem;
 }
 
 .card-content .list .list-item {
     display: flex;
     align-items: center;
     gap: 1rem;
+    font-size: 0.875rem;
 }

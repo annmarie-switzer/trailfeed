@@ -1,0 +1,14 @@
+#stars {
+    display: flex;
+    gap: 0.5rem;
+    padding: 0.5rem 0;
+}
+
+#stars > * {
+    cursor: pointer;
+}
+
+#stars > *:hover {
+    fill: var(--stars);
+    stroke: var(--stars);
+}

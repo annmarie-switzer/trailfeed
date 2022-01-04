@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
-import { AppContext } from 'lib/App';
+import { AppContext } from 'components/App';
 import * as d3 from 'd3';
 import Stats, { calculateStats, statMeta } from './Stats';
 

@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Plus } from 'react-feather';
-import SearchBar from 'pages/pantry/SearchBar';
-import Card from 'lib/Card';
+import SearchBar from 'components/SearchBar';
+import Card from 'components/Card';
 import { search } from 'api';
 import Pack from './Pack';
-import Toolbar from 'pages/pantry/Toolbar';
+import Toolbar from 'components/Toolbar';
 
 function Pantry() {
     const [query, setQuery] = useState(null);

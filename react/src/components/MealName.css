@@ -1,0 +1,17 @@
+.meal-name {
+    font-size: 1.2rem;
+    width: 100%;
+}
+
+span.meal-name {
+    color: var(--meal-name-custom);
+}
+
+a.meal-name {
+    text-decoration: none;
+    color: var(--meal-name-link);
+}
+
+a.meal-name:hover {
+    text-decoration: underline;
+}

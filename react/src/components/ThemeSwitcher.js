@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { AppContext } from 'lib/App';
+import { AppContext } from 'components/App';
 import { Moon, Sun } from 'react-feather';
 
 function ThemeSwitcher() {
@@ -15,13 +15,14 @@ function ThemeSwitcher() {
         <button
             id="theme-switcher"
             type="button"
+            title={
+                theme === 'dark'
+                    ? 'Switch to light theme'
+                    : 'Switch to dark theme'
+            }
             className={theme}
             onClick={() => selectTheme(theme === 'dark' ? 'light' : 'dark')}>
-            {theme === 'light' ? (
-                <Moon width={24} height={24} />
-            ) : (
-                <Sun width={24} height={24} />
-            )}
+            {theme === 'light' ? <Moon /> : <Sun />}
         </button>
     );
 }

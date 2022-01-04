@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { search } from 'api';
-import { AppContext } from 'lib/App';
-import CheckboxList from 'lib/CheckboxList';
-import CustomSlider from 'lib/CustomSlider';
+import { AppContext } from 'components/App';
+import CheckboxList from 'components/CheckboxList';
+import CustomSlider from 'components/CustomSlider';
 import { Search, Sliders } from 'react-feather';
 
 function SearchBar(props) {

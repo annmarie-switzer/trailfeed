@@ -1,15 +1,18 @@
-@import url('../pages/pantry/Pantry.css');
-@import url('../pages/pantry/SearchBar.css');
-@import url('../pages/pantry/Toolbar.css');
-@import url('../pages/pantry/Pack.css');
-@import url('../pages/login/Login.css');
-@import url('../lib/ThemeSwitcher.css');
-@import url('../lib/CustomSlider.css');
-@import url('../lib/CheckboxList.css');
-@import url('../lib/Checkbox.css');
-@import url('../lib/Card.css');
-@import url('../lib/Stats.css');
-@import url('../lib/Gauge.css');
+@import url('../components/Pantry.css');
+@import url('../components/SearchBar.css');
+@import url('../components/Toolbar.css');
+@import url('../components/Pack.css');
+@import url('../components/Login.css');
+@import url('../components/ThemeSwitcher.css');
+@import url('../components/CustomSlider.css');
+@import url('../components/CheckboxList.css');
+@import url('../components/Checkbox.css');
+@import url('../components/Card.css');
+@import url('../components/Stats.css');
+@import url('../components/Gauge.css');
+@import url('../components/Stars.css');
+@import url('../components/Modal.css');
+@import url('../components/MealName.css');
 
 :root {
     --box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.1),
@@ -36,7 +39,7 @@ body[data-theme='dark'] {
     --inverse-checkbox: var(--orange);
     --meal-name-custom: var(--accent);
     --meal-name-link: var(--primary);
-    --spork: var(--ct-yellow);
+    --stars: var(--ct-yellow);
 
     --red: #cc241d;
     --ct-red: #fb4934;
@@ -85,7 +88,7 @@ body[data-theme='light'] {
     --inverse-checkbox: var(--orange);
     --meal-name-custom: var(--accent);
     --meal-name-link: var(--primary);
-    --spork: var(--yellow);
+    --stars: var(--yellow);
     
     --red: #aa0982;
     --ct-red: #f16b66;
@@ -228,7 +231,8 @@ button {
     border: 0;
     cursor: pointer;
     border-radius: 0.25rem;
-    padding: 0.5rem 1rem;
+    padding: 0.5rem;
+    font-family: inherit;
     font-size: 0.875rem;
     font-weight: 500;
     display: flex;
@@ -243,7 +247,7 @@ button:active {
     opacity: 0.8;
 }
 
-.tooltip {
+/* .tooltip {
     visibility: hidden;
     background-color: var(--fg2);
     color: var(--bg);
@@ -289,7 +293,7 @@ button:active {
     height: 25px;
     border-left: solid 1px var(--bg2);
     margin: 0 0.4rem;
-}
+} */
 
 /* fira-sans-300 - latin */
 @font-face {

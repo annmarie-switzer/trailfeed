@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { AppContext } from 'lib/App';
+import { AppContext } from 'components/App';
 import { Activity, Droplet, Watch } from 'react-feather';
 
 export const statMeta = [
