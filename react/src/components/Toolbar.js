@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { logout } from 'api';
 import ThemeSwitcher from '../components/ThemeSwitcher';
 import Stats from '../components/Stats';
@@ -6,6 +7,8 @@ import { FileText, LogOut } from 'react-feather';
 import BackpackIcon from 'components/icons/BackpackIcon';
 
 function Toolbar({ packOpen, setPackOpen, selection }) {
+    const navigate = useNavigate();
+
     return (
         <div id="toolbar">
             <div className="wrapper">
@@ -25,7 +28,10 @@ function Toolbar({ packOpen, setPackOpen, selection }) {
                 </div>
 
                 <div className="right">
-                    <button type="button" title="Create Custom Meal">
+                    <button
+                        type="button"
+                        title="Create Custom Meal"
+                        onClick={() => navigate('/new-meal')}>
                         <FileText />
                     </button>
 

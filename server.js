@@ -156,10 +156,10 @@ app.post('/update-rating', async (req, res) => {
     res.json(await esRes.json());
 });
 
-app.post('/new-rating', async (req, res) => {
-    const esRes = await fetch(`${esUrl}/ratings/_doc?refresh=true`, {
+app.post('/new-doc', async (req, res) => {
+    const esRes = await fetch(`${esUrl}/${req.body.index}/_doc?refresh=true`, {
         method: 'POST',
-        body: JSON.stringify(req.body),
+        body: JSON.stringify(req.body.newDoc),
         headers: {
             'Content-Type': 'application/json',
             Authorization: `Basic ${authString}`

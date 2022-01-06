@@ -1,23 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AppContext } from 'components/App';
 import { Star } from 'react-feather';
-import { search, updateRating, newRating } from 'api';
+import { search, updateRating, newDoc } from 'api';
 
 function Stars({ mealId }) {
     const { user } = useContext(AppContext);
     const [docId, setDocId] = useState(null);
     const [rating, setRating] = useState(0);
-
-    const rate = async (r) => {
-        if (docId) {
-            await updateRating({ docId, rating: r });
-        } else {
-            await newRating({ user: user.email, meal_id: mealId, rating: r });
-        }
-
-        getRating();
-        
-    };
 
     const getRating = async () => {
         const ratingsQuery = {
@@ -53,6 +42,19 @@ function Stars({ mealId }) {
             setDocId(_id);
             setRating(_source.rating);
         }
+    };
+
+    const rate = async (r) => {
+        if (docId) {
+            await updateRating({ docId, rating: r });
+        } else {
+            await newDoc({
+                index: 'ratings',
+                newDoc: { user: user.email, meal_id: mealId, rating: r }
+            });
+        }
+
+        getRating();
     };
 
     useEffect(() => {
