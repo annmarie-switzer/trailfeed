@@ -13,6 +13,7 @@
 @import url('../components/Stars.css');
 @import url('../components/Modal.css');
 @import url('../components/MealName.css');
+@import url('../components/NewMeal.css');
 
 :root {
     --box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.1),

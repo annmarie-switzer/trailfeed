@@ -15,7 +15,7 @@ function Toolbar({ packOpen, setPackOpen, selection }) {
                         id="logout"
                         title="Logout"
                         onClick={logout}>
-                        <LogOut style={{transform: 'scaleX(-1)'}} />
+                        <LogOut style={{ transform: 'scaleX(-1)' }} />
                     </button>
                     <ThemeSwitcher />
                 </div>
@@ -25,9 +25,7 @@ function Toolbar({ packOpen, setPackOpen, selection }) {
                 </div>
 
                 <div className="right">
-                    <button
-                        type="button"
-                        title="Create Custom Meal">
+                    <button type="button" title="Create Custom Meal">
                         <FileText />
                     </button>
 

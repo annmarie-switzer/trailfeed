@@ -5,6 +5,7 @@ import Login from 'components/Login';
 import Home from 'components/Home';
 import AuthRoute from 'components/AuthRoute';
 import Modal from 'components/Modal';
+// import NewMeal from 'components/NewMeal';
 
 export const AppContext = createContext(null);
 
@@ -50,6 +51,9 @@ function App() {
                         <Route exact path="/login">
                             <Login />
                         </Route>
+                        {/* <AuthRoute exact path="/new-meal">
+                            <NewMeal />
+                        </AuthRoute> */}
                         <AuthRoute exact path="/">
                             <Home />
                         </AuthRoute>
@@ -57,7 +61,9 @@ function App() {
                 </AppContext.Provider>
             </div>
 
-            {modalData ? <Modal modalData={modalData} setModalData={setModalData} /> : null}
+            {modalData ? (
+                <Modal modalData={modalData} setModalData={setModalData} />
+            ) : null}
         </>
     );
 }

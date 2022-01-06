@@ -34,7 +34,7 @@ function Card({ hit, selection, handleSelection }) {
                                 : 'Add to pack'
                         }>
                         <Checkbox
-                            color="var(--success)"
+                            color="var(--accent)"
                             onChange={() => handleSelection(hit)}
                         />
                     </span>
