@@ -1,5 +1,4 @@
-import React, { useEffect, useContext, useState } from 'react';
-import { AppContext } from 'components/App';
+import React, { useEffect, useState } from 'react';
 import { logout } from 'api';
 import ThemeSwitcher from '../components/ThemeSwitcher';
 import Stats from '../components/Stats';
@@ -7,8 +6,6 @@ import { FileText, LogOut, Settings } from 'react-feather';
 import BackpackIcon from 'components/icons/BackpackIcon';
 
 function Toolbar({ packOpen, setPackOpen, selection }) {
-    const { user } = useContext(AppContext);
-
     const [menuOpen, setMenuOpen] = useState(false);
     const [modalOpen, setModalOpen] = useState(false);
 

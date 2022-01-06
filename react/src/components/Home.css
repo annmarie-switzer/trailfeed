@@ -1,35 +1,35 @@
-#pantry {
+#home {
     display: flex;
     flex-direction: column;
     height: 100%;
     overflow: hidden;
 }
 
-#pantry .drawer-wrapper {
+#home .drawer-wrapper {
     display: flex;
     position: relative;
     height: 100%;
 }
 
-#pantry .drawer {
+#home .drawer {
     overflow: hidden;
     width: 0;
     display: flex;
     border-left: solid 1px var(--bg-contrast);
 }
 
-#pantry .drawer.open {
+#home .drawer.open {
     width: 35%;
 }
 
-#pantry .main {
+#home .main {
     display: flex;
     flex-direction: column;
     overflow-y: auto;
     width: 100%;
 }
 
-#pantry .cards {
+#home .cards {
     padding: 2rem 2rem calc(2rem + 50px) 2rem;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));

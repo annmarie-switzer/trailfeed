@@ -203,7 +203,7 @@ function SearchBar(props) {
             size: 0
         };
 
-        search(q).then((res) => {
+        search({query: q, index: 'meals'}).then((res) => {
             setMealTypes(res.aggregations.meal_types.buckets);
             setWaterTemps(res.aggregations.water_temps.buckets);
             setAllergens(res.aggregations.allergens.buckets);

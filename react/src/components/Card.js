@@ -16,9 +16,8 @@ import {
 } from 'react-feather';
 
 function Card({ hit, selection, handleSelection }) {
-    const [ids, setIds] = useState([]);
-
     const { setModalData } = useContext(AppContext);
+    const [ids, setIds] = useState([]);
 
     useEffect(() => {
         setIds(selection.map((s) => s.id));
@@ -46,7 +45,7 @@ function Card({ hit, selection, handleSelection }) {
                         ? 'You made this!'
                         : hit.brand}
                 </span>
-                <Stars />
+                <Stars mealId={hit.id} />
             </div>
             <div className="card-content">
                 <div className="list">

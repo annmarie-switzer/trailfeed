@@ -2,7 +2,7 @@ import React, { createContext, useEffect, useState } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import { getUser } from 'api';
 import Login from 'components/Login';
-import Pantry from 'components/Pantry';
+import Home from 'components/Home';
 import AuthRoute from 'components/AuthRoute';
 import Modal from 'components/Modal';
 
@@ -51,7 +51,7 @@ function App() {
                             <Login />
                         </Route>
                         <AuthRoute exact path="/">
-                            <Pantry />
+                            <Home />
                         </AuthRoute>
                     </Switch>
                 </AppContext.Provider>

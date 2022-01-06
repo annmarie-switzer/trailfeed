@@ -1,0 +1,21 @@
+{
+    "settings": {
+        "index": {
+            "codec": "best_compression"
+        }
+    },
+    "mappings": {
+        "dynamic": "strict",
+        "properties": {
+            "user": {
+                "type": "keyword"
+            },
+            "meal_id": {
+                "type": "keyword"
+            },
+            "rating": {
+                "type": "integer"
+            }
+        }
+    }
+}

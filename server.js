@@ -43,7 +43,7 @@ app.use(
     })
 );
 
-// TODO - how can I secure `bulk-upload`?
+// TODO - secure `bulk-upload`
 app.use((req, res, next) => {
     if (
         req.session['profile'] ||
@@ -56,7 +56,6 @@ app.use((req, res, next) => {
     }
 });
 
-// auth
 app.get('/callback', async (req, res) => {
     const response = await fetch('https://oauth2.googleapis.com/token', {
         method: 'POST',
@@ -102,7 +101,6 @@ app.get('/user', async (req, res) => {
     });
 });
 
-// elastic
 app.post('/bulk-upload', async (req, res) => {
     const data = req.body;
     const header = { create: {} };
@@ -131,8 +129,35 @@ app.post('/bulk-upload', async (req, res) => {
 });
 
 app.post('/search', async (req, res) => {
-    // TODO - return error response if ES isn't running
-    const esRes = await fetch(`${esUrl}/meals/_search`, {
+    const esRes = await fetch(`${esUrl}/${req.body.index}/_search`, {
+        method: 'POST',
+        body: JSON.stringify(req.body.query),
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Basic ${authString}`
+        }
+    });
+
+    res.json(await esRes.json());
+});
+
+app.post('/update-rating', async (req, res) => {
+    const esRes = await fetch(`${esUrl}/ratings/_update/${req.body.docId}?refresh=true`, {
+        method: 'POST',
+        body: JSON.stringify({
+            script: `ctx._source.rating = ${req.body.rating}`
+        }),
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Basic ${authString}`
+        }
+    });
+
+    res.json(await esRes.json());
+});
+
+app.post('/new-rating', async (req, res) => {
+    const esRes = await fetch(`${esUrl}/ratings/_doc?refresh=true`, {
         method: 'POST',
         body: JSON.stringify(req.body),
         headers: {
@@ -140,6 +165,7 @@ app.post('/search', async (req, res) => {
             Authorization: `Basic ${authString}`
         }
     });
+
     res.json(await esRes.json());
 });
 
@@ -152,5 +178,5 @@ try {
         console.log(`~ Server is running at ${serverUrl} ~`);
     });
 } catch (_) {
-    console.log('Couldn\'t start server: Elasticsearch could not be reached.');
+    console.log("Couldn't start server: Elasticsearch could not be reached.");
 }

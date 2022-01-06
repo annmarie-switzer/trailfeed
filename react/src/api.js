@@ -15,11 +15,33 @@ export const logout = async () => {
     window.location.href = '/';
 }
 
-export const search = async (query) => {
+export const search = async (req) => {
     const res = await fetch('http://localhost:5000/search', {
         credentials: 'include',
         method: 'POST',
-        body: JSON.stringify(query),
+        body: JSON.stringify(req),
+        headers: {'Content-Type': 'application/json'}
+    });
+
+    return await res.json();
+}
+
+export const updateRating = async (req) => {
+    const res = await fetch('http://localhost:5000/update-rating', {
+        credentials: 'include',
+        method: 'POST',
+        body: JSON.stringify(req),
+        headers: {'Content-Type': 'application/json'}
+    });
+
+    return await res.json();
+}
+
+export const newRating = async (req) => {
+    const res = await fetch('http://localhost:5000/new-rating', {
+        credentials: 'include',
+        method: 'POST',
+        body: JSON.stringify(req),
         headers: {'Content-Type': 'application/json'}
     });
 

@@ -1,14 +1,17 @@
-import React, { useEffect, useState } from 'react';
-import { Plus } from 'react-feather';
+import React, { useContext, useEffect, useState } from 'react';
+import { AppContext } from 'components/App';
+import { Plus, User } from 'react-feather';
 import SearchBar from 'components/SearchBar';
 import Card from 'components/Card';
 import { search } from 'api';
 import Pack from './Pack';
 import Toolbar from 'components/Toolbar';
 
-function Pantry() {
+function Home() {
+    const { user } = useContext(AppContext);
+
     const [query, setQuery] = useState(null);
-    const [res, setRes] = useState([]);
+    const [hits, setHits] = useState([]);
     const [packOpen, setPackOpen] = useState(true);
     const [selection, setSelection] = useState([]);
 
@@ -21,32 +24,37 @@ function Pantry() {
         );
     };
 
+    const getData = async () => {
+        const mealsRes = await search({ query, index: 'meals' });
+
+        const hits = mealsRes.hits.hits.map((h) => ({
+            ...h._source,
+            id: h._id
+        }));
+
+        setHits(hits);
+    };
+
     useEffect(() => {
         if (query) {
-            search(query).then((res) => {
-                console.log(res.hits.total.value);
-                setRes(res);
-            });
+            getData();
         }
     }, [query]);
 
     return (
-        <div id="pantry">
+        <div id="home">
             <div className="drawer-wrapper">
                 <div className="main">
                     <SearchBar setQuery={setQuery} />
                     <div className="cards">
-                        {res.hits?.hits.map((h, i) => {
-                            h = { ...h._source, id: h._id };
-                            return (
-                                <Card
-                                    hit={h}
-                                    key={i}
-                                    selection={selection}
-                                    handleSelection={handleSelection}
-                                />
-                            );
-                        })}
+                        {hits.map((h, i) => (
+                            <Card
+                                hit={h}
+                                key={i}
+                                selection={selection}
+                                handleSelection={handleSelection}
+                            />
+                        ))}
                     </div>
                 </div>
                 <div className={packOpen ? 'drawer open' : 'drawer'}>
@@ -62,4 +70,4 @@ function Pantry() {
     );
 }
 
-export default Pantry;
+export default Home;

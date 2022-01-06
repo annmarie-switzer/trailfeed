@@ -8,7 +8,11 @@
     cursor: pointer;
 }
 
-#stars > *:hover {
+#stars > .empty {
+    stroke: var(--bg3);
+}
+
+#stars > .filled {
     fill: var(--stars);
     stroke: var(--stars);
 }
