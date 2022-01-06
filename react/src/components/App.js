@@ -1,11 +1,10 @@
 import React, { createContext, useEffect, useState } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import { getUser } from 'api';
 import Login from 'components/Login';
 import Home from 'components/Home';
-import AuthRoute from 'components/AuthRoute';
 import Modal from 'components/Modal';
-// import NewMeal from 'components/NewMeal';
+import NewMeal from 'components/NewMeal';
 
 export const AppContext = createContext(null);
 
@@ -47,17 +46,17 @@ function App() {
                         setCurrentStat,
                         setModalData
                     }}>
-                    <Switch>
-                        <Route exact path="/login">
-                            <Login />
-                        </Route>
-                        {/* <AuthRoute exact path="/new-meal">
-                            <NewMeal />
-                        </AuthRoute> */}
-                        <AuthRoute exact path="/">
-                            <Home />
-                        </AuthRoute>
-                    </Switch>
+                    <Routes>
+                        <Route path="/login" element={<Login />} />
+                        <Route
+                            path="/new-meal"
+                            element={user ? <NewMeal /> : <Navigate to="/login" />}
+                        />
+                        <Route
+                            path="/"
+                            element={user ? <Home /> : <Navigate to="/login" />}
+                        />
+                    </Routes>
                 </AppContext.Provider>
             </div>
 
