@@ -1,10 +1,7 @@
 import React from 'react';
-import { AppContext } from 'components/App';
-import Stats from '../components/Stats';
-import { CheckCircle, X } from 'react-feather';
-import Checkbox from 'components/Checkbox';
 import Gauge from 'components/Gauge';
 import MealName from 'components/MealName';
+import { X } from 'react-feather';
 
 function Pack({ selection, setSelection }) {
     const deselect = (meal) => {

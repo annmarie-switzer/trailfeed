@@ -1,6 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { AppContext } from 'components/App';
-import { Plus, User } from 'react-feather';
+import React, { useEffect, useState } from 'react';
 import SearchBar from 'components/SearchBar';
 import Card from 'components/Card';
 import { search } from 'api';
@@ -8,8 +6,6 @@ import Pack from './Pack';
 import Toolbar from 'components/Toolbar';
 
 function Home() {
-    const { user } = useContext(AppContext);
-
     const [query, setQuery] = useState(null);
     const [hits, setHits] = useState([]);
     const [packOpen, setPackOpen] = useState(true);

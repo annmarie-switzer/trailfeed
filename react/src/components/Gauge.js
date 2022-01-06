@@ -17,13 +17,10 @@ function Gauge({ selection }) {
     // global current stat
     const { currentStat, setCurrentStat } = useContext(AppContext);
 
-    // calculated data
-    const [data, setData] = useState(calculateStats(selection));
-
     // currently hovered arc
     const [selectedArc, setSelectedArc] = useState(null);
 
-    const [dimensions, setDimensions] = useState({
+    const [dimensions] = useState({
         width: window.innerWidth,
         height: window.innerHeight
     });
@@ -39,7 +36,7 @@ function Gauge({ selection }) {
     };
 
     const ref = useD3(
-        (svg) => {
+        () => {
             // tracks
             const prevTrackData = d3.local();
 
@@ -107,7 +104,7 @@ function Gauge({ selection }) {
                 .innerRadius((d, i) => getInnerRadius(i))
                 .outerRadius((d, i) => getOuterRadius(i))
                 .startAngle(0)
-                .endAngle((d, i) => scale(d));
+                .endAngle((d) => scale(d));
 
             const arcs = d3
                 .select('.arcs')
@@ -119,11 +116,11 @@ function Gauge({ selection }) {
                 .style('fill', (d, i) => data[i].color)
                 .on('mouseenter', (e, hovered) => {
                     setSelectedArc(hovered);
-                    d3.selectAll('.arc').style('opacity', (d, i) =>
+                    d3.selectAll('.arc').style('opacity', (d) =>
                         d.id === hovered.id ? 1 : 0.4
                     );
                 })
-                .on('mouseleave', (e, d) => {
+                .on('mouseleave', () => {
                     setSelectedArc(null);
                     d3.selectAll('.arc').style('opacity', (d, i) =>
                         i === currentStat ? 1 : 0.4

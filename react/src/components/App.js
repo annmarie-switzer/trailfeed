@@ -1,5 +1,5 @@
 import React, { createContext, useEffect, useState } from 'react';
-import { Redirect, Route, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import { getUser } from 'api';
 import Login from 'components/Login';
 import Home from 'components/Home';

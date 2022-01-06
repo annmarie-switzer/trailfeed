@@ -22,7 +22,7 @@
         "react/prop-types": 0,
         "react-hooks/rules-of-hooks": "error",
         "react-hooks/exhaustive-deps": "off",
-        // TODO
-        "no-unused-vars": "off"
+        "no-unused-vars": "error",
+        "no-duplicate-imports": "error"
     }
 }

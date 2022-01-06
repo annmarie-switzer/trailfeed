@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from 'react';
 import { AppContext } from 'components/App';
 import Checkbox from './Checkbox';
 import Stars from './Stars';
-import Modal from './Modal';
 import MealName from './MealName';
 import {
     Activity,

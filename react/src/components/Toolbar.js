@@ -1,14 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { logout } from 'api';
 import ThemeSwitcher from '../components/ThemeSwitcher';
 import Stats from '../components/Stats';
-import { FileText, LogOut, Settings } from 'react-feather';
+import { FileText, LogOut } from 'react-feather';
 import BackpackIcon from 'components/icons/BackpackIcon';
 
 function Toolbar({ packOpen, setPackOpen, selection }) {
-    const [menuOpen, setMenuOpen] = useState(false);
-    const [modalOpen, setModalOpen] = useState(false);
-
     return (
         <div id="toolbar">
             <div className="wrapper">
