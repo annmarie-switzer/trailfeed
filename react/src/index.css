@@ -14,6 +14,7 @@
 @import url('./components/Modal.css');
 @import url('./components/MealName.css');
 @import url('./components/NewMeal.css');
+@import url('./components/Select.css');
 
 :root {
     --box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.1),
@@ -29,6 +30,7 @@ body[data-theme='dark'] {
     --bg-contrast: var(--bg0_lighter);
     --fg: var(--fg1);
     --light-text: var(--fg4);
+    --bg-input: var(--bg2);
 
     --primary: var(--purple);
     --accent: var(--aqua);
@@ -41,6 +43,8 @@ body[data-theme='dark'] {
     --meal-name-custom: var(--accent);
     --meal-name-link: var(--primary);
     --stars: var(--ct-yellow);
+    /* var accent with alpha */
+    --slider-track: #689d6a44;
 
     --red: #cc241d;
     --ct-red: #fb4934;
@@ -78,6 +82,7 @@ body[data-theme='light'] {
     --bg-contrast: var(--bg1);
     --fg: var(--fg1);
     --light-text: var(--fg3);
+    --bg-input: var(--bg2);
 
     --primary: var(--purple);
     --accent: var(--aqua);
@@ -90,6 +95,8 @@ body[data-theme='light'] {
     --meal-name-custom: var(--accent);
     --meal-name-link: var(--primary);
     --stars: var(--yellow);
+    /* var accent with alpha */
+    --slider-track: #0c969b44;
 
     --red: #aa0982;
     --ct-red: #f16b66;
@@ -99,7 +106,6 @@ body[data-theme='light'] {
     --aqua: #0c969b;
     --blue: #4876d6;
     --purple: #994cc3;
-    --ct-purple: #b25ce0;
     --bg0: #fbfbfb;
     --bg1: #f0f0f0;
     --bg2: #d9d9d9;

@@ -1,0 +1,64 @@
+#new-meal {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex: auto;
+}
+
+#new-meal .main {
+    flex: auto;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+}
+
+.form-header {
+    border: solid red;
+}
+
+.form-container {
+    display: flex;
+    border: solid blue;
+}
+
+form {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 25rem;
+}
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.submit-container {
+    border: solid green;
+}
+
+.toolbar {
+    position: sticky;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 1;
+    display: flex;
+    box-shadow: var(--box-shadow-top);
+    background-color: var(--bg);
+    height: 61.4px;
+    display: flex;
+}
+
+.toolbar button {
+    border-radius: 0;
+    padding: 1rem;
+}
+
+.toolbar button:active,
+.toolbar button:hover {
+    background-color: var(--primary);
+    color: var(--bg);
+}
