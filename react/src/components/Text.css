@@ -1,0 +1,59 @@
+#text-container {
+    position: relative;
+}
+
+#text-container input,
+#text-container textarea {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    outline: 0;
+    border: 0;
+    color: var(--fg);
+    font-size: inherit;
+    font-weight: inherit;
+    border-top-left-radius: 0.25rem;
+    border-top-right-radius: 0.25rem;
+    border-bottom: solid 2px var(--fg2);
+    background-color: var(--bg-input);
+    padding: 1rem 1rem 1rem 1rem;
+    box-sizing: border-box;
+    width: 100%;
+    transition: border-bottom 150ms ease-in-out;
+    position: relative;
+    height: 58px;
+}
+
+#text-container.has-value input {
+    padding-bottom: 0.1rem;
+}
+
+#text-container input:focus {
+    border-bottom-color: var(--primary);
+    padding-bottom: 0.1rem;
+}
+
+#text-container .placeholder {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 16px;
+    pointer-events: none;
+    user-select: none;
+    transition: font-size 0.2s, color 0.2s, top 0.2s;
+    opacity: 0.6;
+    z-index: 2;
+}
+
+#text-container.has-value .placeholder,
+#text-container input:focus + .placeholder,
+#text-container textarea:focus + .placeholder {
+    font-size: 12px;
+    top: 16px;
+}
+
+#text-container input:focus + .placeholder,
+#text-container textarea:focus + .placeholder {
+    color: var(--primary);
+    opacity: 1;
+}

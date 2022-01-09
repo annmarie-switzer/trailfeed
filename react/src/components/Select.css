@@ -7,17 +7,24 @@
     display: block;
     position: absolute;
     right: 1rem;
-    bottom: 1rem;
-    width: 0.375rem;
-    height: 0.375rem;
+    bottom: 50%;
+    width: 6px;
+    height: 6px;
     border: solid 2px;
     border-radius: 0.15rem;
     border-top-color: transparent;
     border-left-color: transparent;
     border-right-color: var(--light-text);
     border-bottom-color: var(--light-text);
-    transform: rotate(45deg);
+    transform: rotate(45deg) translateY(50%);
     cursor: pointer;
+}
+
+#select-container.open::after {
+    border-top-color: var(--light-text);
+    border-left-color: var(--light-text);
+    border-right-color: transparent;
+    border-bottom-color: transparent;
 }
 
 .fake-select {
@@ -33,49 +40,59 @@
     transition: border-bottom 150ms ease-in-out;
 }
 
-.fake-select.open {
+#select-container.open .fake-select {
     border-bottom-color: var(--primary);
 }
 
-.select-value {
+#select-container .select-value {
     position: absolute;
     top: 28px;
     left: 16px;
 }
 
-.placeholder {
+#select-container .placeholder {
     position: absolute;
     top: 20px;
     left: 16px;
     pointer-events: none;
-    transition: color 0.2s, font-size 0.2s, top 0.2s;
+    user-select: none;
+    transition: font-size 0.2s, color 0.2s, top 0.2s;
     opacity: 0.6;
 }
 
-.placeholder.small {
-    color: var(--accent);
-    font-weight: 500;
+#select-container .placeholder.small {
     font-size: 12px;
     top: 8px;
 }
 
-.select-menu {
+#select-container.open .placeholder.small {
+    color: var(--primary);
+    opacity: 1;
+}
+
+#select-container .select-menu {
     position: absolute;
     top: 100%;
     left: 0;
     right: 0;
     height: 0;
     overflow: hidden;
-    z-index: 2;
     background-color: var(--bg-input);
     border-bottom-right-radius: 0.25rem;
     border-bottom-left-radius: 0.25rem;
 }
 
-.select-menu.open {
-    height: 200px;
+#select-container .select-menu.open {
+    height: auto;
 }
 
-.option {
+#select-container .option {
     cursor: pointer;
+    padding: 0.75rem;
+    box-sizing: border-box;
+    user-select: none;
+}
+
+#select-container .option:hover {
+    background-color: var(--option-hover);
 }

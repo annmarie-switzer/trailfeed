@@ -15,6 +15,7 @@
 @import url('./components/MealName.css');
 @import url('./components/NewMeal.css');
 @import url('./components/Select.css');
+@import url('./components/Text.css');
 
 :root {
     --box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.1),
@@ -30,12 +31,11 @@ body[data-theme='dark'] {
     --bg-contrast: var(--bg0_lighter);
     --fg: var(--fg1);
     --light-text: var(--fg4);
-    --bg-input: var(--bg2);
-
+    
     --primary: var(--purple);
     --accent: var(--aqua);
     --success: var(--green);
-
+    
     --badge: var(--ct-orange);
     --calories: var(--ct-orange);
     --checkbox: var(--accent);
@@ -43,8 +43,9 @@ body[data-theme='dark'] {
     --meal-name-custom: var(--accent);
     --meal-name-link: var(--primary);
     --stars: var(--ct-yellow);
-    /* var accent with alpha */
-    --slider-track: #689d6a44;
+
+    --bg-input: var(--bg1);
+    --option-hover: var(--bg2);
 
     --red: #cc241d;
     --ct-red: #fb4934;
@@ -82,12 +83,11 @@ body[data-theme='light'] {
     --bg-contrast: var(--bg1);
     --fg: var(--fg1);
     --light-text: var(--fg3);
-    --bg-input: var(--bg2);
-
+    
     --primary: var(--purple);
     --accent: var(--aqua);
     --success: var(--green);
-
+    
     --badge: var(--orange);
     --calories: var(--orange);
     --checkbox: var(--accent);
@@ -95,8 +95,9 @@ body[data-theme='light'] {
     --meal-name-custom: var(--accent);
     --meal-name-link: var(--primary);
     --stars: var(--yellow);
-    /* var accent with alpha */
-    --slider-track: #0c969b44;
+
+    --bg-input: var(--bg1);
+    --option-hover: var(--bg2);
 
     --red: #aa0982;
     --ct-red: #f16b66;

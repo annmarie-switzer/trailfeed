@@ -3,6 +3,7 @@ import { newDoc } from 'api';
 import { ArrowLeft } from 'react-feather';
 import { useNavigate } from 'react-router-dom';
 import Select from './Select';
+import Text from './Text';
 import ThemeSwitcher from './ThemeSwitcher';
 
 function NewMeal() {
@@ -42,28 +43,23 @@ function NewMeal() {
                 <div className="form-container">
                     <form>
                         {/* NAME */}
-                        <div className="form-field">
-                            <label htmlFor="name">Meal Name</label>
-                            <input
-                                type="text"
-                                id="name"
-                                onChange={(e) => setName(e.target.value)}
-                            />
-                        </div>
+                        <Text
+                            type="text"
+                            placeholder="Name"
+                            onChange={setName}
+                        />
 
                         {/* INGREDIENTS */}
-                        <div className="form-field">
-                            <label htmlFor="ingredients">Ingredients</label>
-                            <textarea
-                                id="ingredients"
-                                onChange={(e) => setIngredients(e.target.value)}
-                            />
-                        </div>
+                        <Text
+                            textarea={true}
+                            placeholder="Ingredients"
+                            onChange={setIngredients}
+                        />
 
                         {/* MEAL TYPE */}
                         <div className="form-field">
-                            <label htmlFor="meal-type">Meal Type</label>
                             <Select
+                                placeholder="Meal type"
                                 options={['breakfast', 'dessert', 'entree']}
                                 onChange={setMealType}
                             />

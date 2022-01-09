@@ -1,31 +1,63 @@
 import React, { useEffect, useState } from 'react';
+import Checkbox from './Checkbox';
 
-function Select({ options, onChange }) {
+function Select({ placeholder, options, multi, onChange }) {
     const [open, setOpen] = useState(false);
-    const [selected, setSelected] = useState(null);
+    const [selected, setSelected] = useState(multi ? [] : null);
+
+    const setMultiSelection = (val) => {
+        setSelected(
+            selected.includes(val)
+                ? selected.filter((s) => s !== val)
+                : [...selected, val]
+        );
+    };
 
     useEffect(() => {
         onChange(selected);
-    }, [selected])
+    }, [selected]);
 
     return (
-        <div id="select-container" onClick={() => setOpen(!open)}>
-            <div className={open ? 'fake-select open' : 'fake-select'}>
-                <span className={selected || open ? 'placeholder small' : 'placeholder'}>
-                    Meal type
+        <div
+            id="select-container"
+            className={open ? 'open' : ''}
+            onClick={() => setOpen(!open)}>
+            <div className="fake-select">
+                <span
+                    className={
+                        selected?.length > 0 || open
+                            ? 'placeholder small'
+                            : 'placeholder'
+                    }>
+                    {placeholder}
                 </span>
-                <span className="select-value">{selected}</span>
+                <span className="select-value">
+                    {multi ? selected.join(', ') : selected}
+                </span>
             </div>
             <div className={open ? 'select-menu open' : 'select-menu'}>
-                {options.map((o, i) => (
-                    <div
-                        key={i}
-                        className="option"
-                        value={o}
-                        onClick={() => setSelected(o)}>
-                        {o}
-                    </div>
-                ))}
+                {options.map((o, i) =>
+                    multi ? (
+                        <div
+                            key={i}
+                            className="option multi"
+                            value={o}
+                            onClick={(e) => e.stopPropagation()}>
+                            <Checkbox
+                                label={o}
+                                onChange={() => setMultiSelection(o)}
+                            />
+                        </div>
+                    ) : (
+                        <div
+                            key={i}
+                            className="option"
+                            value={o}
+                            onClick={() => setSelected(o)}>
+                            {o}
+                        </div>
+                    )
+                )}
             </div>
         </div>
     );
