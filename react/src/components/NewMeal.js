@@ -43,100 +43,75 @@ function NewMeal() {
                 <div className="form-container">
                     <form>
                         {/* NAME */}
-                        <Text
-                            type="text"
-                            placeholder="Name"
-                            onChange={setName}
-                        />
+                        <Text type="text" label="Name" onChange={setName} />
 
                         {/* INGREDIENTS */}
                         <Text
                             textarea={true}
-                            placeholder="Ingredients"
+                            label="Ingredients"
                             onChange={setIngredients}
                         />
 
                         {/* MEAL TYPE */}
-                        <div className="form-field">
-                            <Select
-                                placeholder="Meal type"
-                                options={['breakfast', 'dessert', 'entree']}
-                                onChange={setMealType}
-                            />
-                        </div>
+                        <Select
+                            label="Meal Type"
+                            options={['breakfast', 'dessert', 'entree']}
+                            onChange={setMealType}
+                        />
 
                         {/* WATER TEMP */}
-                        <div className="form-field">
-                            <label htmlFor="water-temp">Water Temp</label>
-                            <select
-                                id="water-temp"
-                                onChange={(e) => setWaterTemp(e.target.value)}>
-                                <option value="boiling">boiling</option>
-                                <option value="any">any</option>
-                                <option value="cold">cold</option>
-                                <option value="none">none</option>
-                            </select>
-                        </div>
+                        <Select
+                            label="Water Temp."
+                            options={['boiling', 'cold', 'any', 'none']}
+                            onChange={setWaterTemp}
+                        />
 
                         {/* ALLERGENS */}
-                        <div className="form-field">
-                            <label htmlFor="allergens">Allergens</label>
-                            <select
-                                id="allergens"
-                                onChange={(e) => setAllergens(e.target.value)}>
-                                <option value="milk">milk</option>
-                                <option value="wheat">wheat</option>
-                                <option value="egg">egg</option>
-                                <option value="soy">soy</option>
-                                <option value="gluten">gluten</option>
-                                <option value="coconut">coconut</option>
-                                <option value="peanut">peanut</option>
-                                <option value="almond">almond</option>
-                                <option value="tree_nut">tree nut</option>
-                            </select>
-                        </div>
+                        <Select
+                            multi={true}
+                            label="Allergens"
+                            options={[
+                                'almond',
+                                'coconut',
+                                'egg',
+                                'gluten',
+                                'milk',
+                                'peanut',
+                                'soy',
+                                'tree nut',
+                                'wheat'
+                            ]}
+                            onChange={setAllergens}
+                        />
 
                         {/* SPECIAL */}
-                        <div className="form-field">
-                            <label htmlFor="special">Special Diet</label>
-                            <select
-                                id="special"
-                                onChange={(e) => setSpecial(e.target.value)}>
-                                <option value="vegan">vegan</option>
-                                <option value="gluten_free">gluten_free</option>
-                                <option value="vegetarian">vegetarian</option>
-                            </select>
-                        </div>
+                        <Select
+                            multi={true}
+                            label="Special Diet"
+                            options={['vegan', 'vegetarian', 'gluten_free']}
+                            onChange={setSpecial}
+                        />
 
                         {/* CALORIES */}
-                        <div className="form-field">
-                            <label htmlFor="calories">Calories</label>
-                            <input
-                                type="number"
-                                id="calories"
-                                onChange={(e) => setCalories(e.target.value)}
-                            />
-                        </div>
+                        <Text
+                            type="number"
+                            label="Calories"
+                            onChange={setCalories}
+                        />
 
                         {/* WATER ML */}
-                        <div className="form-field">
-                            <label htmlFor="water-ml">Water mL</label>
-                            <input
-                                type="number"
-                                id="water-ml"
-                                onChange={(e) => setWaterMl(e.target.value)}
-                            />
-                        </div>
+                        <Text
+                            type="number"
+                            label="Water mL"
+                            onChange={setWaterMl}
+                        />
 
                         {/* MINUTES */}
-                        <div className="form-field">
-                            <label htmlFor="minutes">Minutes</label>
-                            <input
-                                type="number"
-                                id="minutes"
-                                onChange={(e) => setMinutes(e.target.value)}
-                            />
-                        </div>
+                        <Text
+                            type="number"
+                            label="Minutes"
+                            onChange={setMinutes}
+                        />
                     </form>
                 </div>
 

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Checkbox from './Checkbox';
 
-function Select({ placeholder, options, multi, onChange }) {
+function Select({ label, options, multi, onChange }) {
     const [open, setOpen] = useState(false);
     const [selected, setSelected] = useState(multi ? [] : null);
 
@@ -26,10 +26,10 @@ function Select({ placeholder, options, multi, onChange }) {
                 <span
                     className={
                         selected?.length > 0 || open
-                            ? 'placeholder small'
-                            : 'placeholder'
+                            ? 'label small'
+                            : 'label'
                     }>
-                    {placeholder}
+                    {label}
                 </span>
                 <span className="select-value">
                     {multi ? selected.join(', ') : selected}

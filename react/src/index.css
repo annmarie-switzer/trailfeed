@@ -45,6 +45,7 @@ body[data-theme='dark'] {
     --stars: var(--ct-yellow);
 
     --bg-input: var(--bg1);
+    --input-border: var(--light-text);
     --option-hover: var(--bg2);
 
     --red: #cc241d;
@@ -97,6 +98,7 @@ body[data-theme='light'] {
     --stars: var(--yellow);
 
     --bg-input: var(--bg1);
+    --input-border: var(--light-text);
     --option-hover: var(--bg2);
 
     --red: #aa0982;

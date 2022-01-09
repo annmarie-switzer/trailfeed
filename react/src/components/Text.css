@@ -1,59 +1,106 @@
 #text-container {
     position: relative;
+    line-height: 1.5;
 }
 
-#text-container input,
-#text-container textarea {
+#text-container > input,
+#text-container > textarea {
+    margin: 0;
+    outline: none;
+    border: 0;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    border-bottom: solid 1px var(--input-border);
+    border-radius: 0.25rem 0.25rem 0 0;
+    padding: 1.7rem 1rem 0.625rem 1rem;
+    box-sizing: border-box;
+    color: var(--fg);
+    background-color: var(--bg-input);
+    width: 100%;
+    transition: border-bottom 0.2s, background-color 0.2s;
+}
+
+/* label */
+#text-container > input + span,
+#text-container > textarea + span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 0.5rem 1rem 0 1rem;
+    box-sizing: border-box;
+    color: var(--fg);
+    opacity: 0.6;
+    line-height: 3rem;
+    pointer-events: none;
+    transition: color 0.2s, opacity 0.2s, font-size 0.2s, line-height 0.2s;
+}
+
+/* transition label size on hover or if value */
+#text-container > input:focus + span,
+#text-container > textarea:focus + span,
+#text-container.has-value > input + span,
+#text-container.has-value > textarea + span {
+    font-size: 0.75rem;
+    line-height: 1.125rem;
+}
+
+/* change border color on focus */
+#text-container > input:focus,
+#text-container > textarea:focus  {
+    border-bottom-color: var(--primary);
+}
+
+/* change label color on focus */
+#text-container > input:focus + span,
+#text-container > textarea:focus + span {
+    color: var(--primary);
+    opacity: 1;
+}
+
+/* Disabled */
+/* #text-container > input:disabled,
+#text-container > textarea:disabled {
+    border-bottom-color: rgba(
+        var(--pure-material-onsurface-rgb, 0, 0, 0),
+        0.38
+    );
+    color: rgba(var(--pure-material-onsurface-rgb, 0, 0, 0), 0.38);
+    background-color: rgba(var(--pure-material-onsurface-rgb, 0, 0, 0), 0.24);
+}
+
+#text-container > input:disabled + span,
+#text-container > textarea:disabled + span {
+    color: rgba(var(--pure-material-onsurface-rgb, 0, 0, 0), 0.38);
+} */
+
+/* number inputs */
+#text-container > input[type=number]::-webkit-inner-spin-button {
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
-    outline: 0;
-    border: 0;
-    color: var(--fg);
-    font-size: inherit;
-    font-weight: inherit;
-    border-top-left-radius: 0.25rem;
-    border-top-right-radius: 0.25rem;
-    border-bottom: solid 2px var(--fg2);
-    background-color: var(--bg-input);
-    padding: 1rem 1rem 1rem 1rem;
-    box-sizing: border-box;
-    width: 100%;
-    transition: border-bottom 150ms ease-in-out;
-    position: relative;
-    height: 58px;
 }
 
-#text-container.has-value input {
-    padding-bottom: 0.1rem;
-}
-
-#text-container input:focus {
-    border-bottom-color: var(--primary);
-    padding-bottom: 0.1rem;
-}
-
-#text-container .placeholder {
+#text-container.number .buttons {
     position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    left: 16px;
-    pointer-events: none;
-    user-select: none;
-    transition: font-size 0.2s, color 0.2s, top 0.2s;
-    opacity: 0.6;
-    z-index: 2;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.25rem;
+    padding-right: 1rem;
+    color: var(--light-text);
+    transition: color 0.2s;
 }
 
-#text-container.has-value .placeholder,
-#text-container input:focus + .placeholder,
-#text-container textarea:focus + .placeholder {
-    font-size: 12px;
-    top: 16px;
-}
-
-#text-container input:focus + .placeholder,
-#text-container textarea:focus + .placeholder {
+#text-container > input:focus ~ .buttons {
     color: var(--primary);
-    opacity: 1;
+}
+
+#text-container.number .buttons > * {
+    cursor: pointer;
 }

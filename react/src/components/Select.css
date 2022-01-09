@@ -21,17 +21,15 @@
 }
 
 #select-container.open::after {
-    border-top-color: var(--light-text);
-    border-left-color: var(--light-text);
-    border-right-color: transparent;
-    border-bottom-color: transparent;
+    border-right-color: var(--primary);
+    border-bottom-color: var(--primary);
 }
 
 .fake-select {
     position: relative;
     border-top-left-radius: 0.25rem;
     border-top-right-radius: 0.25rem;
-    border-bottom: solid 2px var(--fg2);
+    border-bottom: solid 1px var(--input-border);
     background-color: var(--bg-input);
     padding: 2.5rem 1rem 1rem 1rem;
     box-sizing: border-box;
@@ -50,22 +48,22 @@
     left: 16px;
 }
 
-#select-container .placeholder {
+#select-container .label {
     position: absolute;
     top: 20px;
     left: 16px;
     pointer-events: none;
     user-select: none;
-    transition: font-size 0.2s, color 0.2s, top 0.2s;
     opacity: 0.6;
+    transition: color 0.2s, opacity 0.2s, font-size 0.2s, top 0.2s;
 }
 
-#select-container .placeholder.small {
+#select-container .label.small {
     font-size: 12px;
     top: 8px;
 }
 
-#select-container.open .placeholder.small {
+#select-container.open .label.small {
     color: var(--primary);
     opacity: 1;
 }
@@ -80,6 +78,7 @@
     background-color: var(--bg-input);
     border-bottom-right-radius: 0.25rem;
     border-bottom-left-radius: 0.25rem;
+    z-index: 2;
 }
 
 #select-container .select-menu.open {
