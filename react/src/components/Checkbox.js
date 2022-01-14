@@ -8,7 +8,7 @@ function Checkbox(props) {
         inverse = false,
     } = props;
 
-    const [checked, setChecked] = useState(false);
+    const [checked, setChecked] = useState(props.checked);
 
     const onChange = (event) => {
         setChecked(event.target.checked);

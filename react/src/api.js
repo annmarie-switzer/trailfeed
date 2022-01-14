@@ -37,8 +37,8 @@ export const updateRating = async (req) => {
     return await res.json();
 }
 
-export const newDoc = async (req) => {
-    const res = await fetch('http://localhost:5000/new-doc', {
+export const addDoc = async (req) => {
+    const res = await fetch('http://localhost:5000/add-doc', {
         credentials: 'include',
         method: 'POST',
         body: JSON.stringify(req),

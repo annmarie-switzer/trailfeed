@@ -60,22 +60,6 @@
     opacity: 1;
 }
 
-/* Disabled */
-/* #text-container > input:disabled,
-#text-container > textarea:disabled {
-    border-bottom-color: rgba(
-        var(--pure-material-onsurface-rgb, 0, 0, 0),
-        0.38
-    );
-    color: rgba(var(--pure-material-onsurface-rgb, 0, 0, 0), 0.38);
-    background-color: rgba(var(--pure-material-onsurface-rgb, 0, 0, 0), 0.24);
-}
-
-#text-container > input:disabled + span,
-#text-container > textarea:disabled + span {
-    color: rgba(var(--pure-material-onsurface-rgb, 0, 0, 0), 0.38);
-} */
-
 /* number inputs */
 #text-container > input[type=number]::-webkit-inner-spin-button {
     appearance: none;
@@ -95,12 +79,18 @@
     padding-right: 1rem;
     color: var(--light-text);
     transition: color 0.2s;
+    visibility: hidden;
 }
 
 #text-container > input:focus ~ .buttons {
+    visibility: visible;
     color: var(--primary);
 }
 
 #text-container.number .buttons > * {
     cursor: pointer;
+}
+
+#text-container.number .buttons > *.disabled {
+    pointer-events: none;
 }

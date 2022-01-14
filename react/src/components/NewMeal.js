@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { newDoc } from 'api';
-import { ArrowLeft } from 'react-feather';
+import React, { useEffect, useState } from 'react';
+import { addDoc } from 'api';
+import { ArrowLeft, FileText } from 'react-feather';
 import { useNavigate } from 'react-router-dom';
 import Select from './Select';
 import Text from './Text';
@@ -8,117 +8,180 @@ import ThemeSwitcher from './ThemeSwitcher';
 
 function NewMeal() {
     const navigate = useNavigate();
-    const [name, setName] = useState(null);
-    const [ingredients, setIngredients] = useState(null);
-    const [meal_type, setMealType] = useState(null);
-    const [water_temp, setWaterTemp] = useState(null);
-    const [allergens, setAllergens] = useState(null);
-    const [special, setSpecial] = useState(null);
-    const [calories, setCalories] = useState(null);
-    const [water_ml, setWaterMl] = useState(null);
-    const [minutes, setMinutes] = useState(null);
+
+    const [valid, setValid] = useState(false);
+    const [newDoc, setNewDoc] = useState({
+        name: null,
+        ingredients: null,
+        meal_type: null,
+        water_temp: null,
+        allergens: null,
+        special: null,
+        calories: null,
+        water_ml: null,
+        minutes: null
+    });
 
     const submit = async () => {
-        await newDoc({
-            index: 'ratings',
-            newDoc: {
-                name,
-                ingredients,
-                meal_type,
-                water_temp,
-                allergens,
-                special,
-                calories,
-                water_ml,
-                minutes
-            }
+        await addDoc({
+            index: 'meals',
+            newDoc
         });
     };
+
+    const updateDoc = (id, val) => {
+        newDoc[id] = val;
+        setNewDoc({ ...newDoc });
+    };
+
+    useEffect(() => {
+        console.log(newDoc);
+
+        const entries = Object.entries(newDoc);
+
+        // all fields required except ingredients, allergens, and special
+        const values = entries
+            .filter(
+                (e) =>
+                    e[0] !== 'ingredients' &&
+                    e[0] !== 'allergens' &&
+                    e[0] !== 'special'
+            )
+            .map((e) => e[1]);
+
+        const valid = values.every(
+            (v) =>
+                v !== null &&
+                v !== undefined &&
+                v !== '' &&
+                (Array.isArray(v) ? v.length > 0 : true) &&
+                (typeof v === 'number' ? v >= 0 : true)
+        );
+
+        setValid(valid);
+    }, [newDoc]);
 
     return (
         <div id="new-meal">
             <div className="main">
-                <div className="form-header">Create a New Meal</div>
+                <div className="form-header">
+                    <div>Create a New Meal</div>
+                    <button
+                        type="button"
+                        disabled={!valid}
+                        onClick={() => submit()}>
+                        <FileText />
+                        Submit
+                    </button>
+                </div>
 
                 <div className="form-container">
                     <form>
                         {/* NAME */}
-                        <Text type="text" label="Name" onChange={setName} />
-
-                        {/* INGREDIENTS */}
-                        <Text
-                            textarea={true}
-                            label="Ingredients"
-                            onChange={setIngredients}
-                        />
+                        <div className="form-field">
+                            <Text
+                                type="text"
+                                label="Name"
+                                id="name"
+                                onChange={(val) => updateDoc('name', val)}
+                            />
+                        </div>
 
                         {/* MEAL TYPE */}
-                        <Select
-                            label="Meal Type"
-                            options={['breakfast', 'dessert', 'entree']}
-                            onChange={setMealType}
-                        />
-
-                        {/* WATER TEMP */}
-                        <Select
-                            label="Water Temp."
-                            options={['boiling', 'cold', 'any', 'none']}
-                            onChange={setWaterTemp}
-                        />
-
-                        {/* ALLERGENS */}
-                        <Select
-                            multi={true}
-                            label="Allergens"
-                            options={[
-                                'almond',
-                                'coconut',
-                                'egg',
-                                'gluten',
-                                'milk',
-                                'peanut',
-                                'soy',
-                                'tree nut',
-                                'wheat'
-                            ]}
-                            onChange={setAllergens}
-                        />
-
-                        {/* SPECIAL */}
-                        <Select
-                            multi={true}
-                            label="Special Diet"
-                            options={['vegan', 'vegetarian', 'gluten_free']}
-                            onChange={setSpecial}
-                        />
+                        <div className="form-field">
+                            <Select
+                                label="Meal Type"
+                                options={['breakfast', 'dessert', 'entree']}
+                                onChange={(val) => updateDoc('meal_type', val)}
+                            />
+                        </div>
 
                         {/* CALORIES */}
-                        <Text
-                            type="number"
-                            label="Calories"
-                            onChange={setCalories}
-                        />
+                        <div className="form-field">
+                            <Text
+                                type="number"
+                                label="Calories"
+                                onChange={(val) => updateDoc('calories', val)}
+                            />
+                        </div>
+
+                        {/* WATER TEMP */}
+                        <div className="form-field">
+                            <Select
+                                label="Water Temp."
+                                options={['boiling', 'cold', 'any', 'none']}
+                                onChange={(val) => updateDoc('water_temp', val)}
+                            />
+                        </div>
 
                         {/* WATER ML */}
-                        <Text
-                            type="number"
-                            label="Water mL"
-                            onChange={setWaterMl}
-                        />
+                        <div className="form-field">
+                            <Text
+                                type="number"
+                                label="Water mL"
+                                onChange={(val) => updateDoc('water_ml', val)}
+                            />
+                        </div>
 
                         {/* MINUTES */}
-                        <Text
-                            type="number"
-                            label="Minutes"
-                            onChange={setMinutes}
-                        />
-                    </form>
-                </div>
+                        <div className="form-field">
+                            <Text
+                                type="number"
+                                label="Minutes"
+                                onChange={(val) => updateDoc('minutes', val)}
+                            />
+                        </div>
 
-                <div className="submit-container">
-                    <button type="button" onClick={() => submit()}>
-                        Submit
-                    </button>
+                        <div className="optional">
+                            <div className="hr"></div>
+                            <div>Optional</div>
+                            <div className="hr"></div>
+                        </div>
+
+                        {/* INGREDIENTS */}
+                        <div className="form-field">
+                            <Text
+                                textarea={true}
+                                label="Ingredients"
+                                onChange={(val) =>
+                                    updateDoc('ingredients', val)
+                                }
+                            />
+                            <div className="hint">
+                                Please use a comma-separated list.
+                            </div>
+                        </div>
+
+                        {/* ALLERGENS */}
+                        <div className="form-field">
+                            <Select
+                                multi={true}
+                                label="Allergens"
+                                options={[
+                                    'almond',
+                                    'coconut',
+                                    'egg',
+                                    'gluten',
+                                    'milk',
+                                    'peanut',
+                                    'soy',
+                                    'tree nut',
+                                    'wheat'
+                                ]}
+                                onChange={(val) => updateDoc('allergens', val)}
+                            />
+                        </div>
+
+                        {/* SPECIAL */}
+                        <div className="form-field">
+                            <Select
+                                multi={true}
+                                label="Special Diet"
+                                options={['vegan', 'vegetarian', 'gluten_free']}
+                                onChange={(val) => updateDoc('special', val)}
+                            />
+                        </div>
+                    </form>
                 </div>
             </div>
 

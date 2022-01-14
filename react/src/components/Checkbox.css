@@ -1,5 +1,4 @@
 .checkbox {
-    z-index: 0;
     position: relative;
     display: flex;
     align-items: center;
@@ -7,6 +6,7 @@
     color: currentColor;
     font-family: inherit;
     line-height: 1.5;
+    flex: auto;
 }
 
 .checkbox > span {

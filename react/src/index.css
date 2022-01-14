@@ -168,6 +168,11 @@ button:active {
     opacity: 0.8;
 }
 
+button[disabled] {
+    background-color: var(--primary);
+    pointer-events: none;
+}
+
 @font-face {
     font-family: 'Fira Sans';
     font-style: normal;

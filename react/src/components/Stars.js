@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AppContext } from 'components/App';
 import { Star } from 'react-feather';
-import { search, updateRating, newDoc } from 'api';
+import { search, updateRating, addDoc } from 'api';
 
 function Stars({ mealId }) {
     const { user } = useContext(AppContext);
@@ -48,7 +48,7 @@ function Stars({ mealId }) {
         if (docId) {
             await updateRating({ docId, rating: r });
         } else {
-            await newDoc({
+            await addDoc({
                 index: 'ratings',
                 newDoc: { user: user.email, meal_id: mealId, rating: r }
             });

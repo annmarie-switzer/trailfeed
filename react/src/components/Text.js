@@ -31,6 +31,7 @@ function Text({ textarea = false, label, type, onChange }) {
                     <Minus
                         size={16}
                         color="currentColor"
+                        className={value === 0 ? 'disabled' : ''}
                         onClick={() => setValue(Number(value) - 1)}
                     />
                 </div>

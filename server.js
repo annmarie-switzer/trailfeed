@@ -156,7 +156,7 @@ app.post('/update-rating', async (req, res) => {
     res.json(await esRes.json());
 });
 
-app.post('/new-doc', async (req, res) => {
+app.post('/add-doc', async (req, res) => {
     const esRes = await fetch(`${esUrl}/${req.body.index}/_doc?refresh=true`, {
         method: 'POST',
         body: JSON.stringify(req.body.newDoc),
