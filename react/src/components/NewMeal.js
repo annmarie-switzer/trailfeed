@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { addDoc } from 'api';
-import { ArrowLeft, FileText } from 'react-feather';
+import { Activity, ArrowLeft, Droplet, FileText, Terminal, Watch } from 'react-feather';
 import { useNavigate } from 'react-router-dom';
 import Select from './Select';
 import Text from './Text';
+import Input from './forms/Input';
 import ThemeSwitcher from './ThemeSwitcher';
 
 function NewMeal() {
@@ -76,112 +77,103 @@ function NewMeal() {
                 </div>
 
                 <div className="form-container">
-                    <form>
-                        {/* NAME */}
-                        <div className="form-field">
-                            <Text
-                                type="text"
-                                label="Name"
-                                id="name"
-                                onChange={(val) => updateDoc('name', val)}
-                            />
-                        </div>
+                    {/* NAME */}
+                    <Input
+                        type="text"
+                        placeholder="Meal name"
+                        onChange={(val) => updateDoc('name', val)}>
+                        <Terminal />
+                    </Input>
 
-                        {/* MEAL TYPE */}
-                        <div className="form-field">
-                            <Select
-                                label="Meal Type"
-                                options={['breakfast', 'dessert', 'entree']}
-                                onChange={(val) => updateDoc('meal_type', val)}
-                            />
-                        </div>
+                    {/* MEAL TYPE */}
+                    <div className="form-field">
+                        <Select
+                            label="Meal Type"
+                            options={['breakfast', 'dessert', 'entree']}
+                            onChange={(val) => updateDoc('meal_type', val)}
+                        />
+                    </div>
 
-                        {/* CALORIES */}
-                        <div className="form-field">
-                            <Text
-                                type="number"
-                                label="Calories"
-                                onChange={(val) => updateDoc('calories', val)}
-                            />
-                        </div>
+                    {/* CALORIES */}
+                    <Input
+                        type="number"
+                        placeholder="Calories"
+                        onChange={(val) => updateDoc('calories', val)}>
+                        <Activity />
+                    </Input>
 
-                        {/* WATER TEMP */}
-                        <div className="form-field">
-                            <Select
-                                label="Water Temp."
-                                options={['boiling', 'cold', 'any', 'none']}
-                                onChange={(val) => updateDoc('water_temp', val)}
-                            />
-                        </div>
+                    {/* WATER TEMP */}
+                    <div className="form-field">
+                        <Select
+                            label="Water Temp."
+                            options={['boiling', 'cold', 'any', 'none']}
+                            onChange={(val) => updateDoc('water_temp', val)}
+                        />
+                    </div>
 
-                        {/* WATER ML */}
-                        <div className="form-field">
-                            <Text
-                                type="number"
-                                label="Water mL"
-                                onChange={(val) => updateDoc('water_ml', val)}
-                            />
-                        </div>
+                    {/* WATER ML */}
+                    <Input
+                        type="number"
+                        placeholder="Water mL"
+                        onChange={(val) => updateDoc('water_ml', val)}>
+                        <Droplet />
+                    </Input>
 
-                        {/* MINUTES */}
-                        <div className="form-field">
-                            <Text
-                                type="number"
-                                label="Minutes"
-                                onChange={(val) => updateDoc('minutes', val)}
-                            />
-                        </div>
+                    {/* MINUTES */}
+                    <Input
+                        type="number"
+                        placeholder="Minutes"
+                        onChange={(val) => updateDoc('minutes', val)}>
+                        <Watch />
+                    </Input>
 
-                        <div className="optional">
-                            <div className="hr"></div>
-                            <div>Optional</div>
-                            <div className="hr"></div>
-                        </div>
+                    <div className="optional">
+                        <div className="hr"></div>
+                        <div>Optional</div>
+                        <div className="hr"></div>
+                    </div>
 
-                        {/* INGREDIENTS */}
-                        <div className="form-field">
-                            <Text
-                                textarea={true}
-                                label="Ingredients"
-                                onChange={(val) =>
-                                    updateDoc('ingredients', val)
-                                }
-                            />
-                            <div className="hint">
-                                Please use a comma-separated list.
-                            </div>
+                    {/* INGREDIENTS */}
+                    <div className="form-field">
+                        <Text
+                            textarea={true}
+                            label="Ingredients"
+                            onChange={(val) => updateDoc('ingredients', val)}
+                        />
+                        <div className="hint">
+                            Please use a comma-separated list.
                         </div>
+                    </div>
 
-                        {/* ALLERGENS */}
-                        <div className="form-field">
-                            <Select
-                                multi={true}
-                                label="Allergens"
-                                options={[
-                                    'almond',
-                                    'coconut',
-                                    'egg',
-                                    'gluten',
-                                    'milk',
-                                    'peanut',
-                                    'soy',
-                                    'tree nut',
-                                    'wheat'
-                                ]}
-                                onChange={(val) => updateDoc('allergens', val)}
-                            />
-                        </div>
+                    {/* ALLERGENS */}
+                    <div className="form-field">
+                        <Select
+                            multi={true}
+                            label="Allergens"
+                            options={[
+                                'almond',
+                                'coconut',
+                                'egg',
+                                'gluten',
+                                'milk',
+                                'peanut',
+                                'soy',
+                                'tree nut',
+                                'wheat'
+                            ]}
+                            onChange={(val) => updateDoc('allergens', val)}
+                        />
+                    </div>
 
-                        {/* SPECIAL */}
-                        <div className="form-field">
-                            <Select
-                                multi={true}
-                                label="Special Diet"
-                                options={['vegan', 'vegetarian', 'gluten_free']}
-                                onChange={(val) => updateDoc('special', val)}
-                            />
-                        </div>
-                    </form>
+                    {/* SPECIAL */}
+                    <div className="form-field">
+                        <Select
+                            multi={true}
+                            label="Special Diet"
+                            options={['vegan', 'vegetarian', 'gluten_free']}
+                            onChange={(val) => updateDoc('special', val)}
+                        />
+                    </div>
                 </div>
             </div>
 

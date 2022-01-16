@@ -1,0 +1,39 @@
+#input-wrapper {
+    position: relative;
+    border-radius: 0.25rem;
+}
+
+#input-wrapper .icon {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 1rem;
+    display: flex;
+    align-items: center;
+    opacity: 0.5;
+    color: var(--fg);
+}
+
+#input-wrapper input {
+    appearance: none;
+    border: solid 1px transparent;
+    border-radius: 0.25rem;
+    outline: none;
+    margin: 0;
+    padding: 1rem 1rem 1rem 3.5rem;
+    box-sizing: border-box;
+    font-size: 1.2rem;
+    font-family: inherit;
+    width: 100%;
+    color: var(--fg);
+    background-color: var(--bg-contrast);
+}
+
+#input-wrapper  input::placeholder {
+    opacity: 0.5;
+    color: var(--fg);
+}
+
+#input-wrapper  input:focus {
+    background-color: var(--bg1);
+}

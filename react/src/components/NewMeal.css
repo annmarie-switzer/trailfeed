@@ -42,20 +42,12 @@
 
 .form-container {
     flex: auto;
-}
-
-form {
-    margin: 1rem auto auto auto;
+    padding: 2rem;
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    gap: 1.2rem;
-    width: 25rem;
-}
-
-.form-field {
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
+    gap: 1.5rem;
+    border: solid red;
 }
 
 .hint {
