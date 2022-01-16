@@ -1,9 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { addDoc } from 'api';
-import { Activity, ArrowLeft, Droplet, FileText, Terminal, Watch } from 'react-feather';
+import {
+    Activity,
+    ArrowLeft,
+    Droplet,
+    FileText,
+    List,
+    Terminal,
+    Watch
+} from 'react-feather';
 import { useNavigate } from 'react-router-dom';
 import Select from './Select';
-import Text from './Text';
 import Input from './forms/Input';
 import ThemeSwitcher from './ThemeSwitcher';
 
@@ -36,7 +43,7 @@ function NewMeal() {
     };
 
     useEffect(() => {
-        console.log(newDoc);
+        // console.log(newDoc);
 
         const entries = Object.entries(newDoc);
 
@@ -86,13 +93,13 @@ function NewMeal() {
                     </Input>
 
                     {/* MEAL TYPE */}
-                    <div className="form-field">
+                    {/* <div className="form-field">
                         <Select
                             label="Meal Type"
                             options={['breakfast', 'dessert', 'entree']}
                             onChange={(val) => updateDoc('meal_type', val)}
                         />
-                    </div>
+                    </div> */}
 
                     {/* CALORIES */}
                     <Input
@@ -103,13 +110,13 @@ function NewMeal() {
                     </Input>
 
                     {/* WATER TEMP */}
-                    <div className="form-field">
+                    {/* <div className="form-field">
                         <Select
                             label="Water Temp."
                             options={['boiling', 'cold', 'any', 'none']}
                             onChange={(val) => updateDoc('water_temp', val)}
                         />
-                    </div>
+                    </div> */}
 
                     {/* WATER ML */}
                     <Input
@@ -127,26 +134,22 @@ function NewMeal() {
                         <Watch />
                     </Input>
 
-                    <div className="optional">
+                    {/* <div className="optional">
                         <div className="hr"></div>
                         <div>Optional</div>
                         <div className="hr"></div>
-                    </div>
+                    </div> */}
 
                     {/* INGREDIENTS */}
-                    <div className="form-field">
-                        <Text
-                            textarea={true}
-                            label="Ingredients"
-                            onChange={(val) => updateDoc('ingredients', val)}
-                        />
-                        <div className="hint">
-                            Please use a comma-separated list.
-                        </div>
-                    </div>
+                    <Input
+                        type="textarea"
+                        placeholder="Ingredients"
+                        onChange={(val) => updateDoc('ingredients', val)}>
+                        <List />
+                    </Input>
 
                     {/* ALLERGENS */}
-                    <div className="form-field">
+                    {/* <div className="form-field">
                         <Select
                             multi={true}
                             label="Allergens"
@@ -163,17 +166,17 @@ function NewMeal() {
                             ]}
                             onChange={(val) => updateDoc('allergens', val)}
                         />
-                    </div>
+                    </div> */}
 
                     {/* SPECIAL */}
-                    <div className="form-field">
+                    {/* <div className="form-field">
                         <Select
                             multi={true}
                             label="Special Diet"
                             options={['vegan', 'vegetarian', 'gluten_free']}
                             onChange={(val) => updateDoc('special', val)}
                         />
-                    </div>
+                    </div> */}
                 </div>
             </div>
 

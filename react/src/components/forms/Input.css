@@ -14,7 +14,8 @@
     color: var(--fg);
 }
 
-#input-wrapper input {
+#input-wrapper input,
+#input-wrapper textarea {
     appearance: none;
     border: solid 1px transparent;
     border-radius: 0.25rem;
@@ -29,11 +30,46 @@
     background-color: var(--bg-contrast);
 }
 
-#input-wrapper  input::placeholder {
+#input-wrapper input::placeholder,
+#input-wrapper textarea::placeholder {
     opacity: 0.5;
     color: var(--fg);
 }
 
-#input-wrapper  input:focus {
+#input-wrapper input:focus,
+#input-wrapper textarea:focus {
     background-color: var(--bg1);
+}
+
+/* type="number" */
+#input-wrapper > input[type=number]::-webkit-inner-spin-button {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+#input-wrapper.number .buttons {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.25rem;
+    padding-right: 1rem;
+    color: transparent;
+    transition: color 0.2s;
+}
+
+#input-wrapper > input:focus ~ .buttons {
+    color: var(--primary);
+}
+
+#input-wrapper.number .buttons > * {
+    cursor: pointer;
+}
+
+#input-wrapper.number .buttons > *.disabled {
+    pointer-events: none;
 }
