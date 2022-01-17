@@ -2,15 +2,19 @@ import React, { useEffect, useState } from 'react';
 import { addDoc } from 'api';
 import {
     Activity,
+    AlertTriangle,
     ArrowLeft,
+    Award,
+    Coffee,
     Droplet,
     FileText,
     List,
     Terminal,
+    Thermometer,
     Watch
 } from 'react-feather';
 import { useNavigate } from 'react-router-dom';
-import Select from './Select';
+import Select from './forms/Select';
 import Input from './forms/Input';
 import ThemeSwitcher from './ThemeSwitcher';
 
@@ -93,13 +97,12 @@ function NewMeal() {
                     </Input>
 
                     {/* MEAL TYPE */}
-                    {/* <div className="form-field">
-                        <Select
-                            label="Meal Type"
-                            options={['breakfast', 'dessert', 'entree']}
-                            onChange={(val) => updateDoc('meal_type', val)}
-                        />
-                    </div> */}
+                    <Select
+                        label="Meal Type"
+                        options={['breakfast', 'dessert', 'entree']}
+                        onChange={(val) => updateDoc('meal_type', val)}>
+                        <Coffee />
+                    </Select>
 
                     {/* CALORIES */}
                     <Input
@@ -110,13 +113,12 @@ function NewMeal() {
                     </Input>
 
                     {/* WATER TEMP */}
-                    {/* <div className="form-field">
-                        <Select
-                            label="Water Temp."
-                            options={['boiling', 'cold', 'any', 'none']}
-                            onChange={(val) => updateDoc('water_temp', val)}
-                        />
-                    </div> */}
+                    <Select
+                        label="Water Temp."
+                        options={['boiling', 'cold', 'any', 'none']}
+                        onChange={(val) => updateDoc('water_temp', val)}>
+                        <Thermometer />
+                    </Select>
 
                     {/* WATER ML */}
                     <Input
@@ -149,34 +151,32 @@ function NewMeal() {
                     </Input>
 
                     {/* ALLERGENS */}
-                    {/* <div className="form-field">
-                        <Select
-                            multi={true}
-                            label="Allergens"
-                            options={[
-                                'almond',
-                                'coconut',
-                                'egg',
-                                'gluten',
-                                'milk',
-                                'peanut',
-                                'soy',
-                                'tree nut',
-                                'wheat'
-                            ]}
-                            onChange={(val) => updateDoc('allergens', val)}
-                        />
-                    </div> */}
+                    <Select
+                        multi={true}
+                        label="Allergens"
+                        options={[
+                            'almond',
+                            'coconut',
+                            'egg',
+                            'gluten',
+                            'milk',
+                            'peanut',
+                            'soy',
+                            'tree nut',
+                            'wheat'
+                        ]}
+                        onChange={(val) => updateDoc('allergens', val)}>
+                        <AlertTriangle />
+                    </Select>
 
                     {/* SPECIAL */}
-                    {/* <div className="form-field">
-                        <Select
-                            multi={true}
-                            label="Special Diet"
-                            options={['vegan', 'vegetarian', 'gluten_free']}
-                            onChange={(val) => updateDoc('special', val)}
-                        />
-                    </div> */}
+                    <Select
+                        multi={true}
+                        label="Special Diet"
+                        options={['vegan', 'vegetarian', 'gluten_free']}
+                        onChange={(val) => updateDoc('special', val)}>
+                        <Award />
+                    </Select>
                 </div>
             </div>
 

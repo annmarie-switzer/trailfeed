@@ -15,8 +15,7 @@
 @import url('./components/MealName.css');
 @import url('./components/NewMeal.css');
 @import url('./components/forms/Input.css');
-@import url('./components/Select.css');
-@import url('./components/Text.css');
+@import url('./components/forms/Select.css');
 
 :root {
     --box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.1),
@@ -45,8 +44,6 @@ body[data-theme='dark'] {
     --meal-name-link: var(--primary);
     --stars: var(--ct-yellow);
 
-    --bg-input: var(--bg1);
-    --input-border: var(--light-text);
     --option-hover: var(--bg2);
 
     --red: #cc241d;
@@ -98,8 +95,6 @@ body[data-theme='light'] {
     --meal-name-link: var(--primary);
     --stars: var(--yellow);
 
-    --bg-input: var(--bg1);
-    --input-border: var(--light-text);
     --option-hover: var(--bg2);
 
     --red: #aa0982;

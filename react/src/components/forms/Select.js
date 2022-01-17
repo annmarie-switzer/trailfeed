@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import Checkbox from './Checkbox';
+import { ChevronDown } from 'react-feather';
+import Checkbox from '../Checkbox';
 
-function Select({ label, options, multi, onChange }) {
+function Select({ label, options, multi = 'false', onChange, children }) {
     const [open, setOpen] = useState(false);
     const [selected, setSelected] = useState(multi ? [] : null);
 
@@ -22,19 +23,22 @@ function Select({ label, options, multi, onChange }) {
             id="select-container"
             className={open ? 'open' : ''}
             onClick={() => setOpen(!open)}>
+            <div className="icon">{children}</div>
+
             <div className="fake-select">
-                <span
-                    className={
-                        selected?.length > 0 || open
-                            ? 'label small'
-                            : 'label'
-                    }>
-                    {label}
-                </span>
-                <span className="select-value">
-                    {multi ? selected.join(', ') : selected}
-                </span>
+                {!selected || selected.length === 0 ? (
+                    <span className="label">{label}</span>
+                ) : (
+                    <span className="select-value">
+                        {multi ? selected.join(', ') : selected}
+                    </span>
+                )}
             </div>
+
+            <div className="icon">
+                <ChevronDown size={16} onClick={() => setOpen(!open)} />
+            </div>
+
             <div className={open ? 'select-menu open' : 'select-menu'}>
                 {options.map((o, i) =>
                     multi ? (
