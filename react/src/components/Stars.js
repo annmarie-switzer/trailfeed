@@ -41,6 +41,8 @@ function Stars({ mealId }) {
             const { _id, _source } = ratingsRes.hits.hits[0];
             setDocId(_id);
             setRating(_source.rating);
+        } else {
+            setRating(0);
         }
     };
 

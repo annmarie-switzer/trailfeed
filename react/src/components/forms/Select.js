@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import { ChevronDown } from 'react-feather';
 import Checkbox from '../Checkbox';
 
-function Select({ label, options, multi = 'false', onChange, children }) {
+function Select({ label, options, multi = false, onChange, children }) {
     const [open, setOpen] = useState(false);
     const [selected, setSelected] = useState(multi ? [] : null);
     const node = useRef();

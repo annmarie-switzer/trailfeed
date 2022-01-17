@@ -16,6 +16,7 @@
 @import url('./components/NewMeal.css');
 @import url('./components/forms/Input.css');
 @import url('./components/forms/Select.css');
+@import url('./components/forms/Textarea.css');
 
 :root {
     --box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.1),
@@ -35,6 +36,7 @@ body[data-theme='dark'] {
     --primary: var(--purple);
     --accent: var(--aqua);
     --success: var(--green);
+    --info: var(--blue);
     
     --badge: var(--ct-orange);
     --calories: var(--ct-orange);
@@ -86,6 +88,7 @@ body[data-theme='light'] {
     --primary: var(--purple);
     --accent: var(--aqua);
     --success: var(--green);
+    --info: var(--blue);
     
     --badge: var(--orange);
     --calories: var(--orange);

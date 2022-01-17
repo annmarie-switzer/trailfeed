@@ -17,8 +17,7 @@
     color: var(--fg);
 }
 
-#input-wrapper input,
-#input-wrapper textarea {
+#input-wrapper input {
     appearance: none;
     border: solid 1px transparent;
     border-radius: 0.25rem;
@@ -33,14 +32,12 @@
     background-color: var(--bg-contrast);
 }
 
-#input-wrapper input::placeholder,
-#input-wrapper textarea::placeholder {
+#input-wrapper input::placeholder {
     opacity: 0.5;
     color: var(--fg);
 }
 
-#input-wrapper input:focus,
-#input-wrapper textarea:focus {
+#input-wrapper input:focus {
     background-color: var(--bg1);
 }
 

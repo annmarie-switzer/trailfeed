@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Minus, Plus } from 'react-feather';
 
-function Input({ textarea = 'false', type, placeholder, onChange, children }) {
+function Input({ type, placeholder, onChange, children }) {
     const [value, setValue] = useState('');
 
     useEffect(() => {
@@ -55,19 +55,11 @@ function Input({ textarea = 'false', type, placeholder, onChange, children }) {
         return (
             <div id="input-wrapper" className={value ? 'has-value' : ''}>
                 <div className="icon">{children}</div>
-                {type === 'textarea' ? (
-                    <textarea
-                        rows={1}
-                        placeholder={placeholder}
-                        onChange={(e) => setValue(e.target.value)}
-                    />
-                ) : (
-                    <input
-                        type={type}
-                        placeholder={placeholder}
-                        onChange={(e) => setValue(e.target.value)}
-                    />
-                )}
+                <input
+                    type={type}
+                    placeholder={placeholder}
+                    onChange={(e) => setValue(e.target.value)}
+                />
             </div>
         );
     }
