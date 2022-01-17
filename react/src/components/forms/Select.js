@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { ChevronDown } from 'react-feather';
 import Checkbox from '../Checkbox';
 
 function Select({ label, options, multi = 'false', onChange, children }) {
     const [open, setOpen] = useState(false);
     const [selected, setSelected] = useState(multi ? [] : null);
+    const node = useRef();
 
     const setMultiSelection = (val) => {
         setSelected(
@@ -14,12 +15,26 @@ function Select({ label, options, multi = 'false', onChange, children }) {
         );
     };
 
+    const offClick = (e) => {
+        if (!node.current.contains(e.target)) {
+            setOpen(false);
+        }
+    };
+
     useEffect(() => {
         onChange(selected);
     }, [selected]);
 
+    useEffect(() => {
+        document.addEventListener('mousedown', offClick);
+        return () => {
+            document.removeEventListener('mousedown', offClick);
+        };
+    }, []);
+
     return (
         <div
+            ref={node}
             id="select-container"
             className={open ? 'open' : ''}
             onClick={() => setOpen(!open)}>
