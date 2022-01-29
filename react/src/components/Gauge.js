@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
+import './Gauge.css';
 import { AppContext } from 'components/App';
 import * as d3 from 'd3';
 import Stats, { calculateStats, statMeta } from './Stats';

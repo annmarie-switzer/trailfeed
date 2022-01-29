@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AppContext } from 'components/App';
+import './Card.css';
 import Checkbox from './Checkbox';
 import Stars from './Stars';
 import MealName from './MealName';

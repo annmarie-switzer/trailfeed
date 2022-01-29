@@ -174,6 +174,7 @@ app.all('*', (req, res) => {
 });
 
 try {
+    await fetch(`${esUrl}`);
     app.listen(port, async () => {
         console.log(`~ Server is running at ${serverUrl} ~`);
     });

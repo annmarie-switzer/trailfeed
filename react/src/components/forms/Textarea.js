@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import './Textarea.css';
 
 function Textarea({ rows = 1, placeholder, onChange }) {
     const [value, setValue] = useState('');

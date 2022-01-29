@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react';
+import './NewMeal.css';
 import { addDoc } from 'api';
 import {
     Activity,

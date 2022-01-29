@@ -1,23 +1,3 @@
-@import url('./components/Home.css');
-@import url('./components/SearchBar.css');
-@import url('./components/Toolbar.css');
-@import url('./components/Pack.css');
-@import url('./components/Login.css');
-@import url('./components/ThemeSwitcher.css');
-@import url('./components/CustomSlider.css');
-@import url('./components/CheckboxList.css');
-@import url('./components/Checkbox.css');
-@import url('./components/Card.css');
-@import url('./components/Stats.css');
-@import url('./components/Gauge.css');
-@import url('./components/Stars.css');
-@import url('./components/Modal.css');
-@import url('./components/MealName.css');
-@import url('./components/NewMeal.css');
-@import url('./components/forms/Input.css');
-@import url('./components/forms/Select.css');
-@import url('./components/forms/Textarea.css');
-
 :root {
     --box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.1),
         0px 1px 2px 0px rgba(0, 0, 0, 0.06);

@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import './Stats.css';
 import { AppContext } from 'components/App';
 import { Activity, Droplet, Watch } from 'react-feather';
 

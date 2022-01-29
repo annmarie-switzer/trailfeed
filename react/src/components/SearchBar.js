@@ -1,8 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react';
+import './SearchBar.css';
 import { search } from 'api';
 import { AppContext } from 'components/App';
 import CheckboxList from 'components/CheckboxList';
-import CustomSlider from 'components/CustomSlider';
+import RangeSlider from 'components/forms/RangeSlider';
 import { Search, Sliders } from 'react-feather';
 
 function SearchBar(props) {
@@ -253,7 +254,7 @@ function SearchBar(props) {
             <div className={filtersOpen ? 'filters open' : 'filters'}>
                 <div className="sliders">
                     <div className="filter-group">
-                        <CustomSlider
+                        <RangeSlider
                             name="calories"
                             label="Calories"
                             min={calories.min}
@@ -262,7 +263,7 @@ function SearchBar(props) {
                         />
                     </div>
                     <div className="filter-group">
-                        <CustomSlider
+                        <RangeSlider
                             name="minutes"
                             label="Cook Time (min)"
                             min={minutes.min}
@@ -271,7 +272,7 @@ function SearchBar(props) {
                         />
                     </div>
                     <div className="filter-group">
-                        <CustomSlider
+                        <RangeSlider
                             name="waterMl"
                             label="Water Needed (mL)"
                             min={waterMl.min}

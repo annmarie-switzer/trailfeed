@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import './Input.css';
 import { Minus, Plus } from 'react-feather';
 
 function Input({ type, placeholder, onChange, children }) {

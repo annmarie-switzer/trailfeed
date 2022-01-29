@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import './Home.css';
 import SearchBar from 'components/SearchBar';
 import Card from 'components/Card';
 import { search } from 'api';

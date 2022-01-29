@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import './ThemeSwitcher.css';
 import { AppContext } from 'components/App';
 import { Moon, Sun } from 'react-feather';
 

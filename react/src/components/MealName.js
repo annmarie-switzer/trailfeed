@@ -1,4 +1,5 @@
 import React from 'react';
+import './MealName.css';
 
 function MealName({ name, link }) {
     return (

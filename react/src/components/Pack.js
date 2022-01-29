@@ -1,4 +1,5 @@
 import React from 'react';
+import './Pack.css';
 import Gauge from 'components/Gauge';
 import MealName from 'components/MealName';
 import { X } from 'react-feather';

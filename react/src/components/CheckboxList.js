@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './CheckboxList.css';
 import Checkbox from './Checkbox';
 
 function CheckboxList(props) {

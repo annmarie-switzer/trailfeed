@@ -1,4 +1,5 @@
 import React from 'react';
+import './Modal.css';
 import { X } from 'react-feather';
 import MealName from './MealName';
 

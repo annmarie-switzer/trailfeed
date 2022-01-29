@@ -1,4 +1,5 @@
 import React from 'react';
+import './Toolbar.css';
 import { useNavigate } from 'react-router-dom';
 import { logout } from 'api';
 import ThemeSwitcher from '../components/ThemeSwitcher';

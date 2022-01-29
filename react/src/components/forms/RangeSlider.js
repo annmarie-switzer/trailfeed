@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import './RangeSlider.css';
 import Slider from '@mui/material/Slider';
 
-function CustomSlider(props) {
+function RangeSlider(props) {
     const { min, max, label, name, setRange: setUpstreamRange } = props;
 
     const [range, setRange] = useState([]);
@@ -37,4 +38,4 @@ function CustomSlider(props) {
     );
 }
 
-export default CustomSlider;
+export default RangeSlider;

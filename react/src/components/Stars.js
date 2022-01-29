@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import './Stars.css';
 import { AppContext } from 'components/App';
 import { Star } from 'react-feather';
 import { search, updateRating, addDoc } from 'api';

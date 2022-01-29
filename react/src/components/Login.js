@@ -1,5 +1,6 @@
-import GoogleIcon from 'components/icons/GoogleIcon';
 import React from 'react';
+import './Login.css';
+import GoogleIcon from 'components/icons/GoogleIcon';
 
 function Login() {
     const navigate = () => {
