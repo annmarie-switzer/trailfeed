@@ -2,9 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './RangeSlider.css';
 import Slider from '@mui/material/Slider';
 
-function RangeSlider(props) {
-    const { min, max, label, name, setRange: setUpstreamRange } = props;
-
+function RangeSlider({ min, max, label, name, setRange: setUpstreamRange }) {
     const [range, setRange] = useState([]);
 
     const handleChange = (event) => {

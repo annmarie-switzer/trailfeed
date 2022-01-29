@@ -24,26 +24,34 @@ import { AppContext } from 'components/App';
 
 function NewMeal() {
     const navigate = useNavigate();
-    const { user } = useContext(AppContext);
 
-    const [valid, setValid] = useState(false);
-    const [newDoc, setNewDoc] = useState({
-        name: null,
-        ingredients: null,
-        meal_type: null,
-        water_temp: null,
-        allergens: null,
-        special: null,
-        calories: null,
-        water_ml: null,
-        minutes: null,
-        user: user.email
-    });
+    const { user } = useContext(AppContext);
 
     const [complete, setComplete] = useState(false);
     const [error, setError] = useState(null);
+    const [valid, setValid] = useState(false);
+
+    const [fields, setFields] = useState({
+        name: { value: null, touched: false, required: true },
+        meal_type: { value: null, touched: false, required: true },
+        calories: { value: null, touched: false, required: true },
+        water_temp: { value: null, touched: false, required: true },
+        water_ml: { value: null, touched: false, required: true },
+        minutes: { value: null, touched: false, required: true },
+        allergens: { value: null, touched: false, required: false },
+        special: { value: null, touched: false, required: false },
+        ingredients: { value: null, touched: false, required: false }
+    });
 
     const submit = async () => {
+        let newDoc = {
+            user: user.email
+        };
+
+        Object.entries(fields).forEach((e) => {
+            newDoc[e[0]] = e[1].value;
+        });
+
         try {
             await addDoc({
                 index: 'meals',
@@ -62,35 +70,41 @@ function NewMeal() {
         }
     };
 
-    const updateDoc = (id, val) => {
-        newDoc[id] = val;
-        setNewDoc({ ...newDoc });
+    const handleChange = (id, val) => {
+        fields[id].value = val;
+        setFields({ ...fields });
     };
 
+    const setTouched = (id) => {
+        fields[id].touched = true;
+        setFields({ ...fields });
+    };
+
+    // field level validation
+    const validate = (id) => {
+        if (fields[id].required && fields[id].touched) {
+            return !!fields[id].value;
+        } else {
+            return true;
+        }
+    };
+
+    // form level validation
     useEffect(() => {
-        const entries = Object.entries(newDoc);
+        const entries = Object.entries(fields);
 
-        // all fields required except ingredients, allergens, and special
-        const values = entries
-            .filter(
-                (e) =>
-                    e[0] !== 'ingredients' &&
-                    e[0] !== 'allergens' &&
-                    e[0] !== 'special'
-            )
-            .map((e) => e[1]);
-
-        const valid = values.every(
-            (v) =>
-                v !== null &&
-                v !== undefined &&
-                v !== '' &&
-                (Array.isArray(v) ? v.length > 0 : true) &&
-                (typeof v === 'number' ? v >= 0 : true)
-        );
+        const valid = entries
+            .filter((e) => e[1].required)
+            .map((e) => e[1].value)
+            .every(
+                (v) =>
+                    v &&
+                    (Array.isArray(v) ? v.length > 0 : true) &&
+                    (typeof v === 'number' ? v >= 0 : true)
+            );
 
         setValid(valid);
-    }, [newDoc]);
+    }, [fields]);
 
     return (
         <div id="new-meal">
@@ -103,12 +117,15 @@ function NewMeal() {
                 <div className="form-container">
                     <div className="left">
                         <div className="header">Meal Info.</div>
+
                         {/* NAME */}
                         <div className="form-field">
                             <Input
                                 type="text"
                                 placeholder="Meal Name"
-                                onChange={(val) => updateDoc('name', val)}>
+                                onChange={(val) => handleChange('name', val)}
+                                onBlur={() => setTouched('name')}
+                                isValid={validate('name')}>
                                 <Terminal />
                             </Input>
                         </div>
@@ -118,7 +135,11 @@ function NewMeal() {
                             <Select
                                 label="Meal Type"
                                 options={['breakfast', 'dessert', 'entree']}
-                                onChange={(val) => updateDoc('meal_type', val)}>
+                                onChange={(val) =>
+                                    handleChange('meal_type', val)
+                                }
+                                onOpen={() => setTouched('meal_type')}
+                                isValid={validate('meal_type')}>
                                 <Coffee />
                             </Select>
                         </div>
@@ -128,7 +149,11 @@ function NewMeal() {
                             <Input
                                 type="number"
                                 placeholder="Calories"
-                                onChange={(val) => updateDoc('calories', val)}>
+                                onChange={(val) =>
+                                    handleChange('calories', val)
+                                }
+                                onBlur={() => setTouched('calories')}
+                                isValid={validate('calories')}>
                                 <Activity />
                             </Input>
                         </div>
@@ -139,8 +164,10 @@ function NewMeal() {
                                 label="Water Temp."
                                 options={['boiling', 'cold', 'any', 'none']}
                                 onChange={(val) =>
-                                    updateDoc('water_temp', val)
-                                }>
+                                    handleChange('water_temp', val)
+                                }
+                                onOpen={() => setTouched('water_temp')}
+                                isValid={validate('water_temp')}>
                                 <Thermometer />
                             </Select>
                         </div>
@@ -150,7 +177,11 @@ function NewMeal() {
                             <Input
                                 type="number"
                                 placeholder="Water mL"
-                                onChange={(val) => updateDoc('water_ml', val)}>
+                                onChange={(val) =>
+                                    handleChange('water_ml', val)
+                                }
+                                onBlur={() => setTouched('water_ml')}
+                                isValid={validate('water_ml')}>
                                 <Droplet />
                             </Input>
                         </div>
@@ -160,7 +191,9 @@ function NewMeal() {
                             <Input
                                 type="number"
                                 placeholder="Minutes"
-                                onChange={(val) => updateDoc('minutes', val)}>
+                                onChange={(val) => handleChange('minutes', val)}
+                                onBlur={() => setTouched('minutes')}
+                                isValid={validate('minutes')}>
                                 <Watch />
                             </Input>
                         </div>
@@ -181,7 +214,9 @@ function NewMeal() {
                                     'tree nut',
                                     'wheat'
                                 ]}
-                                onChange={(val) => updateDoc('allergens', val)}>
+                                onChange={(val) =>
+                                    handleChange('allergens', val)
+                                }>
                                 <AlertTriangle />
                             </Select>
                             <div className="hint">Optional</div>
@@ -193,7 +228,9 @@ function NewMeal() {
                                 multi={true}
                                 label="Special Diet"
                                 options={['vegan', 'vegetarian', 'gluten_free']}
-                                onChange={(val) => updateDoc('special', val)}>
+                                onChange={(val) =>
+                                    handleChange('special', val)
+                                }>
                                 <Award />
                             </Select>
                             <div className="hint">Optional</div>
@@ -208,7 +245,7 @@ function NewMeal() {
                                 rows={20}
                                 placeholder="oatmeal, dried cherries, brown sugar..."
                                 onChange={(val) =>
-                                    updateDoc('ingredients', val)
+                                    handleChange('ingredients', val)
                                 }></Textarea>
                             <div className="hint">
                                 Optional. List the ingredients, separated by
@@ -242,14 +279,7 @@ function NewMeal() {
                     ) : null}
                 </div>
 
-                <div
-                    title={
-                        !valid
-                            ? `Missing required fields: ${Object.entries(newDoc)
-                                  .filter((e) => e[1] === null)
-                                  .map((e) => e[0])}`
-                            : 'Submit form'
-                    }>
+                <div title={!valid ? `Missing required fields` : 'Submit form'}>
                     <button
                         type="button"
                         disabled={!valid}

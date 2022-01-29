@@ -4,7 +4,6 @@ import { X } from 'react-feather';
 import MealName from './MealName';
 
 function Modal({ modalData, setModalData }) {
-    console.log(modalData);
     return (
         <div id="modal" onClick={() => setModalData(null)}>
             <div className="modal-main" onClick={(e) => e.stopPropagation()}>
@@ -14,9 +13,7 @@ function Modal({ modalData, setModalData }) {
                         <X />
                     </button>
                 </div>
-                <div className="modal-content">
-                    {modalData.ingredients}
-                </div>
+                <div className="modal-content">{modalData.ingredients}</div>
             </div>
         </div>
     );

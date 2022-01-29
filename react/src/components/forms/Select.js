@@ -3,10 +3,26 @@ import './Select.css';
 import { ChevronDown } from 'react-feather';
 import Checkbox from '../Checkbox';
 
-function Select({ label, options, multi = false, onChange, children }) {
+function Select({
+    label,
+    options,
+    multi = false,
+    onChange,
+    onClose = null,
+    onOpen = null,
+    isValid = true,
+    children
+}) {
     const [open, setOpen] = useState(false);
     const [selected, setSelected] = useState(multi ? [] : null);
+    const [classes, setClasses] = useState(['select-container']);
+
     const node = useRef();
+
+    const onSelect = (val) => {
+        setSelected(val);
+        isValid = true;
+    }
 
     const setMultiSelection = (val) => {
         setSelected(
@@ -16,29 +32,46 @@ function Select({ label, options, multi = false, onChange, children }) {
         );
     };
 
-    const offClick = (e) => {
-        if (!node.current.contains(e.target)) {
-            setOpen(false);
+    const toggle = (newOpen) => {
+        let add = [];
+        let remove = [];
+
+        if (newOpen === false) {
+            if (onClose) onClose();
+            remove.push('open');
+
+            console.log(isValid);
+
+            !isValid ? add.push('error') : remove.push('error');
+        } else {
+            if (onOpen) onOpen();
+            add.push('open');
         }
+        
+        setOpen(newOpen);
+        setClasses([...classes.filter((c) => !remove.includes(c)), ...add]);
     };
+
+    // TODO - does not trigger error class
+    // const offClick = (e) => {
+    //     if (!node.current.contains(e.target)) {
+    //         toggle(false);
+    //     }
+    // };
+
+    // useEffect(() => {
+    //     document.addEventListener('mousedown', offClick);
+    //     return () => {
+    //         document.removeEventListener('mousedown', offClick);
+    //     };
+    // }, []);
 
     useEffect(() => {
         onChange(selected);
     }, [selected]);
 
-    useEffect(() => {
-        document.addEventListener('mousedown', offClick);
-        return () => {
-            document.removeEventListener('mousedown', offClick);
-        };
-    }, []);
-
     return (
-        <div
-            ref={node}
-            id="select-container"
-            className={open ? 'open' : ''}
-            onClick={() => setOpen(!open)}>
+        <div ref={node} className={classes.join(' ')} onClick={() => toggle(!open)}>
             <div className="icon">{children}</div>
 
             <div className="fake-select">
@@ -52,7 +85,7 @@ function Select({ label, options, multi = false, onChange, children }) {
             </div>
 
             <div className="icon">
-                <ChevronDown size={16} onClick={() => setOpen(!open)} />
+                <ChevronDown size={16} onClick={() => toggle(!open)} />
             </div>
 
             <div className={open ? 'select-menu open' : 'select-menu'}>
@@ -73,7 +106,7 @@ function Select({ label, options, multi = false, onChange, children }) {
                             key={i}
                             className="option"
                             value={o}
-                            onClick={() => setSelected(o)}>
+                            onClick={() => onSelect(o)}>
                             {o}
                         </div>
                     )

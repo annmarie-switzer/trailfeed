@@ -1,17 +1,22 @@
-#select-container {
+.select-container {
     display: flex;
     position: relative;
     background-color: var(--bg-contrast);
+    border: solid 1px var(--bg-contrast);
     border-radius: 0.25rem;
 }
 
-#select-container.open {
+.select-container.error {
+    border-color: var(--red);
+}
+
+.select-container.open {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
     background-color: var(--bg1);
 }
 
-#select-container .icon {
+.select-container .icon {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -20,20 +25,20 @@
     opacity: 0.5;
 }
 
-#select-container  .fake-select {
+.select-container  .fake-select {
     cursor: pointer;
     flex: auto;
     display: flex;
     align-items: center;
 }
 
-#select-container .label {
+.select-container .label {
     pointer-events: none;
     user-select: none;
     opacity: 0.5;
 }
 
-#select-container .select-menu {
+.select-container .select-menu {
     position: absolute;
     top: 100%;
     left: 0;
@@ -45,17 +50,17 @@
     z-index: 2;
 }
 
-#select-container .select-menu.open {
+.select-container .select-menu.open {
     height: auto;
 }
 
-#select-container .option {
+.select-container .option {
     cursor: pointer;
     padding: 1rem;
     box-sizing: border-box;
     user-select: none;
 }
 
-#select-container .option:hover {
+.select-container .option:hover {
     background-color: var(--option-hover);
 }
