@@ -43,6 +43,8 @@ function NewMeal() {
         ingredients: { value: null, touched: false, required: false }
     });
 
+    const requiredDiv = <div className="hint error">This is a required field</div>;
+
     const submit = async () => {
         let newDoc = {
             user: user.email
@@ -81,7 +83,7 @@ function NewMeal() {
     };
 
     // field level validation
-    const validate = (id) => {
+    const isValid = (id) => {
         if (fields[id].required && fields[id].touched) {
             return !!fields[id].value;
         } else {
@@ -125,9 +127,10 @@ function NewMeal() {
                                 placeholder="Meal Name"
                                 onChange={(val) => handleChange('name', val)}
                                 onBlur={() => setTouched('name')}
-                                isValid={validate('name')}>
+                                hasError={!isValid('name')}>
                                 <Terminal />
                             </Input>
+                            {!isValid('name') ? requiredDiv : null}
                         </div>
 
                         {/* MEAL TYPE */}
@@ -138,10 +141,11 @@ function NewMeal() {
                                 onChange={(val) =>
                                     handleChange('meal_type', val)
                                 }
-                                onOpen={() => setTouched('meal_type')}
-                                isValid={validate('meal_type')}>
+                                onClose={() => setTouched('meal_type')}
+                                hasError={!isValid('meal_type')}>
                                 <Coffee />
                             </Select>
+                            {!isValid('meal_type') ? requiredDiv : null}
                         </div>
 
                         {/* CALORIES */}
@@ -153,9 +157,10 @@ function NewMeal() {
                                     handleChange('calories', val)
                                 }
                                 onBlur={() => setTouched('calories')}
-                                isValid={validate('calories')}>
+                                hasError={!isValid('calories')}>
                                 <Activity />
                             </Input>
+                            {!isValid('calories') ? requiredDiv : null}
                         </div>
 
                         {/* WATER TEMP */}
@@ -166,10 +171,11 @@ function NewMeal() {
                                 onChange={(val) =>
                                     handleChange('water_temp', val)
                                 }
-                                onOpen={() => setTouched('water_temp')}
-                                isValid={validate('water_temp')}>
+                                onClose={() => setTouched('water_temp')}
+                                hasError={!isValid('water_temp')}>
                                 <Thermometer />
                             </Select>
+                            {!isValid('water_temp') ? requiredDiv : null}
                         </div>
 
                         {/* WATER ML */}
@@ -181,9 +187,10 @@ function NewMeal() {
                                     handleChange('water_ml', val)
                                 }
                                 onBlur={() => setTouched('water_ml')}
-                                isValid={validate('water_ml')}>
+                                hasError={!isValid('water_ml')}>
                                 <Droplet />
                             </Input>
+                            {!isValid('water_ml') ? requiredDiv : null}
                         </div>
 
                         {/* MINUTES */}
@@ -193,9 +200,10 @@ function NewMeal() {
                                 placeholder="Minutes"
                                 onChange={(val) => handleChange('minutes', val)}
                                 onBlur={() => setTouched('minutes')}
-                                isValid={validate('minutes')}>
+                                hasError={!isValid('minutes')}>
                                 <Watch />
                             </Input>
+                            {!isValid('minutes') ? requiredDiv : null}
                         </div>
 
                         {/* ALLERGENS */}
@@ -246,7 +254,8 @@ function NewMeal() {
                                 placeholder="oatmeal, dried cherries, brown sugar..."
                                 onChange={(val) =>
                                     handleChange('ingredients', val)
-                                }></Textarea>
+                                }>
+                            </Textarea>
                             <div className="hint">
                                 Optional. List the ingredients, separated by
                                 commas.
@@ -269,7 +278,7 @@ function NewMeal() {
                     {error ? (
                         <div className="error">
                             <AlertCircle />
-                            Some error
+                            {error}
                         </div>
                     ) : complete ? (
                         <div className="ok">

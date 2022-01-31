@@ -4,10 +4,14 @@
     background-color: var(--bg-contrast);
     border: solid 1px var(--bg-contrast);
     border-radius: 0.25rem;
+    user-select: none;
+    outline: none;
 }
 
-.select-container.error {
-    border-color: var(--red);
+.select-container.error .label,
+.select-container.error .icon {
+    color: var(--red);
+    opacity: 1;
 }
 
 .select-container.open {

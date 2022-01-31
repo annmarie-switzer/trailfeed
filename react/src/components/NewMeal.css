@@ -54,6 +54,11 @@
     font-style: italic;
 }
 
+#new-meal .hint.error {
+    color: var(--red);
+    opacity: 1;
+}
+
 #new-meal .toolbar {
     position: sticky;
     bottom: 0;

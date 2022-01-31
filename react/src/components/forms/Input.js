@@ -7,7 +7,7 @@ function Input({
     placeholder,
     onChange,
     onBlur,
-    isValid = true,
+    hasError = false,
     children
 }) {
     const [value, setValue] = useState('');
@@ -37,7 +37,7 @@ function Input({
             classes.push('number');
         }
 
-        if (!isValid) {
+        if (hasError) {
             classes.push('error');
         }
 
