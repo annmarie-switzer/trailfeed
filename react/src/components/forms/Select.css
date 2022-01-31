@@ -8,6 +8,10 @@
     outline: none;
 }
 
+.select-container:focus {
+    background-color: var(--bg1);
+}
+
 .select-container.error .label,
 .select-container.error .icon {
     color: var(--red);
