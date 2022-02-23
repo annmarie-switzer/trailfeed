@@ -15,7 +15,7 @@ function Pack({ selection, setSelection }) {
 
             <div className="list">
                 {selection.length === 0 ? (
-                    <div>Nothing selected.</div>
+                    <div style={{margin: '2rem auto'}}>Nothing selected.</div>
                 ) : (
                     selection.map((meal, i) => (
                         <div key={i} className="list-item">

@@ -51,6 +51,10 @@ function NewMeal() {
         };
 
         Object.entries(fields).forEach((e) => {
+            if (e[0] === 'calories' || e[0] === 'minutes' || e[0] === 'water_ml') {
+                e[1].value = Number(e[1].value)
+            }
+            
             newDoc[e[0]] = e[1].value;
         });
 
@@ -121,7 +125,7 @@ function NewMeal() {
                         <div className="header">Meal Info.</div>
 
                         {/* NAME */}
-                        <div className="form-field">
+                        <div className="form-field" title="Meal name">
                             <Input
                                 type="text"
                                 placeholder="Meal Name"
@@ -134,7 +138,7 @@ function NewMeal() {
                         </div>
 
                         {/* MEAL TYPE */}
-                        <div className="form-field">
+                        <div className="form-field" title="Meal type">
                             <Select
                                 label="Meal Type"
                                 options={['breakfast', 'dessert', 'entree']}
@@ -149,7 +153,7 @@ function NewMeal() {
                         </div>
 
                         {/* CALORIES */}
-                        <div className="form-field">
+                        <div className="form-field" title="Calories">
                             <Input
                                 type="number"
                                 placeholder="Calories"
@@ -164,7 +168,7 @@ function NewMeal() {
                         </div>
 
                         {/* WATER TEMP */}
-                        <div className="form-field">
+                        <div className="form-field" title="Water temp.">
                             <Select
                                 label="Water Temp."
                                 options={['boiling', 'cold', 'any', 'none']}
@@ -179,7 +183,7 @@ function NewMeal() {
                         </div>
 
                         {/* WATER ML */}
-                        <div className="form-field">
+                        <div className="form-field" title="Water mL">
                             <Input
                                 type="number"
                                 placeholder="Water mL"
@@ -194,7 +198,7 @@ function NewMeal() {
                         </div>
 
                         {/* MINUTES */}
-                        <div className="form-field">
+                        <div className="form-field" title="Minutes">
                             <Input
                                 type="number"
                                 placeholder="Minutes"
@@ -207,7 +211,7 @@ function NewMeal() {
                         </div>
 
                         {/* ALLERGENS */}
-                        <div className="form-field">
+                        <div className="form-field" title="Allergens">
                             <Select
                                 multi={true}
                                 label="Allergens"
@@ -231,7 +235,7 @@ function NewMeal() {
                         </div>
 
                         {/* SPECIAL */}
-                        <div className="form-field">
+                        <div className="form-field" title="Special diet">
                             <Select
                                 multi={true}
                                 label="Special Diet"

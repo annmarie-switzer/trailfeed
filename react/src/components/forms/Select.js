@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './Select.css';
-import { ChevronDown } from 'react-feather';
-import Checkbox from '../Checkbox';
+import { CheckSquare, ChevronDown, Square } from 'react-feather';
 
 function Select({
     label,
@@ -89,11 +88,16 @@ function Select({
                             key={i}
                             className="option multi"
                             value={o}
-                            onClick={(e) => e.stopPropagation()}>
-                            <Checkbox
-                                label={o}
-                                onChange={() => setMultiSelection(o)}
-                            />
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                setMultiSelection(o);
+                            }}>
+                            {selected.includes(o) ? (
+                                <CheckSquare size={20} color="var(--accent)" />
+                            ) : (
+                                <Square size={20} color="var(--fg4)" />
+                            )}
+                            <span>{o}</span>
                         </div>
                     ) : (
                         <div

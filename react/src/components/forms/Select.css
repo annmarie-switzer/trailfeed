@@ -67,6 +67,9 @@
     padding: 1rem;
     box-sizing: border-box;
     user-select: none;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
 }
 
 .select-container .option:hover {

@@ -14,7 +14,8 @@
                 "type": "keyword"
             },
             "rating": {
-                "type": "integer"
+                "type": "integer",
+                "coerce": false
             }
         }
     }

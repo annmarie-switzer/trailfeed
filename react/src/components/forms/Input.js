@@ -31,7 +31,7 @@ function Input({
     };
 
     const classNames = () => {
-        let classes = ['input-wrapper'];
+        let classes = ['custom-input'];
 
         if (type === 'number') {
             classes.push('number');

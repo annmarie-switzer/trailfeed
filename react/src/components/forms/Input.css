@@ -1,10 +1,10 @@
-.input-wrapper {
+.custom-input {
     position: relative;
     border-radius: 0.25rem;
     border: solid 1px transparent;
 }
 
-.input-wrapper .icon {
+.custom-input .icon {
     position: absolute;
     top: 0;
     bottom: 0;
@@ -18,7 +18,7 @@
     color: var(--fg);
 }
 
-.input-wrapper input {
+.custom-input input {
     appearance: none;
     border: 0;
     border-radius: 0.25rem;
@@ -33,30 +33,30 @@
     background-color: var(--bg-contrast);
 }
 
-.input-wrapper input::placeholder {
+.custom-input input::placeholder {
     opacity: 0.5;
     color: var(--fg);
 }
 
-.input-wrapper input:focus {
+.custom-input input:focus {
     background-color: var(--bg1);
 }
 
 /* error */
-.input-wrapper.error input::placeholder,
-.input-wrapper.error .icon  {
+.custom-input.error input::placeholder,
+.custom-input.error .icon  {
     color: var(--red);
     opacity: 1;
 }
 
 /* type="number" */
-.input-wrapper > input[type=number]::-webkit-inner-spin-button {
+.custom-input > input[type=number]::-webkit-inner-spin-button {
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
 }
 
-.input-wrapper.number .buttons {
+.custom-input.number .buttons {
     position: absolute;
     right: 0;
     top: 0;
@@ -69,14 +69,14 @@
     color: transparent;
 }
 
-.input-wrapper > input:focus ~ .buttons {
+.custom-input > input:focus ~ .buttons {
     color: var(--fg);
 }
 
-.input-wrapper.number .buttons > * {
+.custom-input.number .buttons > * {
     cursor: pointer;
 }
 
-.input-wrapper.number .buttons > *.disabled {
+.custom-input.number .buttons > *.disabled {
     pointer-events: none;
 }

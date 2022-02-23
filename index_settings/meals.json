@@ -81,13 +81,16 @@
                 "type": "keyword"
             },
             "calories": {
-                "type": "integer"
+                "type": "integer",
+                "coerce": false
             },
             "water_ml": {
-                "type": "integer"
+                "type": "integer",
+                "coerce": false
             },
             "minutes": {
-                "type": "integer"
+                "type": "integer",
+                "coerce": false
             }
         }
     }

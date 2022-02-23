@@ -30,6 +30,12 @@
     gap: 2rem;
 }
 
+@media screen and (max-width: 768px) {
+    #new-meal .form-container {
+        flex-wrap: wrap;
+    }
+}
+
 #new-meal .form-container > * {
     width: 100%;
     display: flex;
@@ -92,21 +98,18 @@
     height: 100%;
     padding: 1rem;
     font-size: 1.1rem;
-    border: solid 1px transparent;
+    background-color: var(--accent);
+    color: var(--bg);
+    border: solid 1px var(--accent);
     border-radius: 0;
-    background-color: transparent;
-    color: var(--accent);
     opacity: 1;
 }
 
 #new-meal .toolbar > div:last-of-type button[disabled] {
     opacity: 0.5;
-}
-
-#new-meal .toolbar > div:last-of-type button:not([disabled]):hover {
-    background-color: var(--accent);
-    border-color: var(--accent);
-    color: var(--bg);
+    background-color: transparent;
+    border-color: transparent;
+    color: var(--accent);
 }
 
 #new-meal .feedback {
