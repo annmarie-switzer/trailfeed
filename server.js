@@ -166,7 +166,14 @@ app.post('/add-doc', async (req, res) => {
         }
     });
 
-    res.json(await esRes.json());
+    const resJson = await esRes.json();
+
+    if (resJson.error) {
+        res.status(400).json(resJson);
+    } else {
+        res.json(resJson);
+    }
+
 });
 
 app.all('*', (req, res) => {
