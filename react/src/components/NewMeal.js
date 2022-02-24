@@ -43,7 +43,9 @@ function NewMeal() {
         ingredients: { value: null, touched: false, required: false }
     });
 
-    const requiredDiv = <div className="hint error">This is a required field</div>;
+    const requiredDiv = (
+        <div className="hint error">This is a required field</div>
+    );
 
     const submit = async () => {
         let newDoc = {
@@ -51,10 +53,14 @@ function NewMeal() {
         };
 
         Object.entries(fields).forEach((e) => {
-            if (e[0] === 'calories' || e[0] === 'minutes' || e[0] === 'water_ml') {
-                e[1].value = Number(e[1].value)
+            if (
+                e[0] === 'calories' ||
+                e[0] === 'minutes' ||
+                e[0] === 'water_ml'
+            ) {
+                e[1].value = Number(e[1].value);
             }
-            
+
             newDoc[e[0]] = e[1].value;
         });
 
@@ -145,7 +151,11 @@ function NewMeal() {
                                 onChange={(val) =>
                                     handleChange('meal_type', val)
                                 }
-                                onClose={() => setTouched('meal_type')}
+                                onClose={() =>
+                                    setTimeout(() => {
+                                        setTouched('meal_type');
+                                    }, 100)
+                                }
                                 hasError={!isValid('meal_type')}>
                                 <Coffee />
                             </Select>
@@ -175,7 +185,9 @@ function NewMeal() {
                                 onChange={(val) =>
                                     handleChange('water_temp', val)
                                 }
-                                onClose={() => setTouched('water_temp')}
+                                onClose={() => setTimeout(() => {
+                                    setTouched('water_temp')
+                                }, 100)}
                                 hasError={!isValid('water_temp')}>
                                 <Thermometer />
                             </Select>
@@ -258,8 +270,7 @@ function NewMeal() {
                                 placeholder="oatmeal, dried cherries, brown sugar..."
                                 onChange={(val) =>
                                     handleChange('ingredients', val)
-                                }>
-                            </Textarea>
+                                }></Textarea>
                             <div className="hint">
                                 Optional. List the ingredients, separated by
                                 commas.
