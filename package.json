@@ -6,7 +6,11 @@
     "type": "module",
     "scripts": {
         "start": "node server.js",
+        "build": "cd react/ && npm run build",
         "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "engines": {
+        "node": "16.x"
     },
     "author": "Annmarie Switzer",
     "license": "ISC",
