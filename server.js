@@ -24,14 +24,13 @@ const authString = Buffer.from(
 
 app.use(express.json());
 
-// TODO - Warning: connect.session() MemoryStore is not designed for a production environment
 app.use(
     session({
         cookie: {
             domain: process.env.DOMAIN,
             httpOnly: true,
             sameSite: true,
-            secure: process.env.NODE_ENV === 'production'
+            secure: false
         },
         store: new MemoryStore({
             checkPeriod: 86400000 // prune expired entries every 24h
