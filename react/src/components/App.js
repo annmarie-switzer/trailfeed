@@ -20,8 +20,8 @@ function App() {
         document.body.dataset.theme = theme;
 
         getUser()
-            .catch(() => setUser(null))
-            .then((res) => setUser(res));
+            .catch(() => { console.log('caught error'); setUser(null) })
+            .then((res) => { console.log('moving on'); setUser(res) });
     }, []);
 
     if (user === null) {

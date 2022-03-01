@@ -2,30 +2,25 @@ import express from 'express';
 import fetch from 'node-fetch';
 import dotenv from 'dotenv';
 import session from 'express-session';
-import cors from 'cors';
 import jwt from 'jsonwebtoken';
+import { fileURLToPath } from 'url';
+import path, { dirname } from 'path';
 
 dotenv.config();
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const app = express();
 
 const port = process.env.PORT;
-const serverUrl = process.env.SERVER_URL;
-const clientUrl = process.env.CLIENT_URL;
+const url = `http://${process.env.DOMAIN}:${port}`;
 const esUrl = process.env.ES_URL;
 const authString = Buffer.from(
     `${process.env.ES_USER}:${process.env.ES_PW}`
 ).toString('base64');
 
 app.use(express.json());
-
-app.use(
-    cors({
-        origin: clientUrl,
-        credentials: true,
-        optionsSuccessStatus: 200
-    })
-);
 
 app.use(
     session({
@@ -47,6 +42,7 @@ app.use(
 app.use((req, res, next) => {
     if (
         req.session['profile'] ||
+        req.path.includes('/') ||
         req.path.includes('callback') ||
         req.path.includes('bulk-upload')
     ) {
@@ -56,6 +52,9 @@ app.use((req, res, next) => {
     }
 });
 
+app.use(express.static(path.join(__dirname, 'react/build')));
+
+// Google OAuth
 app.get('/callback', async (req, res) => {
     const response = await fetch('https://oauth2.googleapis.com/token', {
         method: 'POST',
@@ -64,7 +63,7 @@ app.get('/callback', async (req, res) => {
             code: req.query.code,
             client_id: process.env.CLIENT_ID,
             client_secret: process.env.CLIENT_SECRET,
-            redirect_uri: `${serverUrl}/callback`,
+            redirect_uri: `${url}/callback`,
             grant_type: 'authorization_code'
         })
     });
@@ -83,24 +82,10 @@ app.get('/callback', async (req, res) => {
         console.error(`Validation Error: ${err}`);
     }
 
-    res.redirect(clientUrl);
+    res.redirect(url);
 });
 
-app.post('/logout', async (req, res) => {
-    req.session.destroy(() => res.status(204).end());
-});
-
-app.get('/user', async (req, res) => {
-    res.json({
-        email: req.session['profile']['email'],
-        familyName: req.session['profile']['family_name'],
-        givenName: req.session['profile']['given_name'],
-        locale: req.session['profile']['locale'],
-        name: req.session['profile']['name'],
-        picture: req.session['profile']['picture']
-    });
-});
-
+// Upload to ES
 app.post('/bulk-upload', async (req, res) => {
     const data = req.body;
     const header = { create: {} };
@@ -128,6 +113,7 @@ app.post('/bulk-upload', async (req, res) => {
     }
 });
 
+// UI endpoints
 app.post('/search', async (req, res) => {
     const esRes = await fetch(`${esUrl}/${req.body.index}/_search`, {
         method: 'POST',
@@ -142,16 +128,19 @@ app.post('/search', async (req, res) => {
 });
 
 app.post('/update-rating', async (req, res) => {
-    const esRes = await fetch(`${esUrl}/ratings/_update/${req.body.docId}?refresh=true`, {
-        method: 'POST',
-        body: JSON.stringify({
-            script: `ctx._source.rating = ${req.body.rating}`
-        }),
-        headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Basic ${authString}`
+    const esRes = await fetch(
+        `${esUrl}/ratings/_update/${req.body.docId}?refresh=true`,
+        {
+            method: 'POST',
+            body: JSON.stringify({
+                script: `ctx._source.rating = ${req.body.rating}`
+            }),
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Basic ${authString}`
+            }
         }
-    });
+    );
 
     res.json(await esRes.json());
 });
@@ -173,9 +162,33 @@ app.post('/add-doc', async (req, res) => {
     } else {
         res.json(resJson);
     }
-
 });
 
+app.get('/user', async (req, res) => {
+    if (req.session.profile) {
+        res.json({
+            email: req.session['profile']['email'],
+            familyName: req.session['profile']['family_name'],
+            givenName: req.session['profile']['given_name'],
+            locale: req.session['profile']['locale'],
+            name: req.session['profile']['name'],
+            picture: req.session['profile']['picture']
+        });
+    } else {
+        res.status(401).end();
+    }
+});
+
+app.post('/logout', async (req, res) => {
+    req.session.destroy(() => res.status(204).end());
+});
+
+// Serve UI
+app.get('/*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'react/build', 'index.html'));
+});
+
+// 404 catch-all
 app.all('*', (req, res) => {
     res.status(404).end();
 });
@@ -183,7 +196,7 @@ app.all('*', (req, res) => {
 try {
     await fetch(`${esUrl}`);
     app.listen(port, async () => {
-        console.log(`~ Server is running at ${serverUrl} ~`);
+        console.log(`~ Server is running at ${url} ~`);
     });
 } catch (_) {
     console.log("Couldn't start server: Elasticsearch could not be reached.");
