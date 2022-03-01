@@ -76,6 +76,8 @@ app.get('/callback', async (req, res) => {
     const certRes = await fetch('https://www.googleapis.com/oauth2/v1/certs');
     const cert = (await certRes.json())[kid];
 
+    console.log(jwt.verify(id_token, cert));
+
     try {
         req.session['profile'] = jwt.verify(id_token, cert);
     } catch (err) {
@@ -165,8 +167,6 @@ app.post('/add-doc', async (req, res) => {
 });
 
 app.get('/user', async (req, res) => {
-    console.log(req.session);
-    
     if (req.session.profile) {
         res.json({
             email: req.session['profile']['email'],
