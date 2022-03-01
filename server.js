@@ -5,11 +5,13 @@ import session from 'express-session';
 import jwt from 'jsonwebtoken';
 import { fileURLToPath } from 'url';
 import path, { dirname } from 'path';
+import createMemoryStore from 'memorystore';
 
 dotenv.config();
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
+const MemoryStore = createMemoryStore(session);
 
 const app = express();
 
@@ -22,6 +24,7 @@ const authString = Buffer.from(
 
 app.use(express.json());
 
+// TODO - Warning: connect.session() MemoryStore is not designed for a production environment
 app.use(
     session({
         cookie: {
@@ -30,6 +33,9 @@ app.use(
             sameSite: true,
             secure: process.env.NODE_ENV === 'production'
         },
+        store: new MemoryStore({
+            checkPeriod: 86400000 // prune expired entries every 24h
+        }),
         resave: false,
         saveUninitialized: false,
         // TODO
@@ -166,7 +172,7 @@ app.post('/add-doc', async (req, res) => {
 
 app.get('/user', async (req, res) => {
     console.log(req.session);
-    
+
     if (req.session['profile']) {
         res.json({
             email: req.session['profile']['email'],
