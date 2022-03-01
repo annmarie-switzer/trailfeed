@@ -77,9 +77,7 @@ app.get('/callback', async (req, res) => {
     const cert = (await certRes.json())[kid];
 
     try {
-        console.log(req.session);
         req.session['profile'] = jwt.verify(id_token, cert);
-        console.log(req.session);
     } catch (err) {
         console.error(`Validation Error: ${err}`);
     }
@@ -167,7 +165,9 @@ app.post('/add-doc', async (req, res) => {
 });
 
 app.get('/user', async (req, res) => {
-    if (req.session.profile) {
+    console.log(req.session);
+    
+    if (req.session['profile']) {
         res.json({
             email: req.session['profile']['email'],
             familyName: req.session['profile']['family_name'],
