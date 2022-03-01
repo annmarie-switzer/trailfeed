@@ -165,6 +165,8 @@ app.post('/add-doc', async (req, res) => {
 });
 
 app.get('/user', async (req, res) => {
+    console.log(req.session);
+    
     if (req.session.profile) {
         res.json({
             email: req.session['profile']['email'],
