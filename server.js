@@ -76,10 +76,10 @@ app.get('/callback', async (req, res) => {
     const certRes = await fetch('https://www.googleapis.com/oauth2/v1/certs');
     const cert = (await certRes.json())[kid];
 
-    console.log(jwt.verify(id_token, cert));
-
     try {
+        console.log(req.session);
         req.session['profile'] = jwt.verify(id_token, cert);
+        console.log(req.session);
     } catch (err) {
         console.error(`Validation Error: ${err}`);
     }
