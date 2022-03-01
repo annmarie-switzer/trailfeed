@@ -13,9 +13,9 @@ const __dirname = dirname(__filename);
 
 const app = express();
 
-const port = process.env.PORT;
-const url = `http://${process.env.DOMAIN}:${port}`;
-const esUrl = process.env.ES_URL;
+const url = process.env.URL;
+const esUrl = process.env.BONSAI_URL || process.env.ES_URL;
+
 const authString = Buffer.from(
     `${process.env.ES_USER}:${process.env.ES_PW}`
 ).toString('base64');
@@ -195,7 +195,7 @@ app.all('*', (req, res) => {
 
 try {
     await fetch(`${esUrl}`);
-    app.listen(port, async () => {
+    app.listen(process.env.PORT, async () => {
         console.log(`~ Server is running at ${url} ~`);
     });
 } catch (_) {

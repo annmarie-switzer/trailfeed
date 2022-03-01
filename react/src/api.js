@@ -1,5 +1,5 @@
 export const getUser = async () => {
-    const res = await fetch('http://localhost:5000/user', {
+    const res = await fetch('/user', {
         credentials: 'include'
     });
 
@@ -7,7 +7,7 @@ export const getUser = async () => {
 }
 
 export const logout = async () => {
-    await fetch('http://localhost:5000/logout', {
+    await fetch('/logout', {
         method: 'POST',
         credentials: 'include'
     });
@@ -16,7 +16,7 @@ export const logout = async () => {
 }
 
 export const search = async (req) => {
-    const res = await fetch('http://localhost:5000/search', {
+    const res = await fetch('/search', {
         credentials: 'include',
         method: 'POST',
         body: JSON.stringify(req),
@@ -27,7 +27,7 @@ export const search = async (req) => {
 }
 
 export const updateRating = async (req) => {
-    const res = await fetch('http://localhost:5000/update-rating', {
+    const res = await fetch('/update-rating', {
         credentials: 'include',
         method: 'POST',
         body: JSON.stringify(req),
@@ -38,7 +38,7 @@ export const updateRating = async (req) => {
 }
 
 export const addDoc = async (req) => {
-    const res = await fetch('http://localhost:5000/add-doc', {
+    const res = await fetch('/add-doc', {
         credentials: 'include',
         method: 'POST',
         body: JSON.stringify(req),

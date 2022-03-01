@@ -53,13 +53,13 @@ function NewMeal() {
         };
 
         Object.entries(fields).forEach((e) => {
-            // if (
-            //     e[0] === 'calories' ||
-            //     e[0] === 'minutes' ||
-            //     e[0] === 'water_ml'
-            // ) {
-            //     e[1].value = Number(e[1].value);
-            // }
+            if (
+                e[0] === 'calories' ||
+                e[0] === 'minutes' ||
+                e[0] === 'water_ml'
+            ) {
+                e[1].value = Number(e[1].value);
+            }
 
             newDoc[e[0]] = e[1].value;
         });
