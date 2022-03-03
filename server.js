@@ -108,6 +108,8 @@ app.post('/api/add-doc', async (req, res) => {
 });
 
 app.post('/api/bulk-upload', async (req, res) => {
+    console.log('Received payload');
+
     const data = req.body;
     const header = { create: {} };
     const ndJson = data
@@ -126,6 +128,8 @@ app.post('/api/bulk-upload', async (req, res) => {
             }
         })
     ).json();
+
+    console.log(esRes);
 
     if (esRes.error) {
         res.status(400).send({ 'Bulk upload failed ': esRes });
