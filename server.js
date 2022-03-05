@@ -91,7 +91,7 @@ app.get('/callback', async (req, res) => {
 app.post('/api/add-doc', async (req, res) => {
     const headers = { 'Content-Type': 'application/json' };
 
-    if (process.env.NODE !== 'production') {
+    if (process.env.NODE_ENV !== 'production') {
         headers['Authorization'] = `Basic ${authString}`;
     }
 
@@ -138,12 +138,12 @@ app.post('/api/bulk-upload', async (req, res) => {
             })
         ).json();
 
-        if (esRes.code && esRes.code === 401) {
+        if (esRes.code) {
             res.status(esRes.code).send({
                 'Request to cluster failed': esRes.message
             });
         } else if (esRes.error) {
-            res.status(400).send({ 'Bad request': esRes });
+            res.status(esRes.status).send({ 'Bad request': esRes.error.reason });
         } else {
             res.status(200).send('Upload succeeded.');
         }
