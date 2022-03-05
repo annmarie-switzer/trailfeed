@@ -118,23 +118,27 @@ app.post('/api/bulk-upload', async (req, res) => {
         .join('\n')
         .concat('\n');
 
-    const esRes = await (
-        await fetch(`${esUrl}/meals/_bulk`, {
-            method: 'POST',
-            body: ndJson,
-            headers: {
-                'Content-Type': 'application/json',
-                Authorization: `Basic ${authString}`
-            }
-        })
-    ).json();
+    try {
+        const esRes = await (
+            await fetch(`${esUrl}/meals/_bulk`, {
+                method: 'POST',
+                body: ndJson,
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Basic ${authString}`
+                }
+            })
+        ).json();
 
-    console.log(esRes);
+        console.log(esRes);
 
-    if (esRes.error) {
-        res.status(400).send({ 'Bulk upload failed ': esRes });
-    } else {
-        res.status(200).end();
+        if (esRes.error) {
+            res.status(400).send({ 'Bulk upload failed ': esRes });
+        } else {
+            res.status(200).end();
+        }
+    } catch (e) {
+        console.log('Culd not reach Elasticsearch: ', e);
     }
 });
 
