@@ -89,13 +89,16 @@ app.get('/callback', async (req, res) => {
 });
 
 app.post('/api/add-doc', async (req, res) => {
+    const headers = { 'Content-Type': 'application/json' };
+
+    if (process.env.NODE !== 'production') {
+        headers['AUthorization'] = `Basic ${authString}`;
+    }
+
     const esRes = await fetch(`${esUrl}/${req.body.index}/_doc?refresh=true`, {
         method: 'POST',
         body: JSON.stringify(req.body.newDoc),
-        headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Basic ${authString}`
-        }
+        headers
     });
 
     const resJson = await esRes.json();
@@ -129,13 +132,15 @@ app.post('/api/bulk-upload', async (req, res) => {
 
         if (esRes.code && esRes.code === 401) {
             // Remote request failed
-            res.status(esRes.code).send({ 'Bulk upload failed': esRes.message });
+            res.status(esRes.code).send({
+                'Bulk upload failed': esRes.message
+            });
         } else if (esRes.error) {
             // Bad request
             res.status(400).send({ 'Bulk upload failed': esRes });
         } else {
             // Success
-            res.status(200).send('Bulk upload succeeded');
+            res.status(200).send('Bulk upload succeeded.');
         }
     } catch (e) {
         // API error
@@ -148,19 +153,28 @@ app.post('/api/logout', async (req, res) => {
 });
 
 app.post('/api/search', async (req, res) => {
+    const headers = { 'Content-Type': 'application/json' };
+
+    if (process.env.NODE !== 'production') {
+        headers['AUthorization'] = `Basic ${authString}`;
+    }
+
     const esRes = await fetch(`${esUrl}/${req.body.index}/_search`, {
         method: 'POST',
         body: JSON.stringify(req.body.query),
-        headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Basic ${authString}`
-        }
+        headers
     });
 
     res.json(await esRes.json());
 });
 
 app.post('/api/update-rating', async (req, res) => {
+    const headers = { 'Content-Type': 'application/json' };
+
+    if (process.env.NODE !== 'production') {
+        headers['AUthorization'] = `Basic ${authString}`;
+    }
+
     const esRes = await fetch(
         `${esUrl}/ratings/_update/${req.body.docId}?refresh=true`,
         {
@@ -168,10 +182,7 @@ app.post('/api/update-rating', async (req, res) => {
             body: JSON.stringify({
                 script: `ctx._source.rating = ${req.body.rating}`
             }),
-            headers: {
-                'Content-Type': 'application/json',
-                Authorization: `Basic ${authString}`
-            }
+            headers
         }
     );
 
