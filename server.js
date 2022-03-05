@@ -108,8 +108,6 @@ app.post('/api/add-doc', async (req, res) => {
 });
 
 app.post('/api/bulk-upload', async (req, res) => {
-    console.log('Received payload');
-
     const data = req.body;
     const header = { create: {} };
     const ndJson = data
@@ -130,15 +128,17 @@ app.post('/api/bulk-upload', async (req, res) => {
             })
         ).json();
 
-        console.log(esRes);
+        console.log('esRes => ', esRes);
 
-        if (esRes.error) {
+        if (esRes.code && esRes.code === 401) {
+            res.status(400).send({ 'Bulk upload failed ': esRes.message });
+        } else if (esRes.error) {
             res.status(400).send({ 'Bulk upload failed ': esRes });
         } else {
-            res.status(200).end();
+            res.status(200).send({ 'Bulk upload succeeded': esRes });
         }
     } catch (e) {
-        console.log('Culd not reach Elasticsearch: ', e);
+        res.status(500).send({ 'Bulk upload failed ': e });
     }
 });
 
