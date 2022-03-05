@@ -122,9 +122,13 @@ app.post('/api/bulk-upload', async (req, res) => {
     try {
         const headers = { 'Content-Type': 'application/json' };
 
+        console.log('NODE => ', process.env.NODE);
+
         if (process.env.NODE !== 'production') {
             headers['Authorization'] = `Basic ${authString}`;
         }
+
+        console.log('headers => ', headers);
 
         const esRes = await (
             await fetch(`${esUrl}/meals/_bulk`, {
@@ -135,20 +139,16 @@ app.post('/api/bulk-upload', async (req, res) => {
         ).json();
 
         if (esRes.code && esRes.code === 401) {
-            // Remote request failed
             res.status(esRes.code).send({
-                'Bulk upload failed': esRes.message
+                'Request to cluster failed': esRes.message
             });
         } else if (esRes.error) {
-            // Bad request
-            res.status(400).send({ 'Bulk upload failed': esRes });
+            res.status(400).send({ 'Bad request': esRes });
         } else {
-            // Success
-            res.status(200).send('Bulk upload succeeded.');
+            res.status(200).send('Upload succeeded.');
         }
     } catch (e) {
-        // API error
-        res.status(500).send({ 'Bulk upload failed': e });
+        res.status(500).send(e);
     }
 });
 
