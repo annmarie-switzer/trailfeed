@@ -16,7 +16,7 @@ export const logout = async () => {
 }
 
 export const search = async (req) => {
-    const res = await fetch('/api/search', {
+    const res = await fetch('/api/es/search', {
         credentials: 'include',
         method: 'POST',
         body: JSON.stringify(req),
@@ -27,7 +27,7 @@ export const search = async (req) => {
 }
 
 export const updateRating = async (req) => {
-    const res = await fetch('/api/update-rating', {
+    const res = await fetch('/api/es/update-rating', {
         credentials: 'include',
         method: 'POST',
         body: JSON.stringify(req),
@@ -38,7 +38,7 @@ export const updateRating = async (req) => {
 }
 
 export const addDoc = async (req) => {
-    const res = await fetch('/api/add-doc', {
+    const res = await fetch('/api/es/add-doc', {
         credentials: 'include',
         method: 'POST',
         body: JSON.stringify(req),

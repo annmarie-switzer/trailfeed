@@ -57,7 +57,6 @@ app.use('/api/*', (req, res, next) => {
 
 app.use(express.static(path.join(__dirname, 'react/build')));
 
-// Google OAuth
 app.get('/callback', async (req, res) => {
     const response = await fetch('https://oauth2.googleapis.com/token', {
         method: 'POST',
@@ -88,109 +87,8 @@ app.get('/callback', async (req, res) => {
     res.redirect(url);
 });
 
-app.post('/api/add-doc', async (req, res) => {
-    const headers = { 'Content-Type': 'application/json' };
-
-    if (process.env.NODE_ENV !== 'production') {
-        headers['Authorization'] = `Basic ${authString}`;
-    }
-
-    const esRes = await fetch(`${esUrl}/${req.body.index}/_doc?refresh=true`, {
-        method: 'POST',
-        body: JSON.stringify(req.body.newDoc),
-        headers
-    });
-
-    const resJson = await esRes.json();
-
-    if (resJson.error) {
-        res.status(400).json(resJson);
-    } else {
-        res.json(resJson);
-    }
-});
-
-app.post('/api/bulk-upload', async (req, res) => {
-    const data = req.body;
-    const header = { create: {} };
-    const ndJson = data
-        .flatMap((d) => [header, d])
-        .map((d) => JSON.stringify(d))
-        .join('\n')
-        .concat('\n');
-
-    try {
-        const headers = { 'Content-Type': 'application/json' };
-
-        console.log('NODE_ENV => ', process.env.NODE_ENV);
-
-        if (process.env.NODE_ENV !== 'production') {
-            headers['Authorization'] = `Basic ${authString}`;
-        }
-
-        console.log('headers => ', headers);
-
-        const esRes = await (
-            await fetch(`${esUrl}/meals/_bulk`, {
-                method: 'POST',
-                body: ndJson,
-                headers
-            })
-        ).json();
-
-        if (esRes.code) {
-            res.status(esRes.code).send({
-                'Request to cluster failed': esRes.message
-            });
-        } else if (esRes.error) {
-            res.status(esRes.status).send({ 'Bad request': esRes.error.reason });
-        } else {
-            res.status(200).send('Upload succeeded.');
-        }
-    } catch (e) {
-        res.status(500).send(e);
-    }
-});
-
 app.post('/api/logout', async (req, res) => {
     req.session.destroy(() => res.status(204).end());
-});
-
-app.post('/api/search', async (req, res) => {
-    const headers = { 'Content-Type': 'application/json' };
-
-    if (process.env.NODE_ENV !== 'production') {
-        headers['Authorization'] = `Basic ${authString}`;
-    }
-
-    const esRes = await fetch(`${esUrl}/${req.body.index}/_search`, {
-        method: 'POST',
-        body: JSON.stringify(req.body.query),
-        headers
-    });
-
-    res.json(await esRes.json());
-});
-
-app.post('/api/update-rating', async (req, res) => {
-    const headers = { 'Content-Type': 'application/json' };
-
-    if (process.env.NODE_ENV !== 'production') {
-        headers['Authorization'] = `Basic ${authString}`;
-    }
-
-    const esRes = await fetch(
-        `${esUrl}/ratings/_update/${req.body.docId}?refresh=true`,
-        {
-            method: 'POST',
-            body: JSON.stringify({
-                script: `ctx._source.rating = ${req.body.rating}`
-            }),
-            headers
-        }
-    );
-
-    res.json(await esRes.json());
 });
 
 app.get('/api/user', async (req, res) => {
@@ -205,6 +103,143 @@ app.get('/api/user', async (req, res) => {
         });
     } else {
         res.status(401).end();
+    }
+});
+
+app.post('/api/es/add-doc', async (req, res) => {
+    const headers = { 'Content-Type': 'application/json' };
+    if (process.env.NODE_ENV !== 'production') {
+        headers['Authorization'] = `Basic ${authString}`;
+    }
+
+    try {
+        const esRes = await (
+            await fetch(`${esUrl}/${req.body.index}/_doc?refresh=true`, {
+                method: 'POST',
+                body: JSON.stringify(req.body.newDoc),
+                headers
+            })
+        ).json();
+
+        if (esRes.code) {
+            res.status(esRes.code).send({
+                'Request to cluster failed': esRes.message
+            });
+        } else if (esRes.error) {
+            res.status(esRes.status).send({
+                'Bad request': esRes.error.reason
+            });
+        } else {
+            res.status(200).json(esRes);
+        }
+    } catch (e) {
+        res.status(500).send(e);
+    }
+});
+
+app.post('/api/es/bulk-upload', async (req, res) => {
+    const data = req.body;
+    const header = { create: {} };
+    const ndJson = data
+        .flatMap((d) => [header, d])
+        .map((d) => JSON.stringify(d))
+        .join('\n')
+        .concat('\n');
+
+    const headers = { 'Content-Type': 'application/json' };
+    if (process.env.NODE_ENV !== 'production') {
+        headers['Authorization'] = `Basic ${authString}`;
+    }
+
+    try {
+        const esRes = await (
+            await fetch(`${esUrl}/meals/_bulk`, {
+                method: 'POST',
+                body: ndJson,
+                headers
+            })
+        ).json();
+
+        if (esRes.code) {
+            res.status(esRes.code).send({
+                'Request to cluster failed': esRes.message
+            });
+        } else if (esRes.error) {
+            res.status(esRes.status).send({
+                'Bad request': esRes.error.reason
+            });
+        } else {
+            res.status(200).send('Upload succeeded.');
+        }
+    } catch (e) {
+        res.status(500).send(e);
+    }
+});
+
+app.post('/api/es/search', async (req, res) => {
+    const headers = { 'Content-Type': 'application/json' };
+    if (process.env.NODE_ENV !== 'production') {
+        headers['Authorization'] = `Basic ${authString}`;
+    }
+
+    try {
+        const esRes = await (
+            await fetch(`${esUrl}/${req.body.index}/_search`, {
+                method: 'POST',
+                body: JSON.stringify(req.body.query),
+                headers
+            })
+        ).json();
+
+        if (esRes.code) {
+            res.status(esRes.code).send({
+                'Request to cluster failed': esRes.message
+            });
+        } else if (esRes.error) {
+            res.status(esRes.status).send({
+                'Bad request': esRes.error.reason
+            });
+        } else {
+            res.status(200).json(esRes);
+        }
+    } catch (e) {
+        res.status(500).send(e);
+    }
+});
+
+app.post('/api/es/update-rating', async (req, res) => {
+    const headers = { 'Content-Type': 'application/json' };
+    if (process.env.NODE_ENV !== 'production') {
+        headers['Authorization'] = `Basic ${authString}`;
+    }
+
+    try {
+        const esRes = await (
+            await fetch(
+                `${esUrl}/ratings/_update/${req.body.docId}?refresh=true`,
+                {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        script: `ctx._source.rating = ${req.body.rating}`
+                    }),
+                    headers
+                }
+            )
+        ).json();
+
+        if (esRes.code) {
+            res.status(esRes.code).send({
+                'Request to cluster failed': esRes.message
+            });
+        } else if (esRes.error) {
+            res.status(esRes.status).send({
+                'Bad request': esRes.error.reason
+            });
+        } else {
+            res.status(200).json(esRes);
+        }
+    } catch (e) {
+        res.status(500).send(e);
     }
 });
 
