@@ -129,17 +129,17 @@ app.post('/api/bulk-upload', async (req, res) => {
 
         if (esRes.code && esRes.code === 401) {
             // Remote request failed
-            res.status(esRes.code).send({ 'Bulk upload failed ': esRes.message });
+            res.status(esRes.code).send({ 'Bulk upload failed': esRes.message });
         } else if (esRes.error) {
             // Bad request
-            res.status(400).send({ 'Bulk upload failed ': esRes });
+            res.status(400).send({ 'Bulk upload failed': esRes });
         } else {
             // Success
-            res.status(200).send({ 'Bulk upload succeeded': esRes });
+            res.status(200).send('Bulk upload succeeded');
         }
     } catch (e) {
         // API error
-        res.status(500).send({ 'Bulk upload failed ': e });
+        res.status(500).send({ 'Bulk upload failed': e });
     }
 });
 
