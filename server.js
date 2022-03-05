@@ -92,7 +92,7 @@ app.post('/api/add-doc', async (req, res) => {
     const headers = { 'Content-Type': 'application/json' };
 
     if (process.env.NODE !== 'production') {
-        headers['AUthorization'] = `Basic ${authString}`;
+        headers['Authorization'] = `Basic ${authString}`;
     }
 
     const esRes = await fetch(`${esUrl}/${req.body.index}/_doc?refresh=true`, {
@@ -120,13 +120,17 @@ app.post('/api/bulk-upload', async (req, res) => {
         .concat('\n');
 
     try {
+        const headers = { 'Content-Type': 'application/json' };
+
+        if (process.env.NODE !== 'production') {
+            headers['Authorization'] = `Basic ${authString}`;
+        }
+
         const esRes = await (
             await fetch(`${esUrl}/meals/_bulk`, {
                 method: 'POST',
                 body: ndJson,
-                headers: {
-                    'Content-Type': 'application/json'
-                }
+                headers
             })
         ).json();
 
@@ -156,7 +160,7 @@ app.post('/api/search', async (req, res) => {
     const headers = { 'Content-Type': 'application/json' };
 
     if (process.env.NODE !== 'production') {
-        headers['AUthorization'] = `Basic ${authString}`;
+        headers['Authorization'] = `Basic ${authString}`;
     }
 
     const esRes = await fetch(`${esUrl}/${req.body.index}/_search`, {
@@ -172,7 +176,7 @@ app.post('/api/update-rating', async (req, res) => {
     const headers = { 'Content-Type': 'application/json' };
 
     if (process.env.NODE !== 'production') {
-        headers['AUthorization'] = `Basic ${authString}`;
+        headers['Authorization'] = `Basic ${authString}`;
     }
 
     const esRes = await fetch(
