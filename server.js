@@ -183,24 +183,26 @@ app.post('/api/es/search', async (req, res) => {
     }
 
     try {
-        const esRes = await (
-            await fetch(`${esUrl}/${req.body.index}/_search`, {
-                method: 'POST',
-                body: JSON.stringify(req.body.query),
-                headers
-            })
-        ).json();
+        const esRes = await fetch(`${esUrl}/${req.body.index}/_search`, {
+            method: 'POST',
+            body: JSON.stringify(req.body.query),
+            headers
+        });
 
-        if (esRes.code) {
-            res.status(esRes.code).send({
-                'Request to cluster failed': esRes.message
+        console.log('RES HEADERS => ', esRes.headers);
+        
+        const resJson = await (esRes).json();
+
+        if (resJson.code) {
+            res.status(resJson.code).send({
+                'Request to cluster failed': resJson.message
             });
-        } else if (esRes.error) {
-            res.status(esRes.status).send({
-                'Bad request': esRes.error.reason
+        } else if (resJson.error) {
+            res.status(resJson.status).send({
+                'Bad request': resJson.error.reason
             });
         } else {
-            res.status(200).json(esRes);
+            res.status(200).json(resJson);
         }
     } catch (e) {
         res.status(500).send(e);
