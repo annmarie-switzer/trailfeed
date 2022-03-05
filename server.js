@@ -122,9 +122,9 @@ app.post('/api/bulk-upload', async (req, res) => {
     try {
         const headers = { 'Content-Type': 'application/json' };
 
-        console.log('NODE => ', process.env.NODE);
+        console.log('NODE_ENV => ', process.env.NODE_ENV);
 
-        if (process.env.NODE !== 'production') {
+        if (process.env.NODE_ENV !== 'production') {
             headers['Authorization'] = `Basic ${authString}`;
         }
 
@@ -159,7 +159,7 @@ app.post('/api/logout', async (req, res) => {
 app.post('/api/search', async (req, res) => {
     const headers = { 'Content-Type': 'application/json' };
 
-    if (process.env.NODE !== 'production') {
+    if (process.env.NODE_ENV !== 'production') {
         headers['Authorization'] = `Basic ${authString}`;
     }
 
@@ -175,7 +175,7 @@ app.post('/api/search', async (req, res) => {
 app.post('/api/update-rating', async (req, res) => {
     const headers = { 'Content-Type': 'application/json' };
 
-    if (process.env.NODE !== 'production') {
+    if (process.env.NODE_ENV !== 'production') {
         headers['Authorization'] = `Basic ${authString}`;
     }
 
