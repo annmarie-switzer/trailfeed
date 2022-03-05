@@ -128,10 +128,8 @@ app.post('/api/bulk-upload', async (req, res) => {
             })
         ).json();
 
-        console.log('esRes => ', esRes);
-
         if (esRes.code && esRes.code === 401) {
-            res.status(400).send({ 'Bulk upload failed ': esRes.message });
+            res.status(code).send({ 'Bulk upload failed ': esRes.message });
         } else if (esRes.error) {
             res.status(400).send({ 'Bulk upload failed ': esRes });
         } else {
