@@ -15,7 +15,8 @@ const MemoryStore = createMemoryStore(session);
 
 const app = express();
 
-const url = process.env.URL;
+const serverUrl = process.env.SERVER_URL ||process.env.URL;
+const clientUrl = process.env.CLIENT_URL || process.env.URL;
 const esUrl = process.env.ES_URL;
 
 const authString = Buffer.from(
@@ -65,7 +66,7 @@ app.get('/callback', async (req, res) => {
             code: req.query.code,
             client_id: process.env.CLIENT_ID,
             client_secret: process.env.CLIENT_SECRET,
-            redirect_uri: `${url}/callback`,
+            redirect_uri: `${serverUrl}/callback`,
             grant_type: 'authorization_code'
         })
     });
@@ -84,7 +85,7 @@ app.get('/callback', async (req, res) => {
         console.error(`Validation Error: ${err}`);
     }
 
-    res.redirect(url);
+    res.redirect(clientUrl);
 });
 
 app.post('/api/logout', async (req, res) => {
@@ -183,26 +184,24 @@ app.post('/api/es/search', async (req, res) => {
     }
 
     try {
-        const esRes = await fetch(`${esUrl}/${req.body.index}/_search`, {
-            method: 'POST',
-            body: JSON.stringify(req.body.query),
-            headers
-        });
+        const esRes = await (
+            await fetch(`${esUrl}/${req.body.index}/_search`, {
+                method: 'POST',
+                body: JSON.stringify(req.body.query),
+                headers
+            })
+        ).json();
 
-        console.log('RES HEADERS => ', esRes.headers);
-        
-        const resJson = await (esRes).json();
-
-        if (resJson.code) {
-            res.status(resJson.code).send({
-                'Request to cluster failed': resJson.message
+        if (esRes.code) {
+            res.status(esRes.code).send({
+                'Request to cluster failed': esRes.message
             });
-        } else if (resJson.error) {
-            res.status(resJson.status).send({
-                'Bad request': resJson.error.reason
+        } else if (esRes.error) {
+            res.status(esRes.status).send({
+                'Bad request': esRes.error.reason
             });
         } else {
-            res.status(200).json(resJson);
+            res.status(200).json(esRes);
         }
     } catch (e) {
         res.status(500).send(e);
@@ -246,9 +245,11 @@ app.post('/api/es/update-rating', async (req, res) => {
 });
 
 // Serve UI
-app.get('/*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'react/build', 'index.html'));
-});
+if (process.env.NODE_ENV === 'production') {
+    app.get('/*', (req, res) => {
+        res.sendFile(path.join(__dirname, 'react/build', 'index.html'));
+    });
+}
 
 // 404 catch-all
 app.all('*', (req, res) => {
@@ -259,7 +260,7 @@ app.all('*', (req, res) => {
 try {
     await fetch(`${esUrl}`);
     app.listen(process.env.PORT, async () => {
-        console.log(`~ Server is running at ${url} ~`);
+        console.log(`~ Server is running at ${serverUrl} ~`);
     });
 } catch (_) {
     console.log("Couldn't start server: Elasticsearch could not be reached.");
