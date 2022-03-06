@@ -18,6 +18,8 @@ export const logout = async () => {
 export const search = async (req, count) => {
     count = count || 0;
 
+    console.log('Sending search req. number: ', count);
+
     const res = await fetch('/api/es/search', {
         credentials: 'include',
         method: 'POST',
@@ -25,14 +27,18 @@ export const search = async (req, count) => {
         headers: { 'Content-Type': 'application/json' }
     });
 
-    // Requests will be retried up to 5 times if they fail with a 429 error code.
-    if (res.status === 429 && count < 5) {
-        // poor-mans exponential backoff
-        setTimeout(() => {
-            search(req, ++count);
-        }, count * 100);
-    } else {
+    if (res.ok) {
         return await res.json();
+    } else {
+        // Requests will be retried up to 5 times if they fail with a 429 error code.
+        if (res.status === 429 && count < 5) {
+            // poor man's exponential backoff
+            setTimeout(() => {
+                search(req, ++count);
+            }, count * 300);
+        } else {
+            throw new Error(await res.text());
+        }
     }
 };
 

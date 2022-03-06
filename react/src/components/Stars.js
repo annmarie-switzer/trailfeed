@@ -38,7 +38,7 @@ function Stars({ mealId }) {
             index: 'ratings'
         });
 
-        if (ratingsRes.hits.hits.length > 0) {
+        if (ratingsRes.hits?.hits.length > 0) {
             const { _id, _source } = ratingsRes.hits.hits[0];
             setDocId(_id);
             setRating(_source.rating);
