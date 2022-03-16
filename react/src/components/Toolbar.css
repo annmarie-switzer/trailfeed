@@ -25,10 +25,20 @@
     padding: 1rem;
 }
 
-#toolbar button:not(#pack-button):active,
-#toolbar button:not(#pack-button):hover {
+#toolbar button:not(#pack-button):not(.disabled):active,
+#toolbar button:not(#pack-button):not(.disabled):hover {
     background-color: var(--primary);
     color: var(--bg);
+}
+
+#toolbar button.disabled {
+    background-color: var(--bg-contrast);
+    color: var(--bg3);
+    cursor: not-allowed;
+}
+
+#toolbar button.disabled:active {
+    opacity: 1;
 }
 
 #toolbar .left {

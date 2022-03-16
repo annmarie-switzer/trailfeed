@@ -87,11 +87,6 @@ function SearchBar(props) {
                             bool: {
                                 should: [
                                     {
-                                        term: {
-                                            user: user.email
-                                        }
-                                    },
-                                    {
                                         bool: {
                                             must_not: {
                                                 exists: {
@@ -108,6 +103,14 @@ function SearchBar(props) {
             },
             size: 10000
         };
+
+        if (user.email) {
+            query.query.bool.must[0].bool.should.push({
+                term: {
+                    user: user.email
+                }
+            });
+        }
 
         if (inputValue && inputValue !== '') {
             query.query.bool.must.push({
@@ -204,7 +207,7 @@ function SearchBar(props) {
             size: 0
         };
 
-        search({query: q, index: 'meals'}).then((res) => {
+        search({ query: q, index: 'meals' }).then((res) => {
             setMealTypes(res.aggregations.meal_types.buckets);
             setWaterTemps(res.aggregations.water_temps.buckets);
             setAllergens(res.aggregations.allergens.buckets);
@@ -248,7 +251,7 @@ function SearchBar(props) {
                     title={filtersOpen ? 'Hide Filters' : 'Show Filters'}
                     onClick={() => setFiltersOpen(!filtersOpen)}>
                     <Sliders color="currentColor" />
-                </button> 
+                </button>
             </div>
 
             <div className={filtersOpen ? 'filters open' : 'filters'}>

@@ -61,18 +61,32 @@ function Stars({ mealId }) {
     };
 
     useEffect(() => {
-        getRating();
+        if (user.email) {
+            getRating();
+        }
     }, [mealId]);
 
     return (
-        <span id="stars" title={`Your rating: ${rating} stars`}>
-            {Array.from(Array(4), (e, i) => (
-                <Star
-                    key={i}
-                    className={rating > 0 && i < rating ? 'filled' : 'empty'}
-                    onClick={() => rate(i + 1)}
-                />
-            ))}
+        <span
+            id="stars"
+            title={
+                user.email
+                    ? `Your rating: ${rating} stars`
+                    : 'Log in to rate meals.'
+            }>
+            {Array.from(Array(4), (e, i) =>
+                user.email ? (
+                    <Star
+                        key={i}
+                        className={
+                            rating > 0 && i < rating ? 'filled' : 'empty'
+                        }
+                        onClick={() => rate(i + 1)}
+                    />
+                ) : (
+                    <Star key={i} className="disabled" />
+                )
+            )}
         </span>
     );
 }

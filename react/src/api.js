@@ -18,8 +18,6 @@ export const logout = async () => {
 export const search = async (req, count) => {
     count = count || 0;
 
-    console.log('Sending search req. number: ', count);
-
     const res = await fetch('/api/es/search', {
         credentials: 'include',
         method: 'POST',

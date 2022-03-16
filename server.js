@@ -6,6 +6,7 @@ import jwt from 'jsonwebtoken';
 import { fileURLToPath } from 'url';
 import path, { dirname } from 'path';
 import createMemoryStore from 'memorystore';
+import { v4 as uuidv4 } from 'uuid';
 
 dotenv.config();
 
@@ -15,7 +16,7 @@ const MemoryStore = createMemoryStore(session);
 
 const app = express();
 
-const serverUrl = process.env.SERVER_URL ||process.env.URL;
+const serverUrl = process.env.SERVER_URL || process.env.URL;
 const clientUrl = process.env.CLIENT_URL || process.env.URL;
 const esUrl = process.env.ES_URL;
 
@@ -31,7 +32,7 @@ app.use(
             domain: process.env.DOMAIN,
             httpOnly: true,
             sameSite: true,
-            // TODO
+            // TODO - why is this required for prod
             secure: false
         },
         store: new MemoryStore({
@@ -39,8 +40,7 @@ app.use(
         }),
         resave: false,
         saveUninitialized: false,
-        // TODO
-        secret: 'changeme',
+        secret: process.env.SESSION_SECRET,
         unset: 'destroy'
     })
 );
@@ -86,6 +86,14 @@ app.get('/callback', async (req, res) => {
     }
 
     res.redirect(clientUrl);
+});
+
+app.get('/guest-login', async (req, res) => {
+    req.session.profile = {
+        guestId: uuidv4()
+    };
+
+    res.status(201).json(req.session.profile);
 });
 
 app.post('/api/logout', async (req, res) => {

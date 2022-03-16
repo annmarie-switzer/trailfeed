@@ -40,6 +40,7 @@ function App() {
                 <AppContext.Provider
                     value={{
                         user,
+                        setUser,
                         theme,
                         setTheme,
                         currentStat,
@@ -50,7 +51,7 @@ function App() {
                         <Route path="/login" element={<Login />} />
                         <Route
                             path="/new-meal"
-                            element={user ? <NewMeal /> : <Navigate to="/login" />}
+                            element={user?.email ? <NewMeal /> : <Navigate to="/login" />}
                         />
                         <Route
                             path="/"

@@ -16,3 +16,9 @@
     fill: var(--stars);
     stroke: var(--stars);
 }
+
+#stars > .disabled {
+    fill: var(--bg-contrast);
+    stroke: var(--bg2);
+    cursor: not-allowed;
+}
