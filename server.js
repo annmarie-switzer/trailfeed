@@ -20,9 +20,9 @@ const serverUrl = process.env.SERVER_URL || process.env.URL;
 const clientUrl = process.env.CLIENT_URL || process.env.URL;
 const esUrl = process.env.ES_URL;
 
-const authString = Buffer.from(
-    `${process.env.ES_USER}:${process.env.ES_PW}`
-).toString('base64');
+// const authString = Buffer.from(
+//     `${process.env.ES_USER}:${process.env.ES_PW}`
+// ).toString('base64');
 
 app.use(express.json());
 
@@ -187,9 +187,9 @@ app.post('/api/es/bulk-upload', async (req, res) => {
 
 app.post('/api/es/search', async (req, res) => {
     const headers = { 'Content-Type': 'application/json' };
-    if (process.env.NODE_ENV !== 'production') {
-        headers['Authorization'] = `Basic ${authString}`;
-    }
+    // if (process.env.NODE_ENV !== 'production') {
+    //     headers['Authorization'] = `Basic ${authString}`;
+    // }
 
     try {
         const esRes = await (

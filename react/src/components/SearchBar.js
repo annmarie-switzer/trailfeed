@@ -101,7 +101,7 @@ function SearchBar(props) {
                     ]
                 }
             },
-            size: 10000
+            size: 16
         };
 
         if (user.email) {

@@ -38,19 +38,15 @@ function Login() {
 
                 <div
                     id="guest-button-container"
-                    onMouseOver={() => {
-                        setTimeout(() => {
-                            setShowTooltip(true)
-                        }, 750);
-                    }}
-                    onMouseOut={() => setShowTooltip(false)}>
+                    onMouseEnter={() => setShowTooltip(true)}
+                    onMouseLeave={() => setShowTooltip(false)}>
                     <button type="button" onClick={guestLogin}>
                         <User />
                         Login as Guest
                     </button>
                     <div id="tooltip" className={showTooltip ? 'show' : ''}>
-                        As a guest, you can search and add meals to your pack, but you
-                        can not rate or make custom meals.
+                        As a guest, you can search and add meals to your pack,
+                        but you can not rate or make custom meals.
                     </div>
                 </div>
             </div>

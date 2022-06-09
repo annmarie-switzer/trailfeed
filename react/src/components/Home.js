@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import './Home.css';
 import SearchBar from 'components/SearchBar';
 import Card from 'components/Card';
@@ -8,9 +8,11 @@ import Toolbar from 'components/Toolbar';
 
 function Home() {
     const [query, setQuery] = useState(null);
+    const [page, setPage] = useState(0);
     const [hits, setHits] = useState([]);
     const [packOpen, setPackOpen] = useState(true);
     const [selection, setSelection] = useState([]);
+    const ref = useRef();
 
     const handleSelection = (hit) => {
         const ids = selection.map((s) => s.id);
@@ -38,10 +40,26 @@ function Home() {
         }
     }, [query]);
 
+    const onScroll = () => {
+        if (ref.current) {
+            const { scrollTop, scrollHeight, clientHeight } = ref.current;
+            if (scrollTop + clientHeight === scrollHeight) {
+                const newPage = page + 1;
+                const q = {
+                    ...query,
+                    from: newPage * 16
+                }
+
+                setQuery(q);
+                setPage(newPage);
+            }
+        }
+    };
+
     return (
         <div id="home">
             <div className="drawer-wrapper">
-                <div className="main">
+                <div className="main" onScroll={onScroll} ref={ref}>
                     <SearchBar setQuery={setQuery} />
                     <div className="cards">
                         {hits.map((h, i) => (
