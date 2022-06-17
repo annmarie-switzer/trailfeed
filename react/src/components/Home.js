@@ -8,6 +8,7 @@ import Pack from './Pack';
 import Toolbar from 'components/Toolbar';
 
 function Home() {
+    const [page, setPage] = useState(0);
     const [query, setQuery] = useState(null);
     const [hits, setHits] = useState([]);
     const [packOpen, setPackOpen] = useState(true);
@@ -24,8 +25,13 @@ function Home() {
         );
     };
 
-    const getData = async () => {
-        const mealsRes = await search({ query, index: 'meals' });
+    const getData = async (page) => {
+        const q = {
+            ...query,
+            from: page * 20
+        };
+
+        const mealsRes = await search({ query: q, index: 'meals' });
 
         const ratingsQuery = {
             query: {
@@ -63,35 +69,39 @@ function Home() {
             ratingDoc: ratings[h._id]
         }));
 
-        setHits(newHits);
+        if (page === 0) {
+            setPage(0);
+            setHits(newHits);
+        } else {
+            setHits([...hits, ...newHits]);
+        }
     };
 
     useEffect(() => {
         if (query) {
-            getData();
+            getData(0);
         }
     }, [query]);
 
-    // const onScroll = () => {
-    //     if (ref.current) {
-    //         const { scrollTop, scrollHeight, clientHeight } = ref.current;
-    //         if (scrollTop + clientHeight === scrollHeight) {
-    //             const newPage = page + 1;
-    //             const q = {
-    //                 ...query,
-    //                 from: newPage * 16
-    //             };
+    useEffect(() => {
+        if (page !== 0) {
+            getData(page);
+        }
+    }, [page]);
 
-    //             setQuery(q);
-    //             setPage(newPage);
-    //         }
-    //     }
-    // };
+    const onScroll = () => {
+        if (ref.current) {
+            const { scrollTop, scrollHeight, clientHeight } = ref.current;
+            if (scrollTop + clientHeight === scrollHeight) {
+                setPage(page + 1);
+            }
+        }
+    };
 
     return (
         <div id="home">
             <div className="drawer-wrapper">
-                <div className="main" onScroll={() => {}} ref={ref}>
+                <div className="main" onScroll={onScroll} ref={ref}>
                     <SearchBar setQuery={setQuery} />
                     <div className="cards">
                         {hits.map((h, i) => (
