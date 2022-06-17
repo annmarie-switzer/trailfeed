@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
+import { AppContext } from './App';
 import './Home.css';
 import SearchBar from 'components/SearchBar';
 import Card from 'components/Card';
@@ -7,10 +8,13 @@ import Pack from './Pack';
 import Toolbar from 'components/Toolbar';
 
 function Home() {
+    const [page, setPage] = useState(0);
     const [query, setQuery] = useState(null);
     const [hits, setHits] = useState([]);
     const [packOpen, setPackOpen] = useState(true);
     const [selection, setSelection] = useState([]);
+    const ref = useRef();
+    const { user } = useContext(AppContext);
 
     const handleSelection = (hit) => {
         const ids = selection.map((s) => s.id);
@@ -21,33 +25,89 @@ function Home() {
         );
     };
 
-    const getData = async () => {
-        const mealsRes = await search({ query, index: 'meals' });
+    const getData = async (page) => {
+        const q = {
+            ...query,
+            from: page * 20
+        };
 
-        const hits = mealsRes.hits.hits.map((h) => ({
+        const mealsRes = await search({ query: q, index: 'meals' });
+
+        const ratingsQuery = {
+            query: {
+                bool: {
+                    must: [
+                        {
+                            term: {
+                                user: {
+                                    value: user.email
+                                }
+                            }
+                        },
+                        {
+                            terms: {
+                                meal_id: mealsRes.hits.hits.map((h) => h._id)
+                            }
+                        }
+                    ]
+                }
+            }
+        };
+
+        const ratingsRes = await search({
+            query: ratingsQuery,
+            index: 'ratings'
+        });
+
+        const ratings = ratingsRes.hits.hits.reduce((acc, doc) => {
+            return { ...acc, [doc._source.meal_id]: doc };
+        }, {});
+
+        const newHits = mealsRes.hits.hits.map((h) => ({
             ...h._source,
-            id: h._id
+            id: h._id,
+            ratingDoc: ratings[h._id]
         }));
 
-        setHits(hits);
+        if (page === 0) {
+            setPage(0);
+            setHits(newHits);
+        } else {
+            setHits([...hits, ...newHits]);
+        }
     };
 
     useEffect(() => {
         if (query) {
-            getData();
+            getData(0);
         }
     }, [query]);
+
+    useEffect(() => {
+        if (page !== 0) {
+            getData(page);
+        }
+    }, [page]);
+
+    const onScroll = () => {
+        if (ref.current) {
+            const { scrollTop, scrollHeight, clientHeight } = ref.current;
+            if (scrollTop + clientHeight === scrollHeight) {
+                setPage(page + 1);
+            }
+        }
+    };
 
     return (
         <div id="home">
             <div className="drawer-wrapper">
-                <div className="main">
+                <div className="main" onScroll={onScroll} ref={ref}>
                     <SearchBar setQuery={setQuery} />
                     <div className="cards">
                         {hits.map((h, i) => (
                             <Card
-                                hit={h}
                                 key={i}
+                                hit={h}
                                 selection={selection}
                                 handleSelection={handleSelection}
                             />

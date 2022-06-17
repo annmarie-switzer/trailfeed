@@ -29,11 +29,11 @@ export const search = async (req, count) => {
         return await res.json();
     } else {
         // Requests will be retried up to 5 times if they fail with a 429 error code.
-        if (res.status === 429 && count < 5) {
+        if (res.status === 429 && count < 10) {
             // poor man's exponential backoff
-            setTimeout(() => {
-                search(req, ++count);
-            }, count * 300);
+            setTimeout(async () => {
+                await search(req, ++count);
+            }, count * 500);
         } else {
             throw new Error(await res.text());
         }

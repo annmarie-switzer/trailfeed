@@ -44,7 +44,7 @@ function Card({ hit, selection, handleSelection }) {
                         ? 'You made this!'
                         : hit.brand}
                 </span>
-                <Stars mealId={hit.id} />
+                <Stars mealId={hit.id} ratingDoc={hit.ratingDoc} />
             </div>
             <div className="card-content">
                 <div className="list">

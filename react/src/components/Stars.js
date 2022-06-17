@@ -1,70 +1,32 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import './Stars.css';
 import { AppContext } from 'components/App';
 import { Star } from 'react-feather';
-import { search, updateRating, addDoc } from 'api';
+import { updateRating, addDoc } from 'api';
 
-function Stars({ mealId }) {
+function Stars(props) {
     const { user } = useContext(AppContext);
-    const [docId, setDocId] = useState(null);
-    const [rating, setRating] = useState(0);
-
-    const getRating = async () => {
-        const ratingsQuery = {
-            query: {
-                bool: {
-                    must: [
-                        {
-                            term: {
-                                user: {
-                                    value: user.email
-                                }
-                            }
-                        },
-                        {
-                            term: {
-                                meal_id: {
-                                    value: mealId
-                                }
-                            }
-                        }
-                    ]
-                }
-            }
-        };
-
-        const ratingsRes = await search({
-            query: ratingsQuery,
-            index: 'ratings'
-        });
-
-        if (ratingsRes.hits?.hits.length > 0) {
-            const { _id, _source } = ratingsRes.hits.hits[0];
-            setDocId(_id);
-            setRating(_source.rating);
-        } else {
-            setRating(0);
-        }
-    };
+    const [docId, setDocId] = useState(props.ratingDoc?._id);
+    const [rating, setRating] = useState(
+        props.ratingDoc ? props.ratingDoc._source.rating : 0
+    );
 
     const rate = async (r) => {
         if (docId) {
+            console.log('updating existing rating...');
             await updateRating({ docId, rating: r });
         } else {
-            await addDoc({
+            console.log('creating new rating...');
+            const newDocRes = await addDoc({
                 index: 'ratings',
-                newDoc: { user: user.email, meal_id: mealId, rating: r }
+                newDoc: { user: user.email, meal_id: props.mealId, rating: r }
             });
+
+            setDocId(newDocRes._id);
         }
 
-        getRating();
+        setRating(r);
     };
-
-    useEffect(() => {
-        if (user.email) {
-            getRating();
-        }
-    }, [mealId]);
 
     return (
         <span
