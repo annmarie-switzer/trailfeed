@@ -20,10 +20,6 @@ const serverUrl = process.env.SERVER_URL || process.env.URL;
 const clientUrl = process.env.CLIENT_URL || process.env.URL;
 const esUrl = process.env.ES_URL;
 
-// const authString = Buffer.from(
-//     `${process.env.ES_USER}:${process.env.ES_PW}`
-// ).toString('base64');
-
 app.use(express.json());
 
 app.use(
@@ -117,9 +113,6 @@ app.get('/api/user', async (req, res) => {
 
 app.post('/api/es/add-doc', async (req, res) => {
     const headers = { 'Content-Type': 'application/json' };
-    if (process.env.NODE_ENV !== 'production') {
-        headers['Authorization'] = `Basic ${authString}`;
-    }
 
     try {
         const esRes = await (
@@ -156,9 +149,6 @@ app.post('/api/es/bulk-upload', async (req, res) => {
         .concat('\n');
 
     const headers = { 'Content-Type': 'application/json' };
-    if (process.env.NODE_ENV !== 'production') {
-        headers['Authorization'] = `Basic ${authString}`;
-    }
 
     try {
         const esRes = await (
@@ -187,9 +177,6 @@ app.post('/api/es/bulk-upload', async (req, res) => {
 
 app.post('/api/es/search', async (req, res) => {
     const headers = { 'Content-Type': 'application/json' };
-    // if (process.env.NODE_ENV !== 'production') {
-    //     headers['Authorization'] = `Basic ${authString}`;
-    // }
 
     try {
         const esRes = await (
@@ -218,9 +205,6 @@ app.post('/api/es/search', async (req, res) => {
 
 app.post('/api/es/update-rating', async (req, res) => {
     const headers = { 'Content-Type': 'application/json' };
-    if (process.env.NODE_ENV !== 'production') {
-        headers['Authorization'] = `Basic ${authString}`;
-    }
 
     try {
         const esRes = await (
