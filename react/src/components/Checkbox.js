@@ -11,6 +11,8 @@ function Checkbox(props) {
 
     const [checked, setChecked] = useState(props.checked);
 
+    const marginLeft = label === '' ? 0 : '0.5rem';
+    
     const onChange = (event) => {
         setChecked(event.target.checked);
         props.onChange(event.target);
@@ -30,7 +32,7 @@ function Checkbox(props) {
                     }}
                     onChange={onChange}
                 />
-                <span>{label}</span>
+                <span style={{ marginLeft }}>{label}</span>
             </label>
         </>
     );

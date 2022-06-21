@@ -1,6 +1,5 @@
 [
     {
-        "brand": "TRAILFEED_USER_CUSTOM",
         "name": "Extra Peanut Butter Oatmeal",
         "meal_type": ["breakfast"],
         "calories": 520,
@@ -13,7 +12,6 @@
         "ingredients": "oats, peanut butter, sugar"
     },
     {
-        "brand": "TRAILFEED_USER_CUSTOM",
         "name": "Cherry & Brown Sugar Oatmeal",
         "meal_type": ["breakfast"],
         "calories": 520,

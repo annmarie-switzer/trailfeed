@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AppContext } from 'components/App';
+import { deleteMeal } from '../api';
 import './Card.css';
 import Checkbox from './Checkbox';
 import Stars from './Stars';
@@ -10,14 +11,26 @@ import {
     Award,
     Coffee,
     Droplet,
-    MoreVertical,
+    List,
+    Settings,
     Thermometer,
+    Trash,
     Watch
 } from 'react-feather';
 
-function Card({ hit, selection, handleSelection }) {
+function Card({ hit, selection, handleSelection, handleDelete }) {
     const { setModalData } = useContext(AppContext);
     const [ids, setIds] = useState([]);
+    const [menuOpen, setMenuOpen] = useState(false);
+
+    const onDelete = async (id) => {
+        const res = await deleteMeal(id);
+
+        if (res.result === 'deleted') {
+            handleDelete();
+            setMenuOpen(false);
+        }
+    };
 
     useEffect(() => {
         setIds(selection.map((s) => s.id));
@@ -34,16 +47,10 @@ function Card({ hit, selection, handleSelection }) {
                                 ? 'Remove from pack'
                                 : 'Add to pack'
                         }>
-                        <Checkbox
-                            onChange={() => handleSelection(hit)}
-                        />
+                        <Checkbox onChange={() => handleSelection(hit)} />
                     </span>
                 </div>
-                <span className="brand">
-                    {hit.brand === 'TRAILFEED_USER_CUSTOM'
-                        ? 'You made this!'
-                        : hit.brand}
-                </span>
+                <span className="brand">{hit.brand || 'You made this!'}</span>
                 <Stars mealId={hit.id} ratingDoc={hit.ratingDoc} />
             </div>
             <div className="card-content">
@@ -99,11 +106,39 @@ function Card({ hit, selection, handleSelection }) {
                 </div>
             </div>
             <div className="card-footer">
-                <button
-                    type="button"
-                    title="Show ingredient list"
-                    onClick={() => setModalData(hit)}>
-                    <MoreVertical />
+                <button type="button" onClick={() => setMenuOpen(!menuOpen)}>
+                    <div
+                        className="menu-trigger"
+                        tabIndex={0}
+                        onBlur={() => setMenuOpen(false)}>
+                        <Settings
+                            color={menuOpen ? 'var(--fg)' : 'var(--light-text)'}
+                            size={20}
+                        />
+                        {menuOpen ? (
+                            <div className="menu">
+                                <div
+                                    className="menu-item"
+                                    title="Show ingredient list"
+                                    onClick={() => setModalData(hit)}>
+                                    <List size={20} />
+                                    <span>Ingredients</span>
+                                </div>
+                                {!hit.brand && (
+                                    <div
+                                        className="menu-item"
+                                        title="Delete meal"
+                                        onClick={(e) => {
+                                            e.stopPropagation();
+                                            onDelete(hit.id);
+                                        }}>
+                                        <Trash size={20} />
+                                        <span>Delete</span>
+                                    </div>
+                                )}
+                            </div>
+                        ) : null}
+                    </div>
                 </button>
             </div>
         </div>

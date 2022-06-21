@@ -33,41 +33,48 @@ function Home() {
 
         const mealsRes = await search({ query: q, index: 'meals' });
 
-        const ratingsQuery = {
-            query: {
-                bool: {
-                    must: [
-                        {
-                            term: {
-                                user: {
-                                    value: user.email
-                                }
-                            }
-                        },
-                        {
-                            terms: {
-                                meal_id: mealsRes.hits.hits.map((h) => h._id)
-                            }
-                        }
-                    ]
-                }
-            }
-        };
-
-        const ratingsRes = await search({
-            query: ratingsQuery,
-            index: 'ratings'
-        });
-
-        const ratings = ratingsRes.hits.hits.reduce((acc, doc) => {
-            return { ...acc, [doc._source.meal_id]: doc };
-        }, {});
-
         const newHits = mealsRes.hits.hits.map((h) => ({
             ...h._source,
-            id: h._id,
-            ratingDoc: ratings[h._id]
+            id: h._id
         }));
+
+        if (user.email) {
+            const ratingsQuery = {
+                query: {
+                    bool: {
+                        must: [
+                            {
+                                term: {
+                                    user: {
+                                        value: user.email
+                                    }
+                                }
+                            },
+                            {
+                                terms: {
+                                    meal_id: mealsRes.hits.hits.map(
+                                        (h) => h._id
+                                    )
+                                }
+                            }
+                        ]
+                    }
+                }
+            };
+
+            const ratingsRes = await search({
+                query: ratingsQuery,
+                index: 'ratings'
+            });
+
+            const ratings = ratingsRes.hits.hits.reduce((acc, doc) => {
+                return { ...acc, [doc._source.meal_id]: doc };
+            }, {});
+
+            newHits.forEach((hit) => {
+                hit.ratingDoc = ratings[hit.id];
+            });
+        }
 
         if (page === 0) {
             setPage(0);
@@ -110,6 +117,7 @@ function Home() {
                                 hit={h}
                                 selection={selection}
                                 handleSelection={handleSelection}
+                                handleDelete={() => getData(page)}
                             />
                         ))}
                     </div>

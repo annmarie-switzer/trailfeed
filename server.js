@@ -236,6 +236,33 @@ app.post('/api/es/update-rating', async (req, res) => {
     }
 });
 
+app.delete('/api/es/delete-meal/:id', async (req, res) => {
+    const headers = { 'Content-Type': 'application/json' };
+
+    try {
+        const esRes = await (
+            await fetch(`${esUrl}/meals/_doc/${req.params.id}?refresh=true`, {
+                method: 'DELETE',
+                headers
+            })
+        ).json();
+
+        if (esRes.code) {
+            res.status(esRes.code).send({
+                'Request to cluster failed': esRes.message
+            });
+        } else if (esRes.error) {
+            res.status(esRes.status).send({
+                'Bad request': esRes.error.reason
+            });
+        } else {
+            res.status(200).json(esRes);
+        }
+    } catch (e) {
+        res.status(500).send(e);
+    }
+});
+
 // Serve UI
 if (process.env.NODE_ENV === 'production') {
     app.get('/*', (req, res) => {

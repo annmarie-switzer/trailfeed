@@ -61,3 +61,13 @@ export const addDoc = async (req) => {
 
     return await res.json();
 };
+
+export const deleteMeal = async (id) => {
+    const res = await fetch(`/api/es/delete-meal/${id}`, {
+        credentials: 'include',
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' }
+    });
+
+    return await res.json();
+};
