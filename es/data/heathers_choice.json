@@ -1,0 +1,123 @@
+[
+    {
+        "brand": "Heather's Choice",
+        "name": "Spinach Curry with Chicken & Rice",
+        "meal_type": [
+            "entree"
+        ],
+        "calories": 540,
+        "water_ml": 325,
+        "water_temp": "boiling",
+        "minutes": 20,
+        "ounces": 4.0,
+        "allergens": [
+            "dairy"
+        ],
+        "special": [
+            "gluten_free"
+        ],
+        "link": "https://www.heatherschoice.com/collections/shop-all/products/spinach-curry-with-chicken-and-rice",
+        "ingredients": "Organic Chicken Breast. Vegetable Stock (Water. Tomato Paste. Olive Oil. Nutritional Yeast. Sea Salt. Onion Powder. Garlic Powder. Celery Salt. White Pepper. Parsley). Spinach. Onion. Enriched Precooked Rice [Rice. Niacin. Iron (Ferric Orthophosphate). Thiamin (Thiamin Mononitrate). Folic Acid]. Ghee Clarified Butter. Ground Ginger. Garlic. Sea Salt. Fenugreek. Turmeric. Dried Jalapeños. Cumin. Chili Powder. Paprika. Coriander."
+    },
+    {
+        "brand": "Heather's Choice",
+        "name": "Greass-fed Beef Shepherd's Pie",
+        "meal_type": [
+            "entree"
+        ],
+        "calories": 510,
+        "water_ml": 325,
+        "water_temp": "boiling",
+        "minutes": 20,
+        "ounces": 4.0,
+        "allergens": [
+            "dairy"
+        ],
+        "special": [],
+        "link": "https://www.heatherschoice.com/collections/shop-all/products/shepherds-pie-with-grass-fed-beef?variant=42609684447402",
+        "ingredients": "Grass-Fed Ground Beef. Onion. Dehydrated Potato Flakes. Dried Mushrooms. Dried Green Beans. Dried Corn. Dried Carrots. Balsamic Vinegar. Tomato Paste (Tomatoes. Citric Acid). Garlic. Buttermilk Powder. Butter Powder (Sweet Cream. Salt. Annato Color. Nonfat Milk Solids). Tapioca Flour. Sea Salt. Parsley. Thyme. Rosemary. Black Pepper."
+    },
+    {
+        "brand": "Heather's Choice",
+        "name": "Smoked Sockeye Salmon Chowder",
+        "meal_type": [
+            "entree"
+        ],
+        "calories": 470,
+        "water_ml": 296,
+        "water_temp": "boiling",
+        "minutes": 20,
+        "ounces": 3.7,
+        "allergens": [
+            "fish",
+            "coconut"
+        ],
+        "special": [
+            "gluten_free"
+        ],
+        "link": "https://www.heatherschoice.com/collections/shop-all/products/smoked-sockeye-salmon-chowder",
+        "ingredients": "Smoked Wild Caught Alaskan Sockeye Salmon (Salmon. Sea Salt. Brown Sugar. Garlic). Dehydrated Potato Flakes. Coconut Milk (Coconut. Non-GMO Tapioca Maltodextrin). Dried Carrots. Dried Celery. Dill Weed. White Pepper. Cayenne Pepper. "
+    },
+    {
+        "brand": "Heather's Choice",
+        "name": "Morning Glory Oatmeal",
+        "meal_type": [
+            "breakfast"
+        ],
+        "calories": 480,
+        "water_ml": 177,
+        "water_temp": "boiling",
+        "minutes": 5,
+        "ounces": 4.0,
+        "allergens": [
+            "dairy"
+        ],
+        "special": [
+            "gluten_free"
+        ],
+        "link": "https://www.heatherschoice.com/collections/shop-all/products/morning-glory-oatmeal",
+        "ingredients": "Gluten-Free Rolled Oats*. Pecans. Dried Pineapple. Raisins. Dried Carrots. Powdered Whole Milk. Flax Seeds. Raw Sugar*. Cinnamon. Ginger. Sea Salt. *Certified Organic Ingredients"
+    },
+    {
+        "brand": "Heather's Choice",
+        "name": "Apple Pie Buckwheat Breakfast",
+        "meal_type": ["breakfast"],
+        "calories": 530,
+        "water_ml": 177,
+        "water_temp": "boiling",
+        "minutes": 5,
+        "ounces": 4.0,
+        "allergens": ["coconut"],
+        "special": ["gluten_free"],
+        "link": "https://www.heatherschoice.com/collections/shop-all/products/apple-pie-buckwheat-breakfast",
+        "ingredients": "Buckwheat. Chia Seeds*. Dried Apples. Raw Sugar*. Hulled Hemp Seeds*. Coconut Milk (Coconut. Non-GMO Tapioca Maltodextrin). Shredded Coconut*. Coconut Flakes*. Ground Cinnamon. Nutmeg. Cardamom. Sea Salt. "
+    },
+    {
+        "brand": "Heather's Choice",
+        "name": "Swiss Style Muesli with Milk",
+        "meal_type": ["breakfast"],
+        "calories": 490,
+        "water_ml": 177,
+        "water_temp": "boiling",
+        "minutes": 5,
+        "ounces": 4.0,
+        "allergens": ["dairy", "tree nut"],
+        "special": ["gluten_free"],
+        "link": "https://www.heatherschoice.com/collections/shop-all/products/swiss-muesli-with-milk",
+        "ingredients": "Gluten-Free Rolled Oats*. Powdered Whole Milk. Dried Cranberries (Cranberries. Sugar. Sunflower Oil). Pumpkin Seeds. Almonds. Butter Powder (Sweet Cream. Salt. Annato Color. Non Fat Milk Solids). Raw Sugar*. Sea Salt. Cardamom."
+    },
+    {
+        "brand": "Heather's Choice",
+        "name": "Vegetable Lentil Soup",
+        "meal_type": ["entree"],
+        "calories": 420,
+        "water_ml": 325,
+        "water_temp": "boiling",
+        "minutes": 20,
+        "ounces": 4.0,
+        "allergens": [],
+        "special": ["gluten_free", "vegetarian"],
+        "link": "https://www.heatherschoice.com/collections/shop-all/products/lentil-vegetable-soup",
+        "ingredients": "Water. Dried Lentils. Onion. Dried Carrots. Dried Potatoes. Tomato Paste. Dried Celery. Olive Oil. Garlic. Sea Salt. Nutritional Yeast. Minced Garlic. Garlic Powder. Sea Salt. Onion Powder. Celery Salt. Cumin."
+    }
+]

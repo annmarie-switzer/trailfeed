@@ -1,0 +1,170 @@
+[
+    {
+        "brand": "Nomad Nutrition",
+        "name": "Caribbean Curry",
+        "meal_type": [
+            "entree"
+        ],
+        "calories": 500,
+        "water_ml": 240,
+        "water_temp": "boiling",
+        "minutes": 15,
+        "ounces": 4.0,
+        "allergens": [
+            "mustard"
+        ],
+        "special": [
+            "vegan",
+            "vegetarian",
+            "gluten_free"
+        ],
+        "link": "https://www.nomadnutrition.co/collections/healthy-quick-meal/products/caribbean-curry",
+        "ingredients": "Quinoa, Yam, Potatoes, Broccoli, Onions, Carrots, Green pepper, Split peas, Crushed tomatoes, Coconut milk, Olive oil, Ginger, Sundried tomatoes, Curry powder (spices, mustard, salt, garlic), Spices, Sea salt."
+    },
+    {
+        "brand": "Nomad Nutrition",
+        "name": "Irish Shepherd's Pie",
+        "meal_type": [
+            "entree"
+        ],
+        "calories": 600,
+        "water_ml": 240,
+        "water_temp": "boiling",
+        "minutes": 15,
+        "ounces": 4.0,
+        "allergens": [],
+        "special": [
+            "vegan",
+            "vegan",
+            "gluten_free"
+        ],
+        "link": "https://www.nomadnutrition.co/collections/healthy-quick-meal/products/irish-shepherds-pie",
+        "ingredients": "Potatoes, Corn, Peas, Carrots, Onions, Lentils, Coconut milk, Oil, Sundried tomatoes, Garlic, Spices, Sea salt."
+    },
+    {
+        "brand": "Nomad Nutrition",
+        "name": "Hungarian Goulash",
+        "meal_type": [
+            "entree"
+        ],
+        "calories": 500,
+        "water_ml": 280,
+        "water_temp": "boiling",
+        "minutes": 15,
+        "ounces": 4.0,
+        "allergens": [],
+        "special": [
+            "vegan",
+            "vegetarian",
+            "gluten_free"
+        ],
+        "link": "https://www.nomadnutrition.co/collections/healthy-quick-meal/products/hungarian-goulash",
+        "ingredients": "Potatoes, Carrots, Onions, Bell peppers, Split peas, Kidney beans, Tomatoes, Oil, Mushrooms, Chipotle peppers, Garlic, Spices, Sea salt."
+    },
+    {
+        "brand": "Nomad Nutrition",
+        "name": "Spanish Paella",
+        "meal_type": [
+            "entree"
+        ],
+        "calories": 510,
+        "water_ml": 240,
+        "water_temp": "boiling",
+        "minutes": 15,
+        "ounces": 4.0,
+        "allergens": [],
+        "special": [
+            "vegan",
+            "vegetarian",
+            "gluten_free"
+        ],
+        "link": "https://www.nomadnutrition.co/collections/healthy-quick-meal/products/spanish-paella",
+        "ingredients": "Potatoes, Rice, Onions, Green peppers, Chickpeas, Corn, Split peas, Kalamata olives, Crushed tomatoes, Coconut Milk, Olive oil, Sundried tomatoes, Paprika, Black pepper, Cayenne, Saffron, Sea salt."
+    },
+    {
+        "brand": "Nomad Nutrition",
+        "name": "California Breakfast Bowl",
+        "meal_type": [
+            "breakfast"
+        ],
+        "calories": 470,
+        "water_ml": 240,
+        "water_temp": "boiling",
+        "minutes": 15,
+        "ounces": 4.0,
+        "allergens": [
+            "soy"
+        ],
+        "special": [
+            "vegan",
+            "vegetarian",
+            "gluten_free"
+        ],
+        "link": "https://www.nomadnutrition.co/collections/healthy-quick-meal/products/california-breakfast-bowl",
+        "ingredients": "Yam, Potatoes, Quinoa, Onions, Green pepper, Tofu, Chickpeas, Kalamata Olives, Diced tomatoes, Kale, Garlic, Black pepper, Turmeric, Cayenne, Basil, Olive oil, Sea salt."
+    },
+    {
+        "brand": "Nomad Nutrition",
+        "name": "Indian Red Lentil Stew",
+        "meal_type": [
+            "entree"
+        ],
+        "calories": 500,
+        "water_ml": 240,
+        "water_temp": "boiling",
+        "minutes": 15,
+        "ounces": 4.0,
+        "allergens": [
+            "mustard"
+        ],
+        "special": [
+            "vegan",
+            "vegetarian",
+            "gluten_free"
+        ],
+        "link": "https://www.nomadnutrition.co/collections/healthy-quick-meal/products/indian-stew",
+        "ingredients": "Potatoes, Carrots, Onions, Split peas, Red lentils, Coconut milk, Olive oil, Sundried tomatoes, Garlic, Curry powder (spices, mustard, salt, garlic), Spices, Sea salt."
+    },
+    {
+        "brand": "Nomad Nutrition",
+        "name": "Ukranian Borscht",
+        "meal_type": [
+            "entree"
+        ],
+        "calories": 470,
+        "water_ml": 360,
+        "water_temp": "boiling",
+        "minutes": 15,
+        "ounces": 4.0,
+        "allergens": [],
+        "special": [
+            "vegan",
+            "vegetarian",
+            "gluten_free"
+        ],
+        "link": "https://www.nomadnutrition.co/collections/healthy-quick-meal/products/ukrainian-borscht",
+        "ingredients": "Potatoes, Cabbage, Beets, Carrots, Onions, Split peas, Kidney beans, Diced tomatoes, Olive oil, Tomato paste, Garlic, Lemon juice, Spices, Sea salt, Black pepper, Dill."
+    },
+    {
+        "brand": "Nomad Nutrition",
+        "name": "Kathmandu Curry",
+        "meal_type": [
+            "entree"
+        ],
+        "calories": 600,
+        "water_ml": 300,
+        "water_temp": "boiling",
+        "minutes": 15,
+        "ounces": 4.0,
+        "allergens": [
+            "mustard"
+        ],
+        "special": [
+            "gluten_free",
+            "vegan",
+            "vegetarian"
+        ],
+        "link": "https://www.nomadnutrition.co/collections/healthy-quick-meal/products/kathmandu-curry",
+        "ingredients": "Rice noodles, Potatoes, Carrots, Onions, Bell peppers, Spinach, Chickpeas, Split peas, Coconut ,milk, Mushrooms, Olive oil, Sundried tomatoes, Garlic, Curry powder (spices, mustard, salt, garlic), Spices, Sea salt."
+    }
+]

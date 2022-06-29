@@ -1,0 +1,146 @@
+[
+    {
+        "brand": "Good To-Go",
+        "name": "Mexican Quinoa Bowl",
+        "meal_type": [
+            "entree"
+        ],
+        "calories": 710,
+        "water_ml": 450,
+        "water_temp": "boiling",
+        "minutes": 15,
+        "ounces": 6.7,
+        "allergens": [],
+        "special": [
+            "gluten_free",
+            "vegan",
+            "vegetarian"
+        ],
+        "link": "https://goodto-go.com/collections/food/products/mexican-quinoa-bowl",
+        "ingredients": "Quinoa, Dried Black Beans, Winter Squash, Corn, Onion, Dried Butternut Squash, Dried Tomato Flakes, Poblano Pepper, Agave, Grapeseed Oil, Garlic, Cacao Powder, Sesame Seeds, Sea Salt, Cumin, Cinnamon, Ancho Chili Powder, Coriander, Fennel Seed, Dried Scallion, Dried Cilantro, Mexican Oregano"
+    },
+    {
+        "brand": "Good To-Go",
+        "name": "Chicken Pho",
+        "meal_type": [
+            "entree"
+        ],
+        "calories": 780,
+        "water_ml": 800,
+        "water_temp": "boiling",
+        "minutes": 10,
+        "ounces": 6.7,
+        "allergens": [
+            "fish"
+        ],
+        "special": [
+            "gluten_free"
+        ],
+        "link": "https://goodto-go.com/collections/food/products/chicken-pho",
+        "ingredients": "Dark Meat Chicken (Chicken Raised Without Antibiotics), Rice Noodles (Rice Flour, Water), Dried Cabbage, Powdered Chicken Broth, Grapeseed Oil, Ginger, Dried Scallion, Dried Shallots, Fish Sauce Powder (Anchovies, Salt, Maltodextrin), Crystallized Lime (Citric Acid, Lime Oil, Lime Juice), Sea Salt, Dried Cilantro, Dried Shiitake Mushroom Powder, Dried Jalapeno, Dried Cloves, Cinnamon, Star Anise"
+    },
+    {
+        "brand": "Good To-Go",
+        "name": "Mushroom Risotto",
+        "meal_type": [
+            "entree"
+        ],
+        "calories": 820,
+        "water_ml": 500,
+        "water_temp": "boiling",
+        "minutes": 20,
+        "ounces": 6.6,
+        "allergens": [
+            "walnuts",
+            "sulfites"
+        ],
+        "special": [
+            "gluten_free",
+            "vegan",
+            "vegetarian"
+        ],
+        "link": "https://goodto-go.com/collections/food/products/herbed-mushroom-risotto",
+        "ingredients": "Arborio Rice, Cremini Mushrooms, Onions, White Wine, Extra Virgin Olive Oil, Nutritional Yeast, Garlic, Sweet Rice Flour, Walnuts, Basil, Kosher Salt, Thyme, Black Pepper"
+    },
+    {
+        "brand": "Good To-Go",
+        "name": "Smoked Three Bean Chili",
+        "meal_type": [
+            "entree"
+        ],
+        "calories": 690,
+        "water_ml": 600,
+        "water_temp": "boiling",
+        "minutes": 20,
+        "ounces": 7.0,
+        "allergens": [],
+        "special": [
+            "gluten_free",
+            "vegan",
+            "vegetarian"
+        ],
+        "link": "https://goodto-go.com/collections/food/products/smoked-three-bean-chili",
+        "ingredients": "Canned Tomato, Onion, Corn, Dried Beans, Carrot, Tomato Paste, Garlic, Extra Virgin Olive Oil, Ancho Chili Powder, Smoked Paprika Powder, Kosher Salt, Chipotle Chili Powder, Ground Coriander, Dried Oregano, Ground Cumin, Dried Thyme"
+    },
+    {
+        "brand": "Good To-Go",
+        "name": "Kale and White Bean Stew",
+        "meal_type": [
+            "entree"
+        ],
+        "calories": 720,
+        "water_ml": 750,
+        "water_temp": "boiling",
+        "minutes": 15,
+        "ounces": 6.6,
+        "allergens": [],
+        "special": [
+            "vegan",
+            "vegetarian",
+            "gluten_free"
+        ],
+        "link": "https://goodto-go.com/collections/food/products/kale-and-white-bean-stew",
+        "ingredients": "Onion, Carrots, Dried Navy Beans, Fennel, Celery, Dried Kale, Garlic, Dried Potato Flakes, Extra Virgin Olive Oil, Sweet Potato Powder, Nutritional Yeast, Sea Salt, Fennel Seed, Dried Thyme, Black Pepper, Bay Leaf"
+    },
+    {
+        "brand": "Good To-Go",
+        "name": "Chicken Gumbo",
+        "meal_type": [
+            "entree"
+        ],
+        "calories": 660,
+        "water_ml": 650,
+        "water_temp": "boiling",
+        "minutes": 15,
+        "ounces": 6.8,
+        "allergens": [],
+        "special": [
+            "gluten_free"
+        ],
+        "link": "https://goodto-go.com/collections/food/products/chicken-gumbo",
+        "ingredients": "Okra, Chicken (Chicken Raised Without Antibiotics, Rosemary Extract), Onion, Instant Long Grain Rice, Green Peppers, Celery, Garlic, Sweet Rice Flour, Grapeseed Oil, Dried Tomato Powder, Garlic Powder, Smoked Paprika Powder, Sweet Paprika Powder, Ancho Chile Powder, Sea Salt, Onion Powder, Dried Thyme, Dried Oregano, Black Pepper, Dried Parsley, Cayenne Pepper, Filé Powder (Marjoram, Thyme, Sassafras Leaves)"
+    },
+    {
+        "brand": "Good To-Go",
+        "name": "Indian Korma",
+        "meal_type": [
+            "entree"
+        ],
+        "calories": 790,
+        "water_ml": 500,
+        "water_temp": "boiling",
+        "minutes": 20,
+        "ounces": 6.7,
+        "allergens": [
+            "milk",
+            "walnuts",
+            "coconut"
+        ],
+        "special": [
+            "gluten_free",
+            "vegetarian"
+        ],
+        "link": "https://goodto-go.com/collections/food/products/indian-vegetable-korma",
+        "ingredients": "Carrot, Parsnip, Green Bean, Dehydrated Chick Peas (Chick Pea), Onion, Sweet Peas, Canned Tomato Paste (Vine Ripened Tomatoes), Unsulfured & Unsweetened Shredded Coconut, Yogurt Powder Blend (Cultured Whey, Nonfat Milk Solids & Yogurt Cultures), Grapeseed Oil, Tomato Flakes (Tomato), Ginger, Walnuts, Garlic, Kosher Salt, Poppy Seed, Coriander, Fennel, Cumin, Cardamom, Cinnamon, Turmeric, Clove, Dried Chiles"
+    }
+]

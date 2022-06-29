@@ -94,6 +94,10 @@
             "minutes": {
                 "type": "integer",
                 "coerce": false
+            },
+            "ounces": {
+                "type": "float",
+                "coerce": false
             }
         }
     }

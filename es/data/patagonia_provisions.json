@@ -1,0 +1,124 @@
+[
+    {
+        "brand": "Patagonia Provisions",
+        "name": "Organic Black Bean Soup",
+        "meal_type": [
+            "entree"
+        ],
+        "calories": 570,
+        "water_ml": 532,
+        "water_temp": "boiling",
+        "minutes": 10,
+        "ounces": 5.8,
+        "allergens": [],
+        "special": [
+            "vegan"
+        ],
+        "link": "https://www.patagoniaprovisions.com/products/black-bean-dry-soup-mix",
+        "ingredients": "organic pre-cooked black beans, organic freeze-dried corn, organic tomatoes*, organic red bell peppers*, salt, organic onion powder*, organic spices, organic ground rice hulls, organic yeast extract, organic ground chipotle peppers*, organic minced garlic*, organic sunflower oil. *dehydrated"
+    },
+    {
+        "brand": "Patagonia Provisions",
+        "name": "Organic Red Bean Chili",
+        "meal_type": [
+            "entree"
+        ],
+        "calories": 600,
+        "water_ml": 473,
+        "water_temp": "boiling",
+        "minutes": 10,
+        "ounces": 6.1,
+        "allergens": [],
+        "special": [
+            "vegan",
+            "vegetarian"
+        ],
+        "link": "https://www.patagoniaprovisions.com/products/red-bean-chili",
+        "ingredients": " organic pre-cooked red beans, organic pre-cooked pinto beans, organic tomato powder,* organic diced tomato*, organic ground red chili*, organic carrots, organic red bell pepper, salt, organic ground rice hulls, organic ground cumin, organic garlic*, organic ground chipotle peppers*, organic yeast extract. *dehydrated"
+    },
+    {
+        "brand": "Patagonia Provisions",
+        "name": "Organic Spicy Red Bean Chili",
+        "meal_type": [
+            "entree"
+        ],
+        "calories": 600,
+        "water_ml": 473,
+        "water_temp": "boiling",
+        "minutes": 10,
+        "ounces": 6.1,
+        "allergens": [],
+        "special": [
+            "vegan",
+            "vegetarian",
+            "gluten_free"
+        ],
+        "link": "https://www.patagoniaprovisions.com/products/spicy-red-bean-chili",
+        "ingredients": "organic pre-cooked red beans*, organic pre-cooked pinto beans*, organic tomato powder*, organic aji molido chile*, organic diced tomato*, organic ground red chili*, organic carrots*, organic red bell pepper*, salt, organic ground rice hulls, organic ground cumin, organic garlic*, organic ground chipotle peppers*, organic yeast extract *dehydrated"
+    },
+    {
+        "brand": "Patagonia Provisions",
+        "name": "Organic Creamy Banana Breakfast Grains",
+        "meal_type": [
+            "breakfast"
+        ],
+        "calories": 420,
+        "water_ml": 473,
+        "water_temp": "boiling",
+        "minutes": 10,
+        "ounces": 4.2,
+        "allergens": [
+            "milk"
+        ],
+        "special": [],
+        "link": "https://www.patagoniaprovisions.com/products/organic-creamy-banana-hot-cereal-mix",
+        "ingredients": "organic toasted buckwheat, organic cracked barley, organic rolled oats, organic freeze-dried banana, organic nonfat dry milk, organic flax seed, organic vanilla powder, organic ground rice hulls, salt, organic sunflower oil"
+    },
+    {
+        "brand": "Patagonia Provisions",
+        "name": "Organic Green Lentil Soup",
+        "meal_type": [
+            "entree"
+        ],
+        "calories": 430,
+        "water_ml": 473,
+        "water_temp": "boiling",
+        "minutes": 10,
+        "ounces": 4.4,
+        "allergens": [],
+        "special": [
+            "vegan",
+            "vegetarian"
+        ],
+        "link": "https://www.patagoniaprovisions.com/products/green-lentil-dry-soup-mix",
+        "ingredients": "organic pre-cooked lentils*, organic bulgur wheat, organic chopped onion*, salt, organic spices, organic green bell pepper*, organic minced garlic*, organic red bell pepper*, organic onion powder*, organic ground rice hulls, organic yeast extract, organic sunflower oil *dehydrated"
+    },
+    {
+        "brand": "Patagonia Provisions",
+        "name": "Organic Mushroom + KAMUT Khorasan Wheat Savory Grains",
+        "meal_type": ["entree"],
+        "calories": 380,
+        "water_ml": 240,
+        "water_temp": "boiling",
+        "minutes": 10,
+        "ounces": 4.1,
+        "allergens": ["wheat"],
+        "special": ["vegan", "vegetarian"],
+        "link": "https://www.patagoniaprovisions.com/products/mushroom-kamut-khorasan-wheat-savory-grains",
+        "ingredients": "organic KAMUT® khorasan bulgur wheat, organic bulgur wheat, organic portabella mushrooms*, organic shiitake mushroom powder, organic red quinoa, organic chopped onion*, salt, organic yeast extract, organic onion powder, organic ground rice hulls, organic sunflower oil, organic parsley*, organic black pepper, organic white button mushroom powder *dehydrated"
+    },
+    {
+        "brand": "Patagonia Provisions",
+        "name": "Organic Green Kale + KAMUT Khorasan Wheat Savory Grains",
+        "meal_type": ["entree"],
+        "calories": 370,
+        "water_ml": 240,
+        "water_temp": "boiling",
+        "minutes": 10,
+        "ounces": 3.9,
+        "allergens": ["wheat"],
+        "special": ["vegan", "vegetarian"],
+        "link": "https://www.patagoniaprovisions.com/products/green-kale-kamut-khorasan-wheat-savory-grains",
+        "ingredients": "organic KAMUT® khorasan bulgur wheat, organic bulgur wheat, organic freeze dried kale, organic red quinoa, organic portabella mushrooms*, organic chopped onion*, salt, organic yeast extract, organic onion powder, organic parsley*, organic ground rice hulls, organic sunflower oil, organic black pepper, organic garlic powder, organic white button mushroom powder, organic mint* *dehydrated"
+    }
+]

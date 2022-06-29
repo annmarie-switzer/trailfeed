@@ -1,362 +1,390 @@
+// Missing `ounces`
 [
-    {
-        "name": "Extra Peanut Butter Oatmeal",
-        "meal_type": ["breakfast"],
-        "calories": 520,
-        "water_ml": 240,
-        "water_temp": "boiling",
-        "minutes": 5,
-        "allergens": [],
-        "special": ["vegetarian"],
-        "user": "cale.switzer@gmail.com",
-        "ingredients": "oats, peanut butter, sugar"
-    },
-    {
-        "name": "Cherry & Brown Sugar Oatmeal",
-        "meal_type": ["breakfast"],
-        "calories": 520,
-        "water_ml": 240,
-        "water_temp": "boiling",
-        "minutes": 5,
-        "allergens": [],
-        "special": ["vegetarian"],
-        "user": "aargiros@gmail.com",
-        "ingredients": "oats, brown sugar, dried cherries"
-    },
     {
         "brand": "Backpacker's Pantry",
         "name": "Blueberry Walnut Oats",
-        "meal_type": ["breakfast"],
+        "meal_type": [
+            "breakfast"
+        ],
         "calories": 420,
         "water_ml": 240,
         "water_temp": "boiling",
         "minutes": 5,
-        "allergens": ["tree nut"],
-        "special": ["gluten_free", "vegan", "vegetarian"],
+        "allergens": [
+            "tree nut"
+        ],
+        "special": [
+            "gluten_free",
+            "vegan",
+            "vegetarian"
+        ],
         "link": "https://backpackerspantry.com/collections/food/products/organic-blueberry-walnut-oatmeal?variant=34412429377696",
         "ingredients": "organic instantized rolled oats, organic quinoa, organic walnuts, organic cane sugar freeze-dried organic blueberries, sea salt"
     },
     {
         "brand": "Backpacker's Pantry",
         "name": "Cinnamon Apple Oats",
-        "meal_type": ["breakfast"],
+        "meal_type": [
+            "breakfast"
+        ],
         "calories": 440,
         "water_ml": 300,
         "water_temp": "boiling",
         "minutes": 5,
-        "allergens": ["milk"],
-        "special": ["gluten_free", "vegetarian"],
+        "allergens": [
+            "milk"
+        ],
+        "special": [
+            "gluten_free",
+            "vegetarian"
+        ],
         "link": "https://backpackerspantry.com/collections/food/products/cinnamon-apple-oatmeal?variant=34412436521120",
         "ingredients": "organic instantized rolled oats, organic nonfat milk, organic quinoa, organic apples, organic cane sugar, organic cinnamon, sea salt"
     },
     {
         "brand": "Backpacker's Pantry",
         "name": "Granola with Bananas & Milk",
-        "meal_type": ["breakfast"],
+        "meal_type": [
+            "breakfast"
+        ],
         "calories": 620,
         "water_ml": 240,
         "water_temp": "any",
         "minutes": 0,
-        "allergens": ["milk", "coconut", "almond"],
-        "special": ["gluten_free", "vegetarian"],
+        "allergens": [
+            "milk",
+            "coconut",
+            "almond"
+        ],
+        "special": [
+            "gluten_free",
+            "vegetarian"
+        ],
         "link": "https://backpackerspantry.com/collections/food/products/granola-with-bananas-almonds-milk-1?variant=39927994482848",
         "ingredients": "granola (whole grain oats, butter (pasteurized cream, salt), brown sugar, coconut, almonds, salt), rbst-free whole milk, bananas"
     },
     {
         "brand": "Backpacker's Pantry",
         "name": "Granola with Blueberries, Almonds & Milk",
-        "meal_type": ["breakfast"],
+        "meal_type": [
+            "breakfast"
+        ],
         "calories": 620,
         "water_ml": 240,
         "water_temp": "any",
         "minutes": 0,
-        "allergens": ["milk", "coconut", "almond"],
-        "special": ["gluten_free", "vegetarian"],
+        "allergens": [
+            "milk",
+            "coconut",
+            "almond"
+        ],
+        "special": [
+            "gluten_free",
+            "vegetarian"
+        ],
         "link": "https://backpackerspantry.com/collections/food/products/granola-with-blueberries-almonds-milk?variant=34412398215328",
         "ingredients": "granola (whole grain oats, butter (pasteurized cream, salt), brown sugar, coconut, almonds, salt), rbst-free whole milk powder, blueberries"
     },
     {
         "brand": "Backpacker's Pantry",
-        "name": "Mango Sticky Rice",
-        "meal_type": ["breakfast", "dessert"],
-        "calories": 620,
-        "water_ml": 360,
-        "water_temp": "boiling",
-        "minutes": 8,
-        "allergens": ["coconut"],
-        "special": ["gluten_free", "vegan", "vegetarian"],
-        "link": "https://backpackerspantry.com/collections/food/products/mango-sticky-rice?variant=34412421447840",
-        "ingredients": "precooked long grain white rice, sauce (non-gmo pure cane sugar, coconut milk powder (coconut milk and 2.5% non-gmo tapioca derived from yuca root, 0.5% acacia fiber), mango powder (mango, corn starch, sun flower lecithin), turmeric, arrowroot powder, sesame seed, non-gmo fructose), freeze-dried mango, shredded coconut (coconut, sodium metabisulfite)"
-    },
-    {
-        "brand": "Backpacker's Pantry",
-        "name": "Peanut Butter Banana Oatmeal",
-        "meal_type": ["breakfast"],
-        "calories": 520,
-        "water_ml": 240,
-        "water_temp": "boiling",
-        "minutes": 5,
-        "allergens": ["peanut"],
-        "special": ["gluten_free", "vegan", "vegetarian"],
-        "link": "https://backpackerspantry.com/collections/food/products/peanut-butter-banana-oatmeal?variant=39894921674912",
-        "ingredients": "rolled oats, peanut butter (peanuts, cane sugar, palm fruit oil (certified sustainable), salt), cane sugar, banana, sea salt, cinnamon"
-    },
-    {
-        "brand": "Backpacker's Pantry",
         "name": "Rocky Mountain Scramble",
-        "meal_type": ["breakfast"],
+        "meal_type": [
+            "breakfast"
+        ],
         "calories": 280,
         "water_ml": 300,
         "water_temp": "boiling",
         "minutes": 15,
-        "allergens": ["egg", "milk"],
-        "special": ["gluten_free"],
+        "allergens": [
+            "egg",
+            "milk"
+        ],
+        "special": [
+            "gluten_free"
+        ],
         "link": "https://backpackerspantry.com/collections/food/products/rocky-mountain-scramble?variant=34412456607904",
         "ingredients": "freeze-dried cooked scrambled eggs (egg whites, whole eggs, corn starch, xanthan gum, beta carotene), freeze-dried cheddar cheese (pasteurized milk, cheese cultures, salt, enzymes, annatto), potato flakes (potatoes, mono and diglycerides, sodium acid pyrophosphate, citric acid), freeze-dried potato, buttermilk powder, whole milk powder, black pepper, salt, butter sauce powder (modified corn starch, salt, whey solids, non-fat dry milk, maltodextrin, butter, sugar, buttermilk powder, natural butter flavor, xanthan gum, lactic acid)"
     },
     {
         "brand": "Backpacker's Pantry",
         "name": "Summit Breakfast Scramble",
-        "meal_type": ["breakfast"],
+        "meal_type": [
+            "breakfast"
+        ],
         "calories": 260,
         "water_ml": 300,
         "water_temp": "boiling",
         "minutes": 15,
-        "allergens": ["egg", "milk"],
-        "special": ["gluten_free"],
+        "allergens": [
+            "egg",
+            "milk"
+        ],
+        "special": [
+            "gluten_free"
+        ],
         "link": "https://backpackerspantry.com/collections/food/products/summit-breakfast-scramble?variant=34412464636064",
         "ingredients": "red beans, freeze-dried cooked scrambled eggs (egg whites, whole eggs, corn starch, xanthan gum, beta carotene), freeze-dried cheddar cheese (pasteurized milk, cheese cultures, salt, enzymes, annatto), potato flakes (potatoes, mono and diglycerides, sodium acid pyrophosphate, citric acid), dried bell peppers, tomato powder, salt, dried onion, dried garlic, black pepper, smoked paprika, butter sauce powder (modified corn starch, salt, whey solids, non-fat dry milk, maltodextrin, butter, sugar, buttermilk powder, natural butter flavor, xanthan gum, lactic acid), crushed red chili pepper, cayenne pepper, thyme"
     },
     {
         "brand": "Backpacker's Pantry",
         "name": "Astro Neopolitan Ice Cream Sandwich",
-        "meal_type": ["dessert"],
+        "meal_type": [
+            "dessert"
+        ],
         "calories": 130,
         "water_ml": 0,
         "water_temp": "none",
         "minutes": 0,
-        "allergens": ["milk", "soy", "wheat", "gluten"],
-        "special": ["vegetarian"],
+        "allergens": [
+            "milk",
+            "soy",
+            "wheat",
+            "gluten"
+        ],
+        "special": [
+            "vegetarian"
+        ],
         "link": "https://backpackerspantry.com/collections/food/products/neapolitan-ice-cream-sandwich?variant=33699120414852",
         "ingredients": "ice cream ingredients: milk, cream, sugar, corn syrup, nonfat milk, whey, cocoa processed with alkali, mono and diglycerides, guar gum, artificial flavors, locust bean gum, polysorbate 80, carrageenan, red 40, annatto (color) wafer ingredients: wheat flour, sugar, caramel color, dextrose, palm oil, corn flour, cocoa, high fructose corn syrup, corn syrup, modified corn starch, cocoa, salt, baking soda, soy lecithin, mono and diglycerides"
     },
     {
         "brand": "Backpacker's Pantry",
         "name": "Astro Vanilla Ice Cream Sandwich",
-        "meal_type": ["dessert"],
+        "meal_type": [
+            "dessert"
+        ],
         "calories": 130,
         "water_ml": 0,
         "water_temp": "none",
         "minutes": 0,
-        "allergens": ["milk", "soy", "wheat", "gluten"],
-        "special": ["vegetarian"],
+        "allergens": [
+            "milk",
+            "soy",
+            "wheat",
+            "gluten"
+        ],
+        "special": [
+            "vegetarian"
+        ],
         "link": "https://backpackerspantry.com/collections/food/products/ice-cream-sandwich?variant=33699086336132",
         "ingredients": "ice cream ingredients: milk, cream, sugar, corn syrup, nonfat milk, whey, natural and artificial vanilla flavor, mono and diglycerides, guar gum, locust bean gum, polysorbate 80, carrageenan, annatto (color) wafer ingredients: wheat flour, sugar, caramel color, dextrose, palm oil, corn flour, cocoa, high fructose corn syrup, corn syrup, modified corn starch, cocoa, salt, baking soda, soy lecithin, mono and diglycerides"
     },
     {
         "brand": "Backpacker's Pantry",
         "name": "Creme Brulee",
-        "meal_type": ["dessert"],
+        "meal_type": [
+            "dessert"
+        ],
         "calories": 610,
         "water_ml": 180,
         "water_temp": "cold",
         "minutes": 12,
-        "allergens": ["milk", "soy"],
-        "special": ["gluten_free", "vegetarian"],
+        "allergens": [
+            "milk",
+            "soy"
+        ],
+        "special": [
+            "gluten_free",
+            "vegetarian"
+        ],
         "link": "https://backpackerspantry.com/collections/food/products/creme-brulee?variant=34412372623520",
         "ingredients": "crème brûlée (cheese cake mix (sugar, corn syrup solids, hydrogenated palm kernal oil, cream cheese solids (cream, nonfat milk, sodium caseinate, corn syrup solids, salt, lactic acid, silicon dioxide, dipotassium phosphate, sodium alginate), buttermilk, non fat dry milk, modified food starch (tapioca), tetrasodium pyrophosphate, carrageenan, lactose, lactic acid esters of mono and diglycerides, sodium silico aluminate, dipotassium phosphate, yellow 5, yellow 6), rbst-free sweet cream solids, rbst-free nonfat milk, modified food starch (from corn), crème brûlée flavor (dextrose, natural flavors, silicon dioxide (anti-caking agent)), crème brûlée topping (sugar, corn syrup, palm oil, natural flavor, caramel color)"
     },
     {
         "brand": "Backpacker's Pantry",
         "name": "Dark Chocolate Cheesecake Mix",
-        "meal_type": ["dessert"],
+        "meal_type": [
+            "dessert"
+        ],
         "calories": 600,
         "water_ml": 160,
         "water_temp": "cold",
         "minutes": 12,
-        "allergens": ["milk", "soy", "wheat", "gluten"],
-        "special": ["vegetarian"],
+        "allergens": [
+            "milk",
+            "soy",
+            "wheat",
+            "gluten"
+        ],
+        "special": [
+            "vegetarian"
+        ],
         "link": "https://backpackerspantry.com/collections/food/products/dark-chocolate-cheesecake?variant=34412374294688",
         "ingredients": "chocolate cheesecake (cheese cake mix (sugar, corn syrup solids, hydrogenated palm kernal oil, cream cheese solids (cream, nonfat milk, sodium caseinate, corn syrup solids, salt, lactic acid, silicon dioxide, dipotassium phosphate, sodium alginate), buttermilk, non fat dry milk, modified food starch (tapioca), tetrasodium pyrophosphate, carrageenan, lactose, lactic acid esters of mono and diglycerides, sodium silico aluminate, dipotassium phosphate, yellow 5, yellow 6), rbst-free sweet cream solids, rbst-free nonfat milk, cocoa powder, modified food starch (from corn)), topping (chocolate cookie crumb [enriched flour (wheat flour, niacin, reduced iron, thiamin mononitrate, riboflavin, folic acid), sugar, vegetable oil (soybean, palm, palm kernal oil), dextrose, degerminated yellow corn flour, cocoa (processed with alkali), invert sugar, chocolate, leavening (baking soda, monocalcium phosphate), salt, corn starch, natural flavor, soy lecithin, whey])"
     },
     {
         "brand": "Backpacker's Pantry",
-        "name": "Chana Masala",
-        "meal_type": ["entree"],
-        "calories": 860,
-        "water_ml": 540,
-        "water_temp": "boiling",
-        "minutes": 15,
-        "allergens": ["coconut"],
-        "special": ["gluten_free", "vegan", "vegetarian"],
-        "link": "https://backpackerspantry.com/collections/food/products/chana-masala?variant=34412361580704",
-        "ingredients": "precooked long grain white rice, garbanzo beans,coconut milk powder( coconut milk and 2% non-gmo tapioca derived from organically grown yuca root), tomato, sea salt, paprika, onion, garlic, turmeric, cilantro, cumin seed, cayenne pepper, coriander seed"
-    },
-    {
-        "brand": "Backpacker's Pantry",
         "name": "Chicken Lasagna",
-        "meal_type": ["entree"],
+        "meal_type": [
+            "entree"
+        ],
         "calories": 370,
         "water_ml": 300,
         "water_temp": "boiling",
         "minutes": 15,
-        "allergens": ["wheat", "egg", "milk"],
+        "allergens": [
+            "wheat",
+            "egg",
+            "milk"
+        ],
         "special": [],
         "link": "https://backpackerspantry.com/collections/food/products/chicken-lasagna?variant=40623715025056",
         "ingredients": "tagliatelle pasta (ground durum wheat semolina, water, egg albumen, salt), tomato powder (tomato, silicon dioxide (as an anti-caking agent)), freeze dried cooked white meat chicken, mozzarella cheese (part-skim milk, cheese cultures, salt, enzymes), parmesan cheese (cultured part-skim milk, salt, enzymes, disodium phosphate), butter powder (butter (cream, salt), nonfat dry milk, buttermilk, sodium citrate, beta-carotene (used as a color), citric acid, tocopherol (used as an anti-oxidant)), potato starch, tomato flakes, mushrooms, dried onion, sea salt, green bell pepper, celery, dried garlic, cane sugar, parsley, basil, mexican oregano"
     },
     {
         "brand": "Backpacker's Pantry",
-        "name": "Cuban Coconut Rice & Black Beans",
-        "meal_type": ["entree"],
-        "calories": 750,
-        "water_ml": 540,
-        "water_temp": "boiling",
-        "minutes": 15,
-        "allergens": ["coconut"],
-        "special": ["gluten_free", "vegan", "vegetarian"],
-        "link": "https://backpackerspantry.com/collections/food/products/cuban-coconut-black-beans-rice?variant=34412372918432",
-        "ingredients": "precooked long grain white rice, black beans, sauce (onion, savory soup base (maltodextrin, salt, autolyzed yeast extract, yeast extract, onion powder, silicon dioxide, turmeric extract (color), sunflower oil), garlic, coconut milk powder (coconut milk and 2.5% non-gmo tapioca derived from yuca root, 0.5% acacia fiber), sea salt, banana powder (3% silica dioxide), organic extra virgin olive oil, freeze-dried bananas"
-    },
-    {
-        "brand": "Backpacker's Pantry",
-        "name": "Fetuccini Alfredo with Chicken",
-        "meal_type": ["entree"],
-        "calories": 720,
-        "water_ml": 480,
-        "water_temp": "boiling",
-        "minutes": 20,
-        "allergens": ["milk", "wheat", "gluten"],
-        "special": [],
-        "link": "https://backpackerspantry.com/collections/food/products/fettuccini-alfredo-with-chicken?variant=34412374884512",
-        "ingredients": "freeze-dried tagliatelli pasta (durum wheat semolina, water, egg albumen, salt), sauce (romano cheese from cow's milk (cultured pasteurized part-skim milk, salt, enzymes, disodium phosphate, salt), rbst-free nonfat milk, rbst-free sweet cream solids, parmesan cheese (parmesan cheese (cultured part-skim milk, salt, enzymes), disodium phosphate, salt), butter sauce (modified corn starch, salt, whey solids, non-fat dry milk, dehydrated butter, natural butter flavor, sugar, xanthan gum, lactic acid), garlic, black pepper, parsley), freeze-dried cooked white meat chicken, red bell pepper"
-    },
-    {
-        "brand": "Backpacker's Pantry",
         "name": "Hatch Green Chili Mac & Cheese",
-        "meal_type": ["entree"],
+        "meal_type": [
+            "entree"
+        ],
         "calories": 300,
         "water_ml": 180,
         "water_temp": "boiling",
         "minutes": 15,
-        "allergens": ["wheat", "egg", "milk"],
+        "allergens": [
+            "wheat",
+            "egg",
+            "milk"
+        ],
         "special": [],
         "link": "https://backpackerspantry.com/collections/food/products/hatch-green-chile-mac-cheese?variant=39887546810528",
         "ingredients": "pasta (ground durum wheat semolina, water, egg albumen and salt), pepper jack cheese (pasteurized milk, cheese cultures, salt, jalapeno peppers, enzymes), powdered cellulose (added to prevent caking)), parmesan cheese (cultured part-skim milk, salt, enzymes, disodium phosphate), whole milk powder, romano cheese from cow's milk (cultured pasteurized part-skim milk, salt, enzymes, disodium phosphate), butter sauce (modified corn starch, salt, whey solids, nonfat dry milk, maltodextrin, butter, sugar, buttermilk powder, natural butter flavor, xanthan gum, lactic acid), hatch green chile pepper, dried onion, sea salt, black pepper, turmeric, nutmeg"
     },
     {
         "brand": "Backpacker's Pantry",
-        "name": "Kathmandu Curry",
-        "meal_type": ["entree"],
-        "calories": 670,
-        "water_ml": 650,
-        "water_temp": "boiling",
-        "minutes": 15,
-        "allergens": [],
-        "special": ["gluten_free", "vegan", "vegetarian"],
-        "link": "https://backpackerspantry.com/collections/food/products/kathmandu-curry?variant=34412407324832",
-        "ingredients": "lentils, precooked parboiled long grain brown rice, potatoes, carrots, peas, sea salt, garlic, turmeric, coriander seed, cumin seed, ginger, black pepper, nutmeg, cayenne pepper, parsley, bay leaves, cinnamon, cloves, dill weed, fennel seed"
-    },
-    {
-        "brand": "Backpacker's Pantry",
         "name": "Lasagna",
-        "meal_type": ["entree"],
+        "meal_type": [
+            "entree"
+        ],
         "calories": 680,
         "water_ml": 480,
         "water_temp": "boiling",
         "minutes": 15,
-        "allergens": ["wheat", "egg", "milk", "soy"],
-        "special": ["vegetarian"],
+        "allergens": [
+            "wheat",
+            "egg",
+            "milk",
+            "soy"
+        ],
+        "special": [
+            "vegetarian"
+        ],
         "link": "https://backpackerspantry.com/collections/food/products/lasagna?variant=34412414238880",
         "ingredients": "sauce (organic textured soy protein, tomato powder (tomato, 1% silicon dioxide), freeze-dried mozzarella cheese (part-skim milk, cheese cultures, salt and enzymes), parmesan cheese (parmesan cheese (cultured part-skim milk, salt, enzymes), disodium phosphate, salt), butter powder (butter (cream, salt), nonfat dry milk, buttermilk, sodium citrate, beta-carotene (used as a color), citric acid, tocopherol (used as an anti-oxidant)), potato starch, organic dried tomato flakes, onion, dried mushrooms, sea salt, greenbell pepper, celery, garlic, parsley, non gmo pure cane sugar, basil, mexican oregano), freeze-dried tagliatelle pasta (ground durum wheat semolina, water, egg albumen, salt)"
     },
     {
         "brand": "Backpacker's Pantry",
         "name": "Louisiana Red Beans & Rice",
-        "meal_type": ["entree"],
+        "meal_type": [
+            "entree"
+        ],
         "calories": 330,
         "water_ml": 300,
         "water_temp": "boiling",
         "minutes": 15,
         "allergens": [],
-        "special": ["gluten_free", "vegan", "vegetarian"],
+        "special": [
+            "gluten_free",
+            "vegan",
+            "vegetarian"
+        ],
         "link": "https://backpackerspantry.com/collections/food/products/louisiana-red-beans-rice-1?variant=39955344392352",
         "ingredients": "red beans, precooked long grain white rice, tomato, onion, potato starch, sea salt, new mexico chili pepper, pure cane sugar non gmo, corn starch non gmo, garlic, cumin seed, oregano, cayenne pepper"
     },
     {
         "brand": "Backpacker's Pantry",
         "name": "Mashed Potatoes with Gravy & Beef",
-        "meal_type": ["entree"],
+        "meal_type": [
+            "entree"
+        ],
         "calories": 360,
         "water_ml": 480,
         "water_temp": "boiling",
         "minutes": 20,
-        "allergens": ["milk"],
-        "special": ["gluten_free"],
+        "allergens": [
+            "milk"
+        ],
+        "special": [
+            "gluten_free"
+        ],
         "link": "https://backpackerspantry.com/collections/food/products/beef-mashed-potatoes?variant=34412426592416",
         "ingredients": "potatoes (potatoes, mono and diglycerides, sodium acid pyrophosphate, citric acid), sauce (butter sauce (modified corn starch, salt, whey solids, non-fat dry milk, dehydrated butter, natural butter flavor, sugar, xanthan gum, lactic acid), sour cream (cultured cream, nonfat milk), savory soup base (yeast extract, natural flavor), sea salt, sour cream flavor (maltodextrin, natural sour cream flavor), thyme), freeze-dried cooked beef (beef, salt)"
     },
     {
         "brand": "Backpacker's Pantry",
-        "name": "Mushroom Stroganoff",
-        "meal_type": ["entree"],
-        "calories": 590,
-        "water_ml": 480,
-        "water_temp": "boiling",
-        "minutes": 15,
-        "allergens": ["wheat", "egg", "milk"],
-        "special": [],
-        "link": "https://backpackerspantry.com/collections/food/products/mushroom-stroganoff?variant=39894856663200",
-        "ingredients": "tagliatelle pasta (ground durum wheat semolina, water, egg albumen, salt), whole milk powder, potato starch, sour cream powder (cultured cream, nonfat milk), red wine powder (red wine, maltodextrin), mushrooms, savory soup base (yeast extract, natural flavor), dried onion, butter sauce (modified corn starch, salt, whey solids, nonfat dry milk, maltodextrin, butter, sugar, buttermilk powder, natural butter flavor, xanthan gum, lactic acid), natural flavor (contains baker's yeast extract, salt), dried garlic, parmesan cheese (cultured part-skim milk, enzymes, disodium phosphate, salt), parsley, sea salt, sour cream flavor (maltodextrin, natural sour cream flavor (butter, cultured nonfat milk, natural flavor)), black pepper, sauteed mushroom flavor (maltodextrin, yeast extract, salt, natural flavor, silicon dioxide)"
-    },
-    {
-        "brand": "Backpacker's Pantry",
         "name": "Pad Thai",
-        "meal_type": ["entree"],
+        "meal_type": [
+            "entree"
+        ],
         "calories": 930,
         "water_ml": 540,
         "water_temp": "boiling",
         "minutes": 15,
-        "allergens": ["peanut", "soy"],
-        "special": ["gluten_free", "vegan", "vegetarian"],
+        "allergens": [
+            "peanut",
+            "soy"
+        ],
+        "special": [
+            "gluten_free",
+            "vegan",
+            "vegetarian"
+        ],
         "link": "https://backpackerspantry.com/collections/food/products/pad-thai?variant=34412448317600",
         "ingredients": "rice noodle (rice flour and water), sauce (tomato powder (tomato, 1% silicon dioxide), organic cane sugar, white vinegar (maltodextrin and white distilled vinegar), savory soup base (maltodextrin, salt, autolyzed yeast extract, yeast extract, onion powder, silicon dioxide, turmeric extract (color), sunflower oil), garlic, non-gmo crystallized lime (citric acid, lime oil, lime juice), cilantro, crushed red chili pepper, sea salt), organic textured soy protein, peanut butter (peanuts, cane sugar, palm fruit oil (certified sustainable), salt), dry roasted peanuts, red bell pepper, sriracha powder (non gmo pure cane sugar, paprika, white vinegar (maltodextrin and white distilled vinegar), tomato powder (tomato, 1% silicon dioxide), jalapeno chili pepper, garlic, sea salt), green onion, non-gmo crystallized lime (citric acid, lime oil, lime juice)"
     },
     {
         "brand": "Backpacker's Pantry",
         "name": "Pad Thai with Chicken",
-        "meal_type": ["entree"],
+        "meal_type": [
+            "entree"
+        ],
         "calories": 840,
         "water_ml": 480,
         "water_temp": "boiling",
         "minutes": 20,
-        "allergens": ["peanut"],
-        "special": ["gluten_free"],
+        "allergens": [
+            "peanut"
+        ],
+        "special": [
+            "gluten_free"
+        ],
         "link": "https://backpackerspantry.com/collections/food/products/pad-thai-with-chicken?variant=34412449300640",
         "ingredients": "rice noodle (rice flour, water), sauce (tomato powder (tomato, 1% silicon dioxide), organic cane sugar, white vinegar (maltodextrin and white distilled vinegar), savory soup base (maltodextrin, salt, autolyzed yeast extract, yeast extract, onion powder, silicon dioxide, turmeric extract (color), sunflower oil), garlic, crystallized lime (citric acid, lime oil, lime juice), cilantro, crushed red chili pepper, sea salt), peanut butter (peanuts, cane sugar, palm fruit oil (certified sustainable), salt), dry roasted peanuts, freeze-dried cooked white meat chicken, red bell pepper, sriracha powder (pure cane sugar, paprika, white vinegar (maltodextrin and white distilled vinegar), tomato powder (tomato, 1% silicon dioxide), jalapeno chili pepper, garlic, sea salt), green onion, crystallized lime (citric acid, lime oil, lime juice)"
     },
     {
         "brand": "Backpacker's Pantry",
         "name": "Pasta Primavera",
-        "meal_type": ["entree"],
+        "meal_type": [
+            "entree"
+        ],
         "calories": 330,
         "water_ml": 300,
         "water_temp": "boiling",
         "minutes": 15,
-        "allergens": ["wheat", "egg", "milk"],
-        "special": ["vegetarian"],
+        "allergens": [
+            "wheat",
+            "egg",
+            "milk"
+        ],
+        "special": [
+            "vegetarian"
+        ],
         "link": "https://backpackerspantry.com/collections/food/products/pasta-primavera-1?variant=39949480034464",
         "ingredients": "freeze-dried pasta (durum wheat semolina, water, egg albumen, salt), parmesan cheese (parmesan cheese (cultured part-skim milk, salt, enzymes), disodium phosphate, salt), carrots, freeze-dried zucchini, rbst-free sweet cream solids, non-gmo butter sauce (modified corn starch, salt, whey solids, non-fat dry milk, dehydrated butter, natural butter flavor, sugar, xanthan gum, lactic acid), freeze-dried peas, onion, red bell pepper, garlic, organic spinach, basil, tarragon, parsley"
     },
     {
         "brand": "Backpacker's Pantry",
         "name": "Rice & Chicken",
-        "meal_type": ["entree"],
+        "meal_type": [
+            "entree"
+        ],
         "calories": 310,
         "water_ml": 180,
         "water_temp": "boiling",
         "minutes": 15,
-        "allergens": ["milk"],
+        "allergens": [
+            "milk"
+        ],
         "special": [],
         "link": "https://backpackerspantry.com/collections/food/products/chicken-and-rice?variant=40623838920864",
         "ingredients": "precooked long grain white rice, freeze dried coooked white meat chicken, nonfat dry milk, sea salt, carrots, dried onion, savory soup base (maltodextrin, salt, autolyzed yeast extract, yeast extract, dried onion powder, silicon dioxide, turmeric extract (color), sunflower oil), cane sugar, celery, parsley, green bell pepper, red bell pepper"
@@ -364,51 +392,77 @@
     {
         "brand": "Backpacker's Pantry",
         "name": "Risotto with Chicken",
-        "meal_type": ["entree"],
+        "meal_type": [
+            "entree"
+        ],
         "calories": 600,
         "water_ml": 470,
         "water_temp": "boiling",
         "minutes": 20,
-        "allergens": ["milk", "soy"],
-        "special": ["gluten_free"],
+        "allergens": [
+            "milk",
+            "soy"
+        ],
+        "special": [
+            "gluten_free"
+        ],
         "link": "https://backpackerspantry.com/collections/food/products/risotto-with-chicken?variant=34412456181920",
         "ingredients": "precooked long grain white rice, sauce (parmesan cheese (parmesan cheese (cultured part-skim milk, salt, enzymes), disodium phosphate, salt), nonfat milk, maltodextrin, potato starch, sea salt, garlic, torula yeast, savory soup base (maltodextrin, salt, autolyzed yeast extract, yeast extract, onion powder, silicon dioxide, turmeric extract (color), sunflower oil), onion, dextrose, sugar, black pepper, parsley, basil, gluten-free tamari sauce (tamari sauce (soybeans, salt), maltodextrin, salt)), freeze-dried white chicken meat, broccoli, sweet corn, onion, bell pepper, tomato"
     },
     {
         "brand": "Backpacker's Pantry",
         "name": "Santa Fe Style Rice & Beans with Chicken",
-        "meal_type": ["entree"],
+        "meal_type": [
+            "entree"
+        ],
         "calories": 680,
         "water_ml": 480,
         "water_temp": "boiling",
         "minutes": 20,
-        "allergens": ["milk", "soy"],
-        "special": ["gluten_free"],
+        "allergens": [
+            "milk",
+            "soy"
+        ],
+        "special": [
+            "gluten_free"
+        ],
         "link": "https://backpackerspantry.com/collections/food/products/santa-fe-rice-beans-with-chicken?variant=34524576940192",
         "ingredients": "brown rice, black beans, mesquite chicken (freeze-dried cooked white meat chicken, mesquite smoke powder (maltodextrin, natural mesquite smoke flavor, silicon dioxide)), dried tomato, hatch green chili pepper, organic olive oil, freeze-dried super sweet corn, dried garlic, salt, cumin seed, oregano"
     },
     {
         "brand": "Backpacker's Pantry",
         "name": "Shepherd's Potato Stew with Beef",
-        "meal_type": ["entree"],
+        "meal_type": [
+            "entree"
+        ],
         "calories": 460,
         "water_ml": 530,
         "water_temp": "boiling",
         "minutes": 20,
-        "allergens": ["milk"],
-        "special": ["gluten_free"],
+        "allergens": [
+            "milk"
+        ],
+        "special": [
+            "gluten_free"
+        ],
         "link": "https://backpackerspantry.com/collections/food/products/shepherd-s-pie-with-beef?variant=34412459262112",
         "ingredients": "potatoes, tomato, freeze-dried beef (beef, salt), onion, freeze-dried cheddar cheese (pasteurized milk, cheese cultures, salt, enzymes, annatto), butter sauce (modified corn starch, salt, whey solids, non-fat dry milk, dehydrated butter, natural butter flavor (maltodextrin, enzyme modified butter, buttermilk powder, natural flavor), sugar, xanthan gum, lactic acid, tumeric and annatto), freeze-dried sweet corn, savory soup base (yeast extract, natural flavor), freeze-dried peas, garlic, sea salt, black pepper, thyme"
     },
     {
         "brand": "Backpacker's Pantry",
         "name": "Stroganoff Sauce, Egg Noodles, Beef & Mushrooms",
-        "meal_type": ["entree"],
+        "meal_type": [
+            "entree"
+        ],
         "calories": 600,
         "water_ml": 600,
         "water_temp": "boiling",
         "minutes": 20,
-        "allergens": ["milk", "wheat", "gluten"],
+        "allergens": [
+            "milk",
+            "wheat",
+            "gluten"
+        ],
         "special": [],
         "link": "https://backpackerspantry.com/collections/food/products/stroganoff-sauce-egg-noodles-beef-mushroom?variant=34412463620256",
         "ingredients": "freeze-dried tagliatelle pasta (ground durum wheat semolina, water, egg albumen, salt), sauce (whole milk powder, potato starch, sour cream (cultured cream, nonfat milk), red wine powder (red wine, maltodextrin), parmesan cheese (parmesan cheese (cultured part-skim milk, salt, enzymes), disodium phosphate, salt), butter sauce (modified corn starch, salt, whey solids, non-fat dry milk, dehydrated butter, natural butter flavor, sugar, xanthan gum, lactic acid), savory soup base (yeast extract, natural flavor), onion, sea salt, garlic, sour cream flavor (maltodextrin, natural sour cream flavor (butter, cultured non fat milk, natural flavor)), black pepper, parsley, sauteed mushroom flavor (maltodextrin, yeast extract, salt, natural flavor, silicon dioxide), freeze-dried cooked beef (beef, salt), dried mushrooms"
@@ -416,39 +470,38 @@
     {
         "brand": "Backpacker's Pantry",
         "name": "Three Amigos Veggie Stew",
-        "meal_type": ["entree"],
+        "meal_type": [
+            "entree"
+        ],
         "calories": 560,
         "water_ml": 420,
         "water_temp": "boiling",
         "minutes": 15,
         "allergens": [],
-        "special": ["gluten_free", "vegan", "vegetarian"],
+        "special": [
+            "gluten_free",
+            "vegan",
+            "vegetarian"
+        ],
         "link": "https://backpackerspantry.com/collections/food/products/three-amigos-veggie-stew?variant=34524894658720",
         "ingredients": "pinto  beans, red beans, chickpeas, organic olive oi l, hulled hemp  seed, dried onion,  dried broccoli,   dried tomato, red  wine powder (red  wine, maltodextrin), dried bell pepper,   salt,   dried garlic,  nutritional yeast,  dried chives, apple cider vinegar powder (maltodextrin,  apple cider vinegar, modified food starch), carrot powder,   crushed red chilis, porcini mushroom powder,   crystallized lemon (citric acid,  lemon oi l, lemon juice),  turmeric,   leek  powder,  dried nori ( seaweed), celery seed"
     },
     {
         "brand": "Backpacker's Pantry",
-        "name": "Three Cheese Mac & Cheese",
-        "meal_type": ["entree"],
-        "calories": 860,
-        "water_ml": 480,
-        "water_temp": "boiling",
-        "minutes": 15,
-        "allergens": ["egg", "milk", "wheat", "gluten"],
-        "special": ["vegetarian"],
-        "link": "https://backpackerspantry.com/collections/food/products/three-cheese-mac-cheese?variant=34412465455264",
-        "ingredients": "pasta (ground durum wheat semolina, water, egg albumen and salt), cheddar cheese (pasteurized milk, cheese cultures, salt, enzymes, annatto), parmesan cheese (parmesan cheese (cultured part-skim milk, salt, enzymes), disodium phosphate), whole milk (rbst-free), butter sauce (modified corn starch, salt, whey solids, non-fat dry milk, dehydrated butter, natural butter flavor, sugar, xanthan gum, lactic acid, turmeric and annatto), onion, sea salt, bacon flavor (maltodextrin, bacon type flavor (sunflower oil, smoke flavor, with other natural flavors), rice starch, salt, tocopherol (vitamin e)), black pepper, turmeric, nutmeg"
-    },
-    {
-        "brand": "Backpacker's Pantry",
         "name": "Three Sisters Stew",
-        "meal_type": ["entree"],
+        "meal_type": [
+            "entree"
+        ],
         "calories": 720,
         "water_ml": 540,
         "water_temp": "boiling",
         "minutes": 15,
         "allergens": [],
-        "special": ["gluten_free", "vegan", "vegetarian"],
+        "special": [
+            "gluten_free",
+            "vegan",
+            "vegetarian"
+        ],
         "link": "https://backpackerspantry.com/collections/food/products/three-sisters-stew?variant=34412466274464",
         "ingredients": "precooked parboiled long grain brown rice, black beans, organic quinoa, sauce (green chili pepper, chili powder (chili pepper, cumin, salt, oregano, garlic, silicon dioxide), savory soup base (maltodextrin, salt, autolyzed yeast extract, yeast extract, onion powder, silicon dioxide, turmeric extract (color), sunflower oil), sea salt, garlic granulated toasted, non-gmo crystallized lime (citric acid, lime oil, lime juice), black pepper), freeze-dried super sweet corn, organic extra virgin olive oil, organic dried tomato flakes, onion, freeze-dried zucchini"
     }

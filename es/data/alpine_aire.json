@@ -1,0 +1,443 @@
+[
+    {
+        "brand": "AlpineAire",
+        "name": "Wild Mushroom Fetuccini Alfredo",
+        "meal_type": [
+            "entree"
+        ],
+        "calories": 630,
+        "water_ml": 118,
+        "water_temp": "boiling",
+        "minutes": 12,
+        "ounces": 5.43,
+        "allergens": [
+            "wheat",
+            "milk"
+        ],
+        "special": [
+            "vegetarian"
+        ],
+        "link": "https://www.katadyngroup.com/us/en/60145-Wild-Mushroom-Fettucine-Alfredo~p6634",
+        "ingredients": "Pasta, Spiral (Ground durum wheat semolina, water, salt.), Sweet Cream Powder, Champignon Mushrooms, Potato Starch, Romano Cheese (Pasteurized Milk, Cheese Cultures, Salt, and Enzymes) and Disodium Phosphate, Parmesan Cheese (Partially Skim Milk, Culture, Salt, Enzymes) and Disodium Phosphate, Natural Butter Flavor [Whey Solids, Enzymes Modified Butter, Maltodextrin, Salt, Dehydrated Butter, Guar Gum, Annatto and Turmeric (for color)]., Nonfat Milk Solids, Sodium Caseinate and Disodium Phosphate], Shallots, Garlic Granulated, Sea Salt, Natural Flavor (Baker's Yeast Extract, Salt), White Onion, Shiitake Extract Powder (Maltodextrin, Shiitake Extract, Salt), Black Pepper, Spinach."
+    },
+    {
+        "brand": "AlpineAire",
+        "name": "Shakshuka",
+        "meal_type": [
+            "entree"
+        ],
+        "calories": 780,
+        "water_ml": 473,
+        "water_temp": "boiling",
+        "minutes": 12,
+        "ounces": 6.4,
+        "allergens": [
+            "milk",
+            "soy",
+            "egg"
+        ],
+        "special": [
+            "gluten_free",
+            "vegetarian"
+        ],
+        "link": "https://www.katadyngroup.com/us/en/60130-Shakshuka~p6650",
+        "ingredients": "Instant White Rice, Monterey Jack Cheese FD Shredded (Pasteurized Milk, Salt, Enzymes, Potato Starch added to prevent caking), Tomato Powder, Romano Cheese (Pasteurized Milk, Cheese Cultures, Salt, and Enzymes) and Disodium Phosphate, Precooked Scrambled Egg Curds Freeze Dried (Whole Eggs, Corn Starch, Salt, Citric Acid, Xanthan Gum) , Bell Pepper Red & Green Combo, Parmesan Cheese (Partially Skim Milk, Culture, Salt, Enzymes) and Disodium Phosphate, Tomato Flakes, White Onion, Potato Starch, Sugar Organic, Soy Flour (Textured Vegetable Protein), Sea Salt, Garlic Granulated, Sweet Cream Powder, Paprika, Red Pepper Crushed, Cumin, Cayenne Pepper (Ground Red Pepper), Cilantro."
+    },
+    {
+        "brand": "AlpineAire",
+        "name": "Hearty Beef Stew",
+        "meal_type": [
+            "entree"
+        ],
+        "calories": 500,
+        "water_ml": 473,
+        "water_temp": "boiling",
+        "minutes": 12,
+        "ounces": 4.6,
+        "allergens": [
+            "milk",
+            "soy",
+            "wheat"
+        ],
+        "special": [],
+        "link": "https://www.katadyngroup.com/us/en/60400-hearty-beef-stew~p6647",
+        "ingredients": "Ingredients: spiral pasta (ground durum wheat semolina, water, salt), diced cooked freeze-dried beef (beef, salt), tomato powder, freeze-dried peas, potato flakes (potatoes, mono- and diglycerides, sodium acid pyrophosphate and citric acid), diced carrots, chopped white onion, soy flour (textured vegetable protein), cooked beef powder, potato starch, white onion granules, celery stalks, mushroom slices, Worcestershire sauce powder {[vinegar, sugar, salt, vegetable and fruit (onion, tomato, apple), caramel color, spice extract yeast extract, spices, garlic], salt, maltodextrin, spices, garlic powder and onion}, paprika, butter powder [(sweet cream, salt, annatto color), nonfat milk solids, sodium caseinate and disodium phosphate], basil, natural flavor (baker's yeast extract, salt), sea salt, garlic granules, black pepper, oregano, rosemary, parsley."
+    },
+    {
+        "brand": "AlpineAire",
+        "name": "Creamy Beef & Noodles with Mushrooms",
+        "meal_type": [
+            "entree"
+        ],
+        "calories": 620,
+        "water_ml": 473,
+        "water_temp": "boiling",
+        "minutes": 12,
+        "ounces": 5.5,
+        "allergens": [
+            "wheat",
+            "milk"
+        ],
+        "special": [],
+        "link": "https://www.nomadnutrition.co/collections/healthy-quick-meal/products/indian-stew",
+        "ingredients": "instant pasta [durum semolina (enriched with niacin, ferrous sulfate, thiamin mononitrate, riboflavin, and folic acid)], sour cream powder (cream solids, cultured nonfat milk, citric acid), freeze-dried cooked beef, salt, potato starch, parmesan cheese powder (partially skim milk, cheese cultures, salt, enzymes, disodium phosphate), whey powder, sliced mushrooms, tomato flakes, butter flavor (whey solids, enzyme-modified butter, maltodextrin, salt, dehydrated butter, guar gum, annatto, and turmeric), onion granules, low sodium sea salt (sodium,chloride, potassium), garlic granules, instant nonfat milk powder, minced green onion, basil, white pepper, black pepper."
+    },
+    {
+        "brand": "AlpineAire",
+        "name": "Grilled Chicken and Mushroom Wild Rice Pilaf",
+        "meal_type": [
+            "entree"
+        ],
+        "calories": 530,
+        "water_ml": 355,
+        "water_temp": "boiling",
+        "minutes": 12,
+        "ounces": 4.9,
+        "allergens": [
+            "soy",
+            "milk"
+        ],
+        "special": [
+            "gluten_free"
+        ],
+        "link": "https://www.katadyngroup.com/us/en/%2060350-Grilled-Chicken-and-Mushroom-Wild-Rice-Pilaf~p28593",
+        "ingredients": "Instant White Rice (cooked), Wild Rice (cooked), Freeze Dried Grilled Chicken (Chicken breast with Rib Meat, Salt, Potato Starch, Onion and Garlic Powder, Spices), Chicken Flavor Broth Low Sodium [Maltodextrin, Salt, Torula Yeast, Dehydrated Vegetables (Onion, Celery, Parsley, Spinach, Garlic, Carrot), Potato Flour, Xanthan Gum, Spices, Extractives of Spice (including Turmeric and Paprika), Soy Lecithin. Not more than 2% Soybean Oil added as a processing aid], Champignon Mushrooms, Sweet Cream Powder, Butter Flavor [Whey Solids, Enzymes Modified Butter, Maltodextrin, Salt, Dehydrated Butter, Guar Gum, Annatto and Turmeric (for color)], Potato Starch, White Onion, Garlic Granulated, Shiitake Extract Powder (Maltodextrin, Shiitake Extract, Salt), Seasoning [Contains Baker's Yeast Extract, Salt, Canola Oil (anti-dusting)], Sea Salt, Spinach, Black Pepper, Thyme."
+    },
+    {
+        "brand": "AlpineAire",
+        "name": "Homestyle Chicken Pot Pie",
+        "meal_type": [
+            "entree"
+        ],
+        "calories": 570,
+        "water_ml": 532,
+        "water_temp": "boiling",
+        "minutes": 12,
+        "ounces": 5.5,
+        "allergens": [
+            "milk",
+            "soy"
+        ],
+        "special": [
+            "gluten_free"
+        ],
+        "link": "https://www.katadyngroup.com/us/en/60345-Homestyle-Chicken-Pot-Pie~p28592",
+        "ingredients": "Instant White Rice, Freeze Dried Grilled Chicken (Chicken breast with Rib Meat, Salt, Potato Starch, Onion and Garlic Powder, Spices), Peas, Carrot, Potatoes, Potato Starch, Sweet Whey, Celery Stalks, Parmesan Cheese (Partially Skim Milk, Culture, Salt, Enzymes, Disodium Phosphate), White Onion, Sweet Cream Powder, Butter Flavor [Whey Solids, Enzymes Modified Butter, Maltodextrin, Salt, Dehydrated Butter, Guar Gum, Annatto and Turmeric (for color)]., White Onion, Garlic Granulated, Roasted Onion Extract Powder (Onion Extract, Maltodextrin, Sugar, Roasted Onion Oil, Mixed Tocopherols), Sea Salt, Seasoning [Contains Baker's Yeast Extract, Salt, Canola Oil (anti-dusting)], Chicken Flavor Broth Low Sodium [Maltodextrin, Salt, Torula Yeast, Dehydrated Vegetables (Onion, Celery, Parsley, Spinach, Garlic, Carrot), Potato Flour, Xanthan Gum, Spices, Extractives of Spice (including Turmeric and Paprika), Soy Lecithin. Not more than 2% Soybean Oil added as a processing aid], Black Pepper, Thyme, Bay Leaves."
+    },
+    {
+        "brand": "AlpineAire",
+        "name": "Pasta Primavera with Grilled Chicken",
+        "meal_type": [
+            "entree"
+        ],
+        "calories": 660,
+        "water_ml": 414,
+        "water_temp": "boiling",
+        "minutes": 12,
+        "ounces": 5.8,
+        "allergens": [
+            "wheat",
+            "milk",
+            "egg"
+        ],
+        "special": [],
+        "link": "https://www.katadyngroup.com/us/en/60300-pasta-primavera-with-grilled-chicken~p6638",
+        "ingredients": "pasta tagliatelle [durum semolina flour (wheat), niacin, ferrous sulfate (iron), thiamin mononitrate, riboflavin and folic acid], freeze-dried grilled chicken (chicken breast with rib meat, salt, potato starch, onion and garlic powder, spices), Romano cheese [(pasturized milk, cheese cultures, salt, and enzymes) and disodium phosphate], Parmesan cheese [(partially skim milk, culture, salt, enzymes) and disodium phosphate], nonfat dry milk (grade A pasteurized skim milk), potato starch, diced carrots, peas, tomato flakes, granulated garlic, zucchini, broccoli florets, sweet corn, chopped white onion, oregano, sea salt, natural flavor (baker's yeast extract, salt), natural lemon flavor (maltodextrin, dextrose, natural flavor, acacia gum, and tricalcium phosphate), natural butter flavor [whey solids, enzymes modified butter, maltodextrin, salt, dehydrated butter, guar gum, annatto and turmeric (for color)], parsley, thyme, black pepper, rosemary, basil."
+    },
+    {
+        "brand": "AlpineAire",
+        "name": "Santa Fe Style Beef Skillet",
+        "meal_type": [
+            "entree"
+        ],
+        "calories": 580,
+        "water_ml": 473,
+        "water_temp": "boiling",
+        "minutes": 12,
+        "ounces": 6.0,
+        "allergens": [],
+        "special": [
+            "gluten_free"
+        ],
+        "link": "https://www.katadyngroup.com/us/en/60435-Santa-Fe-Beef-Skillet~p6651",
+        "ingredients": "Instant White Rice (cooked), Black Beans, Beef Diced Cooked Freeze Dried (Beef, Salt), Sweet Potatoes, Sweet Corn, Tomato Powder, Tomato Flakes, Sea Salt, Bell Pepper Red & Green Combo, Cumin, White Onion, Seasoning [Contains Baker's Yeast Extract, Salt, Canola Oil (anti-dusting)], Crystalized Lime (citric acid, lime oil, lime juice), Garlic Granulated, Monterey Chili Powder (Chili Pepper, Spices, Salt, Garlic), Jalapeno, Oregano."
+    },
+    {
+        "brand": "AlpineAire",
+        "name": "Chilaquiles Verdes with Carnitas",
+        "meal_type": [
+            "entree",
+            "breakfast"
+        ],
+        "calories": 570,
+        "water_ml": 355,
+        "water_temp": "boiling",
+        "minutes": 12,
+        "ounces": 4.3,
+        "allergens": [
+            "egg",
+            "milk",
+            "soy"
+        ],
+        "special": [
+            "gluten_free"
+        ],
+        "link": "https://www.katadyngroup.com/us/en/60620-Chilaquiles-Verdes-with-Carnitas~p28580",
+        "ingredients": "Precooked Scrambled Egg Curds Freeze Dried (Whole Eggs, Corn Starch, Salt, Citric Acid, Xanthan Gum), Black Beans, Freeze Dried Pulled Pork (Pork, Natural Flavors, Salt), Stone Ground Tortilla Chips (Whole Grain Corn Masa Flour, Vegetable Oil (May contain one or more of the following, High Oleic Safflower, High Oleic Sunflower, Corn or Cottonseed Oil), Salt and a Trace of Lime), Monterey Jack Cheese Freeze Dried Shredded (Pasteurized Milk, Salt, Enzymes, Potato Starch added to prevent caking), Sweet Corn, Chicken Flavor Broth Low Sodium [Maltodextrin, Salt, Torula Yeast, Dehydrated Vegetables (Onion, Celery, Parsley, Spinach, Garlic, Carrot), Potato Flour, Xanthan Gum, Spices, Extractives of Spice (including Turmeric and Paprika), Soy Lecithin. Not more than 2% Soybean Oil added as a processing aid], Garlic Granulated, Red Onion, Green Chile Pepper, White Onion, Sea Salt, Seasoning [Contains Baker's Yeast Extract, Salt, Canola Oil (anti-dusting)], Monterey Chili Powder (Chili Pepper, Spices, Salt, Garlic), Jalapeno, Cilantro."
+    },
+    {
+        "brand": "AlpineAire",
+        "name": "Sweet & Sour Grilled Chicken",
+        "meal_type": [
+            "entree"
+        ],
+        "calories": 620,
+        "water_ml": 473,
+        "water_temp": "boiling",
+        "minutes": 12,
+        "ounces": 5.9,
+        "allergens": [
+            "soy",
+            "wheat"
+        ],
+        "special": [],
+        "link": "https://www.katadyngroup.com/us/en/60320-sweet-sour-grilled-chicken~p6643",
+        "ingredients": "instant white rice, freeze-dried grilled chicken (chicken breast with rib meat, salt, potato starch, onion and garlic powder, spices), honey powder (honey, corn maltodextrin), pineapple, brown sugar crystals (cane sugar, cane molasses or brown cane sugar (cane sugar, cane molasses), soy sauce [(fermented soybeans and salt), maltodextrin, salt], red and green bell pepper combo, potato starch, starch, low-sodium chicken-flavor broth [maltodextrin, salt, torula yeast, dehydrated vegetables (onion, celery, parsley, spinach, garlic, carrot), potato flour, xanthan gum, spices, extractives of spice (including turmeric and paprika), soy lecithin, not more than 2% soybean oil added as a processing aid], chopped white onion, peas, natural vinegar flavor (maltodextrin, silicon dioxide, and natural flavor), ginger, granulated garlic, soy sauce [(fermented soybeans, wheat and salt), maltodextrin, salt, yeast extract, spices, onion powder, garlic powder], natural pineapple flavor (maltodextrin, silicon dioxide, natural flavor, and tricalcium phosphate), granulated white onion, natural flavor (baker's yeast extract, salt, canola oil)."
+    },
+    {
+        "brand": "AlpineAire",
+        "name": "Ginger Stir Fried Rice with Beef",
+        "meal_type": [
+            "entree"
+        ],
+        "calories": 660,
+        "water_ml": 473,
+        "water_temp": "boiling",
+        "minutes": 12,
+        "ounces": 5.9,
+        "allergens": [
+            "soy",
+            "wheat",
+            "egg"
+        ],
+        "special": [
+            "gluten_free"
+        ],
+        "link": "https://www.katadyngroup.com/us/en/60420-Ginger-Stir-Fried-Rice-with-Beef~p28365",
+        "ingredients": "Instant White Rice (cooked), Beef Diced Cooked Freeze Dried (Beef, Salt), Precooked Scrambled Egg Curds Freeze Dried (Whole Eggs, Corn Starch, Salt, Citric Acid, Xanthan Gum) , Corn Starch, Peas, Carrot, Soy Sauce [(Fermented Soybeans, Wheat and Salt), Maltodextrin, Salt, Yeast Extract, Spices, Onion Powder, Garlic Powder], White Onion, Sea Salt, Roasted Onion Extract Powder (Onion Extract, Maltodextrin, Sugar, Roasted Onion Oil, Mixed Tocopherols), Garlic Granulated, Soy Sauce [(Wheat Soybeans, Salt) Maltodextrin, Salt], Ginger, Green Onion."
+    },
+    {
+        "brand": "AlpineAire",
+        "name": "Spicy African Peanut Stew with Sweet Potatoes",
+        "meal_type": [
+            "entree"
+        ],
+        "calories": 660,
+        "water_ml": 473,
+        "water_temp": "boiling",
+        "minutes": 12,
+        "ounces": 5.9,
+        "allergens": [
+            "peanut",
+            "soy",
+            "tree nut",
+            "milk"
+        ],
+        "special": [
+            "gluten_free"
+        ],
+        "link": "https://www.katadyngroup.com/us/en/%2060135-Spicy-African-Peanut-Stew-with-Sweet-Potatoes~p6649",
+        "ingredients": "Instant White Rice, Peanut Flour (Peanut Flour, Defatted Peanut Flour, Peanuts, Roasted Peanuts, Roasted Peanut Flour, Defatted Peanuts), Sweet Potatoes, Coconut Milk (Maltodextrin, Sodium Caseinate), Soy Flour (Textured Vegetable Protein), White Onion, Tomato Flakes, Garlic Granulated, Roasted Onion Extract Powder (Onion Extract, Maltodextrin, Sugar, Roasted Onion Oil, Mixed Tocopherols), Sea Salt, Spinach, Seasoning [Contains Baker's Yeast Extract, Salt, Canola Oil (anti-dusting)], Paprika, Ginger, Cumin, Cilantro, Cayenne Pepper (Ground Red Pepper)."
+    },
+    {
+        "brand": "AlpineAire",
+        "name": "Pork Pad Thai",
+        "meal_type": [
+            "entree"
+        ],
+        "calories": 640,
+        "water_ml": 473,
+        "water_temp": "boiling",
+        "minutes": 12,
+        "ounces": 6.0,
+        "allergens": [
+            "soy",
+            "wheat",
+            "milk",
+            "tree nut",
+            "coconut",
+            "sesame"
+        ],
+        "special": [],
+        "link": "https://www.katadyngroup.com/us/en/60615-pork-pad-thai~p6664",
+        "ingredients": "pasta ribbons (ground durum wheat semolina, water, salt.), honey powder (honey, corn maltodextrin), pork sausage crumbles (pork, less than 2% salt, spices, sugar, sodium phosphate), soy sauce [(wheat soybeans, salt) maltodextrin, salt], red and green bell pepper combo, potato starch, coconut milk, peanut flour (peanut flour, defatted peanut flour, peanuts, roasted peanuts, roasted peanut flour, defatted peanuts), chopped white onion, granulated garlic, mushroom slices, molasses powder (molasses, corn maltodextrin), minced garlic, ginger, sesame seed white roasted, shallots, granulated white onion, sea salt, cilantro, Monterey chili powder (chili pepper, spices, salt, garlic), crystallized lime (citric acid, lime oil, lime juice), crushed red pepper, green onion, green chili pepper, natural flavor (baker's yeast extract, salt, canola oil)."
+    },
+    {
+        "brand": "AlpineAire",
+        "name": "Al Pastor with Cilantro Lime Rice",
+        "meal_type": ["entree"],
+        "calories": 660,
+        "water_ml": 473,
+        "water_temp": "boiling",
+        "minutes": 12,
+        "ounces": 6.1,
+        "allergens": [],
+        "special": ["gluten_free"],
+        "link": "https://www.katadyngroup.com/us/en/60605-al-pastor-with-cilantro-lime-rice-gf-~p6662",
+        "ingredients": "instant white rice, pinto beans, freeze-dried pulled pork (natural flavors, salt), pineapple, potato starch, red onion, granulated garlic, sea salt, crystalized lime (citric acid, lime oil, lime juice), natural flavor [contains baker's yeast extract, salt, canola oil (anti-dusting)], cumin, green chile pepper, natural vinegar flavor (maltodextrin, silicon dioxide, and natural flavor), paprika, oregano, thyme, cilantro, natural pineapple flavor (maltodextrin, silicon dioxide, natural flavor, and tricalcium phosphate), Monterey chili powder (chili pepper, spices, salt, garlic), black pepper, crushed red pepper, jalapeno, smoke powder (maltodextrin, natural mesquite smoke flavor, silicon dioxide to prevent caking)."
+    },
+    {
+        "brand": "AlpineAire",
+        "name": "Creamy Broccoli CHeddar Rice",
+        "meal_type": ["entree"],
+        "calories": 720,
+        "water_ml": 414,
+        "water_temp": "boiling",
+        "minutes": 12,
+        "ounces": 6.1,
+        "allergens": ["milk"],
+        "special": ["vegetarian", "gluten_free"],
+        "link": "https://www.katadyngroup.com/us/en/60125-Creamy-Broccoli-Cheddar-Rice~p6655",
+        "ingredients": "Instant White Rice, Cheddar Cheese (Milk, Salt, Cultures, & Enzymes), and Disodium Phosphate. May Contain Sodium Silico Aluminate at <2%. and disodium phosphate, Cheddar Cheese [Pasteurized Milk, Cheese Cultures, Salt, Enzymes & Annatto (coloring)], Broccoli Florets, Parmesan Cheese (Partially Skim Milk, Culture, Salt, Enzymes) and Disodium Phosphate, Carrot, Sweet Whey, Potatoes, Natural Butter Flavor [Whey Solids, Enzymes Modified Butter, Maltodextrin, Salt, Dehydrated Butter, Guar Gum, Annatto and Turmeric (for color)]., Nonfat Milk Solids, Sodium Caseinate and Disodium Phosphate], Sweet Cream Powder, White Onion, Celery Stalks, White Onion, Garlic Granulated, Roasted Onion Extract Powder (Onion Extract, Maltodextrin, Sugar, Roasted Onion Oil, Mixed Tocopherols), Seasoning [Contains Baker's Yeast Extract, Salt, Canola Oil (anti-dusting)], Sea Salt, Spinach, Thyme."
+    },
+    {
+        "brand": "AlpineAire",
+        "name": "Chicolate Mudslide",
+        "meal_type": ["dessert"],
+        "calories": 560,
+        "water_ml": 355,
+        "water_temp": "cold",
+        "minutes": 10,
+        "ounces": 5.0,
+        "allergens": ["milk", "peanut", "soy", "wheat"],
+        "special": [],
+        "link": "https://www.katadyngroup.com/us/en/60909-chocolate-mudslide~p6668",
+        "ingredients": "fructose, whole milk powder, cocoa powder (processed with alkali), chocolate pie crumbs [wheat flour, sugar, partially hydrogenated soybean and/or cottonseed oil, cocoa (processed with alkali), salt, sodium bicarbonate], corn starch, butter toffee peanuts [sugar, peanuts, butter (cream, milk, salt), salt, vegetable oil, soy lecithin, caramel color], natural chocolate flavor (chocolate, dextrose, silicon dioxide, tricalcium phosphate), vanilla powder, low-sodium sea salt (sodium, chloride, potassium)."
+    },
+    {
+        "brand": "AlpineAire",
+        "name": "Forever Young Mac & Cheese",
+        "meal_type": ["entree"],
+        "calories": 800,
+        "water_ml": 473,
+        "water_temp": "boiling",
+        "minutes": 12,
+        "ounces": 7.0,
+        "allergens": ["wheat", "milk"],
+        "special": ["vegetarian"],
+        "link": "https://www.katadyngroup.com/us/en/60102-forever-young-mac-cheese~p6630",
+        "ingredients": "instant pasta [durum semolina (enriched with niacin, ferrous sulfate, thiamin mononitrate, riboflavin, and folic acid)], sharp cheddar cheese powder (pasteurized milk, cheese cultures, salt, enzymes, disodium phosphate, annatto extract), romano cheese powder (pasteurized milk, cheese cultures, salt, enzymes, disodium phosphate), buttermilk powder, diced carrots, potato starch, parmesan cheese powder (partially skim milk, cheese cultures, salt, enzymes, disodium phosphate), freeze-dried sweet corn, freeze-dried peas, low-sodium sea salt (sodium, chloride, potassium), onion granules, white pepper."
+    },
+    {
+        "brand": "AlpineAire",
+        "name": "Grilled Chicken Jambalaya",
+        "meal_type": ["entree"],
+        "calories": 600,
+        "water_ml": 473,
+        "water_temp": "boiling",
+        "minutes": 12,
+        "ounces": 6.0,
+        "allergens": ["soy"],
+        "special": ["gluten_free"],
+        "link": "https://www.katadyngroup.com/us/en/60315-grilled-chicken-jambalaya-gf-~p6642",
+        "ingredients": ""
+    },
+    {
+        "brand": "AlpineAire",
+        "name": "Grilled Chicken Pad Thai",
+        "meal_type": ["entree"],
+        "calories": 640,
+        "water_ml": 473,
+        "water_temp": "boiling",
+        "minutes": 12,
+        "ounces": 5.9,
+        "allergens": ["soy", "wheat", "milk", "peanut", "tree nut", "coconut", "sesame"],
+        "special": [],
+        "link": "https://www.katadyngroup.com/us/en/60330-grilled-chicken-pad-thai~p6645",
+        "ingredients": "pasta ribbons (ground durum wheat semolina, water, salt), honey powder (honey, corn maltodextrin), freeze-dried grilled chicken (chicken breast with rib meat, salt, potato starch, onion and garlic powder, spices), soy sauce [(wheat soybeans, salt) maltodextrin, salt], red and green bell pepper combo, potato starch, coconut milk, peanut flour (peanut flour, defatted peanut flour, peanuts, roasted peanuts, roasted peanut flour, defatted peanuts), chopped white onion, granulated garlic, mushroom slices, molasses powder (molasses, corn maltodextrin), minced garlic, ginger, roasted white sesame seed, shallots, granulated white onion, sea salt, cilantro, Monterey chili powder (chili pepper, spices, salt, garlic), crystallized lime (citric acid, lime oil, lime juice), crushed red pepper, green onion, green chile pepper, natural flavor (baker's yeast extract, salt, canola oil)."
+    },
+    {
+        "brand": "AlpineAire",
+        "name": "Kung Pao Beef",
+        "meal_type": ["entree"],
+        "calories": 660,
+        "water_ml": 473,
+        "water_temp": "boiling",
+        "minutes": 12,
+        "ounces": 6.0,
+        "allergens": ["soy", "peanut", "sesame"],
+        "special": ["gluten_free"],
+        "link": "https://www.katadyngroup.com/us/en/60410-kung-pao-beef~p6652",
+        "ingredients": "instant white rice, diced cooked freeze-dried beef (beef, salt), peanuts salted, potato starch, fructose, read and green bell pepper combo, soy sauce [(fermented soybeans and salt), maltodextrin, salt], broccoli florets, cooked beef powder, granulated garlic, soy flour (textured vegetable protein), peanut flour (peanut flour, defatted peanut flour, peanuts, roasted peanuts, roasted peanut flour, defatted peanuts), natural vinegar flavor (maltodextrin, silicon dioxide, and natural flavor), ginger, green onion, natural flavor (baker's yeast extract, salt, canola oil), sea salt, molasses powder (molasses, corn maltodextrin), chopped white onion, natural flavor (baker's yeast extract, salt), granulated white onion, crushed red pepper, Monterey chili powder (chili pepper, spices, salt, garlic), roasted white sesame seed, minced garlic, white pepper."
+    },
+    {
+        "brand": "AlpineAire",
+        "name": "Kung Pao Grilled Chicken",
+        "meal_type": ["entree"],
+        "calories": 660,
+        "water_ml": 473,
+        "water_temp": "boiling",
+        "minutes": 12,
+        "ounces": 6.0,
+        "allergens": ["soy", "peanut", "sesame"],
+        "special": ["gluten_free"],
+        "link": "https://www.katadyngroup.com/us/en/60325-kung-pao-grilled-chicken~p6644",
+        "ingredients": "instant white rice, freeze dried grilled chicken (chicken breast with rib meat, salt, potato starch, onion and garlic powder, spices), peanuts salted, potato starch, fructose, bell pepper red & green combo, soy sauce [(fermented soybeans, salt) maltodextrin, salt], broccoli florets, cooked chicken and natural flavor, garlic granulated, soy flour (textured vegetable protein), peanut flour (peanut flour, defatted peanut flour, peanuts, roasted peanuts, roasted peanut flour, defatted peanuts), natural vinegar flavor (maltodextrin, silicon dioxide, and natural flavor), ginger, green onion, natural flavor (Baker's yeast extract, salt, canola oil), sea salt, molasses powder (molasses, corn maltodextrin), white onion, natural flavor (Baker's yeast extract, salt), white onion, red pepper crushed, monterey chili powder (chili pepper, spices, salt, garlic), white sesame seeds, garlic minced, white pepper."
+    },
+    {
+        "brand": "AlpineAire",
+        "name": "Mexican Style Beef Bowl",
+        "meal_type": ["entree"],
+        "calories": 660,
+        "water_ml": 473,
+        "water_temp": "boiling",
+        "minutes": 12,
+        "ounces": 6.2,
+        "allergens": ["milk"],
+        "special": ["gluten_free"],
+        "link": "https://www.katadyngroup.com/us/en/60415-mexican-style-beef-bowl-gf-~p6653",
+        "ingredients": "instant white rice, black beans, beef diced cooked FD (beef, salt), taco seasoning [paprika, corn meal, salt, onion, spices, garlic, tomato, citric acid, soybean oil (as a processing aid)], sweet corn, pepper jack cheese (pasteurized milk, cheese cultures, salt, jalapeno peppers, enzymes), powdered cellulose (added to prevent caking), tomato flakes, bell pepper red & green combo, red onion, sea salt, crystalized lime (citric acid, lime oil, lime juice), garlic granulated, black pepper, cilantro, jalapeno."
+    },
+    {
+        "brand": "AlpineAire",
+        "name": "Mexican Style Grilled Chicken Bowl",
+        "meal_type": ["entree"],
+        "calories": 640,
+        "water_ml": 473,
+        "water_temp": "boiling",
+        "minutes": 12,
+        "ounces": 6.2,
+        "allergens": ["milk"],
+        "special": ["gluten_free"],
+        "link": "https://www.katadyngroup.com/us/en/60335-mexican-style-grilled-chicken-bowl-gf-~p6646",
+        "ingredients": "instant white rice, black beans, freeze-dried grilled chicken (chicken breast with rib meat, salt, potato starch, onion and garlic powder, spices), taco seasoning [paprika, corn meal, salt, onion, spices, garlic, tomato, citric acid, soybean oil (as a processing aid)], sweet corn, pepper jack cheese [(pasteurized milk, cheese cultures, salt, jalapeno peppers, enzymes), powdered cellulose (added to prevent caking)], tomato flakes, red and green bell pepper combo, red onion, sea salt, crystalized lime (citric acid, lime oil, lime juice), granulated garlic, black pepper, cilantro, jalapeno."
+    },
+    {
+        "brand": "AlpineAire",
+        "name": "Pork Jambalaya",
+        "meal_type": ["entree"],
+        "calories": 620,
+        "water_ml": 473,
+        "water_temp": "boiling",
+        "minutes": 12,
+        "ounces": 6.0,
+        "allergens": ["soy"],
+        "special": ["gluten_free"],
+        "link": "https://www.katadyngroup.com/us/en/60600-pork-jambalaya-gf-~p6661",
+        "ingredients": ""
+    },
+    {
+        "brand": "AlpineAire",
+        "name": "Spicy Sausage Bolognese",
+        "meal_type": ["entree"],
+        "calories": 740,
+        "water_ml": 473,
+        "water_temp": "boiling",
+        "minutes": 12,
+        "ounces": 6.6,
+        "allergens": ["milk", "wheat"],
+        "special": [],
+        "link": "https://www.katadyngroup.com/us/en/60650-spicy-pasta-bolognese~p6665",
+        "ingredients": "spiral pasta (ground durum wheat semolina, water, salt.), tomato powder, pork sausage crumbles (pork, less than 2% salt, spices, sugar, sodium phosphate), potato starch, cooked beef powder, chopped white onion, tomato flakes, food starch-modified, Parmesan cheese [(partially skim milk, culture, salt, enzymes) and disodium phosphate], organic sugar, sea salt, granulated garlic, minced garlic, natural flavor (baker's yeast extract, salt), paprika, oregano, basil, chives, parsley, natural flavor (baker's yeast extract, salt), black pepper."
+    }
+]
