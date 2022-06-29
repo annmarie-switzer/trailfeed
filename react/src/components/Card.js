@@ -11,6 +11,7 @@ import {
     Award,
     Coffee,
     Droplet,
+    Feather,
     List,
     Settings,
     Thermometer,
@@ -55,23 +56,37 @@ function Card({ hit, selection, handleSelection, handleDelete }) {
             </div>
             <div className="card-content">
                 <div className="list">
-                    <div className="list-item" title="Calories">
+                    {/* Primary Stats */}
+                    <div className="list-item" title="calories">
                         <Activity size={20} />
                         <span>{hit.calories} Cal</span>
                     </div>
-                    <div className="list-item" title="Water required (mL)">
+                    <div className="list-item" title="water required (mL)">
                         <Droplet size={20} />
                         <span>{hit.water_ml} mL</span>
                     </div>
-                    <div className="list-item" title="Minutes to prepare">
+                    <div className="list-item" title="cook time (minutes)">
                         <Watch size={20} />
                         <span>{hit.minutes} min</span>
                     </div>
-                    <div className="list-item" title="Meal type">
-                        <Coffee size={20} />
-                        <span>{hit.meal_type}</span>
+                    <div className="list-item" title="net weight (oz.)">
+                        <Feather size={20} />
+                        <span>{hit.ounces} oz</span>
                     </div>
-                    <div className="list-item" title="Required water temp">
+
+                    {/* Secondary Stats */}
+                    <div className="list-item" title="meal type">
+                        <Coffee size={20} />
+                        <div>
+                            {hit.meal_type.map((a, i) => (
+                                <span key={i}>
+                                    {i > 0 ? ', ' : null}
+                                    {a.replace('_', ' ')}
+                                </span>
+                            ))}
+                        </div>
+                    </div>
+                    <div className="list-item" title="water temp.">
                         <Thermometer size={20} />
                         <span>{hit.water_temp}</span>
                     </div>
@@ -106,40 +121,14 @@ function Card({ hit, selection, handleSelection, handleDelete }) {
                 </div>
             </div>
             <div className="card-footer">
-                <button type="button" onClick={() => setMenuOpen(!menuOpen)}>
-                    <div
-                        className="menu-trigger"
-                        tabIndex={0}
-                        onBlur={() => setMenuOpen(false)}>
-                        <Settings
-                            color={menuOpen ? 'var(--fg)' : 'var(--light-text)'}
-                            size={20}
-                        />
-                        {menuOpen ? (
-                            <div className="menu">
-                                <div
-                                    className="menu-item"
-                                    title="Show ingredient list"
-                                    onClick={() => setModalData(hit)}>
-                                    <List size={20} />
-                                    <span>Ingredients</span>
-                                </div>
-                                {!hit.brand && (
-                                    <div
-                                        className="menu-item"
-                                        title="Delete meal"
-                                        onClick={(e) => {
-                                            e.stopPropagation();
-                                            onDelete(hit.id);
-                                        }}>
-                                        <Trash size={20} />
-                                        <span>Delete</span>
-                                    </div>
-                                )}
-                            </div>
-                        ) : null}
-                    </div>
+                <button type="button" title="Show ingredient list">
+                    <List size={20} onClick={() => setModalData(hit)} />
                 </button>
+                {!hit.brand && (
+                    <button type="button" title="Delete meal">
+                        <Trash size={20} onClick={() => onDelete(hit.id)} />
+                    </button>
+                )}
             </div>
         </div>
     );

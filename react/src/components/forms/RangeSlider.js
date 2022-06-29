@@ -2,7 +2,14 @@ import React, { useEffect, useState } from 'react';
 import './RangeSlider.css';
 import Slider from '@mui/material/Slider';
 
-function RangeSlider({ min, max, label, name, setRange: setUpstreamRange }) {
+function RangeSlider({
+    min,
+    max,
+    label,
+    name,
+    setRange: setUpstreamRange,
+    step = 1
+}) {
     const [range, setRange] = useState([]);
 
     const handleChange = (event) => {
@@ -29,6 +36,7 @@ function RangeSlider({ min, max, label, name, setRange: setUpstreamRange }) {
                     value={range}
                     onChange={handleChange}
                     valueLabelDisplay="off"
+                    step={step}
                 />
                 <span className="slider-value">{range[1]}</span>
             </div>

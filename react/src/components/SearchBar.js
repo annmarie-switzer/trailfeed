@@ -20,6 +20,8 @@ function SearchBar(props) {
     const [calories, setCalories] = useState({ min: 0, max: 0 });
     const [minutes, setMinutes] = useState({ min: 0, max: 0 });
     const [waterMl, setWaterMl] = useState({ min: 0, max: 0 });
+    const [ounces, setOunces] = useState({ min: 0, max: 0 });
+
     const [inputValue, setInputValue] = useState('');
     const [filters, setFilters] = useState([]);
 
@@ -202,6 +204,16 @@ function SearchBar(props) {
                     min: {
                         field: 'water_ml'
                     }
+                },
+                max_ounces: {
+                    max: {
+                        field: 'ounces'
+                    }
+                },
+                min_ounces: {
+                    min: {
+                        field: 'ounces'
+                    }
                 }
             },
             size: 0
@@ -226,6 +238,11 @@ function SearchBar(props) {
             setWaterMl({
                 min: res.aggregations.min_water_ml.value,
                 max: res.aggregations.max_water_ml.value
+            });
+
+            setOunces({
+                min: parseFloat(res.aggregations.min_ounces.value.toFixed(1)),
+                max: parseFloat(res.aggregations.max_ounces.value.toFixed(1))
             });
         });
     }, []);
@@ -280,6 +297,16 @@ function SearchBar(props) {
                             label="Water Needed (mL)"
                             min={waterMl.min}
                             max={waterMl.max}
+                            setRange={handleFilter}
+                        />
+                    </div>
+                    <div className="filter-group">
+                        <RangeSlider
+                            name="ounces"
+                            label="Net Weight (oz)"
+                            min={ounces.min}
+                            max={ounces.max}
+                            step={0.1}
                             setRange={handleFilter}
                         />
                     </div>
