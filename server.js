@@ -1,5 +1,5 @@
 import express from 'express';
-import fetch from 'node-fetch';
+import fetch, { Headers } from 'node-fetch';
 import dotenv from 'dotenv';
 import session from 'express-session';
 import jwt from 'jsonwebtoken';
@@ -19,6 +19,10 @@ const app = express();
 const serverUrl = process.env.SERVER_URL || process.env.URL;
 const clientUrl = process.env.CLIENT_URL || process.env.URL;
 const esUrl = process.env.ES_URL;
+const esHeaders = new Headers({
+    'Content-Type': 'application/json',
+    'Authorization': `Basic ${process.env.ES_KEY}:${process.env.ES_SECRET}`
+});
 
 app.use(express.json());
 
@@ -112,14 +116,12 @@ app.get('/api/user', async (req, res) => {
 });
 
 app.post('/api/es/add-doc', async (req, res) => {
-    const headers = { 'Content-Type': 'application/json' };
-
     try {
         const esRes = await (
             await fetch(`${esUrl}/${req.body.index}/_doc?refresh=true`, {
                 method: 'POST',
                 body: JSON.stringify(req.body.newDoc),
-                headers
+                headers: esHeaders
             })
         ).json();
 
@@ -148,14 +150,12 @@ app.post('/api/es/bulk-upload', async (req, res) => {
         .join('\n')
         .concat('\n');
 
-    const headers = { 'Content-Type': 'application/json' };
-
     try {
         const esRes = await (
             await fetch(`${esUrl}/meals/_bulk`, {
                 method: 'POST',
                 body: ndJson,
-                headers
+                headers: esHeaders
             })
         ).json();
 
@@ -176,14 +176,12 @@ app.post('/api/es/bulk-upload', async (req, res) => {
 });
 
 app.post('/api/es/search', async (req, res) => {
-    const headers = { 'Content-Type': 'application/json' };
-
     try {
         const esRes = await (
             await fetch(`${esUrl}/${req.body.index}/_search`, {
                 method: 'POST',
                 body: JSON.stringify(req.body.query),
-                headers
+                headers: esHeaders
             })
         ).json();
 
@@ -204,8 +202,6 @@ app.post('/api/es/search', async (req, res) => {
 });
 
 app.post('/api/es/update-rating', async (req, res) => {
-    const headers = { 'Content-Type': 'application/json' };
-
     try {
         const esRes = await (
             await fetch(
@@ -215,7 +211,7 @@ app.post('/api/es/update-rating', async (req, res) => {
                     body: JSON.stringify({
                         script: `ctx._source.rating = ${req.body.rating}`
                     }),
-                    headers
+                    headers: esHeaders
                 }
             )
         ).json();
@@ -237,13 +233,11 @@ app.post('/api/es/update-rating', async (req, res) => {
 });
 
 app.delete('/api/es/delete-meal/:id', async (req, res) => {
-    const headers = { 'Content-Type': 'application/json' };
-
     try {
         const esRes = await (
             await fetch(`${esUrl}/meals/_doc/${req.params.id}?refresh=true`, {
                 method: 'DELETE',
-                headers
+                headers: esHeaders
             })
         ).json();
 
@@ -277,7 +271,10 @@ app.all('*', (req, res) => {
 
 // serve
 try {
-    await fetch(`${esUrl}`);
+    console.log(esUrl);
+    await fetch(`${esUrl}`, {
+        headers: esHeaders
+    });
     app.listen(process.env.PORT, async () => {
         console.log(`~ Server is running at ${serverUrl} ~`);
     });
