@@ -11,7 +11,7 @@ import {
     Coffee,
     Droplet,
     Feather,
-    Frown,
+    AlertCircle,
     List,
     Thermometer,
     Trash,
@@ -86,7 +86,7 @@ function Card({ hit, selection, handleSelection, handleDelete }) {
                     </div>
                     {hit.allergens.length > 0 && (
                         <div className="list-item" title="Allergens">
-                            <Frown size={20} />
+                            <AlertCircle size={20} />
                             <div>
                                 {hit.allergens.map((a, i) => (
                                     <span key={i}>

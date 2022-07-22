@@ -138,7 +138,7 @@ app.post('/api/es/add-doc', async (req, res) => {
             res.status(200).json(esRes);
         }
     } catch (e) {
-        res.status(500).send(e.response);
+        res.status(e.response.status).send(e.response.data);
     }
 });
 
@@ -173,7 +173,7 @@ app.post('/api/es/bulk-upload', async (req, res) => {
             res.status(200).send('Upload succeeded.');
         }
     } catch (e) {
-        res.status(500).send(e.response);
+        res.status(e.response.status).send(e.response.data);
     }
 });
 
@@ -200,8 +200,8 @@ app.post('/api/es/search', async (req, res) => {
             res.status(200).json(esRes);
         }
     } catch (e) {
-        console.log(e);
-        res.status(500).send(e.response);
+        console.log(e.response);
+        res.status(e.response.status).send(e.response.data);
     }
 });
 
@@ -230,7 +230,7 @@ app.post('/api/es/update-rating', async (req, res) => {
             res.status(200).json(esRes);
         }
     } catch (e) {
-        res.status(500).send(e.response);
+        res.status(e.response.status).send(e.response.data);
     }
 });
 
@@ -256,7 +256,7 @@ app.delete('/api/es/delete-meal/:id', async (req, res) => {
             res.status(200).json(esRes);
         }
     } catch (e) {
-        res.status(500).send(e.response);
+        res.status(e.response.status).send(e.response.data);
     }
 });
 

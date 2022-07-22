@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import './Stats.css';
 import { AppContext } from 'components/App';
-import { Activity, Droplet, Feather, Watch } from 'react-feather';
+import { Activity, Droplet, Feather } from 'react-feather';
 
 export const statMeta = [
     {
@@ -21,13 +21,7 @@ export const statMeta = [
         suffix: 'oz',
         icon: <Feather color="var(--weight)" />,
         color: 'var(--weight)'
-    },
-    {
-        id: 'minutes',
-        suffix: 'min',
-        icon: <Watch color="var(--time)" />,
-        color: 'var(--time)'
-    },
+    }
 ];
 
 export const calculateStats = (selection) => {
@@ -39,9 +33,9 @@ export const calculateStats = (selection) => {
 
         const displayValue = `${value.toLocaleString()}`;
 
-        // scale up min and oz values so they can be seen on the arc
-        if (stat.id === 'minutes' || stat.id === 'ounces') {
-            value *= 20;
+        // arbitrary scale for ounces so the arc fill will be visible
+        if (stat.id === 'ounces') {
+            value *= 100;
         }
 
         return { ...stat, value, displayValue };

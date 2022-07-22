@@ -10,7 +10,6 @@ import {
     Coffee,
     Droplet,
     FileText,
-    Frown,
     Terminal,
     Thermometer,
     Watch
@@ -241,7 +240,7 @@ function NewMeal() {
                                 onChange={(val) =>
                                     handleChange('allergens', val)
                                 }>
-                                <Frown />
+                                <AlertCircle />
                             </Select>
                             <div className="hint">Optional</div>
                         </div>

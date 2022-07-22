@@ -16,10 +16,22 @@
     width: 0;
     display: flex;
     border-left: solid 1px var(--bg-contrast);
+    position: relative;
 }
 
 #home .drawer.open {
     width: 35%;
+}
+
+#home .dragholder {
+    position: absolute;
+    width: 1px;
+    top: 0;
+    bottom: 0;
+}
+
+#home .dragholder:hover {
+    cursor: move;
 }
 
 #home .main {

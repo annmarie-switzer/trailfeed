@@ -40,8 +40,8 @@ function Pack({ selection, setSelection }) {
                                         mL
                                     </span>
                                     <span>
-                                        Time: {meal.minutes.toLocaleString()}{' '}
-                                        min
+                                        Weight: {meal.ounces.toLocaleString()}{' '}
+                                        oz
                                     </span>
                                 </div>
                             </div>

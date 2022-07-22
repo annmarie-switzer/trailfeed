@@ -96,19 +96,42 @@ function Home() {
         }
     }, [page]);
 
+    const drawer = document.querySelector('.drawer');
+    const main = document.querySelector('.main');
+
     const onScroll = () => {
         if (ref.current) {
             const { scrollTop, scrollHeight, clientHeight } = ref.current;
-            if (scrollTop + clientHeight === scrollHeight) {
+            if (scrollTop + clientHeight >= scrollHeight) {
                 setPage(page + 1);
             }
         }
     };
 
+    const onMouseMove = (e) => {
+        main.style.cssText = `width: ${e.pageX}px`;
+        drawer.style.cssText = `width: ${window.innerWidth - e.pageX}px`;
+    };
+
+    const onMouseDown = () => {
+        document.addEventListener('mousemove', onMouseMove);
+    };
+
+    const onMouseUp = () => {
+        document.removeEventListener('mousemove', onMouseMove);
+    };
+
+    document.addEventListener('mouseup', onMouseUp);
+
     return (
         <div id="home">
             <div className="drawer-wrapper">
-                <div className="main" onScroll={onScroll} ref={ref}>
+                <div
+                    className="main"
+                    onScroll={onScroll}
+                    onMouseUp={onMouseUp}
+                    ref={ref}
+                >
                     <SearchBar setQuery={setQuery} />
                     <div className="cards">
                         {hits.map((h, i) => (
@@ -123,6 +146,11 @@ function Home() {
                     </div>
                 </div>
                 <div className={packOpen ? 'drawer open' : 'drawer'}>
+                    <div
+                        className="dragholder"
+                        onMouseDown={onMouseDown}
+                        onMouseUp={onMouseUp}
+                    />
                     <Pack selection={selection} setSelection={setSelection} />
                 </div>
             </div>
