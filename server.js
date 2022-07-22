@@ -1,5 +1,5 @@
 import express from 'express';
-import fetch from 'node-fetch';
+import axios from 'axios';
 import dotenv from 'dotenv';
 import session from 'express-session';
 import jwt from 'jsonwebtoken';
@@ -19,6 +19,7 @@ const app = express();
 const serverUrl = process.env.SERVER_URL || process.env.URL;
 const clientUrl = process.env.CLIENT_URL || process.env.URL;
 const esUrl = process.env.ES_URL;
+const esHeaders = { 'Content-Type': 'application/json' };
 
 app.use(express.json());
 
@@ -55,10 +56,11 @@ app.use('/api/*', (req, res, next) => {
 app.use(express.static(path.join(__dirname, 'react/build')));
 
 app.get('/callback', async (req, res) => {
-    const response = await fetch('https://oauth2.googleapis.com/token', {
+    const response = await axios({
+        url: 'https://oauth2.googleapis.com/token',
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
+        data: JSON.stringify({
             code: req.query.code,
             client_id: process.env.CLIENT_ID,
             client_secret: process.env.CLIENT_SECRET,
@@ -67,13 +69,15 @@ app.get('/callback', async (req, res) => {
         })
     });
 
-    const { access_token, id_token } = await response.json();
+    const { access_token, id_token } = response.data;
 
     const headerEncoded = id_token.split('.')[0];
     const buff = Buffer.from(headerEncoded, 'base64').toString('binary');
     const kid = JSON.parse(buff).kid;
-    const certRes = await fetch('https://www.googleapis.com/oauth2/v1/certs');
-    const cert = (await certRes.json())[kid];
+    const certRes = await axios.get(
+        'https://www.googleapis.com/oauth2/v1/certs'
+    );
+    const cert = certRes.data[kid];
 
     try {
         req.session.profile = jwt.verify(id_token, cert);
@@ -112,16 +116,15 @@ app.get('/api/user', async (req, res) => {
 });
 
 app.post('/api/es/add-doc', async (req, res) => {
-    const headers = { 'Content-Type': 'application/json' };
-
     try {
-        const esRes = await (
-            await fetch(`${esUrl}/${req.body.index}/_doc?refresh=true`, {
+        const esRes = (
+            await axios({
+                url: `${esUrl}/${req.body.index}/_doc?refresh=true`,
                 method: 'POST',
-                body: JSON.stringify(req.body.newDoc),
-                headers
+                data: JSON.stringify(req.body.newDoc),
+                headers: esHeaders
             })
-        ).json();
+        ).data;
 
         if (esRes.code) {
             res.status(esRes.code).send({
@@ -135,7 +138,7 @@ app.post('/api/es/add-doc', async (req, res) => {
             res.status(200).json(esRes);
         }
     } catch (e) {
-        res.status(500).send(e);
+        res.status(500).send(e.response);
     }
 });
 
@@ -148,16 +151,15 @@ app.post('/api/es/bulk-upload', async (req, res) => {
         .join('\n')
         .concat('\n');
 
-    const headers = { 'Content-Type': 'application/json' };
-
     try {
-        const esRes = await (
-            await fetch(`${esUrl}/meals/_bulk`, {
+        const esRes = (
+            await axios({
+                url: `${esUrl}/meals/_bulk`,
                 method: 'POST',
-                body: ndJson,
-                headers
+                data: ndJson,
+                headers: esHeaders
             })
-        ).json();
+        ).data;
 
         if (esRes.code) {
             res.status(esRes.code).send({
@@ -171,21 +173,20 @@ app.post('/api/es/bulk-upload', async (req, res) => {
             res.status(200).send('Upload succeeded.');
         }
     } catch (e) {
-        res.status(500).send(e);
+        res.status(500).send(e.response);
     }
 });
 
 app.post('/api/es/search', async (req, res) => {
-    const headers = { 'Content-Type': 'application/json' };
-
     try {
-        const esRes = await (
-            await fetch(`${esUrl}/${req.body.index}/_search`, {
+        const esRes = (
+            await axios({
+                url: `${esUrl}/${req.body.index}/_search`,
                 method: 'POST',
-                body: JSON.stringify(req.body.query),
-                headers
+                data: JSON.stringify(req.body.query),
+                headers: esHeaders
             })
-        ).json();
+        ).data;
 
         if (esRes.code) {
             res.status(esRes.code).send({
@@ -199,26 +200,23 @@ app.post('/api/es/search', async (req, res) => {
             res.status(200).json(esRes);
         }
     } catch (e) {
-        res.status(500).send(e);
+        console.log(e);
+        res.status(500).send(e.response);
     }
 });
 
 app.post('/api/es/update-rating', async (req, res) => {
-    const headers = { 'Content-Type': 'application/json' };
-
     try {
-        const esRes = await (
-            await fetch(
-                `${esUrl}/ratings/_update/${req.body.docId}?refresh=true`,
-                {
-                    method: 'POST',
-                    body: JSON.stringify({
-                        script: `ctx._source.rating = ${req.body.rating}`
-                    }),
-                    headers
-                }
-            )
-        ).json();
+        const esRes = (
+            await axios({
+                url: `${esUrl}/ratings/_update/${req.body.docId}?refresh=true`,
+                method: 'POST',
+                data: JSON.stringify({
+                    script: `ctx._source.rating = ${req.body.rating}`
+                }),
+                headers: esHeaders
+            })
+        ).data;
 
         if (esRes.code) {
             res.status(esRes.code).send({
@@ -232,20 +230,19 @@ app.post('/api/es/update-rating', async (req, res) => {
             res.status(200).json(esRes);
         }
     } catch (e) {
-        res.status(500).send(e);
+        res.status(500).send(e.response);
     }
 });
 
 app.delete('/api/es/delete-meal/:id', async (req, res) => {
-    const headers = { 'Content-Type': 'application/json' };
-
     try {
-        const esRes = await (
-            await fetch(`${esUrl}/meals/_doc/${req.params.id}?refresh=true`, {
+        const esRes = (
+            await axios({
+                url: `${esUrl}/meals/_doc/${req.params.id}?refresh=true`,
                 method: 'DELETE',
-                headers
+                headers: esHeaders
             })
-        ).json();
+        ).data;
 
         if (esRes.code) {
             res.status(esRes.code).send({
@@ -259,7 +256,7 @@ app.delete('/api/es/delete-meal/:id', async (req, res) => {
             res.status(200).json(esRes);
         }
     } catch (e) {
-        res.status(500).send(e);
+        res.status(500).send(e.response);
     }
 });
 
@@ -276,11 +273,24 @@ app.all('*', (req, res) => {
 });
 
 // serve
-try {
-    await fetch(`${esUrl}`);
-    app.listen(process.env.PORT, async () => {
-        console.log(`~ Server is running at ${serverUrl} ~`);
+axios({ url: `${esUrl}`, headers: esHeaders })
+    .then((_) => {
+        app.listen(process.env.PORT, async () => {
+            console.log(`~ Server is running at ${serverUrl} ~`);
+        });
+    })
+    .catch((e) => {
+        let error;
+        if (e.response) {
+            // The request was made and the server responded with a status code
+            // that falls out of the range of 2xx
+            error = `Couldn't start server: ${e.response.status} - ${e.response.data}`;
+        } else if (e.request) {
+            // The request was made but no response was received
+            error = `Couldn't start server: No response - ${e.request}`;
+        } else {
+            // Something happened in setting up the request that triggered an Error
+            error = e.message;
+        }
+        console.log(error);
     });
-} catch (_) {
-    console.log("Couldn't start server: Elasticsearch could not be reached.");
-}

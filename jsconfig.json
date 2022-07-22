@@ -2,6 +2,8 @@
     "compilerOptions": {
         "baseUrl": ".",
         "checkJs": true,
-        "jsx": "react"
+        "jsx": "react",
+        "module": "es2022",
+        "moduleResolution": "Node"
     }
 }
