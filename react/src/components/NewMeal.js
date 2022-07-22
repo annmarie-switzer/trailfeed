@@ -4,13 +4,13 @@ import { addDoc } from 'api';
 import {
     Activity,
     AlertCircle,
-    AlertTriangle,
     ArrowLeft,
     Award,
     CheckCircle,
     Coffee,
     Droplet,
     FileText,
+    Frown,
     Terminal,
     Thermometer,
     Watch
@@ -147,7 +147,7 @@ function NewMeal() {
                         <div className="form-field" title="Meal type">
                             <Select
                                 label="Meal Type"
-                                options={['breakfast', 'dessert', 'entree']}
+                                options={['breakfast', 'dessert', 'entree', 'snack']}
                                 onChange={(val) =>
                                     handleChange('meal_type', val)
                                 }
@@ -241,7 +241,7 @@ function NewMeal() {
                                 onChange={(val) =>
                                     handleChange('allergens', val)
                                 }>
-                                <AlertTriangle />
+                                <Frown />
                             </Select>
                             <div className="hint">Optional</div>
                         </div>

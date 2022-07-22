@@ -18,10 +18,14 @@ body[data-theme='dark'] {
     --success: var(--green);
     --info: var(--blue);
     
-    --badge: var(--ct-orange);
     --calories: var(--ct-orange);
+    --water: var(--blue);
+    --weight: var(--green);
+    --time: var(--purple);
+    --allergies: var(--orange);
+
+    --badge: var(--ct-orange);
     --checkbox: var(--accent);
-    --inverse-checkbox: var(--orange);
     --meal-name-custom: var(--accent);
     --meal-name-link: var(--primary);
     --stars: var(--ct-yellow);
@@ -70,10 +74,14 @@ body[data-theme='light'] {
     --success: var(--green);
     --info: var(--blue);
     
-    --badge: var(--orange);
     --calories: var(--orange);
+    --water: var(--blue);
+    --weight: var(--green);
+    --time: var(--purple);
+    --allergies: var(--orange);
+
+    --badge: var(--orange);
     --checkbox: var(--accent);
-    --inverse-checkbox: var(--orange);
     --meal-name-custom: var(--accent);
     --meal-name-link: var(--primary);
     --stars: var(--yellow);
@@ -120,6 +128,11 @@ body {
 
 *::-webkit-scrollbar-thumb {
     background: var(--bg4);
+}
+
+*::-webkit-scrollbar-thumb:hover,
+*::-webkit-scrollbar-thumb:active {
+    background: var(--fg);
 }
 
 * {

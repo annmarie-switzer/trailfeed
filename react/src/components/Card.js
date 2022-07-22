@@ -7,13 +7,12 @@ import Stars from './Stars';
 import MealName from './MealName';
 import {
     Activity,
-    AlertTriangle,
     Award,
     Coffee,
     Droplet,
     Feather,
+    Frown,
     List,
-    Settings,
     Thermometer,
     Trash,
     Watch
@@ -22,14 +21,12 @@ import {
 function Card({ hit, selection, handleSelection, handleDelete }) {
     const { setModalData } = useContext(AppContext);
     const [ids, setIds] = useState([]);
-    const [menuOpen, setMenuOpen] = useState(false);
 
     const onDelete = async (id) => {
         const res = await deleteMeal(id);
 
         if (res.result === 'deleted') {
             handleDelete();
-            setMenuOpen(false);
         }
     };
 
@@ -56,7 +53,6 @@ function Card({ hit, selection, handleSelection, handleDelete }) {
             </div>
             <div className="card-content">
                 <div className="list">
-                    {/* Primary Stats */}
                     <div className="list-item" title="calories">
                         <Activity size={20} />
                         <span>{hit.calories} Cal</span>
@@ -73,8 +69,6 @@ function Card({ hit, selection, handleSelection, handleDelete }) {
                         <Feather size={20} />
                         <span>{hit.ounces} oz</span>
                     </div>
-
-                    {/* Secondary Stats */}
                     <div className="list-item" title="meal type">
                         <Coffee size={20} />
                         <div>
@@ -90,10 +84,9 @@ function Card({ hit, selection, handleSelection, handleDelete }) {
                         <Thermometer size={20} />
                         <span>{hit.water_temp}</span>
                     </div>
-
-                    {hit.allergens.length > 0 ? (
+                    {hit.allergens.length > 0 && (
                         <div className="list-item" title="Allergens">
-                            <AlertTriangle size={20} />
+                            <Frown size={20} />
                             <div>
                                 {hit.allergens.map((a, i) => (
                                     <span key={i}>
@@ -103,9 +96,8 @@ function Card({ hit, selection, handleSelection, handleDelete }) {
                                 ))}
                             </div>
                         </div>
-                    ) : null}
-
-                    {hit.special.length > 0 ? (
+                    )}
+                    {hit.special.length > 0 && (
                         <div className="list-item" title="Special Diet">
                             <Award size={20} />
                             <div>
@@ -117,18 +109,19 @@ function Card({ hit, selection, handleSelection, handleDelete }) {
                                 ))}
                             </div>
                         </div>
-                    ) : null}
+                    )}
                 </div>
-            </div>
-            <div className="card-footer">
-                <button type="button" title="Show ingredient list">
-                    <List size={20} onClick={() => setModalData(hit)} />
-                </button>
-                {!hit.brand && (
-                    <button type="button" title="Delete meal">
-                        <Trash size={20} onClick={() => onDelete(hit.id)} />
+
+                <div className="bottom-buttons">
+                    {!hit.brand && (
+                        <button type="button" title="Delete meal">
+                            <Trash size={22} onClick={() => onDelete(hit.id)} />
+                        </button>
+                    )}
+                    <button type="button" title="Show ingredient list">
+                        <List size={22} onClick={() => setModalData(hit)} />
                     </button>
-                )}
+                </div>
             </div>
         </div>
     );

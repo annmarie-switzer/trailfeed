@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import './Stats.css';
 import { AppContext } from 'components/App';
-import { Activity, Droplet, Watch } from 'react-feather';
+import { Activity, Droplet, Feather, Watch } from 'react-feather';
 
 export const statMeta = [
     {
@@ -13,15 +13,21 @@ export const statMeta = [
     {
         id: 'water_ml',
         suffix: 'mL',
-        icon: <Droplet color="var(--blue)" />,
-        color: 'var(--blue)'
+        icon: <Droplet color="var(--water)" />,
+        color: 'var(--water)'
+    },
+    {
+        id: 'ounces',
+        suffix: 'oz',
+        icon: <Feather color="var(--weight)" />,
+        color: 'var(--weight)'
     },
     {
         id: 'minutes',
         suffix: 'min',
-        icon: <Watch color="var(--green)" />,
-        color: 'var(--green)'
-    }
+        icon: <Watch color="var(--time)" />,
+        color: 'var(--time)'
+    },
 ];
 
 export const calculateStats = (selection) => {
@@ -33,8 +39,9 @@ export const calculateStats = (selection) => {
 
         const displayValue = `${value.toLocaleString()}`;
 
-        if (stat.id === 'minutes') {
-            value *= 60;
+        // scale up min and oz values so they can be seen on the arc
+        if (stat.id === 'minutes' || stat.id === 'ounces') {
+            value *= 20;
         }
 
         return { ...stat, value, displayValue };
@@ -58,8 +65,8 @@ function Stats({ selection }) {
     }, [selection]);
 
     return (
-        <div id="stats">
-            <div style={{ cursor: 'pointer' }} onClick={cycleStats}>
+        <div id="stats" onClick={cycleStats}>
+            <div>
                 {data[currentStat].icon}
             </div>
             <span>

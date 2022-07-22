@@ -3,6 +3,9 @@
     flex-direction: column;
     flex: auto;
     gap: 2rem;
+    resize: horizontal;
+    overflow: auto;
+    border: solid red;
 }
 
 #pack .list {

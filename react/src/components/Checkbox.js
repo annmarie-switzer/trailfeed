@@ -4,7 +4,7 @@ import './Checkbox.css';
 function Checkbox(props) {
     const {
         value,
-        color = props.inverse ? 'var(--inverse-checkbox)' : 'var(--checkbox)',
+        color = props.inverse ? 'var(--allergies)' : 'var(--checkbox)',
         label = '',
         inverse = false,
     } = props;
