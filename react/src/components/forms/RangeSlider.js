@@ -12,11 +12,9 @@ function RangeSlider({
 }) {
     const [range, setRange] = useState([]);
 
-    const handleChange = (event) => {
-        setRange(event.target.value);
-
+    const handleChange = () => {
         setUpstreamRange({
-            name: event.target.name,
+            name,
             values: range,
             type: 'range'
         });
@@ -34,7 +32,8 @@ function RangeSlider({
                     min={min}
                     max={max}
                     value={range}
-                    onChange={handleChange}
+                    onChange={(e) => setRange(e.target.value)}
+                    onChangeCommitted={handleChange}
                     valueLabelDisplay="off"
                     step={step}
                 />

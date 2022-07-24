@@ -6,7 +6,7 @@ import { Activity, Droplet, Feather } from 'react-feather';
 export const statMeta = [
     {
         id: 'calories',
-        suffix: 'Cal',
+        suffix: 'cal',
         icon: <Activity color="var(--calories)" />,
         color: 'var(--calories)'
     },

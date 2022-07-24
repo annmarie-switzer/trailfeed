@@ -44,7 +44,7 @@
 #home .cards {
     padding: 2rem 2rem calc(2rem + 50px) 2rem;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-    grid-auto-rows: 400px;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    grid-auto-rows: 350px;
     gap: 1rem;
 }

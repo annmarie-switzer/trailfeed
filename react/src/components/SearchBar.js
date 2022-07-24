@@ -21,6 +21,7 @@ function SearchBar(props) {
     const [minutes, setMinutes] = useState({ min: 0, max: 0 });
     const [waterMl, setWaterMl] = useState({ min: 0, max: 0 });
     const [ounces, setOunces] = useState({ min: 0, max: 0 });
+    const [calsPerOunce, setCalsPerOunce] = useState({ min: 0, max: 0 });
 
     const [inputValue, setInputValue] = useState('');
     const [filters, setFilters] = useState([]);
@@ -55,14 +56,36 @@ function SearchBar(props) {
             }
 
             if (filterObj.type === 'range') {
-                newFilter.query = {
-                    range: {
-                        [filterObj.name]: {
-                            gte: filterObj.values[0],
-                            lte: filterObj.values[1]
+                if (filterObj.name === 'cals_per_ounce') {
+                    // TODO - runtime mappings don't exist in ES 7.10
+                    // May need a scripted query?
+                    
+                    // newFilter.query = {
+                    //     runtime_mappings: {
+                    //         cals_per_ounce: {
+                    //             type: 'keyword',
+                    //             script: {
+                    //                 source: 'doc["calories"].value / doc["ounces"].value'
+                    //             }
+                    //         }
+                    //     },
+                    //     range: {
+                    //         [filterObj.name]: {
+                    //             gte: filterObj.values[0],
+                    //             lte: filterObj.values[1]
+                    //         }
+                    //     }
+                    // };
+                } else {
+                    newFilter.query = {
+                        range: {
+                            [filterObj.name]: {
+                                gte: filterObj.values[0],
+                                lte: filterObj.values[1]
+                            }
                         }
-                    }
-                };
+                    };
+                }
             }
 
             setFilters([...filtered, newFilter]);
@@ -175,44 +198,32 @@ function SearchBar(props) {
                         size: 10000
                     }
                 },
-                max_calories: {
-                    max: {
+                calories: {
+                    stats: {
                         field: 'calories'
                     }
                 },
-                min_calories: {
-                    min: {
-                        field: 'calories'
-                    }
-                },
-                max_minutes: {
-                    max: {
+                minutes: {
+                    stats: {
                         field: 'minutes'
                     }
                 },
-                min_minutes: {
-                    min: {
-                        field: 'minutes'
-                    }
-                },
-                max_water_ml: {
-                    max: {
+                water_ml: {
+                    stats: {
                         field: 'water_ml'
                     }
                 },
-                min_water_ml: {
-                    min: {
-                        field: 'water_ml'
-                    }
-                },
-                max_ounces: {
-                    max: {
+                ounces: {
+                    stats: {
                         field: 'ounces'
                     }
                 },
-                min_ounces: {
-                    min: {
-                        field: 'ounces'
+                cals_per_ounce: {
+                    stats: {
+                        script: {
+                            lang: 'painless',
+                            source: 'doc["calories"].value / doc["ounces"].value'
+                        }
                     }
                 }
             },
@@ -225,24 +236,44 @@ function SearchBar(props) {
             setAllergens(res.aggregations.allergens.buckets);
             setSpecial(res.aggregations.special.buckets);
 
-            setCalories({
-                min: res.aggregations.min_calories.value,
-                max: res.aggregations.max_calories.value
+            setCalories(() => {
+                const { min, max } = res.aggregations.calories;
+                return {
+                    min: parseFloat(min.toFixed(1)),
+                    max: parseFloat(max.toFixed(1))
+                };
             });
 
-            setMinutes({
-                min: res.aggregations.min_minutes.value,
-                max: res.aggregations.max_minutes.value
+            setOunces(() => {
+                const { min, max } = res.aggregations.ounces;
+                return {
+                    min: parseFloat(min.toFixed(1)),
+                    max: parseFloat(max.toFixed(1))
+                };
             });
 
-            setWaterMl({
-                min: res.aggregations.min_water_ml.value,
-                max: res.aggregations.max_water_ml.value
+            setCalsPerOunce(() => {
+                const { min, max } = res.aggregations.cals_per_ounce;
+                return {
+                    min: parseFloat(min.toFixed(1)),
+                    max: parseFloat(max.toFixed(1))
+                };
             });
 
-            setOunces({
-                min: parseFloat(res.aggregations.min_ounces.value.toFixed(1)),
-                max: parseFloat(res.aggregations.max_ounces.value.toFixed(1))
+            setWaterMl(() => {
+                const { min, max } = res.aggregations.water_ml;
+                return {
+                    min: parseFloat(min.toFixed(1)),
+                    max: parseFloat(max.toFixed(1))
+                };
+            });
+
+            setMinutes(() => {
+                const { min, max } = res.aggregations.minutes;
+                return {
+                    min: parseFloat(min.toFixed(1)),
+                    max: parseFloat(max.toFixed(1))
+                };
             });
         });
     }, []);
@@ -266,7 +297,8 @@ function SearchBar(props) {
                     type="button"
                     className={filtersOpen ? 'open' : ''}
                     title={filtersOpen ? 'Hide Filters' : 'Show Filters'}
-                    onClick={() => setFiltersOpen(!filtersOpen)}>
+                    onClick={() => setFiltersOpen(!filtersOpen)}
+                >
                     <Sliders color="currentColor" />
                 </button>
             </div>
@@ -284,16 +316,26 @@ function SearchBar(props) {
                     </div>
                     <div className="filter-group">
                         <RangeSlider
-                            name="minutes"
-                            label="Cook Time (min)"
-                            min={minutes.min}
-                            max={minutes.max}
+                            name="ounces"
+                            label="Net Weight (oz)"
+                            min={ounces.min}
+                            max={ounces.max}
+                            step={0.1}
                             setRange={handleFilter}
                         />
                     </div>
                     <div className="filter-group">
                         <RangeSlider
-                            name="waterMl"
+                            name="cals_per_ounce"
+                            label="Cals per ounce"
+                            min={calsPerOunce.min}
+                            max={calsPerOunce.max}
+                            setRange={handleFilter}
+                        />
+                    </div>
+                    <div className="filter-group">
+                        <RangeSlider
+                            name="water_ml"
                             label="Water Needed (mL)"
                             min={waterMl.min}
                             max={waterMl.max}
@@ -302,11 +344,10 @@ function SearchBar(props) {
                     </div>
                     <div className="filter-group">
                         <RangeSlider
-                            name="ounces"
-                            label="Net Weight (oz)"
-                            min={ounces.min}
-                            max={ounces.max}
-                            step={0.1}
+                            name="minutes"
+                            label="Cook Time (min)"
+                            min={minutes.min}
+                            max={minutes.max}
                             setRange={handleFilter}
                         />
                     </div>
