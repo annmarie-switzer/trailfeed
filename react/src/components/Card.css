@@ -65,7 +65,3 @@
     align-items: center;
     justify-content: flex-end;
 }
-
-.card-footer button:hover {
-    color: var(--accent);
-}

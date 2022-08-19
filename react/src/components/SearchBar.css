@@ -59,47 +59,55 @@
     color: var(--bg);
 }
 
-#searchbar .filters.open {
-    height: 40vh;
-    border-bottom: solid 1px var(--bg-contrast);
-}
-
 #searchbar .filters {
     padding: 0 1rem;
     height: 0;
     overflow: hidden;
     flex: auto;
     display: flex;
-    justify-content: space-between;
     transition: height 200ms ease-in-out;
+}
+
+#searchbar .filters.open {
+    height: 40vh;
+    border-bottom: solid 1px var(--bg-contrast);
 }
 
 #searchbar .filters .sliders,
 #searchbar .filters .checkboxes {
-    height: 100%;
     padding: 1rem;
     box-sizing: border-box;
     display: flex;
 }
 
-#searchbar .filters .sliders .filter-group,
-#searchbar .filters .checkboxes .filter-group {
+#searchbar .filters .filter-group {
     display: flex;
     flex-direction: column;
     gap: 1rem;
 }
 
 #searchbar .filters .checkboxes {
-    width: 70%;
-    gap: 1rem;
+    flex: auto;
+    gap: 2rem;
 }
 
-#searchbar .filters .checkboxes .filter-group {
-    flex: auto;
+#searchbar .filters .checkboxes .filter-group:not(:nth-of-type(3)) {
+    width: 10rem;
+}
+
+#searchbar .filters .checkboxes .filter-group:nth-of-type(3) {
+    width: 15rem;
+}
+
+#searchbar .filters .checkboxes .filter-group > *:nth-child(2) {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
 }
 
 #searchbar .filters .sliders {
     flex-direction: column;
-    width: 25%;
+    width: 18rem;
     gap: 2rem;
 }

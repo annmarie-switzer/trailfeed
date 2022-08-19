@@ -21,18 +21,20 @@ function CheckboxList(props) {
         });
     };
 
-    const checkboxes = buckets.map((bucket, i) => {
-        return (
-            <div className="item-container" key={i}>
-                <Checkbox
-                    value={bucket.key}
-                    label={bucket.key}
-                    inverse={group === 'allergens'}
-                    onChange={toggle}
-                />
-            </div>
-        );
-    });
+    const checkboxes = buckets
+        .sort((a, b) => (a.key > b.key ? 1 : a.key < b.key ? -1 : 0))
+        .map((bucket, i) => {
+            return (
+                <div className="item-container" key={i}>
+                    <Checkbox
+                        value={bucket.key}
+                        label={bucket.key.replace('_', ' ')}
+                        inverse={group === 'allergens'}
+                        onChange={toggle}
+                    />
+                </div>
+            );
+        });
 
     return <div className="checkbox-list">{checkboxes}</div>;
 }

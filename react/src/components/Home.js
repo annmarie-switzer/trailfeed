@@ -11,7 +11,7 @@ function Home() {
     const [page, setPage] = useState(0);
     const [query, setQuery] = useState(null);
     const [hits, setHits] = useState([]);
-    const [packOpen, setPackOpen] = useState(true);
+    const [packOpen, setPackOpen] = useState(false);
     const [selection, setSelection] = useState([]);
     const ref = useRef();
     const { user } = useContext(AppContext);

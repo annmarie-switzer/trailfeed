@@ -57,25 +57,25 @@ function SearchBar(props) {
 
             if (filterObj.type === 'range') {
                 if (filterObj.name === 'cals_per_ounce') {
-                    // TODO - runtime mappings don't exist in ES 7.10
-                    // May need a scripted query?
-                    
-                    // newFilter.query = {
-                    //     runtime_mappings: {
-                    //         cals_per_ounce: {
-                    //             type: 'keyword',
-                    //             script: {
-                    //                 source: 'doc["calories"].value / doc["ounces"].value'
-                    //             }
-                    //         }
-                    //     },
-                    //     range: {
-                    //         [filterObj.name]: {
-                    //             gte: filterObj.values[0],
-                    //             lte: filterObj.values[1]
-                    //         }
-                    //     }
-                    // };
+                    newFilter.query = {
+                        bool: {
+                            filter: {
+                                script: {
+                                    script: {
+                                        source: `
+                                            doc['calories'].value / doc['ounces'].value >= params.min && 
+                                            doc['calories'].value / doc['ounces'].value <= params.max
+                                        `,
+                                        lang: 'painless',
+                                        params: {
+                                            min: filterObj.values[0],
+                                            max: filterObj.values[1]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    };
                 } else {
                     newFilter.query = {
                         range: {
@@ -92,14 +92,6 @@ function SearchBar(props) {
         } else {
             setFilters(filtered);
         }
-    };
-
-    const handleInput = (event) => {
-        setTimeout(() => {
-            if (event.key === 'Enter' || event.target.value === '') {
-                setInputValue(event.target.value);
-            }
-        }, 1);
     };
 
     // search
@@ -290,7 +282,7 @@ function SearchBar(props) {
                         id="search-input"
                         placeholder="Search by name, ingredients, or brand"
                         autoComplete="off"
-                        onKeyDown={handleInput}
+                        onChange={() => setInputValue(event.target.value)}
                     />
                 </div>
                 <button
@@ -327,12 +319,14 @@ function SearchBar(props) {
                     <div className="filter-group">
                         <RangeSlider
                             name="cals_per_ounce"
-                            label="Cals per ounce"
+                            label="Caloriess per Ounce"
                             min={calsPerOunce.min}
                             max={calsPerOunce.max}
                             setRange={handleFilter}
                         />
                     </div>
+                </div>
+                <div className="sliders">
                     <div className="filter-group">
                         <RangeSlider
                             name="water_ml"
