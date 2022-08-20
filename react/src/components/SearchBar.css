@@ -21,7 +21,19 @@
     left: 1rem;
     display: flex;
     align-items: center;
-    opacity: 0.4;
+    color: var(--light-text);
+}
+
+#searchbar .top-bar .input-wrapper .results-badge {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 1.2rem;
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    font-family: 'Fira Mono', monospace;
+    color: var(--light-text);
 }
 
 #searchbar .top-bar input {
@@ -38,8 +50,7 @@
 }
 
 #searchbar .top-bar input::placeholder {
-    opacity: 0.54;
-    color: var(--fg);
+    color: var(--light-text);
 }
 
 #searchbar .top-bar input:focus {

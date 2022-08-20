@@ -7,7 +7,7 @@ import RangeSlider from 'components/forms/RangeSlider';
 import { Search, Sliders } from 'react-feather';
 
 function SearchBar(props) {
-    const { setQuery } = props;
+    const { setQuery, totalHits } = props;
 
     const { user } = useContext(AppContext);
 
@@ -94,7 +94,7 @@ function SearchBar(props) {
         }
     };
 
-    // search
+    // setQuery
     useEffect(() => {
         const query = {
             query: {
@@ -162,7 +162,8 @@ function SearchBar(props) {
         setQuery(query);
     }, [inputValue, filters]);
 
-    // on mount
+    // get aggs
+    // TODO - this is firing twice. Is something upstream re-rendering?
     useEffect(() => {
         const q = {
             aggs: {
@@ -284,6 +285,9 @@ function SearchBar(props) {
                         autoComplete="off"
                         onChange={() => setInputValue(event.target.value)}
                     />
+                    <span className="results-badge">
+                        Results: {totalHits}
+                    </span>
                 </div>
                 <button
                     type="button"
