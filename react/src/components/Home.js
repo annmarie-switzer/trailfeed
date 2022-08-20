@@ -11,6 +11,7 @@ function Home() {
     const [page, setPage] = useState(0);
     const [query, setQuery] = useState(null);
     const [hits, setHits] = useState([]);
+    const [totalHits, setTotalHits] = useState(0);
     const [packOpen, setPackOpen] = useState(false);
     const [selection, setSelection] = useState([]);
     const ref = useRef();
@@ -32,6 +33,8 @@ function Home() {
         };
 
         const mealsRes = await search({ query: q, index: 'meals' });
+
+        setTotalHits(mealsRes.hits.total.value);
 
         const newHits = mealsRes.hits.hits.map((h) => ({
             ...h._source,
@@ -132,7 +135,7 @@ function Home() {
                     onMouseUp={onMouseUp}
                     ref={ref}
                 >
-                    <SearchBar setQuery={setQuery} />
+                    <SearchBar setQuery={setQuery} totalHits={totalHits} />
                     <div className="cards">
                         {hits.map((h, i) => (
                             <Card
