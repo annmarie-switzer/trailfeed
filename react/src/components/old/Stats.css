@@ -1,0 +1,11 @@
+#stats {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0 auto;
+    cursor: pointer;
+}
+
+#stats > span {
+    user-select: none;
+}

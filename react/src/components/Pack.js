@@ -1,6 +1,6 @@
 import React from 'react';
 import './Pack.css';
-import Gauge from 'components/Gauge';
+// import Gauge from 'components/Gauge';
 import MealName from 'components/MealName';
 import { X } from 'react-feather';
 
@@ -11,7 +11,7 @@ function Pack({ selection, setSelection }) {
 
     return (
         <div id="pack">
-            <Gauge selection={selection} />
+            {/* <Gauge selection={selection} /> */}
 
             <div className="list">
                 {selection.length === 0 ? (

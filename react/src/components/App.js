@@ -13,7 +13,7 @@ function App() {
     const [theme, setTheme] = useState(
         localStorage.getItem('theme') ? localStorage.getItem('theme') : 'dark'
     );
-    const [currentStat, setCurrentStat] = useState(0);
+    // const [currentStat, setCurrentStat] = useState(0);
     const [modalData, setModalData] = useState(null);
 
     useEffect(() => {
@@ -43,8 +43,8 @@ function App() {
                         setUser,
                         theme,
                         setTheme,
-                        currentStat,
-                        setCurrentStat,
+                        // currentStat,
+                        // setCurrentStat,
                         setModalData
                     }}>
                     <Routes>
