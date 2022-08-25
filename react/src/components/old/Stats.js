@@ -19,8 +19,8 @@ export const statMeta = [
     {
         id: 'ounces',
         suffix: 'oz',
-        icon: <Feather color="var(--weight)" />,
-        color: 'var(--weight)'
+        icon: <Feather color="var(--ounces)" />,
+        color: 'var(--ounces)'
     }
 ];
 

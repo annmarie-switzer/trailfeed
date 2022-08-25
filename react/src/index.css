@@ -22,7 +22,7 @@ body[data-theme='dark'] {
 
     --calories: var(--ct-orange);
     --water: var(--blue);
-    --weight: var(--green);
+    --ounces: var(--green);
     --time: var(--purple);
     --allergies: var(--orange);
 
@@ -78,7 +78,7 @@ body[data-theme='light'] {
 
     --calories: var(--orange);
     --water: var(--blue);
-    --weight: var(--green);
+    --ounces: var(--green);
     --time: var(--purple);
     --allergies: var(--orange);
 

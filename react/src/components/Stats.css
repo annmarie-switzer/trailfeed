@@ -1,18 +1,32 @@
 #stats {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    justify-content: center;
+    gap: 5rem;
+    width: 100%;
+    /* border: solid green; */
+}
+
+.progress-bar-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    width: 30%;
+    height: 100%;
+    /* border: solid red; */
 }
 
 .progress-bar {
-    height: 20px;
-    width: 200px;
-    border: solid red;
+    height: 20%;
+    width: 100%;
+    background-color: var(--bg-contrast);
+    border-radius: 0.5rem;
 }
 
 .progress-bar-fill {
     min-width: 0;
     height: 100%;
+    border-radius: 0.5rem;
 }
 
 .progress-bar-fill.calories {
@@ -20,5 +34,5 @@
 }
 
 .progress-bar-fill.ounces {
-    background-color: var(--weight);
+    background-color: var(--ounces);
 }
