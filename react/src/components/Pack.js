@@ -1,21 +1,63 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { AppContext } from './App';
 import './Pack.css';
 // import Gauge from 'components/Gauge';
 import MealName from 'components/MealName';
-import { X } from 'react-feather';
+import { Activity, Feather, X } from 'react-feather';
 
 function Pack({ selection, setSelection }) {
+    const { maxCalories, setMaxCalories, maxOunces, setMaxOunces } =
+        useContext(AppContext);
+
+    const handleChange = (event) => {
+        const newVal = Number(event.target.value.replace(',', ''));
+        const name = event.target.name;
+
+        localStorage.setItem(name, newVal);
+
+        name === 'trailfeedMaxCals'
+            ? setMaxCalories(newVal)
+            : setMaxOunces(newVal);
+    };
+
     const deselect = (meal) => {
         setSelection(selection.filter((s) => s.id !== meal.id));
     };
 
     return (
         <div id="pack">
-            {/* <Gauge selection={selection} /> */}
+            <div className="inputs">
+                <div className="input-container calories">
+                    <label htmlFor="calorie-input">
+                        <Activity />
+                        <span>Calorie Target</span>
+                    </label>
+                    <input
+                        id="calorie-input"
+                        type="text"
+                        value={maxCalories.toLocaleString()}
+                        onChange={handleChange}
+                        name="trailfeedMaxCals"
+                    />
+                </div>
+                <div className="input-container ounces">
+                    <label htmlFor="ounce-input">
+                        <Feather />
+                        <span>Weight Target (oz)</span>
+                    </label>
+                    <input
+                        id="ounce-input"
+                        type="text"
+                        onChange={handleChange}
+                        value={maxOunces.toLocaleString()}
+                        name="trailfeedMaxOunces"
+                    />
+                </div>
+            </div>
 
             <div className="list">
                 {selection.length === 0 ? (
-                    <div style={{margin: '2rem auto'}}>Nothing selected.</div>
+                    <div style={{ margin: '2rem auto' }}>Nothing selected.</div>
                 ) : (
                     selection.map((meal, i) => (
                         <div key={i} className="list-item">
@@ -26,8 +68,12 @@ function Pack({ selection, setSelection }) {
                                         color: meal.link
                                             ? 'var(--meal-name-link)'
                                             : 'var(--meal-name-custom)'
-                                    }}>
-                                    <MealName name={meal.name} link={meal.link} />
+                                    }}
+                                >
+                                    <MealName
+                                        name={meal.name}
+                                        link={meal.link}
+                                    />
                                 </div>
                                 <div className="detail-row">{meal.brand}</div>
                                 <div className="detail-row">
@@ -48,7 +94,8 @@ function Pack({ selection, setSelection }) {
                             <div
                                 className="icon"
                                 title="Remove from pack"
-                                onClick={() => deselect(meal)}>
+                                onClick={() => deselect(meal)}
+                            >
                                 <X />
                             </div>
                         </div>

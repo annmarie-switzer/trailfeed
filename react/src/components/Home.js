@@ -12,9 +12,9 @@ function Home() {
     const [query, setQuery] = useState(null);
     const [hits, setHits] = useState([]);
     const [totalHits, setTotalHits] = useState(0);
-    const [packOpen, setPackOpen] = useState(false);
+    const [packOpen, setPackOpen] = useState(true);
     const [selection, setSelection] = useState([]);
-    const ref = useRef();
+
     const { user } = useContext(AppContext);
 
     const handleSelection = (hit) => {
@@ -93,14 +93,8 @@ function Home() {
         }
     }, [query]);
 
-    useEffect(() => {
-        if (page !== 0) {
-            getData(page);
-        }
-    }, [page]);
-
-    const drawer = document.querySelector('.drawer');
-    const main = document.querySelector('.main');
+    // INIFINTE SCROLL
+    const ref = useRef();
 
     const onScroll = () => {
         if (ref.current) {
@@ -110,6 +104,16 @@ function Home() {
             }
         }
     };
+
+    useEffect(() => {
+        if (page !== 0) {
+            getData(page);
+        }
+    }, [page]);
+
+    // PACK RESIZE
+    const drawer = document.querySelector('.drawer');
+    const main = document.querySelector('.main');
 
     const onMouseMove = (e) => {
         main.style.cssText = `width: ${e.pageX}px`;

@@ -3,7 +3,7 @@
     bottom: 0;
     left: 0;
     right: 0;
-    height: 61.4px;
+    height: 60px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -15,6 +15,7 @@
     display: flex;
     align-items: center;
     height: 100%;
+    max-height: 100%;
 }
 
 #toolbar button {

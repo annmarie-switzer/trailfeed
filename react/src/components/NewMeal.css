@@ -97,19 +97,10 @@
 #new-meal .toolbar > div:last-of-type button {
     height: 100%;
     padding: 1rem;
+    box-sizing: border-box;
     font-size: 1.1rem;
     background-color: var(--accent);
     color: var(--bg);
-    border: solid 1px var(--accent);
-    border-radius: 0;
-    opacity: 1;
-}
-
-#new-meal .toolbar > div:last-of-type button[disabled] {
-    opacity: 0.5;
-    background-color: transparent;
-    border-color: transparent;
-    color: var(--accent);
 }
 
 #new-meal .feedback {
