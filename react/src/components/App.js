@@ -13,7 +13,16 @@ function App() {
     const [theme, setTheme] = useState(
         localStorage.getItem('theme') ? localStorage.getItem('theme') : 'dark'
     );
-    const [currentStat, setCurrentStat] = useState(0);
+
+    const [maxCalories, setMaxCalories] = useState(
+        Number(localStorage.getItem('trailfeedMaxCals')) || 9000
+    );
+
+    const [maxOunces, setMaxOunces] = useState(
+        Number(localStorage.getItem('trailfeedMaxOunces')) || 96
+    );
+
+    // TODO - why does this need to be in state?
     const [modalData, setModalData] = useState(null);
 
     useEffect(() => {
@@ -36,22 +45,32 @@ function App() {
                     display: 'flex',
                     flexDirection: 'column',
                     height: '100vh'
-                }}>
+                }}
+            >
                 <AppContext.Provider
                     value={{
                         user,
                         setUser,
                         theme,
                         setTheme,
-                        currentStat,
-                        setCurrentStat,
+                        maxCalories,
+                        setMaxCalories,
+                        maxOunces,
+                        setMaxOunces,
                         setModalData
-                    }}>
+                    }}
+                >
                     <Routes>
                         <Route path="/login" element={<Login />} />
                         <Route
                             path="/new-meal"
-                            element={user?.email ? <NewMeal /> : <Navigate to="/login" />}
+                            element={
+                                user?.email ? (
+                                    <NewMeal />
+                                ) : (
+                                    <Navigate to="/login" />
+                                )
+                            }
                         />
                         <Route
                             path="/"

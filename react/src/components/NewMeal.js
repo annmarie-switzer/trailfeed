@@ -279,6 +279,7 @@ function NewMeal() {
                 </div>
             </div>
 
+            {/* TODO - use the Toolbar component */}
             <div className="toolbar">
                 <div>
                     <button type="button" onClick={() => navigate('/')}>

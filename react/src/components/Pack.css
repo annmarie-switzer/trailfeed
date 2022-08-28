@@ -7,6 +7,64 @@
     overflow: auto;
 }
 
+#pack .inputs {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+#pack .input-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+#pack .input-container.calories {
+    color: var(--calories);
+}
+
+#pack .input-container.calories input:focus {
+    border-color: var(--calories);
+}
+
+#pack .input-container.ounces {
+    color: var(--ounces);
+}
+
+#pack .input-container.ounces input:focus {
+    border-color: var(--ounces);
+}
+
+#pack .input-container label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+#pack .input-container input {
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    outline: none;
+    border: solid 1px var(--bg-contrast);
+    border-radius: 2px;
+    background-color: var(--bg-contrast);
+    color: var(--light-text);
+    font-size: 1rem;
+    font-family: inherit;
+    padding: 0.5rem 0;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+#pack .input-container input:focus {
+    color: var(--fg);
+}
+
 #pack .list {
     flex: auto;
     display: flex;
