@@ -1,17 +1,22 @@
-import React, { useContext, useState } from 'react';
+import { useContext, useState } from 'react';
 import './Stars.css';
-import { AppContext } from 'components/App';
 import { Star } from 'react-feather';
-import { updateRating, addDoc } from 'api';
+import { updateRating, addDoc } from '../api';
+import { AppContext } from './App';
 
-function Stars(props) {
+type StarsProps = {
+    ratingDoc: any;
+    mealId: string;
+};
+
+export const Stars = ({ ratingDoc, mealId, }: StarsProps) => {
     const { user } = useContext(AppContext);
-    const [docId, setDocId] = useState(props.ratingDoc?._id);
+    const [docId, setDocId] = useState(ratingDoc?._id);
     const [rating, setRating] = useState(
-        props.ratingDoc ? props.ratingDoc._source.rating : 0
+        ratingDoc ? ratingDoc._source.rating : 0
     );
 
-    const rate = async (r) => {
+    const rate = async (r: number) => {
         if (docId) {
             console.log('updating existing rating...');
             await updateRating({ docId, rating: r });
@@ -19,7 +24,7 @@ function Stars(props) {
             console.log('creating new rating...');
             const newDocRes = await addDoc({
                 index: 'ratings',
-                newDoc: { user: user.email, meal_id: props.mealId, rating: r }
+                newDoc: { user: user.email, meal_id: mealId, rating: r }
             });
 
             setDocId(newDocRes._id);
@@ -52,5 +57,3 @@ function Stars(props) {
         </span>
     );
 }
-
-export default Stars;

@@ -1,16 +1,25 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import './Input.css';
 import { Minus, Plus } from 'react-feather';
 
-function Input({
+type InputProps = {
+    type: string;
+    placeholder: string;
+    onChange: (v: string) => void;
+    onBlur: () => void;
+    hasError?: boolean;
+    children: any;
+};
+
+export const Input = ({
     type,
     placeholder,
     onChange,
     onBlur,
     hasError = false,
     children
-}) {
-    const [value, setValue] = useState('');
+}: InputProps) => {
+    const [value, setValue] = useState<any>('');
 
     useEffect(() => {
         onChange(value);
@@ -31,7 +40,7 @@ function Input({
     };
 
     const classNames = () => {
-        let classes = ['custom-input'];
+        const classes = ['custom-input'];
 
         if (type === 'number') {
             classes.push('number');
@@ -81,5 +90,3 @@ function Input({
         </div>
     );
 }
-
-export default Input;

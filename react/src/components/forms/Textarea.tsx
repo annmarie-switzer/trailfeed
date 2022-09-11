@@ -1,7 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import './Textarea.css';
 
-function Textarea({ rows = 1, placeholder, onChange }) {
+type TextAreaProps = {
+    rows?: number;
+    placeholder: string;
+    onChange: (s: string) => void;
+};
+
+export const Textarea = ({ rows = 1, placeholder, onChange }: TextAreaProps) => {
     const [value, setValue] = useState('');
 
     useEffect(() => {
@@ -19,5 +25,3 @@ function Textarea({ rows = 1, placeholder, onChange }) {
         </div>
     );
 }
-
-export default Textarea;

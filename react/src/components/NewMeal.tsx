@@ -1,6 +1,6 @@
-import React, { useEffect, useState, useContext } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import './NewMeal.css';
-import { addDoc } from 'api';
+import { addDoc } from '../api';
 import {
     Activity,
     AlertCircle,
@@ -15,13 +15,13 @@ import {
     Watch
 } from 'react-feather';
 import { useNavigate } from 'react-router-dom';
-import Select from './forms/Select';
-import Input from './forms/Input';
-import Textarea from './forms/Textarea';
-import ThemeSwitcher from './ThemeSwitcher';
-import { AppContext } from 'components/App';
+import { Select } from './forms/Select';
+import { Input } from './forms/Input';
+import { Textarea } from './forms/Textarea';
+import { ThemeSwitcher } from './ThemeSwitcher';
+import { AppContext } from './App';
 
-function NewMeal() {
+export const NewMeal = () => {
     const navigate = useNavigate();
 
     const { user } = useContext(AppContext);
@@ -30,7 +30,7 @@ function NewMeal() {
     const [error, setError] = useState(null);
     const [valid, setValid] = useState(false);
 
-    const [fields, setFields] = useState({
+    const [fields, setFields] = useState<any>({
         name: { value: null, touched: false, required: true },
         meal_type: { value: null, touched: false, required: true },
         calories: { value: null, touched: false, required: true },
@@ -47,11 +47,11 @@ function NewMeal() {
     );
 
     const submit = async () => {
-        let newDoc = {
+        const newDoc: any = {
             user: user.email
         };
 
-        Object.entries(fields).forEach((e) => {
+        Object.entries(fields).forEach((e: any) => {
             if (
                 e[0] === 'calories' ||
                 e[0] === 'minutes' ||
@@ -75,24 +75,24 @@ function NewMeal() {
             setTimeout(() => {
                 setComplete(false);
             }, 1000);
-        } catch (e) {
+        } catch (e: any) {
             setComplete(false);
             setError(e);
         }
     };
 
-    const handleChange = (id, val) => {
+    const handleChange = (id: any, val: any) => {
         fields[id].value = val;
         setFields({ ...fields });
     };
 
-    const setTouched = (id) => {
+    const setTouched = (id: string) => {
         fields[id].touched = true;
         setFields({ ...fields });
     };
 
     // field level validation
-    const isValid = (id) => {
+    const isValid = (id: string) => {
         if (fields[id].required && fields[id].touched) {
             return !!fields[id].value;
         } else {
@@ -105,8 +105,8 @@ function NewMeal() {
         const entries = Object.entries(fields);
 
         const valid = entries
-            .filter((e) => e[1].required)
-            .map((e) => e[1].value)
+            .filter((e: any) => e[1].required)
+            .map((e: any) => e[1].value)
             .every(
                 (v) =>
                     v &&
@@ -134,9 +134,12 @@ function NewMeal() {
                             <Input
                                 type="text"
                                 placeholder="Meal Name"
-                                onChange={(val) => handleChange('name', val)}
+                                onChange={(val: string) =>
+                                    handleChange('name', val)
+                                }
                                 onBlur={() => setTouched('name')}
-                                hasError={!isValid('name')}>
+                                hasError={!isValid('name')}
+                            >
                                 <Terminal />
                             </Input>
                             {!isValid('name') ? requiredDiv : null}
@@ -146,16 +149,23 @@ function NewMeal() {
                         <div className="form-field" title="Meal type">
                             <Select
                                 label="Meal Type"
-                                options={['breakfast', 'dessert', 'entree', 'snack']}
-                                onChange={(val) =>
+                                options={[
+                                    'breakfast',
+                                    'dessert',
+                                    'entree',
+                                    'snack'
+                                ]}
+                                onChange={(val: string) =>
                                     handleChange('meal_type', val)
                                 }
-                                onClose={() =>
+                                onClose={() => {
                                     setTimeout(() => {
                                         setTouched('meal_type');
-                                    }, 100)
-                                }
-                                hasError={!isValid('meal_type')}>
+                                    }, 100);
+                                    return null;
+                                }}
+                                hasError={!isValid('meal_type')}
+                            >
                                 <Coffee />
                             </Select>
                             {!isValid('meal_type') ? requiredDiv : null}
@@ -166,11 +176,12 @@ function NewMeal() {
                             <Input
                                 type="number"
                                 placeholder="Calories"
-                                onChange={(val) =>
+                                onChange={(val: string) =>
                                     handleChange('calories', val)
                                 }
                                 onBlur={() => setTouched('calories')}
-                                hasError={!isValid('calories')}>
+                                hasError={!isValid('calories')}
+                            >
                                 <Activity />
                             </Input>
                             {!isValid('calories') ? requiredDiv : null}
@@ -181,13 +192,17 @@ function NewMeal() {
                             <Select
                                 label="Water Temp."
                                 options={['boiling', 'cold', 'any', 'none']}
-                                onChange={(val) =>
+                                onChange={(val: string) =>
                                     handleChange('water_temp', val)
                                 }
-                                onClose={() => setTimeout(() => {
-                                    setTouched('water_temp')
-                                }, 100)}
-                                hasError={!isValid('water_temp')}>
+                                onClose={() => {
+                                    setTimeout(() => {
+                                        setTouched('water_temp');
+                                    }, 100);
+                                    return null;
+                                }}
+                                hasError={!isValid('water_temp')}
+                            >
                                 <Thermometer />
                             </Select>
                             {!isValid('water_temp') ? requiredDiv : null}
@@ -198,11 +213,12 @@ function NewMeal() {
                             <Input
                                 type="number"
                                 placeholder="Water mL"
-                                onChange={(val) =>
+                                onChange={(val: string) =>
                                     handleChange('water_ml', val)
                                 }
                                 onBlur={() => setTouched('water_ml')}
-                                hasError={!isValid('water_ml')}>
+                                hasError={!isValid('water_ml')}
+                            >
                                 <Droplet />
                             </Input>
                             {!isValid('water_ml') ? requiredDiv : null}
@@ -213,9 +229,12 @@ function NewMeal() {
                             <Input
                                 type="number"
                                 placeholder="Minutes"
-                                onChange={(val) => handleChange('minutes', val)}
+                                onChange={(val: string) =>
+                                    handleChange('minutes', val)
+                                }
                                 onBlur={() => setTouched('minutes')}
-                                hasError={!isValid('minutes')}>
+                                hasError={!isValid('minutes')}
+                            >
                                 <Watch />
                             </Input>
                             {!isValid('minutes') ? requiredDiv : null}
@@ -237,9 +256,10 @@ function NewMeal() {
                                     'tree nut',
                                     'wheat'
                                 ]}
-                                onChange={(val) =>
+                                onChange={(val: string) =>
                                     handleChange('allergens', val)
-                                }>
+                                }
+                            >
                                 <AlertCircle />
                             </Select>
                             <div className="hint">Optional</div>
@@ -251,9 +271,10 @@ function NewMeal() {
                                 multi={true}
                                 label="Special Diet"
                                 options={['vegan', 'vegetarian', 'gluten_free']}
-                                onChange={(val) =>
+                                onChange={(val: string) =>
                                     handleChange('special', val)
-                                }>
+                                }
+                            >
                                 <Award />
                             </Select>
                             <div className="hint">Optional</div>
@@ -267,9 +288,10 @@ function NewMeal() {
                             <Textarea
                                 rows={20}
                                 placeholder="oatmeal, dried cherries, brown sugar..."
-                                onChange={(val) =>
+                                onChange={(val: string) =>
                                     handleChange('ingredients', val)
-                                }></Textarea>
+                                }
+                            ></Textarea>
                             <div className="hint">
                                 Optional. List the ingredients, separated by
                                 commas.
@@ -307,7 +329,8 @@ function NewMeal() {
                     <button
                         type="button"
                         disabled={!valid}
-                        onClick={() => submit()}>
+                        onClick={() => submit()}
+                    >
                         <FileText />
                         Submit
                     </button>
@@ -315,6 +338,4 @@ function NewMeal() {
             </div>
         </div>
     );
-}
-
-export default NewMeal;
+};

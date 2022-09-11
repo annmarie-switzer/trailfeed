@@ -1,11 +1,11 @@
-import React, { useContext, useState } from 'react';
+import { useContext, useState } from 'react';
 import './Login.css';
 import { useNavigate } from 'react-router-dom';
-import { AppContext } from 'components/App';
-import GoogleIcon from 'components/icons/GoogleIcon';
+import { AppContext } from './App';
+import { GoogleIcon } from './icons/GoogleIcon';
 import { User } from 'react-feather';
 
-function Login() {
+export const Login = () => {
     const navigate = useNavigate();
     const { setUser } = useContext(AppContext);
 
@@ -53,4 +53,3 @@ function Login() {
         </div>
     );
 }
-export default Login;

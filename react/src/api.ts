@@ -15,13 +15,11 @@ export const logout = async () => {
     window.location.href = '/';
 };
 
-export const search = async (req, count) => {
-    count = count || 0;
-
+export const search = async (body: any, count = 0) => {
     const res = await fetch('/api/es/search', {
         credentials: 'include',
         method: 'POST',
-        body: JSON.stringify(req),
+        body: JSON.stringify(body),
         headers: { 'Content-Type': 'application/json' }
     });
 
@@ -32,7 +30,7 @@ export const search = async (req, count) => {
         if (res.status === 429 && count < 10) {
             // poor man's exponential backoff
             setTimeout(async () => {
-                await search(req, ++count);
+                await search(body, ++count);
             }, count * 500);
         } else {
             throw new Error(await res.text());
@@ -40,29 +38,29 @@ export const search = async (req, count) => {
     }
 };
 
-export const updateRating = async (req) => {
+export const updateRating = async (body: any) => {
     const res = await fetch('/api/es/update-rating', {
         credentials: 'include',
         method: 'POST',
-        body: JSON.stringify(req),
+        body: JSON.stringify(body),
         headers: { 'Content-Type': 'application/json' }
     });
 
     return await res.json();
 };
 
-export const addDoc = async (req) => {
+export const addDoc = async (body: any) => {
     const res = await fetch('/api/es/add-doc', {
         credentials: 'include',
         method: 'POST',
-        body: JSON.stringify(req),
+        body: JSON.stringify(body),
         headers: { 'Content-Type': 'application/json' }
     });
 
     return await res.json();
 };
 
-export const deleteMeal = async (id) => {
+export const deleteMeal = async (id: string) => {
     const res = await fetch(`/api/es/delete-meal/${id}`, {
         credentials: 'include',
         method: 'DELETE',

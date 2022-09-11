@@ -1,20 +1,24 @@
-import React, { useState } from 'react';
+import { Dispatch, SetStateAction, useState } from 'react';
 import './CheckboxList.css';
-import Checkbox from './Checkbox';
+import { Checkbox } from './Checkbox';
 
-function CheckboxList(props) {
-    const { buckets, group } = props;
+type CheckboxListProps = {
+    buckets: any[];
+    group: any;
+    setSelection: Dispatch<SetStateAction<any>>
+}
 
-    const [selection, setSelection] = useState([]);
+export const CheckboxList = ({ buckets, group, setSelection }: CheckboxListProps) => {
+    const [selection, setLocalSelection] = useState<any[]>([]);
 
-    const toggle = (target) => {
+    const toggle = (target: any) => {
         const newSelection = target.checked
             ? [...selection, target.value]
             : selection.filter((s) => s !== target.value);
 
-        setSelection(newSelection);
+        setLocalSelection(newSelection);
 
-        props.setSelection({
+        setSelection({
             name: `${group}`,
             values: newSelection,
             type: 'terms'
@@ -38,5 +42,3 @@ function CheckboxList(props) {
 
     return <div className="checkbox-list">{checkboxes}</div>;
 }
-
-export default CheckboxList;

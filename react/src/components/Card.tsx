@@ -1,10 +1,10 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { AppContext } from 'components/App';
+import { useContext, useEffect, useState } from 'react';
+import { AppContext } from './App';
 import { deleteMeal } from '../api';
 import './Card.css';
-import Checkbox from './Checkbox';
-import Stars from './Stars';
-import MealName from './MealName';
+import { Checkbox } from './Checkbox';
+import { Stars } from './Stars';
+import { MealName } from './MealName';
 import {
     Activity,
     Award,
@@ -19,11 +19,23 @@ import {
     Watch
 } from 'react-feather';
 
-function Card({ hit, selection, handleSelection, handleDelete }) {
-    const { setModalData } = useContext(AppContext);
-    const [ids, setIds] = useState([]);
+type CardProps = {
+    hit: any;
+    selection: any;
+    handleSelection: (hit: any) => void;
+    handleDelete: () => void;
+};
 
-    const onDelete = async (id) => {
+export const Card = ({
+    hit,
+    selection,
+    handleSelection,
+    handleDelete
+}: CardProps) => {
+    const { setModalData } = useContext(AppContext);
+    const [ids, setIds] = useState<string[]>([]);
+
+    const onDelete = async (id: string) => {
         const res = await deleteMeal(id);
 
         if (res.result === 'deleted') {
@@ -32,7 +44,7 @@ function Card({ hit, selection, handleSelection, handleDelete }) {
     };
 
     useEffect(() => {
-        setIds(selection.map((s) => s.id));
+        setIds(selection.map((s: any) => s.id));
     }, [selection]);
 
     return (
@@ -74,12 +86,14 @@ function Card({ hit, selection, handleSelection, handleDelete }) {
                             <div className="list-item" title="Allergens">
                                 <AlertCircle size={20} />
                                 <div>
-                                    {hit.allergens.map((a, i) => (
-                                        <span key={i}>
-                                            {i > 0 ? ', ' : null}
-                                            {a.replace('_', ' ')}
-                                        </span>
-                                    ))}
+                                    {hit.allergens.map(
+                                        (a: string, i: number) => (
+                                            <span key={i}>
+                                                {i > 0 ? ', ' : null}
+                                                {a.replace('_', ' ')}
+                                            </span>
+                                        )
+                                    )}
                                 </div>
                             </div>
                         )}
@@ -87,7 +101,7 @@ function Card({ hit, selection, handleSelection, handleDelete }) {
                             <div className="list-item" title="Special Diet">
                                 <Award size={20} />
                                 <div>
-                                    {hit.special.map((s, i) => (
+                                    {hit.special.map((s: string, i: number) => (
                                         <span key={i}>
                                             {i > 0 ? ', ' : null}
                                             {s.replace('_', ' ')}
@@ -113,7 +127,7 @@ function Card({ hit, selection, handleSelection, handleDelete }) {
                         <div className="list-item" title="meal type">
                             <Coffee size={20} />
                             <div>
-                                {hit.meal_type.map((a, i) => (
+                                {hit.meal_type.map((a: string, i: number) => (
                                     <span key={i}>
                                         {i > 0 ? ', ' : null}
                                         {a.replace('_', ' ')}
@@ -136,6 +150,4 @@ function Card({ hit, selection, handleSelection, handleDelete }) {
             </div>
         </div>
     );
-}
-
-export default Card;
+};

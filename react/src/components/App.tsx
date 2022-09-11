@@ -1,18 +1,40 @@
-import React, { createContext, useEffect, useState } from 'react';
+import {
+    createContext,
+    Dispatch,
+    SetStateAction,
+    useEffect,
+    useState
+} from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
-import { getUser } from 'api';
-import Login from 'components/Login';
-import Home from 'components/Home';
-import Modal from 'components/Modal';
-import NewMeal from 'components/NewMeal';
+import { getUser } from '../api';
+import { Home } from './Home';
+import { Login } from './Login';
+import { Modal } from './Modal';
+import { NewMeal } from './NewMeal';
 
-export const AppContext = createContext(null);
+type User = {
+    name: string;
+    email: string;
+};
+
+type Context = {
+    user: User;
+    setUser: Dispatch<SetStateAction<any>>;
+    theme: string;
+    setTheme: Dispatch<SetStateAction<string>>;
+    maxCalories: number;
+    setMaxCalories: Dispatch<SetStateAction<number>>;
+    maxOunces: number;
+    setMaxOunces: Dispatch<SetStateAction<number>>;
+    setModalData: Dispatch<SetStateAction<any>>;
+};
+
+export const AppContext = createContext<Context>({} as Context);
 
 function App() {
-    const [user, setUser] = useState(null);
-    const [theme, setTheme] = useState(
-        localStorage.getItem('theme') ? localStorage.getItem('theme') : 'dark'
-    );
+    const [user, setUser] = useState<User | null>(null);
+
+    const [theme, setTheme] = useState(localStorage.getItem('theme') || 'dark');
 
     const [maxCalories, setMaxCalories] = useState(
         Number(localStorage.getItem('trailfeedMaxCals')) || 9000

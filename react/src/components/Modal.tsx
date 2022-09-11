@@ -1,9 +1,14 @@
-import React from 'react';
+import { Dispatch, SetStateAction } from 'react';
 import './Modal.css';
 import { X } from 'react-feather';
-import MealName from './MealName';
+import { MealName } from './MealName';
 
-function Modal({ modalData, setModalData }) {
+type ModalProps = {
+    modalData: any;
+    setModalData: Dispatch<SetStateAction<any>>;
+};
+
+export const Modal = ({ modalData, setModalData }: ModalProps) => {
     return (
         <div id="modal" onClick={() => setModalData(null)}>
             <div className="modal-main" onClick={(e) => e.stopPropagation()}>
@@ -18,5 +23,3 @@ function Modal({ modalData, setModalData }) {
         </div>
     );
 }
-
-export default Modal;

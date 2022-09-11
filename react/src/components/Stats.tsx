@@ -1,8 +1,12 @@
-import React, { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import './Stats.css';
 import { AppContext } from './App';
 
-function Stats({ selection }) {
+type StatsProps = {
+    selection: any[];
+};
+
+export const Stats = ({ selection }: StatsProps) => {
     const { maxCalories, maxOunces } = useContext(AppContext);
 
     const [progress, setProgress] = useState({
@@ -81,5 +85,3 @@ function Stats({ selection }) {
         </div>
     );
 }
-
-export default Stats;

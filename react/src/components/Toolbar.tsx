@@ -1,14 +1,20 @@
-import React, { useContext } from 'react';
+import { Dispatch, SetStateAction, useContext } from 'react';
 import './Toolbar.css';
 import { useNavigate } from 'react-router-dom';
-import { logout } from 'api';
-import ThemeSwitcher from '../components/ThemeSwitcher';
-import Stats from './Stats';
+import { logout } from '../api';
+import { ThemeSwitcher } from './ThemeSwitcher';
+import { Stats } from './Stats';
 import { FileText, LogOut } from 'react-feather';
-import BackpackIcon from 'components/icons/BackpackIcon';
 import { AppContext } from './App';
+import { BackpackIcon } from './icons/BackpackIcon';
 
-function Toolbar({ packOpen, setPackOpen, selection }) {
+type ToolbarProps = {
+    packOpen: boolean;
+    setPackOpen: Dispatch<SetStateAction<boolean>>;
+    selection: any[];
+};
+
+export const Toolbar = ({ packOpen, setPackOpen, selection }: ToolbarProps) => {
     const navigate = useNavigate();
     const { user } = useContext(AppContext);
 
@@ -59,6 +65,4 @@ function Toolbar({ packOpen, setPackOpen, selection }) {
             </div>
         </div>
     );
-}
-
-export default Toolbar;
+};
