@@ -1,14 +1,23 @@
-import React, { useContext, useEffect, useState } from 'react';
+import {
+    Dispatch,
+    SetStateAction,
+    useContext,
+    useEffect,
+    useState
+} from 'react';
 import './SearchBar.css';
-import { search } from 'api';
-import { AppContext } from 'components/App';
-import CheckboxList from 'components/CheckboxList';
-import RangeSlider from 'components/forms/RangeSlider';
+import { search } from '../api';
+import { CheckboxList } from './CheckboxList';
+import { RangeSlider } from './forms/RangeSlider';
 import { Search, Sliders } from 'react-feather';
+import { AppContext } from './App';
 
-function SearchBar(props) {
-    const { setQuery, totalHits } = props;
+type SearchBarProps = {
+    setQuery: Dispatch<SetStateAction<any>>;
+    totalHits: number;
+};
 
+export const SearchBar = ({ setQuery, totalHits }: SearchBarProps) => {
     const { user } = useContext(AppContext);
 
     const [filtersOpen, setFiltersOpen] = useState(false);
@@ -24,15 +33,15 @@ function SearchBar(props) {
     const [calsPerOunce, setCalsPerOunce] = useState({ min: 0, max: 0 });
 
     const [inputValue, setInputValue] = useState('');
-    const [filters, setFilters] = useState([]);
+    const [filters, setFilters] = useState<any>([]);
 
-    const handleFilter = (filterObj) => {
+    const handleFilter = (filterObj: any) => {
         // remove any existing filters with the same name
-        const filtered = filters.filter((f) => f.name !== filterObj.name);
+        const filtered = filters.filter((f: any) => f.name !== filterObj.name);
 
         // If the filter has values, normalize it and add it to the filters array
         if (filterObj.values.length > 0) {
-            let newFilter = {
+            const newFilter = {
                 name: filterObj.name,
                 query: {}
             };
@@ -96,7 +105,7 @@ function SearchBar(props) {
 
     // setQuery
     useEffect(() => {
-        const query = {
+        const query: any = {
             query: {
                 bool: {
                     must: [
@@ -157,7 +166,9 @@ function SearchBar(props) {
             });
         }
 
-        filters.forEach((filter) => query.query.bool.must.push(filter.query));
+        filters.forEach((filter: any) =>
+            query.query.bool.must.push(filter.query)
+        );
 
         setQuery(query);
     }, [inputValue, filters]);
@@ -223,7 +234,7 @@ function SearchBar(props) {
             size: 0
         };
 
-        search({ query: q, index: 'meals' }).then((res) => {
+        search({ query: q, index: 'meals' }).then((res: any) => {
             setMealTypes(res.aggregations.meal_types.buckets);
             setWaterTemps(res.aggregations.water_temps.buckets);
             setAllergens(res.aggregations.allergens.buckets);
@@ -283,11 +294,9 @@ function SearchBar(props) {
                         id="search-input"
                         placeholder="Search by name, ingredients, or brand"
                         autoComplete="off"
-                        onChange={() => setInputValue(event.target.value)}
+                        onChange={(event) => setInputValue(event.target.value)}
                     />
-                    <span className="results-badge">
-                        Results: {totalHits}
-                    </span>
+                    <span className="results-badge">Results: {totalHits}</span>
                 </div>
                 <button
                     type="button"
@@ -387,6 +396,4 @@ function SearchBar(props) {
             </div>
         </div>
     );
-}
-
-export default SearchBar;
+};

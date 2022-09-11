@@ -1,8 +1,19 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import './Select.css';
 import { CheckSquare, ChevronDown, Square } from 'react-feather';
 
-function Select({
+type SelectProps = {
+    label: string;
+    options: any;
+    multi?: boolean;
+    onChange: (s: any) => void;
+    onClose?: () => void;
+    onOpen?: () => void;
+    hasError?: boolean;
+    children: any;
+};
+
+export const Select = ({
     label,
     options,
     multi = false,
@@ -11,12 +22,12 @@ function Select({
     onOpen = () => null,
     hasError = false,
     children
-}) {
+}: SelectProps) => {
     const [open, setOpen] = useState(false);
-    const [selected, setSelected] = useState(multi ? [] : null);
+    const [selected, setSelected] = useState<any>(multi ? [] : null);
 
     const classNames = () => {
-        let classes = ['select-container'];
+        const classes = ['select-container'];
 
         if (open) {
             classes.push('open');
@@ -29,14 +40,14 @@ function Select({
         return classes.join(' ');
     };
 
-    const onSelect = (val) => {
+    const onSelect = (val: string) => {
         setSelected(val);
     };
 
-    const setMultiSelection = (val) => {
+    const setMultiSelection = (val: any) => {
         setSelected(
             selected.includes(val)
-                ? selected.filter((s) => s !== val)
+                ? selected.filter((s: any) => s !== val)
                 : [...selected, val]
         );
     };
@@ -82,12 +93,12 @@ function Select({
             </div>
 
             <div className={open ? 'select-menu open' : 'select-menu'}>
-                {options.map((o, i) =>
+                {options.map((o: any, i: number) =>
                     multi ? (
                         <div
                             key={i}
                             className="option multi"
-                            value={o}
+                            // value={o}
                             onClick={(e) => {
                                 e.stopPropagation();
                                 setMultiSelection(o);
@@ -103,7 +114,7 @@ function Select({
                         <div
                             key={i}
                             className="option"
-                            value={o}
+                            // value={o}
                             onClick={() => onSelect(o)}>
                             {o}
                         </div>
@@ -113,5 +124,3 @@ function Select({
         </div>
     );
 }
-
-export default Select;

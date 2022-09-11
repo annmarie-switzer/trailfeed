@@ -1,12 +1,12 @@
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import './ThemeSwitcher.css';
-import { AppContext } from 'components/App';
 import { Moon, Sun } from 'react-feather';
+import { AppContext } from './App';
 
-function ThemeSwitcher() {
+export const ThemeSwitcher = () => {
     const { theme, setTheme } = useContext(AppContext);
 
-    const selectTheme = (t) => {
+    const selectTheme = (t: string) => {
         setTheme(t);
         localStorage.setItem('theme', t);
         document.body.dataset.theme = t;
@@ -27,5 +27,3 @@ function ThemeSwitcher() {
         </button>
     );
 }
-
-export default ThemeSwitcher;

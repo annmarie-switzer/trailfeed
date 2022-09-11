@@ -5,6 +5,7 @@
     },
     "extends": [
         "eslint:recommended",
+        "plugin:@typescript-eslint/recommended",
         "plugin:react/recommended"
     ],
     "parserOptions": {
@@ -19,10 +20,12 @@
         "react-hooks"
     ],
     "rules": {
-        "react/prop-types": 0,
+        "no-duplicate-imports": "error",
+        "no-unused-vars": "warn",
         "react-hooks/rules-of-hooks": "error",
         "react-hooks/exhaustive-deps": "off",
-        "no-unused-vars": "warn",
-        "no-duplicate-imports": "error"
+        "react/jsx-uses-react": "off",
+        "react/prop-types": 0,
+        "react/react-in-jsx-scope": "off"
     }
 }

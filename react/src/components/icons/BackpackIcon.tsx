@@ -1,19 +1,16 @@
-import React from 'react';
+import { IconProps } from './icon-props';
 
-function BackpackIcon(props) {
+export const BackpackIcon = ({ size, color }: IconProps) => {
     return (
         // https://fonts.google.com/icons?selected=Material+Icons&icon.query=backpack
         // filled/rounded
         <svg
             viewBox="0 0 24 24"
-            width={props.size || 24}
-            fill={props.color || 'currentColor'}>
+            width={size || 24}
+            fill={color || 'currentColor'}
+        >
             <g>
-                <rect
-                    fill="none"
-                    width={props.size || 24}
-                    height={props.size || 24}
-                />
+                <rect fill="none" width={size || 24} height={size || 24} />
                 <g>
                     <g>
                         <path d="M20,8v12c0,1.1-0.9,2-2,2H6c-1.1,0-2-0.9-2-2V8c0-1.86,1.28-3.41,3-3.86V3.5C7,2.67,7.67,2,8.5,2h0 C9.33,2,10,2.67,10,3.5V4h4V3.5C14,2.67,14.67,2,15.5,2h0C16.33,2,17,2.67,17,3.5v0.64C18.72,4.59,20,6.14,20,8z M6,13L6,13 c0,0.55,0.45,1,1,1h9v1c0,0.55,0.45,1,1,1h0c0.55,0,1-0.45,1-1v-2c0-0.55-0.45-1-1-1H7C6.45,12,6,12.45,6,13z" />
@@ -22,6 +19,4 @@ function BackpackIcon(props) {
             </g>
         </svg>
     );
-}
-
-export default BackpackIcon;
+};

@@ -1,26 +1,31 @@
-import React, { useContext } from 'react';
+import { Dispatch, SetStateAction, useContext } from 'react';
 import { AppContext } from './App';
 import './Pack.css';
 // import Gauge from 'components/Gauge';
-import MealName from 'components/MealName';
+import { MealName } from './MealName';
 import { Activity, Feather, X } from 'react-feather';
 
-function Pack({ selection, setSelection }) {
+type PackProps = {
+    selection: any[];
+    setSelection: Dispatch<SetStateAction<any>>;
+};
+
+export const Pack = ({ selection, setSelection }: PackProps) => {
     const { maxCalories, setMaxCalories, maxOunces, setMaxOunces } =
         useContext(AppContext);
 
-    const handleChange = (event) => {
+    const handleChange = (event: any) => {
         const newVal = Number(event.target.value.replace(',', ''));
         const name = event.target.name;
 
-        localStorage.setItem(name, newVal);
+        localStorage.setItem(name, String(newVal));
 
         name === 'trailfeedMaxCals'
             ? setMaxCalories(newVal)
             : setMaxOunces(newVal);
     };
 
-    const deselect = (meal) => {
+    const deselect = (meal: any) => {
         setSelection(selection.filter((s) => s.id !== meal.id));
     };
 
@@ -105,5 +110,3 @@ function Pack({ selection, setSelection }) {
         </div>
     );
 }
-
-export default Pack;

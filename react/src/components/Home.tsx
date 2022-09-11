@@ -1,24 +1,24 @@
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import { AppContext } from './App';
 import './Home.css';
-import SearchBar from 'components/SearchBar';
-import Card from 'components/Card';
-import { search } from 'api';
-import Pack from './Pack';
-import Toolbar from 'components/Toolbar';
+import { SearchBar } from './SearchBar';
+import { Card } from './Card';
+import { search } from '../api';
+import { Pack } from './Pack';
+import { Toolbar } from './Toolbar';
 
-function Home() {
+export const Home = () => {
     const [page, setPage] = useState(0);
-    const [query, setQuery] = useState(null);
-    const [hits, setHits] = useState([]);
+    const [query, setQuery] = useState<any>(null);
+    const [hits, setHits] = useState<any[]>([]);
     const [totalHits, setTotalHits] = useState(0);
     const [packOpen, setPackOpen] = useState(true);
-    const [selection, setSelection] = useState([]);
+    const [selection, setSelection] = useState<any[]>([]);
 
     const { user } = useContext(AppContext);
 
-    const handleSelection = (hit) => {
-        const ids = selection.map((s) => s.id);
+    const handleSelection = (hit: any) => {
+        const ids: string[] = selection.map((s: any) => s.id);
         setSelection(
             ids.includes(hit.id)
                 ? selection.filter((s) => s.id !== hit.id)
@@ -26,7 +26,7 @@ function Home() {
         );
     };
 
-    const getData = async (page) => {
+    const getData = async (page: number) => {
         const q = {
             ...query,
             from: page * 20
@@ -36,7 +36,7 @@ function Home() {
 
         setTotalHits(mealsRes.hits.total.value);
 
-        const newHits = mealsRes.hits.hits.map((h) => ({
+        const newHits = mealsRes.hits.hits.map((h: any) => ({
             ...h._source,
             id: h._id
         }));
@@ -56,7 +56,7 @@ function Home() {
                             {
                                 terms: {
                                     meal_id: mealsRes.hits.hits.map(
-                                        (h) => h._id
+                                        (h: any) => h._id
                                     )
                                 }
                             }
@@ -70,11 +70,14 @@ function Home() {
                 index: 'ratings'
             });
 
-            const ratings = ratingsRes.hits.hits.reduce((acc, doc) => {
-                return { ...acc, [doc._source.meal_id]: doc };
-            }, {});
+            const ratings = ratingsRes.hits.hits.reduce(
+                (acc: any, doc: any) => {
+                    return { ...acc, [doc._source.meal_id]: doc };
+                },
+                {}
+            );
 
-            newHits.forEach((hit) => {
+            newHits.forEach((hit: any) => {
                 hit.ratingDoc = ratings[hit.id];
             });
         }
@@ -94,7 +97,7 @@ function Home() {
     }, [query]);
 
     // INIFINTE SCROLL
-    const ref = useRef();
+    const ref = useRef(null);
 
     const onScroll = () => {
         if (ref.current) {
@@ -112,10 +115,10 @@ function Home() {
     }, [page]);
 
     // PACK RESIZE
-    const drawer = document.querySelector('.drawer');
-    const main = document.querySelector('.main');
+    const drawer = document.querySelector('.drawer') as HTMLElement;
+    const main = document.querySelector('.main') as HTMLElement;
 
-    const onMouseMove = (e) => {
+    const onMouseMove = (e: any) => {
         main.style.cssText = `width: ${e.pageX}px`;
         drawer.style.cssText = `width: ${window.innerWidth - e.pageX}px`;
     };
@@ -168,6 +171,4 @@ function Home() {
             />
         </div>
     );
-}
-
-export default Home;
+};

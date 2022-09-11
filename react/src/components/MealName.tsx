@@ -1,7 +1,11 @@
-import React from 'react';
 import './MealName.css';
 
-function MealName({ name, link }) {
+type MealNameProps = {
+    name: string;
+    link: string;
+};
+
+export const MealName = ({ name, link }: MealNameProps) => {
     return (
         <>
             {link ? (
@@ -18,5 +22,3 @@ function MealName({ name, link }) {
         </>
     );
 }
-
-export default MealName;
