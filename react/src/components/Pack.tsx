@@ -1,10 +1,11 @@
-import { Dispatch, SetStateAction, useContext } from 'react';
+import { ChangeEvent, Dispatch, SetStateAction, useContext, useState } from 'react';
 import { AppContext } from '../App';
 import './Pack.css';
 // import Gauge from 'components/Gauge';
 import { MealName } from './MealName';
-import { Activity, Feather, X } from 'react-feather';
+import { Activity, Feather, Minus, Plus, Trash } from 'react-feather';
 import { MealDoc } from '../type';
+import { Input } from './forms/Input';
 
 type PackProps = {
     selection: MealDoc[];
@@ -15,8 +16,7 @@ export const Pack = ({ selection, setSelection }: PackProps) => {
     const { maxCalories, setMaxCalories, maxOunces, setMaxOunces } =
         useContext(AppContext);
 
-    const handleChange = (event: any) => {
-        console.log('handle change event => ', event);
+    const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
         const newVal = Number(event.target.value.replace(',', ''));
         const name = event.target.name;
 
@@ -30,6 +30,8 @@ export const Pack = ({ selection, setSelection }: PackProps) => {
     const deselect = (meal: MealDoc) => {
         setSelection(selection.filter((s) => s.id !== meal.id));
     };
+
+    const [count, setCount] = useState(1);
 
     return (
         <div id="pack">
@@ -67,35 +69,42 @@ export const Pack = ({ selection, setSelection }: PackProps) => {
                     <div style={{ margin: '2rem auto' }}>Nothing selected.</div>
                 ) : (
                     selection.map((meal, i) => (
-                        <div key={i} className="list-item">
-                            <div className="content">
-                                <div
-                                    className="title-row"
-                                    style={{
-                                        color: meal.link
-                                            ? 'var(--meal-name-link)'
-                                            : 'var(--meal-name-custom)'
-                                    }}
-                                >
-                                    {/* TODO - instead of this, clicking the link should scroll to the meal card */}
-                                    <MealName
-                                        name={meal.name}
-                                        link={meal.link}
-                                    />
-                                </div>
-                                {/* <div className="detail-row">{meal.brand}</div> */}
+                        <div
+                            key={i}
+                            className={
+                                i % 2 === 0 ? 'list-item even' : 'list-item'
+                            }
+                        >
+                            <div className="count">
+                                <input
+                                    type="number"
+                                    min="1"
+                                    value={count}
+                                />
+                                <Minus
+                                    size={14}
+                                    color="currentColor"
+                                    onClick={() => setCount((curr) => curr - 1)}
+                                    className="button decrement"
+                                />
+                                <Plus
+                                    size={14}
+                                    color="currentColor"
+                                    onClick={() => setCount((curr) => curr + 1)}
+                                    className="button increment"
+                                />
+                            </div>
+
+                            <div className="data">
+                                <div>{meal.name}</div>
                                 <div className="detail-row">
+                                    <span>{meal.brand}</span>|
                                     <span>
-                                        Calories:{' '}
-                                        {meal.calories.toLocaleString()}
+                                        {meal.calories.toLocaleString()} cal
                                     </span>
+                                    |
                                     <span>
-                                        Water: {meal.water_ml.toLocaleString()}{' '}
-                                        mL
-                                    </span>
-                                    <span>
-                                        Weight: {meal.ounces.toLocaleString()}{' '}
-                                        oz
+                                        {meal.ounces.toLocaleString()} oz
                                     </span>
                                 </div>
                             </div>
@@ -104,7 +113,7 @@ export const Pack = ({ selection, setSelection }: PackProps) => {
                                 title="Remove from pack"
                                 onClick={() => deselect(meal)}
                             >
-                                <X />
+                                <Trash size={18} />
                             </div>
                         </div>
                     ))

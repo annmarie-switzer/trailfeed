@@ -1,21 +1,21 @@
-import { useEffect, useState } from 'react';
+import { ReactElement, useEffect, useState } from 'react';
 import './Input.css';
 import { Minus, Plus } from 'react-feather';
 
 type InputProps = {
     type: string;
-    placeholder: string;
     onChange: (v: string) => void;
-    onBlur: () => void;
+    placeholder?: string;
+    onBlur?: () => void;
     hasError?: boolean;
-    children: any;
+    children?: ReactElement;
 };
 
 export const Input = ({
     type,
     placeholder,
     onChange,
-    onBlur,
+    onBlur = () => null,
     hasError = false,
     children
 }: InputProps) => {

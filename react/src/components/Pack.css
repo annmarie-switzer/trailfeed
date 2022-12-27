@@ -7,6 +7,23 @@
     overflow: auto;
 }
 
+#pack input {
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    outline: none;
+    border: solid 1px var(--bg-contrast);
+    border-radius: 2px;
+    background-color: var(--bg-contrast);
+    color: var(--light-text);
+    font-size: 1rem;
+    font-family: inherit;
+    padding: 0.5rem 0;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+/* target inputs */
 #pack .inputs {
     display: flex;
     align-items: center;
@@ -20,6 +37,10 @@
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+}
+
+#pack .input-container input:focus {
+    color: var(--fg);
 }
 
 #pack .input-container.calories {
@@ -45,26 +66,7 @@
     gap: 0.5rem;
 }
 
-#pack .input-container input {
-    appearance: none;
-    -moz-appearance: none;
-    -webkit-appearance: none;
-    outline: none;
-    border: solid 1px var(--bg-contrast);
-    border-radius: 2px;
-    background-color: var(--bg-contrast);
-    color: var(--light-text);
-    font-size: 1rem;
-    font-family: inherit;
-    padding: 0.5rem 0;
-    box-sizing: border-box;
-    text-align: center;
-}
-
-#pack .input-container input:focus {
-    color: var(--fg);
-}
-
+/* meal list */
 #pack .list {
     flex: auto;
     display: flex;
@@ -74,14 +76,76 @@
 #pack .list .list-item {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 1rem;
+    gap: 0.75rem;
+    padding: 1rem 1rem 1rem 0.5rem;
+    box-sizing: border-box;
 }
 
-#pack .list .list-item:hover {
+#pack .list .list-item.even {
     background-color: var(--bg1);
 }
 
+#pack .list .list-item:last-child {
+    border-bottom: solid 1px var(--bg1);
+}
+
+/* count */
+#pack .count {
+    position: relative;
+    user-select: none;
+}
+
+#pack .count input {
+    width: 70px;
+}
+
+#pack .count:not(:hover) input {
+    background-color: unset;
+    border: 0;
+}
+
+#pack .count input::-webkit-inner-spin-button {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+#pack .count .button {
+    position: absolute;
+    height: 100%;
+    cursor: pointer;
+    visibility: hidden;
+}
+
+#pack .count:hover .button {
+    visibility: visible;
+}
+
+#pack .count .button.increment {
+    right: 0.5rem;
+}
+
+#pack .count .button.decrement {
+    left: 0.5rem;
+}
+
+/* meal data */
+#pack .list .list-item .data {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    flex: auto;
+}
+
+#pack .list .list-item .data .detail-row {
+    font-size: 0.75rem;
+    color: var(--light-text);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+/* delete icon */
 #pack .list .list-item:hover .icon {
     visibility: visible;
 }
@@ -89,22 +153,14 @@
 #pack .list .list-item .icon {
     display: flex;
     cursor: pointer;
-    color: var(--red);
     visibility: hidden;
+    color: var(--light-text);
+}
+
+#pack .list .list-item .icon:hover {
+    color: var(--fg);
 }
 
 #pack .list .list-item .icon:active {
     opacity: 0.8;
-}
-
-#pack .list .list-item .content {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-}
-
-#pack .list .list-item .content .detail-row {
-    font-size: 0.75;
-    display: flex;
-    gap: 2rem;
 }
