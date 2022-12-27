@@ -7,11 +7,12 @@ import { Stats } from './Stats';
 import { FileText, LogOut } from 'react-feather';
 import { AppContext } from '../App';
 import { BackpackIcon } from './icons/BackpackIcon';
+import { MealDoc } from '../type';
 
 type ToolbarProps = {
     packOpen: boolean;
     setPackOpen: Dispatch<SetStateAction<boolean>>;
-    selection: any[];
+    selection: MealDoc[];
 };
 
 export const Toolbar = ({ packOpen, setPackOpen, selection }: ToolbarProps) => {

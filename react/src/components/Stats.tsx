@@ -1,9 +1,10 @@
 import { useContext, useEffect, useState } from 'react';
 import './Stats.css';
 import { AppContext } from '../App';
+import { MealDoc } from '../type';
 
 type StatsProps = {
-    selection: any[];
+    selection: MealDoc[];
 };
 
 export const Stats = ({ selection }: StatsProps) => {
@@ -30,8 +31,8 @@ export const Stats = ({ selection }: StatsProps) => {
         );
 
         setTotal({
-            calories: newTotals.calories.toLocaleString(),
-            ounces: newTotals.ounces.toLocaleString()
+            calories: newTotals.calories,
+            ounces: newTotals.ounces
         });
 
         setProgress({
@@ -42,10 +43,9 @@ export const Stats = ({ selection }: StatsProps) => {
 
     return (
         <div id="stats">
-            {/* CALORIES */}
             <div className="progress-bar-container calories">
                 <span style={{ color: 'var(--calories)' }}>
-                    {total.calories} cal
+                    {total.calories.toLocaleString()} cal
                 </span>
                 <div
                     className="progress-bar"
@@ -65,7 +65,7 @@ export const Stats = ({ selection }: StatsProps) => {
 
             <div className="progress-bar-container ounces">
                 <span style={{ color: 'var(--ounces)' }}>
-                    {total.ounces} oz
+                    {total.ounces.toLocaleString()} oz
                 </span>
                 <div
                     className="progress-bar"
@@ -84,4 +84,4 @@ export const Stats = ({ selection }: StatsProps) => {
             </div>
         </div>
     );
-}
+};
