@@ -59,7 +59,7 @@ export const Card = ({
                                 : 'Add to pack'
                         }
                     >
-                        <Checkbox onChange={() => handleSelection(hit)} />
+                        <Checkbox toggle={() => handleSelection(hit)} />
                     </span>
                 </div>
                 <span className="brand">{hit.brand || 'You made this!'}</span>

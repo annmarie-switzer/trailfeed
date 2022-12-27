@@ -21,7 +21,7 @@
     ],
     "rules": {
         "no-duplicate-imports": "error",
-        "no-unused-vars": "warn",
+        "@typescript-eslint/no-unused-vars": "warn",
         "react-hooks/rules-of-hooks": "error",
         "react-hooks/exhaustive-deps": "off",
         "react/jsx-uses-react": "off",

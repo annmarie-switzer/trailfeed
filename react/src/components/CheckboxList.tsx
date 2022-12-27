@@ -5,13 +5,17 @@ import { Checkbox } from './Checkbox';
 type CheckboxListProps = {
     buckets: any[];
     group: any;
-    setSelection: Dispatch<SetStateAction<any>>
-}
+    setSelection: Dispatch<SetStateAction<any>>;
+};
 
-export const CheckboxList = ({ buckets, group, setSelection }: CheckboxListProps) => {
+export const CheckboxList = ({
+    buckets,
+    group,
+    setSelection
+}: CheckboxListProps) => {
     const [selection, setLocalSelection] = useState<any[]>([]);
 
-    const toggle = (target: any) => {
+    const toggle = (target: HTMLInputElement) => {
         const newSelection = target.checked
             ? [...selection, target.value]
             : selection.filter((s) => s !== target.value);
@@ -34,11 +38,11 @@ export const CheckboxList = ({ buckets, group, setSelection }: CheckboxListProps
                         value={bucket.key}
                         label={bucket.key.replace('_', ' ')}
                         inverse={group === 'allergens'}
-                        onChange={toggle}
+                        toggle={toggle}
                     />
                 </div>
             );
         });
 
     return <div className="checkbox-list">{checkboxes}</div>;
-}
+};
