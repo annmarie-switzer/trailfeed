@@ -1,0 +1,96 @@
+#pack .list .pack-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 1rem 1rem 0.5rem;
+    box-sizing: border-box;
+}
+
+#pack .list .pack-item.even {
+    background-color: var(--bg1);
+}
+
+#pack .list .pack-item:last-child {
+    border-bottom: solid 1px var(--bg1);
+}
+
+/* count */
+#pack .count {
+    position: relative;
+    user-select: none;
+}
+
+#pack .count input {
+    width: 70px;
+}
+
+#pack .count:not(:hover) input {
+    background-color: unset;
+    border: 0;
+}
+
+#pack .count input::-webkit-inner-spin-button {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+#pack .count .button {
+    position: absolute;
+    height: 100%;
+    cursor: pointer;
+    visibility: hidden;
+}
+
+#pack .count .button.disabled {
+    pointer-events: none;
+    opacity: 0.3;
+}
+
+#pack .count:hover .button {
+    visibility: visible;
+}
+
+#pack .count .button.increment {
+    right: 0.5rem;
+}
+
+#pack .count .button.decrement {
+    left: 0.5rem;
+}
+
+/* meal data */
+#pack .list .pack-item .data {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    flex: auto;
+}
+
+#pack .list .pack-item .data .detail-row {
+    font-size: 0.75rem;
+    color: var(--light-text);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+/* delete icon */
+#pack .list .pack-item:hover .icon {
+    visibility: visible;
+}
+
+#pack .list .pack-item .icon {
+    display: flex;
+    cursor: pointer;
+    visibility: hidden;
+    color: var(--light-text);
+}
+
+#pack .list .pack-item .icon:hover {
+    color: var(--fg);
+}
+
+#pack .list .pack-item .icon:active {
+    opacity: 0.8;
+}

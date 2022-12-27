@@ -21,18 +21,16 @@ import {
 
 type CardProps = {
     hit: any;
-    selection: any;
     handleSelection: (hit: any) => void;
     handleDelete: () => void;
 };
 
 export const Card = ({
     hit,
-    selection,
     handleSelection,
     handleDelete
 }: CardProps) => {
-    const { setModalData } = useContext(AppContext);
+    const { setModalData, selection } = useContext(AppContext);
     const [ids, setIds] = useState<string[]>([]);
 
     const onDelete = async (id: string) => {

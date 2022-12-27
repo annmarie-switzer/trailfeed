@@ -6,6 +6,7 @@ import { SearchBar } from '../components/SearchBar';
 import { Card } from '../components/Card';
 import { Pack } from '../components/Pack';
 import { Toolbar } from '../components/Toolbar';
+import { MealDoc } from '../type';
 
 export const Home = () => {
     const [page, setPage] = useState(0);
@@ -13,9 +14,8 @@ export const Home = () => {
     const [hits, setHits] = useState<any[]>([]);
     const [totalHits, setTotalHits] = useState(0);
     const [packOpen, setPackOpen] = useState(true);
-    const [selection, setSelection] = useState<any[]>([]);
 
-    const { user } = useContext(AppContext);
+    const { user, selection, setSelection } = useContext(AppContext);
 
     const handleSelection = (hit: any) => {
         const ids: string[] = selection.map((s: any) => s.id);
@@ -148,7 +148,6 @@ export const Home = () => {
                             <Card
                                 key={i}
                                 hit={h}
-                                selection={selection}
                                 handleSelection={handleSelection}
                                 handleDelete={() => getData(page)}
                             />
@@ -161,14 +160,10 @@ export const Home = () => {
                         onMouseDown={onMouseDown}
                         onMouseUp={onMouseUp}
                     />
-                    <Pack selection={selection} setSelection={setSelection} />
+                    <Pack />
                 </div>
             </div>
-            <Toolbar
-                packOpen={packOpen}
-                setPackOpen={setPackOpen}
-                selection={selection}
-            />
+            <Toolbar packOpen={packOpen} setPackOpen={setPackOpen} />
         </div>
     );
 };

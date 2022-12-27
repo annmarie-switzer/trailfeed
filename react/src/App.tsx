@@ -11,6 +11,7 @@ import { Home } from './pages/Home';
 import { NewMeal } from './pages/NewMeal';
 import { Login } from './components/Login';
 import { Modal } from './components/Modal';
+import { MealDoc } from './type';
 
 type User = {
     name: string;
@@ -27,13 +28,14 @@ type Context = {
     maxOunces: number;
     setMaxOunces: Dispatch<SetStateAction<number>>;
     setModalData: Dispatch<SetStateAction<any>>;
+    selection: MealDoc[];
+    setSelection: Dispatch<SetStateAction<MealDoc[]>>;
 };
 
 export const AppContext = createContext<Context>({} as Context);
 
 function App() {
     const [user, setUser] = useState<User | null>(null);
-
     const [theme, setTheme] = useState(localStorage.getItem('theme') || 'dark');
 
     const [maxCalories, setMaxCalories] = useState(
@@ -43,6 +45,8 @@ function App() {
     const [maxOunces, setMaxOunces] = useState(
         Number(localStorage.getItem('trailfeedMaxOunces')) || 96
     );
+
+    const [selection, setSelection] = useState<MealDoc[]>([]);
 
     // TODO - why does this need to be in state?
     const [modalData, setModalData] = useState(null);
@@ -79,7 +83,9 @@ function App() {
                         setMaxCalories,
                         maxOunces,
                         setMaxOunces,
-                        setModalData
+                        setModalData,
+                        selection,
+                        setSelection
                     }}
                 >
                     <Routes>

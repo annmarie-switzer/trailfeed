@@ -7,17 +7,15 @@ import { Stats } from './Stats';
 import { FileText, LogOut } from 'react-feather';
 import { AppContext } from '../App';
 import { BackpackIcon } from './icons/BackpackIcon';
-import { MealDoc } from '../type';
 
 type ToolbarProps = {
     packOpen: boolean;
     setPackOpen: Dispatch<SetStateAction<boolean>>;
-    selection: MealDoc[];
 };
 
-export const Toolbar = ({ packOpen, setPackOpen, selection }: ToolbarProps) => {
+export const Toolbar = ({ packOpen, setPackOpen }: ToolbarProps) => {
     const navigate = useNavigate();
-    const { user } = useContext(AppContext);
+    const { user, selection } = useContext(AppContext);
 
     return (
         <div id="toolbar">
