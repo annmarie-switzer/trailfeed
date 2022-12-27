@@ -15,11 +15,11 @@ import {
     Watch
 } from 'react-feather';
 import { useNavigate } from 'react-router-dom';
-import { Select } from './forms/Select';
-import { Input } from './forms/Input';
-import { Textarea } from './forms/Textarea';
-import { ThemeSwitcher } from './ThemeSwitcher';
-import { AppContext } from './App';
+import { Select } from '../components/forms/Select';
+import { Input } from '../components/forms/Input';
+import { Textarea } from '../components/forms/Textarea';
+import { ThemeSwitcher } from '../components/ThemeSwitcher';
+import { AppContext } from '../App';
 
 export const NewMeal = () => {
     const navigate = useNavigate();

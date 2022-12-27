@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from 'react';
 import './Stats.css';
-import { AppContext } from './App';
+import { AppContext } from '../App';
 
 type StatsProps = {
     selection: any[];

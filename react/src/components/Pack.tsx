@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction, useContext } from 'react';
-import { AppContext } from './App';
+import { AppContext } from '../App';
 import './Pack.css';
 // import Gauge from 'components/Gauge';
 import { MealName } from './MealName';

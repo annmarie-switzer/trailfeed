@@ -2,7 +2,7 @@ import { useContext, useState } from 'react';
 import './Stars.css';
 import { Star } from 'react-feather';
 import { updateRating, addDoc } from '../api';
-import { AppContext } from './App';
+import { AppContext } from '../App';
 
 type StarsProps = {
     ratingDoc: any;

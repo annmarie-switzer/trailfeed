@@ -10,7 +10,7 @@ import { search } from '../api';
 import { CheckboxList } from './CheckboxList';
 import { RangeSlider } from './forms/RangeSlider';
 import { Search, Sliders } from 'react-feather';
-import { AppContext } from './App';
+import { AppContext } from '../App';
 
 type SearchBarProps = {
     setQuery: Dispatch<SetStateAction<any>>;

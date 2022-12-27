@@ -5,7 +5,7 @@ import { logout } from '../api';
 import { ThemeSwitcher } from './ThemeSwitcher';
 import { Stats } from './Stats';
 import { FileText, LogOut } from 'react-feather';
-import { AppContext } from './App';
+import { AppContext } from '../App';
 import { BackpackIcon } from './icons/BackpackIcon';
 
 type ToolbarProps = {

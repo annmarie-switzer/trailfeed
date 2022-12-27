@@ -1,7 +1,7 @@
 import { useContext, useState } from 'react';
 import './Login.css';
 import { useNavigate } from 'react-router-dom';
-import { AppContext } from './App';
+import { AppContext } from '../App';
 import { GoogleIcon } from './icons/GoogleIcon';
 import { User } from 'react-feather';
 

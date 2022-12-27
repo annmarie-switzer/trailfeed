@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import './ThemeSwitcher.css';
 import { Moon, Sun } from 'react-feather';
-import { AppContext } from './App';
+import { AppContext } from '../App';
 
 export const ThemeSwitcher = () => {
     const { theme, setTheme } = useContext(AppContext);

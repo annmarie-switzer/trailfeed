@@ -1,11 +1,11 @@
 import { useContext, useEffect, useRef, useState } from 'react';
-import { AppContext } from './App';
+import { AppContext } from '../App';
 import './Home.css';
-import { SearchBar } from './SearchBar';
-import { Card } from './Card';
 import { search } from '../api';
-import { Pack } from './Pack';
-import { Toolbar } from './Toolbar';
+import { SearchBar } from '../components/SearchBar';
+import { Card } from '../components/Card';
+import { Pack } from '../components/Pack';
+import { Toolbar } from '../components/Toolbar';
 
 export const Home = () => {
     const [page, setPage] = useState(0);

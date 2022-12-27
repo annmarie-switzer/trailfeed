@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
-import { AppContext } from './App';
+import { AppContext } from '../App';
 import { deleteMeal } from '../api';
 import './Card.css';
 import { Checkbox } from './Checkbox';

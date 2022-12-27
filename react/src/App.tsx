@@ -6,11 +6,11 @@ import {
     useState
 } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
-import { getUser } from '../api';
-import { Home } from './Home';
-import { Login } from './Login';
-import { Modal } from './Modal';
-import { NewMeal } from './NewMeal';
+import { getUser } from './api';
+import { Home } from './pages/Home';
+import { NewMeal } from './pages/NewMeal';
+import { Login } from './components/Login';
+import { Modal } from './components/Modal';
 
 type User = {
     name: string;
