@@ -5,7 +5,7 @@ type TooltipProps = {
     children: ReactNode;
     text: string;
     position?: 'bottom' | 'top';
-    width?: number;
+    width?: number | string;
 };
 
 export const Tooltip = ({

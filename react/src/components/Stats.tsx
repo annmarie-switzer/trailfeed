@@ -45,57 +45,51 @@ export const Stats = ({ selection }: StatsProps) => {
     return (
         <div id="stats">
             <div className="progress-bar-container calories">
+                <span style={{ color: 'var(--calories)' }}>
+                    {total.calories.toLocaleString()} cal
+                </span>
+
                 <Tooltip
-                    text={`Target: ${maxCalories.toLocaleString()} cal`}
+                    text={`${total.calories.toLocaleString()} / ${maxCalories.toLocaleString()} calories (${
+                        progress.calories
+                    }%)`}
                     position="top"
                     width={125}
                 >
-                    <span style={{ color: 'var(--calories)' }}>
-                        {total.calories.toLocaleString()} cal
-                    </span>
+                    <div className="progress-bar">
+                        <div
+                            className="progress-bar-fill"
+                            style={{
+                                width: `${progress.calories}%`,
+                                backgroundColor: 'var(--calories)'
+                            }}
+                        />
+                    </div>
                 </Tooltip>
-
-                <div
-                    className="progress-bar"
-                    title={`${total.calories.toLocaleString()} / ${maxCalories.toLocaleString()} calories (${
-                        progress.calories
-                    }%)`}
-                >
-                    <div
-                        className="progress-bar-fill"
-                        style={{
-                            width: `${progress.calories}%`,
-                            backgroundColor: 'var(--calories)'
-                        }}
-                    />
-                </div>
             </div>
 
             <div className="progress-bar-container ounces">
+                <span style={{ color: 'var(--ounces)' }}>
+                    {total.ounces.toLocaleString()} oz
+                </span>
+
                 <Tooltip
-                    text={`Target: ${maxOunces.toLocaleString()} oz`}
+                    text={`${total.ounces.toLocaleString()} / ${maxOunces.toLocaleString()} oz (${
+                        progress.ounces
+                    }%)`}
                     position="top"
                     width={125}
                 >
-                    <span style={{ color: 'var(--ounces)' }}>
-                        {total.ounces.toLocaleString()} oz
-                    </span>
+                    <div className="progress-bar">
+                        <div
+                            className="progress-bar-fill"
+                            style={{
+                                width: `${progress.ounces}%`,
+                                backgroundColor: 'var(--ounces)'
+                            }}
+                        />
+                    </div>
                 </Tooltip>
-
-                <div
-                    className="progress-bar"
-                    title={`${total.ounces.toLocaleString()} / ${maxOunces.toLocaleString()} oz (${
-                        progress.ounces
-                    }%)`}
-                >
-                    <div
-                        className="progress-bar-fill"
-                        style={{
-                            width: `${progress.ounces}%`,
-                            backgroundColor: 'var(--ounces)'
-                        }}
-                    />
-                </div>
             </div>
         </div>
     );
