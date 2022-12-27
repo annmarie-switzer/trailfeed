@@ -1,3 +1,4 @@
+// @ts-nocheck
 import express from 'express';
 import axios from 'axios';
 import dotenv from 'dotenv';
@@ -200,7 +201,7 @@ app.post('/api/es/search', async (req, res) => {
             res.status(200).json(esRes);
         }
     } catch (e) {
-        console.log(e.response);
+        console.log(e.response.data);
         res.status(e.response.status).send(e.response.data);
     }
 });
