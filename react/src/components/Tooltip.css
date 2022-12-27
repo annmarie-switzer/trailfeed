@@ -1,0 +1,20 @@
+.tooltip-container {
+    position: relative;
+}
+
+.tooltip {
+    visibility: hidden;
+    position: absolute;
+    background-color: var(--fg);
+    color: var(--bg);
+    border-radius: 0.25rem;
+    padding: 0.75rem;
+    box-sizing: border-box;
+    font-size: 0.8rem;
+    min-width: 100px;
+    text-align: center;
+}
+
+.tooltip.show {
+    visibility: visible;
+}

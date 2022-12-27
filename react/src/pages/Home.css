@@ -17,6 +17,7 @@
     display: flex;
     border-left: solid 1px var(--bg-contrast);
     position: relative;
+    transition: width 200ms ease-in-out;
 }
 
 #home .drawer.open {

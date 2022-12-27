@@ -39,23 +39,3 @@
     display: flex;
     align-items: center;
 }
-
-#login #guest-button-container {
-    position: relative;
-}
-
-#login #tooltip {
-    visibility: hidden;
-    position: absolute;
-    top: 130%;
-    background-color: var(--fg);
-    color: var(--bg);
-    border-radius: 0.25rem;
-    padding: 0.75rem;
-    box-sizing: border-box;
-    font-size: 0.8rem;
-}
-
-#login #tooltip.show {
-    visibility: visible;
-}

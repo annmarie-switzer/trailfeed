@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from 'react';
 import './Stats.css';
 import { AppContext } from '../App';
 import { MealDoc } from '../type';
+import { Tooltip } from './Tooltip';
 
 type StatsProps = {
     selection: MealDoc[];
@@ -44,9 +45,16 @@ export const Stats = ({ selection }: StatsProps) => {
     return (
         <div id="stats">
             <div className="progress-bar-container calories">
-                <span style={{ color: 'var(--calories)' }}>
-                    {total.calories.toLocaleString()} cal
-                </span>
+                <Tooltip
+                    text={`Target: ${maxCalories.toLocaleString()} cal`}
+                    position="top"
+                    width={125}
+                >
+                    <span style={{ color: 'var(--calories)' }}>
+                        {total.calories.toLocaleString()} cal
+                    </span>
+                </Tooltip>
+
                 <div
                     className="progress-bar"
                     title={`${total.calories.toLocaleString()} / ${maxCalories.toLocaleString()} calories (${
@@ -64,9 +72,16 @@ export const Stats = ({ selection }: StatsProps) => {
             </div>
 
             <div className="progress-bar-container ounces">
-                <span style={{ color: 'var(--ounces)' }}>
-                    {total.ounces.toLocaleString()} oz
-                </span>
+                <Tooltip
+                    text={`Target: ${maxOunces.toLocaleString()} oz`}
+                    position="top"
+                    width={125}
+                >
+                    <span style={{ color: 'var(--ounces)' }}>
+                        {total.ounces.toLocaleString()} oz
+                    </span>
+                </Tooltip>
+
                 <div
                     className="progress-bar"
                     title={`${total.ounces.toLocaleString()} / ${maxOunces.toLocaleString()} oz (${

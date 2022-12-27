@@ -5,20 +5,11 @@ type MealNameProps = {
     link: string;
 };
 
-export const MealName = ({ name, link }: MealNameProps) => {
-    return (
-        <>
-            {link ? (
-                <a
-                    href={link}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="meal-name">
-                    {name}
-                </a>
-            ) : (
-                <span className="meal-name">{name}</span>
-            )}
-        </>
+export const MealName = ({ name, link }: MealNameProps) =>
+    link ? (
+        <a href={link} target="_blank" rel="noreferrer" className="meal-name">
+            {name}
+        </a>
+    ) : (
+        <span className="meal-name">{name}</span>
     );
-}

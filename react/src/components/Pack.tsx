@@ -4,10 +4,11 @@ import './Pack.css';
 // import Gauge from 'components/Gauge';
 import { MealName } from './MealName';
 import { Activity, Feather, X } from 'react-feather';
+import { MealDoc } from '../type';
 
 type PackProps = {
-    selection: any[];
-    setSelection: Dispatch<SetStateAction<any>>;
+    selection: MealDoc[];
+    setSelection: Dispatch<SetStateAction<MealDoc[]>>;
 };
 
 export const Pack = ({ selection, setSelection }: PackProps) => {
@@ -15,6 +16,7 @@ export const Pack = ({ selection, setSelection }: PackProps) => {
         useContext(AppContext);
 
     const handleChange = (event: any) => {
+        console.log('handle change event => ', event);
         const newVal = Number(event.target.value.replace(',', ''));
         const name = event.target.name;
 
@@ -25,7 +27,7 @@ export const Pack = ({ selection, setSelection }: PackProps) => {
             : setMaxOunces(newVal);
     };
 
-    const deselect = (meal: any) => {
+    const deselect = (meal: MealDoc) => {
         setSelection(selection.filter((s) => s.id !== meal.id));
     };
 
@@ -75,12 +77,13 @@ export const Pack = ({ selection, setSelection }: PackProps) => {
                                             : 'var(--meal-name-custom)'
                                     }}
                                 >
+                                    {/* TODO - instead of this, clicking the link should scroll to the meal card */}
                                     <MealName
                                         name={meal.name}
                                         link={meal.link}
                                     />
                                 </div>
-                                <div className="detail-row">{meal.brand}</div>
+                                {/* <div className="detail-row">{meal.brand}</div> */}
                                 <div className="detail-row">
                                     <span>
                                         Calories:{' '}
@@ -109,4 +112,4 @@ export const Pack = ({ selection, setSelection }: PackProps) => {
             </div>
         </div>
     );
-}
+};

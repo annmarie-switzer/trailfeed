@@ -1,15 +1,14 @@
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import './Login.css';
 import { useNavigate } from 'react-router-dom';
 import { AppContext } from '../App';
 import { GoogleIcon } from './icons/GoogleIcon';
 import { User } from 'react-feather';
+import { Tooltip } from './Tooltip';
 
 export const Login = () => {
     const navigate = useNavigate();
     const { setUser } = useContext(AppContext);
-
-    const [showTooltip, setShowTooltip] = useState(false);
 
     const googleLogin = () => {
         window.location.href = `https://accounts.google.com/o/oauth2/v2/auth?response_type=code&client_id=${process.env.REACT_APP_CLIENT_ID}&scope=openid%20profile%20email&redirect_uri=${process.env.REACT_APP_URL}/callback&state=changeme&nonce=changemetoo&prompt=select_account`;
@@ -36,20 +35,16 @@ export const Login = () => {
                     Login with Google
                 </button>
 
-                <div
-                    id="guest-button-container"
-                    onMouseEnter={() => setShowTooltip(true)}
-                    onMouseLeave={() => setShowTooltip(false)}>
+                <Tooltip
+                    text="As a guest, you can search and add meals to your pack,
+                        but you can not rate or make custom meals."
+                >
                     <button type="button" onClick={guestLogin}>
                         <User />
                         Login as Guest
                     </button>
-                    <div id="tooltip" className={showTooltip ? 'show' : ''}>
-                        As a guest, you can search and add meals to your pack,
-                        but you can not rate or make custom meals.
-                    </div>
-                </div>
+                </Tooltip>
             </div>
         </div>
     );
-}
+};
