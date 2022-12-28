@@ -54,7 +54,7 @@
 }
 
 #searchbar .top-bar input:focus {
-    background-color: var(--bg2);
+    background-color: var(--bg1);
 }
 
 #searchbar button {

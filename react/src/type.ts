@@ -1,4 +1,20 @@
-export type MealDoc = {
+export interface EsHit {
+    _id: string;
+    _index: string;
+    _type: '_doc';
+    _score: number;
+    _source: MealSource | RatingSource;
+}
+
+export interface MealDoc extends EsHit {
+    _source: MealSource;
+}
+
+export interface RatingDoc extends EsHit {
+    _source: RatingSource;
+}
+
+export type MealSource = {
     brand: string;
     name: string;
     meal_type: MealType[];
@@ -16,21 +32,15 @@ export type MealDoc = {
     count: number;
 };
 
+export type RatingSource = {
+    user: string;
+    meal_id: string;
+    rating: number;
+};
+
 type MealType = 'breakfast' | 'entree' | 'dessert' | 'snack';
 
 type WaterTemp = 'boiling' | 'cold' | 'none';
-
-type RatingDoc = {
-    _index: 'ratings';
-    _type: '_doc';
-    _id: string;
-    _score: number;
-    _source: {
-        user: string;
-        meal_id: string;
-        rating: number;
-    };
-};
 
 export type User = {
     name: string;

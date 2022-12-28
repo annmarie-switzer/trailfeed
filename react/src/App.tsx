@@ -10,7 +10,7 @@ import { getUser } from './api';
 import { Home } from './pages/Home';
 import { NewMeal } from './pages/NewMeal';
 import { Login } from './components/Login';
-import { MealDoc, User } from './type';
+import { MealSource, User } from './type';
 
 type Context = {
     user: User;
@@ -21,8 +21,8 @@ type Context = {
     setMaxCalories: Dispatch<SetStateAction<number>>;
     maxOunces: number;
     setMaxOunces: Dispatch<SetStateAction<number>>;
-    selection: MealDoc[];
-    setSelection: Dispatch<SetStateAction<MealDoc[]>>;
+    selection: MealSource[];
+    setSelection: Dispatch<SetStateAction<MealSource[]>>;
 };
 
 export const AppContext = createContext<Context>({} as Context);
@@ -39,7 +39,7 @@ function App() {
         Number(localStorage.getItem('trailfeedMaxOunces')) || 96
     );
 
-    const [selection, setSelection] = useState<MealDoc[]>([]);
+    const [selection, setSelection] = useState<MealSource[]>([]);
 
     useEffect(() => {
         document.body.dataset.theme = theme;

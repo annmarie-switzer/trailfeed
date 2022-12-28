@@ -1,12 +1,12 @@
 import { useContext } from 'react';
-import { MealDoc } from '../type';
+import { MealSource } from '../type';
 import { AppContext } from '../App';
 import { Minus, Plus, Trash } from 'react-feather';
 import './PackItem.css';
 import clsx from 'clsx';
 
 type PackItemProps = {
-    meal: MealDoc;
+    meal: MealSource;
     idx: number;
 };
 
@@ -29,7 +29,7 @@ export const PackItem = ({ meal, idx }: PackItemProps) => {
         });
     };
 
-    const deselect = (meal: MealDoc) => {
+    const deselect = (meal: MealSource) => {
         setSelection(selection.filter((s) => s.id !== meal.id));
     };
 

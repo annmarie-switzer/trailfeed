@@ -18,11 +18,11 @@ import {
     Trash,
     Watch
 } from 'react-feather';
-import { MealDoc } from '../type';
+import { MealSource } from '../type';
 
 type CardProps = {
-    hit: MealDoc;
-    handleSelection: (hit: MealDoc) => void;
+    hit: MealSource;
+    handleSelection: (hit: MealSource) => void;
     handleDelete: () => void;
 };
 

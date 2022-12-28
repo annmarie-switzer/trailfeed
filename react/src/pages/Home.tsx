@@ -6,19 +6,20 @@ import { SearchBar } from '../components/SearchBar';
 import { Card } from '../components/Card';
 import { Pack } from '../components/Pack';
 import { Toolbar } from '../components/Toolbar';
-import { MealDoc } from '../type';
+import { EsHit, MealSource, RatingDoc } from '../type';
 
 export const Home = () => {
     const [page, setPage] = useState(0);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const [query, setQuery] = useState<any>(null);
-    const [hits, setHits] = useState<any[]>([]);
+    const [hits, setHits] = useState<MealSource[]>([]);
     const [totalHits, setTotalHits] = useState(0);
     const [packOpen, setPackOpen] = useState(true);
 
     const { user, selection, setSelection } = useContext(AppContext);
 
-    const handleSelection = (hit: any) => {
-        const ids: string[] = selection.map((s: any) => s.id);
+    const handleSelection = (hit: MealSource) => {
+        const ids: string[] = selection.map((s) => s.id);
         setSelection(
             ids.includes(hit.id)
                 ? selection.filter((s) => s.id !== hit.id)
@@ -36,7 +37,7 @@ export const Home = () => {
 
         setTotalHits(mealsRes.hits.total.value);
 
-        const newHits = mealsRes.hits.hits.map((h: any) => ({
+        const newHits = mealsRes.hits.hits.map((h: EsHit) => ({
             ...h._source,
             id: h._id
         }));
@@ -56,7 +57,7 @@ export const Home = () => {
                             {
                                 terms: {
                                     meal_id: mealsRes.hits.hits.map(
-                                        (h: any) => h._id
+                                        (h: EsHit) => h._id
                                     )
                                 }
                             }
@@ -71,13 +72,14 @@ export const Home = () => {
             });
 
             const ratings = ratingsRes.hits.hits.reduce(
-                (acc: any, doc: any) => {
-                    return { ...acc, [doc._source.meal_id]: doc };
-                },
+                (acc: Record<string, RatingDoc>, doc: RatingDoc) => ({
+                    ...acc,
+                    [doc._source.meal_id]: doc
+                }),
                 {}
             );
 
-            newHits.forEach((hit: any) => {
+            newHits.forEach((hit: MealSource) => {
                 hit.ratingDoc = ratings[hit.id];
             });
         }
@@ -118,7 +120,7 @@ export const Home = () => {
     const drawer = document.querySelector('.drawer') as HTMLElement;
     const main = document.querySelector('.main') as HTMLElement;
 
-    const onMouseMove = (e: any) => {
+    const onMouseMove = (e: MouseEvent) => {
         main.style.cssText = `width: ${e.pageX}px`;
         drawer.style.cssText = `width: ${window.innerWidth - e.pageX}px`;
     };
