@@ -10,7 +10,6 @@ import { getUser } from './api';
 import { Home } from './pages/Home';
 import { NewMeal } from './pages/NewMeal';
 import { Login } from './components/Login';
-import { Modal } from './components/Modal';
 import { MealDoc } from './type';
 
 type User = {
@@ -27,7 +26,6 @@ type Context = {
     setMaxCalories: Dispatch<SetStateAction<number>>;
     maxOunces: number;
     setMaxOunces: Dispatch<SetStateAction<number>>;
-    setModalData: Dispatch<SetStateAction<any>>;
     selection: MealDoc[];
     setSelection: Dispatch<SetStateAction<MealDoc[]>>;
 };
@@ -47,9 +45,6 @@ function App() {
     );
 
     const [selection, setSelection] = useState<MealDoc[]>([]);
-
-    // TODO - why does this need to be in state?
-    const [modalData, setModalData] = useState(null);
 
     useEffect(() => {
         document.body.dataset.theme = theme;
@@ -83,7 +78,6 @@ function App() {
                         setMaxCalories,
                         maxOunces,
                         setMaxOunces,
-                        setModalData,
                         selection,
                         setSelection
                     }}
@@ -107,10 +101,6 @@ function App() {
                     </Routes>
                 </AppContext.Provider>
             </div>
-
-            {modalData ? (
-                <Modal modalData={modalData} setModalData={setModalData} />
-            ) : null}
         </>
     );
 }
