@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { MealSource } from '../type';
+import { MealSource } from '../types';
 import { AppContext } from '../App';
 import { Minus, Plus, Trash } from 'react-feather';
 import './PackItem.css';

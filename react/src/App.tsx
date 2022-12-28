@@ -10,7 +10,7 @@ import { getUser } from './api';
 import { Home } from './pages/Home';
 import { NewMeal } from './pages/NewMeal';
 import { Login } from './components/Login';
-import { MealSource, User } from './type';
+import { MealSource, User } from './types';
 
 type Context = {
     user: User;

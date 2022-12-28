@@ -11,7 +11,7 @@ import { CheckboxList } from './CheckboxList';
 import { RangeSlider } from './forms/RangeSlider';
 import { Search, Sliders } from 'react-feather';
 import { AppContext } from '../App';
-import { MealDoc } from '../type';
+import { MealDoc } from '../types';
 
 type SearchBarProps = {
     setQuery: Dispatch<SetStateAction<any>>;

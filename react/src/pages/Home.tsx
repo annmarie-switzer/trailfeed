@@ -6,7 +6,7 @@ import { SearchBar } from '../components/SearchBar';
 import { Card } from '../components/Card';
 import { Pack } from '../components/Pack';
 import { Toolbar } from '../components/Toolbar';
-import { MealDoc, MealSource, RatingDoc } from '../type';
+import { MealDoc, MealSource, RatingDoc } from '../types';
 
 export const Home = () => {
     const [page, setPage] = useState(0);

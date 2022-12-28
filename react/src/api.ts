@@ -1,4 +1,4 @@
-import { Index, MealSource, RatingSource } from './type';
+import { Index, MealSource, RatingSource } from './types';
 
 export const getUser = async () => {
     const res = await fetch('/api/user', {

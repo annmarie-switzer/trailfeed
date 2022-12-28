@@ -18,7 +18,7 @@ import {
     Trash,
     Watch
 } from 'react-feather';
-import { MealSource } from '../type';
+import { MealSource } from '../types';
 
 type CardProps = {
     hit: MealSource;
