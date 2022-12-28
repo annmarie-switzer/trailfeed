@@ -31,7 +31,7 @@ export const Toolbar = ({ packOpen, setPackOpen }: ToolbarProps) => {
                 <ThemeSwitcher />
             </div>
 
-            <Stats selection={selection} />
+            <Stats />
 
             <div className="right">
                 <button

@@ -22,7 +22,7 @@ export const Home = () => {
         setSelection(
             ids.includes(hit.id)
                 ? selection.filter((s) => s.id !== hit.id)
-                : [...selection, hit]
+                : [...selection, { ...hit, count: 1 }]
         );
     };
 

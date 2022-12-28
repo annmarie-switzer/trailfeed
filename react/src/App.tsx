@@ -20,7 +20,7 @@ type User = {
 
 type Context = {
     user: User;
-    setUser: Dispatch<SetStateAction<any>>;
+    setUser: Dispatch<SetStateAction<User | null>>;
     theme: string;
     setTheme: Dispatch<SetStateAction<string>>;
     maxCalories: number;

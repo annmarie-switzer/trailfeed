@@ -5,13 +5,8 @@ import { Activity, Feather } from 'react-feather';
 import { PackItem } from './PackItem';
 
 export const Pack = () => {
-    const {
-        maxCalories,
-        setMaxCalories,
-        maxOunces,
-        setMaxOunces,
-        selection
-    } = useContext(AppContext);
+    const { maxCalories, setMaxCalories, maxOunces, setMaxOunces, selection } =
+        useContext(AppContext);
 
     const handleTargetChange = (event: ChangeEvent<HTMLInputElement>) => {
         const newVal = Number(event.target.value.replace(',', ''));
@@ -60,7 +55,7 @@ export const Pack = () => {
                     <div style={{ margin: '2rem auto' }}>Nothing selected.</div>
                 ) : (
                     selection.map((meal, i) => (
-                        <PackItem key={i} meal={meal} />
+                        <PackItem key={i} meal={meal} idx={i} />
                     ))
                 )}
             </div>

@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext } from 'react';
 import { MealDoc } from '../type';
 import { AppContext } from '../App';
 import { Minus, Plus, Trash } from 'react-feather';
@@ -7,37 +7,41 @@ import clsx from 'clsx';
 
 type PackItemProps = {
     meal: MealDoc;
-    key: number;
+    idx: number;
 };
 
-export const PackItem = ({ meal, key }: PackItemProps) => {
+export const PackItem = ({ meal, idx }: PackItemProps) => {
     const { selection, setSelection } = useContext(AppContext);
 
-    const [count, setCount] = useState(1);
-
-    const increment = () => setSelection((curr) => [...curr, meal]);
-
-    const decrement = () =>
+    const increment = () => {
         setSelection((curr) => {
-            const removeIdx = curr.findIndex((m) => m.id === meal.id);
-            return curr.splice(removeIdx, 1);
+            const filtered = curr.filter((s) => s.id !== meal.id);
+            const count = meal.count + 1;
+            return [...filtered, { ...meal, count }];
         });
+    };
+
+    const decrement = () => {
+        setSelection((curr) => {
+            const filtered = curr.filter((s) => s.id !== meal.id);
+            const count = meal.count - 1;
+            return [...filtered, { ...meal, count }];
+        });
+    };
 
     const deselect = (meal: MealDoc) => {
         setSelection(selection.filter((s) => s.id !== meal.id));
     };
 
-    useEffect(() => {
-        const meals = selection.filter((m) => m.id === meal.id);
-        if (meals.length > 0) {
-            setCount(meals.length);
-        }
-    }, [selection]);
-
     return (
-        <div className={key % 2 === 0 ? 'pack-item even' : 'pack-item'}>
+        <div className={idx % 2 === 0 ? 'pack-item even' : 'pack-item'}>
             <div className="count">
-                <input type="number" min="1" value={count} />
+                <input
+                    type="number"
+                    min="1"
+                    value={meal.count}
+                    readOnly
+                />
                 <Minus
                     size={14}
                     color="currentColor"
@@ -45,7 +49,7 @@ export const PackItem = ({ meal, key }: PackItemProps) => {
                     className={clsx(
                         'button',
                         'decrement',
-                        count === 1 && 'disabled'
+                        meal.count === 1 && 'disabled'
                     )}
                 />
                 <Plus

@@ -1,15 +1,10 @@
 import { useContext, useEffect, useState } from 'react';
 import './Stats.css';
 import { AppContext } from '../App';
-import { MealDoc } from '../type';
 import { Tooltip } from './Tooltip';
 
-type StatsProps = {
-    selection: MealDoc[];
-};
-
-export const Stats = ({ selection }: StatsProps) => {
-    const { maxCalories, maxOunces } = useContext(AppContext);
+export const Stats = () => {
+    const { maxCalories, maxOunces, selection } = useContext(AppContext);
 
     const [progress, setProgress] = useState({
         calories: 0,
@@ -24,8 +19,8 @@ export const Stats = ({ selection }: StatsProps) => {
     useEffect(() => {
         const newTotals = selection.reduce(
             (result, s) => {
-                result.calories += s.calories;
-                result.ounces += s.ounces;
+                result.calories += s.calories * s.count;
+                result.ounces += s.ounces * s.count;
                 return result;
             },
             { calories: 0, ounces: 0 }

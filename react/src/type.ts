@@ -13,6 +13,7 @@ export type MealDoc = {
     ingredients: string;
     id: string;
     ratingDoc: RatingDoc;
+    count: number;
 };
 
 type MealType = 'breakfast' | 'entree' | 'dessert' | 'snack';
