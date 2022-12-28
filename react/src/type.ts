@@ -31,3 +31,8 @@ type RatingDoc = {
         rating: number;
     };
 };
+
+export type User = {
+    name: string;
+    email: string;
+};

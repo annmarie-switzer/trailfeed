@@ -10,16 +10,11 @@ import { getUser } from './api';
 import { Home } from './pages/Home';
 import { NewMeal } from './pages/NewMeal';
 import { Login } from './components/Login';
-import { MealDoc } from './type';
-
-type User = {
-    name: string;
-    email: string;
-};
+import { MealDoc, User } from './type';
 
 type Context = {
     user: User;
-    setUser: Dispatch<SetStateAction<any>>;
+    setUser: Dispatch<SetStateAction<User | null>>;
     theme: string;
     setTheme: Dispatch<SetStateAction<string>>;
     maxCalories: number;

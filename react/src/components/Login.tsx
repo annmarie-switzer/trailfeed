@@ -3,8 +3,8 @@ import './Login.css';
 import { useNavigate } from 'react-router-dom';
 import { AppContext } from '../App';
 import { GoogleIcon } from './icons/GoogleIcon';
-import { User } from 'react-feather';
 import { Tooltip } from './Tooltip';
+import { User } from 'react-feather';
 
 export const Login = () => {
     const navigate = useNavigate();
@@ -17,7 +17,7 @@ export const Login = () => {
     const guestLogin = async () => {
         const res = await fetch('/guest-login');
         if (res.status === 201) {
-            setUser(res);
+            setUser(await res.json());
             navigate('/');
         } else {
             // TODO
