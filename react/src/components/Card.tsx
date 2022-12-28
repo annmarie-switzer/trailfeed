@@ -161,11 +161,12 @@ export const Card = ({ hit, handleSelection, handleDelete }: CardProps) => {
                 )}
                 <button
                     type="button"
+                    className="ingredients-button"
                     title={`${showIngredients ? 'Hide' : 'Show'} ingredients`}
                 >
                     <List
                         size={22}
-                        color={showIngredients ? 'var(--info)' : 'currentColor'}
+                        color={showIngredients ? 'var(--fg)' : 'currentColor'}
                         onClick={() => setShowIngredients((curr) => !curr)}
                     />
                 </button>

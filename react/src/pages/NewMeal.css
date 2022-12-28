@@ -19,7 +19,7 @@
     box-sizing: border-box;
     font-style: italic;
     font-size: 1.2rem;
-    color: var(--info);
+    color: var(--primary);
 }
 
 #new-meal .form-container {

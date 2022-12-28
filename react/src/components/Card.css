@@ -61,6 +61,14 @@
     justify-content: flex-end;
 }
 
+.card-footer .ingredients-button {
+    color: var(--light-text);
+}
+
+.card-footer .ingredients-button:hover {
+    color: var(--fg);
+}
+
 #modal-backdrop {
     position: absolute;
     top: 0;
