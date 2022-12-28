@@ -11,6 +11,7 @@ import { CheckboxList } from './CheckboxList';
 import { RangeSlider } from './forms/RangeSlider';
 import { Search, Sliders } from 'react-feather';
 import { AppContext } from '../App';
+import { MealDoc } from '../type';
 
 type SearchBarProps = {
     setQuery: Dispatch<SetStateAction<any>>;
@@ -234,7 +235,7 @@ export const SearchBar = ({ setQuery, totalHits }: SearchBarProps) => {
             size: 0
         };
 
-        search({ query: q, index: 'meals' }).then((res: any) => {
+        search({ query: q, index: 'meals' }).then((res) => {
             setMealTypes(res.aggregations.meal_types.buckets);
             setWaterTemps(res.aggregations.water_temps.buckets);
             setAllergens(res.aggregations.allergens.buckets);

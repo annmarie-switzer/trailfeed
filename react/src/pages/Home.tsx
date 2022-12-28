@@ -6,7 +6,7 @@ import { SearchBar } from '../components/SearchBar';
 import { Card } from '../components/Card';
 import { Pack } from '../components/Pack';
 import { Toolbar } from '../components/Toolbar';
-import { EsHit, MealSource, RatingDoc } from '../type';
+import { MealDoc, MealSource, RatingDoc } from '../type';
 
 export const Home = () => {
     const [page, setPage] = useState(0);
@@ -37,7 +37,7 @@ export const Home = () => {
 
         setTotalHits(mealsRes.hits.total.value);
 
-        const newHits = mealsRes.hits.hits.map((h: EsHit) => ({
+        const newHits = mealsRes.hits.hits.map((h: MealDoc) => ({
             ...h._source,
             id: h._id
         }));
@@ -57,7 +57,7 @@ export const Home = () => {
                             {
                                 terms: {
                                     meal_id: mealsRes.hits.hits.map(
-                                        (h: EsHit) => h._id
+                                        (h: MealDoc) => h._id
                                     )
                                 }
                             }

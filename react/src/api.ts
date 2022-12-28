@@ -1,3 +1,5 @@
+import { Index, MealSource, RatingSource } from './type';
+
 export const getUser = async () => {
     const res = await fetch('/api/user', {
         credentials: 'include'
@@ -15,7 +17,13 @@ export const logout = async () => {
     window.location.href = '/';
 };
 
-export const search = async (body: any, count = 0) => {
+type SearchBody = {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    query: any;
+    index: Index;
+};
+
+export const search = async (body: SearchBody, count = 0) => {
     const res = await fetch('/api/es/search', {
         credentials: 'include',
         method: 'POST',
@@ -38,7 +46,12 @@ export const search = async (body: any, count = 0) => {
     }
 };
 
-export const updateRating = async (body: any) => {
+type UpdateRatingBody = {
+    docId: string;
+    rating: number;
+};
+
+export const updateRating = async (body: UpdateRatingBody) => {
     const res = await fetch('/api/es/update-rating', {
         credentials: 'include',
         method: 'POST',
@@ -49,7 +62,12 @@ export const updateRating = async (body: any) => {
     return await res.json();
 };
 
-export const addDoc = async (body: any) => {
+type NewDocBody = {
+    newDoc: MealSource | RatingSource;
+    index: Index;
+};
+
+export const addDoc = async (body: NewDocBody) => {
     const res = await fetch('/api/es/add-doc', {
         credentials: 'include',
         method: 'POST',

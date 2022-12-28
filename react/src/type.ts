@@ -1,9 +1,10 @@
-export interface EsHit {
+export type Index = 'meals' | 'ratings';
+
+interface EsHit {
     _id: string;
     _index: string;
     _type: '_doc';
     _score: number;
-    _source: MealSource | RatingSource;
 }
 
 export interface MealDoc extends EsHit {
