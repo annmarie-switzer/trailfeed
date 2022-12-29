@@ -18,6 +18,7 @@ body[data-theme='dark'] {
     --primary: var(--purple);
     --accent: var(--aqua);
     --success: var(--green);
+    --warn: var(--ct-orange);
 
     --calories: var(--ct-orange);
     --water: var(--blue);
@@ -73,6 +74,7 @@ body[data-theme='light'] {
     --primary: var(--purple);
     --accent: var(--aqua);
     --success: var(--green);
+    --warn: var(--orange);
 
     --calories: var(--orange);
     --water: var(--blue);

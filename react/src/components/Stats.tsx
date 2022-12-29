@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from 'react';
 import './Stats.css';
 import { AppContext } from '../App';
 import { Tooltip } from './Tooltip';
+import { calculatedTotals } from '../utils';
 
 export const Stats = () => {
     const { maxCalories, maxOunces, selection } = useContext(AppContext);
@@ -17,23 +18,13 @@ export const Stats = () => {
     });
 
     useEffect(() => {
-        const newTotals = selection.reduce(
-            (result, s) => {
-                result.calories += s.calories * s.count;
-                result.ounces += s.ounces * s.count;
-                return result;
-            },
-            { calories: 0, ounces: 0 }
-        );
+        const { calories, ounces } = calculatedTotals(selection);
 
-        setTotal({
-            calories: newTotals.calories,
-            ounces: newTotals.ounces
-        });
+        setTotal({ calories, ounces });
 
         setProgress({
-            calories: Math.round((newTotals.calories / maxCalories) * 100),
-            ounces: Math.round((newTotals.ounces / maxOunces) * 100)
+            calories: Math.round((calories / maxCalories) * 100),
+            ounces: Math.round((ounces / maxOunces) * 100)
         });
     }, [selection, maxCalories, maxOunces]);
 
@@ -49,7 +40,6 @@ export const Stats = () => {
                         progress.calories
                     }%)`}
                     position="top"
-                    width={125}
                 >
                     <div className="progress-bar">
                         <div
@@ -73,7 +63,6 @@ export const Stats = () => {
                         progress.ounces
                     }%)`}
                     position="top"
-                    width={125}
                 >
                     <div className="progress-bar">
                         <div

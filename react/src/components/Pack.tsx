@@ -1,52 +1,53 @@
-import { ChangeEvent, useContext } from 'react';
+import { useContext } from 'react';
 import './Pack.css';
 import { AppContext } from '../App';
-import { Activity, Feather } from 'react-feather';
 import { PackItem } from './PackItem';
+import { calculatedTotals } from '../utils';
+import {
+    Activity,
+    ArrowDown,
+    ArrowUp,
+    BarChart2,
+    Feather
+} from 'react-feather';
+import { Tooltip } from './Tooltip';
 
 export const Pack = () => {
-    const { maxCalories, setMaxCalories, maxOunces, setMaxOunces, selection } =
-        useContext(AppContext);
+    const { maxCalories, maxOunces, selection } = useContext(AppContext);
 
-    const handleTargetChange = (event: ChangeEvent<HTMLInputElement>) => {
-        const newVal = Number(event.target.value.replace(',', ''));
-        const name = event.target.name;
+    const { calories, ounces } = calculatedTotals(selection);
+    const calsPerOunce =
+        calories > 0 && ounces > 0 ? (calories / ounces).toFixed(2) : 0;
 
-        localStorage.setItem(name, String(newVal));
-
-        name === 'trailfeedMaxCals'
-            ? setMaxCalories(newVal)
-            : setMaxOunces(newVal);
-    };
+    const notEnoughCalories = calories < maxCalories;
+    const tooHeavy = ounces > maxOunces;
 
     return (
         <div id="pack">
-            <div className="inputs">
-                <div className="input-container calories">
-                    <label htmlFor="calorie-input">
-                        <Activity />
-                        <span>Calorie Target</span>
-                    </label>
-                    <input
-                        id="calorie-input"
-                        type="text"
-                        value={maxCalories.toLocaleString()}
-                        onChange={handleTargetChange}
-                        name="trailfeedMaxCals"
-                    />
+            <div className="stats-container">
+                <div className="stat">
+                    <Activity />
+                    <span>{calories.toLocaleString()}</span>
+                    {notEnoughCalories && (
+                        <Tooltip text="You're below your calorie target. Add more food to your pack.">
+                            <ArrowUp color="var(--warn)" />
+                        </Tooltip>
+                    )}
                 </div>
-                <div className="input-container ounces">
-                    <label htmlFor="ounce-input">
-                        <Feather />
-                        <span>Weight Target (oz)</span>
-                    </label>
-                    <input
-                        id="ounce-input"
-                        type="text"
-                        onChange={handleTargetChange}
-                        value={maxOunces.toLocaleString()}
-                        name="trailfeedMaxOunces"
-                    />
+
+                <div className="stat">
+                    <Feather />
+                    <span>{ounces.toLocaleString()}</span>
+                    {tooHeavy && (
+                        <Tooltip text="You've exceeded your target weight. Try swapping out meals for more calorie dense options.">
+                            <ArrowDown color="var(--warn)" />
+                        </Tooltip>
+                    )}
+                </div>
+
+                <div className="stat">
+                    <BarChart2 />
+                    <span>{calsPerOunce}</span>
                 </div>
             </div>
 

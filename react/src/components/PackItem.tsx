@@ -13,19 +13,15 @@ type PackItemProps = {
 export const PackItem = ({ meal, idx }: PackItemProps) => {
     const { selection, setSelection } = useContext(AppContext);
 
-    const increment = () => {
+    const onSpinnerClick = (dir: 'increment' | 'decrement') => {
         setSelection((curr) => {
-            const filtered = curr.filter((s) => s.id !== meal.id);
-            const count = meal.count + 1;
-            return [...filtered, { ...meal, count }];
-        });
-    };
+            const count = dir === 'increment' ? meal.count + 1 : meal.count - 1;
 
-    const decrement = () => {
-        setSelection((curr) => {
-            const filtered = curr.filter((s) => s.id !== meal.id);
-            const count = meal.count - 1;
-            return [...filtered, { ...meal, count }];
+            const newSelection = [...curr];
+            const idx = newSelection.findIndex((s) => s.id === meal.id);
+            newSelection.splice(idx, 1, { ...meal, count });
+
+            return newSelection;
         });
     };
 
@@ -34,18 +30,13 @@ export const PackItem = ({ meal, idx }: PackItemProps) => {
     };
 
     return (
-        <div className={idx % 2 === 0 ? 'pack-item even' : 'pack-item'}>
+        <div className={clsx('pack-item', idx % 2 === 0 && 'even')}>
             <div className="count">
-                <input
-                    type="number"
-                    min="1"
-                    value={meal.count}
-                    readOnly
-                />
+                <input type="number" min="1" value={meal.count} readOnly />
                 <Minus
                     size={14}
                     color="currentColor"
-                    onClick={decrement}
+                    onClick={() => onSpinnerClick('decrement')}
                     className={clsx(
                         'button',
                         'decrement',
@@ -55,7 +46,7 @@ export const PackItem = ({ meal, idx }: PackItemProps) => {
                 <Plus
                     size={14}
                     color="currentColor"
-                    onClick={increment}
+                    onClick={() => onSpinnerClick('increment')}
                     className="button increment"
                 />
             </div>

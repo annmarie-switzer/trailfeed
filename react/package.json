@@ -44,6 +44,7 @@
     "react-scripts": "5.0.1"
   },
   "devDependencies": {
+    "@types/d3": "^7.4.0",
     "@typescript-eslint/eslint-plugin": "^5.35.1",
     "@typescript-eslint/parser": "^5.35.1",
     "eslint": "^8.23.0",

@@ -5,21 +5,16 @@ type TooltipProps = {
     children: ReactNode;
     text: string;
     position?: 'bottom' | 'top';
-    width?: number | string;
 };
 
 export const Tooltip = ({
     children: trigger,
     text,
-    position = 'bottom',
-    width
+    position = 'bottom'
 }: TooltipProps) => {
     const [showTooltip, setShowTooltip] = useState(false);
 
-    const style =
-        position === 'bottom'
-            ? { top: '130%', width }
-            : { bottom: '130%', width };
+    const style = position === 'bottom' ? { top: '130%' } : { bottom: '130%' };
 
     return (
         <div

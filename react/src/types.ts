@@ -2,7 +2,7 @@ export type Index = 'meals' | 'ratings';
 
 interface EsHit {
     _id: string;
-    _index: string;
+    _index: Index;
     _type: '_doc';
     _score: number;
 }
