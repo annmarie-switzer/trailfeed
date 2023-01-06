@@ -11,15 +11,68 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 1.2rem;
+    gap: 1rem;
     height: 100%;
     box-sizing: border-box;
 }
 
-#stats .progress-bar-container span {
+#stats .progress-bar-container.calories {
+    color: var(--calories);
+}
+
+#stats .progress-bar-container.ounces {
+    color: var(--ounces);
+}
+
+#stats .progress-bar-container .label {
     display: flex;
     align-items: center;
     gap: 0.5rem;
+}
+
+#stats .progress-bar-container .input-container {
+    position: relative;
+    user-select: none;
+}
+
+#stats .progress-bar-container .input-container input {
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    outline: none;
+    border: solid 1px var(--bg-contrast);
+    border-radius: 2px;
+    background-color: var(--bg-contrast);
+    color: var(--light-text);
+    font-size: 0.8rem;
+    font-family: inherit;
+    padding: 0.5rem 0.75rem;
+    box-sizing: border-box;
+    width: 85px;
+}
+
+#stats
+    .progress-bar-container
+    .input-container
+    input::-webkit-inner-spin-button {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+#stats .progress-bar-container .input-container:not(:hover) input {
+    background-color: unset;
+    border-color: transparent;
+}
+
+#stats .progress-bar-container .input-container .suffix {
+    position: absolute;
+    right: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: var(--light-text);
+    font-size: 0.8rem;
 }
 
 #stats .progress-bar {
@@ -36,4 +89,5 @@
     height: 100%;
     border-radius: 0.5rem;
     max-width: 400px;
+    background-color: currentColor;
 }

@@ -25,27 +25,27 @@ export const Pack = () => {
     return (
         <div id="pack">
             <div className="stats-container">
-                <div className="stat">
+                <div className="stat calories">
                     <Activity />
                     <span>{calories.toLocaleString()}</span>
                     {notEnoughCalories && (
                         <Tooltip text="You're below your calorie target. Add more food to your pack.">
-                            <ArrowUp color="var(--warn)" />
+                            <ArrowUp color="var(--fg)" />
                         </Tooltip>
                     )}
                 </div>
 
-                <div className="stat">
+                <div className="stat ounces">
                     <Feather />
                     <span>{ounces.toLocaleString()}</span>
                     {tooHeavy && (
                         <Tooltip text="You've exceeded your target weight. Try swapping out meals for more calorie dense options.">
-                            <ArrowDown color="var(--warn)" />
+                            <ArrowDown color="var(--fg)" />
                         </Tooltip>
                     )}
                 </div>
 
-                <div className="stat">
+                <div className="stat calsPerOunce">
                     <BarChart2 />
                     <span>{calsPerOunce}</span>
                 </div>

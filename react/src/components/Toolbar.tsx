@@ -56,9 +56,14 @@ export const Toolbar = ({ packOpen, setPackOpen }: ToolbarProps) => {
                 >
                     <div>
                         <BackpackIcon size={28} />
-                        {selection.length > 0 ? (
-                            <span className="badge">{selection.length}</span>
-                        ) : null}
+                        {/* {selection.length > 0 ? (
+                            <span className="badge">
+                                {selection.reduce(
+                                    (sum, curr) => sum + curr.count,
+                                    0
+                                )}
+                            </span>
+                        ) : null} */}
                     </div>
                 </button>
             </div>

@@ -1,11 +1,13 @@
 import { useContext, useEffect, useState } from 'react';
 import './Stats.css';
 import { AppContext } from '../App';
-import { Tooltip } from './Tooltip';
 import { calculatedTotals } from '../utils';
+import { Activity, Feather, Minus, Plus } from 'react-feather';
+import clsx from 'clsx';
 
 export const Stats = () => {
-    const { maxCalories, maxOunces, selection } = useContext(AppContext);
+    const { maxCalories, setMaxCalories, maxOunces, setMaxOunces, selection } =
+        useContext(AppContext);
 
     const [progress, setProgress] = useState({
         calories: 0,
@@ -31,49 +33,47 @@ export const Stats = () => {
     return (
         <div id="stats">
             <div className="progress-bar-container calories">
-                <span style={{ color: 'var(--calories)' }}>
-                    {total.calories.toLocaleString()} cal
-                </span>
-
-                <Tooltip
-                    text={`${total.calories.toLocaleString()} / ${maxCalories.toLocaleString()} calories (${
-                        progress.calories
-                    }%)`}
-                    position="top"
-                >
-                    <div className="progress-bar">
-                        <div
-                            className="progress-bar-fill"
-                            style={{
-                                width: `${progress.calories}%`,
-                                backgroundColor: 'var(--calories)'
-                            }}
-                        />
-                    </div>
-                </Tooltip>
+                <div className="label">
+                    <Activity />
+                    <span>{total.calories.toLocaleString()}</span>
+                </div>
+                <div className="progress-bar">
+                    <div
+                        className="progress-bar-fill"
+                        style={{ width: `${progress.calories}%` }}
+                    />
+                </div>
+                <div className="input-container">
+                    <input
+                        type="number"
+                        min="1"
+                        defaultValue={maxCalories}
+                        onChange={(e) => setMaxCalories(Number(e.target.value))}
+                    />
+                    <span className="suffix">cal</span>
+                </div>
             </div>
 
             <div className="progress-bar-container ounces">
-                <span style={{ color: 'var(--ounces)' }}>
-                    {total.ounces.toLocaleString()} oz
-                </span>
-
-                <Tooltip
-                    text={`${total.ounces.toLocaleString()} / ${maxOunces.toLocaleString()} oz (${
-                        progress.ounces
-                    }%)`}
-                    position="top"
-                >
-                    <div className="progress-bar">
-                        <div
-                            className="progress-bar-fill"
-                            style={{
-                                width: `${progress.ounces}%`,
-                                backgroundColor: 'var(--ounces)'
-                            }}
-                        />
-                    </div>
-                </Tooltip>
+                <div className="label">
+                    <Feather />
+                    <span>{total.ounces.toFixed(1)}</span>
+                </div>
+                <div className="progress-bar">
+                    <div
+                        className="progress-bar-fill"
+                        style={{ width: `${progress.ounces}%` }}
+                    />
+                </div>
+                <div className="input-container">
+                    <input
+                        type="number"
+                        min="1"
+                        defaultValue={maxOunces}
+                        onChange={(e) => setMaxOunces(Number(e.target.value))}
+                    />
+                    <span className="suffix">oz</span>
+                </div>
             </div>
         </div>
     );

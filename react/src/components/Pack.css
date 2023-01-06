@@ -20,6 +20,18 @@
     gap: 0.5rem;
 }
 
+#pack .stat.calories {
+    color: var(--calories);
+}
+
+#pack .stat.ounces {
+    color: var(--ounces);
+}
+
+#pack .stat.calsPerOunce {
+    color: var(--blue);
+}
+
 #pack .list {
     flex: 7;
     display: flex;
