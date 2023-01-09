@@ -1,28 +1,28 @@
-import { Dispatch, SetStateAction, useState } from 'react';
+import { ChangeEvent, Dispatch, SetStateAction, useState } from 'react';
 import './CheckboxList.css';
 import { Checkbox } from './Checkbox';
 
 type CheckboxListProps = {
     buckets: any[];
     group: any;
-    setSelection: Dispatch<SetStateAction<any>>;
+    handleFilter: Dispatch<SetStateAction<any>>;
 };
 
 export const CheckboxList = ({
     buckets,
     group,
-    setSelection
+    handleFilter
 }: CheckboxListProps) => {
-    const [selection, setLocalSelection] = useState<any[]>([]);
+    const [selection, setSelection] = useState<any[]>([]);
 
-    const toggle = (target: HTMLInputElement) => {
-        const newSelection = target.checked
-            ? [...selection, target.value]
-            : selection.filter((s) => s !== target.value);
+    const toggle = (e: ChangeEvent<HTMLInputElement>) => {
+        const newSelection = e.target.checked
+            ? [...selection, e.target.value]
+            : selection.filter((s) => s !== e.target.value);
 
-        setLocalSelection(newSelection);
+        setSelection(newSelection);
 
-        setSelection({
+        handleFilter({
             name: `${group}`,
             values: newSelection,
             type: 'terms'
@@ -38,7 +38,8 @@ export const CheckboxList = ({
                         value={bucket.key}
                         label={bucket.key.replace('_', ' ')}
                         inverse={group === 'allergens'}
-                        toggle={toggle}
+                        checked={selection.includes(bucket.key)}
+                        onChange={toggle}
                     />
                 </div>
             );

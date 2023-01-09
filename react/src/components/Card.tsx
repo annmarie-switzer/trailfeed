@@ -58,8 +58,8 @@ export const Card = ({ hit, handleSelection, handleDelete }: CardProps) => {
                         }
                     >
                         <Checkbox
-                            defaultChecked={selected}
-                            toggle={() => handleSelection(hit)}
+                            checked={selected}
+                            onChange={() => handleSelection(hit)}
                         />
                     </span>
                 </div>

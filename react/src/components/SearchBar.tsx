@@ -11,7 +11,6 @@ import { CheckboxList } from './CheckboxList';
 import { RangeSlider } from './forms/RangeSlider';
 import { Search, Sliders } from 'react-feather';
 import { AppContext } from '../App';
-import { MealDoc } from '../types';
 
 type SearchBarProps = {
     setQuery: Dispatch<SetStateAction<any>>;
@@ -366,7 +365,7 @@ export const SearchBar = ({ setQuery, totalHits }: SearchBarProps) => {
                         <CheckboxList
                             buckets={mealTypes}
                             group="meal_type"
-                            setSelection={handleFilter}
+                            handleFilter={handleFilter}
                         />
                     </div>
                     <div className="filter-group">
@@ -374,7 +373,7 @@ export const SearchBar = ({ setQuery, totalHits }: SearchBarProps) => {
                         <CheckboxList
                             buckets={waterTemps}
                             group="water_temp"
-                            setSelection={handleFilter}
+                            handleFilter={handleFilter}
                         />
                     </div>
                     <div className="filter-group">
@@ -382,7 +381,7 @@ export const SearchBar = ({ setQuery, totalHits }: SearchBarProps) => {
                         <CheckboxList
                             buckets={allergens}
                             group="allergens"
-                            setSelection={handleFilter}
+                            handleFilter={handleFilter}
                         />
                     </div>
                     <div className="filter-group">
@@ -390,7 +389,7 @@ export const SearchBar = ({ setQuery, totalHits }: SearchBarProps) => {
                         <CheckboxList
                             buckets={special}
                             group="special"
-                            setSelection={handleFilter}
+                            handleFilter={handleFilter}
                         />
                     </div>
                 </div>

@@ -1,31 +1,27 @@
-import { useState } from 'react';
+import { ChangeEvent } from 'react';
 import './Checkbox.css';
 
 interface CheckboxProps {
     value?: string;
     label?: string;
     inverse?: boolean;
-    defaultChecked?: boolean;
-    toggle: (el: HTMLInputElement) => void;
+    checked?: boolean;
+    onChange: (ev: ChangeEvent<HTMLInputElement>) => void;
 }
 
 export const Checkbox = ({
     value,
     label = '',
     inverse = false,
-    defaultChecked = false,
-    toggle
+    checked = false,
+    onChange
 }: CheckboxProps) => {
-    const [checked, setChecked] = useState(defaultChecked);
-
     const color = inverse ? 'var(--allergies)' : 'var(--checkbox)';
-
     const marginLeft = label === '' ? 0 : '0.5rem';
 
-    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setChecked(event.target.checked);
-        toggle(event.target);
-    };
+    // const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    //     toggle(event.target);
+    // };
 
     return (
         <label
@@ -40,7 +36,7 @@ export const Checkbox = ({
                     backgroundColor: `${checked ? color : ''}`,
                     borderColor: `${checked ? color : 'var(--bg3)'}`
                 }}
-                onChange={handleChange}
+                onChange={onChange}
             />
             <span style={{ marginLeft }}>{label}</span>
         </label>
