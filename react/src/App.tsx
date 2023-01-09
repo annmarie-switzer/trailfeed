@@ -32,7 +32,7 @@ function App() {
     const [theme, setTheme] = useState(localStorage.getItem('theme') || 'dark');
 
     const [maxCalories, setMaxCalories] = useState(
-        Number(localStorage.getItem('trailfeedMaxCals')) || 9000
+        Number(localStorage.getItem('trailfeedMaxCalories')) || 9000
     );
 
     const [maxOunces, setMaxOunces] = useState(

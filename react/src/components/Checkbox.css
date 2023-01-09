@@ -61,37 +61,11 @@
 }
 
 /* Make checkmark visible when checked or indeterminate */
-.checkbox > input:checked + span::after,
-.checkbox > input:indeterminate + span::after {
+.checkbox > input:checked + span::after {
     border-color: var(--bg);
 }
 
 .checkbox.inverse > input:checked + span::before,
 .checkbox.inverse > input:checked + span::after {
     background-color: var(--bg);
-}
-
-/* Change checkmark to a dash when indeterminate */
-.checkbox > input:indeterminate + span::after {
-    border-left: none;
-    transform: translate(4px, 3px);
-}
-
-/* Disabled styles */
-.checkbox > input:disabled {
-    cursor: initial;
-}
-
-.checkbox > input:disabled + span {
-    cursor: initial;
-}
-
-.checkbox > input:disabled {
-    border-color: currentColor;
-}
-
-.checkbox > input:checked:disabled,
-.checkbox > input:indeterminate:disabled {
-    border-color: transparent;
-    background-color: currentColor;
 }

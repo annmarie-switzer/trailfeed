@@ -29,19 +29,20 @@ type CardProps = {
 export const Card = ({ hit, handleSelection, handleDelete }: CardProps) => {
     const { selection } = useContext(AppContext);
 
-    const [ids, setIds] = useState<string[]>([]);
+    const [selected, setSelected] = useState(
+        !!selection.find((s) => s.id === hit.id)
+    );
     const [showIngredients, setShowIngredients] = useState(false);
 
     const onDelete = async (id: string) => {
         const res = await deleteMeal(id);
-
         if (res.result === 'deleted') {
             handleDelete();
         }
     };
 
     useEffect(() => {
-        setIds(selection.map((s) => s.id));
+        setSelected(!!selection.find((s) => s.id === hit.id));
     }, [selection]);
 
     return (
@@ -51,12 +52,15 @@ export const Card = ({ hit, handleSelection, handleDelete }: CardProps) => {
                     <MealName name={hit.name} link={hit.link} />
                     <span
                         title={
-                            ids.includes(hit.id)
+                            selection.map((s) => s.id).includes(hit.id)
                                 ? 'Remove from pack'
                                 : 'Add to pack'
                         }
                     >
-                        <Checkbox toggle={() => handleSelection(hit)} />
+                        <Checkbox
+                            defaultChecked={selected}
+                            toggle={() => handleSelection(hit)}
+                        />
                     </span>
                 </div>
                 <span className="brand">{hit.brand || 'You made this!'}</span>

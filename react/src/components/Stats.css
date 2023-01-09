@@ -24,18 +24,19 @@
     color: var(--ounces);
 }
 
-#stats .progress-bar-container .label {
+#stats .label {
     display: flex;
     align-items: center;
     gap: 0.5rem;
 }
 
-#stats .progress-bar-container .input-container {
+#stats .input-container {
     position: relative;
     user-select: none;
+    width: 80px;
 }
 
-#stats .progress-bar-container .input-container input {
+#stats .input-container input {
     appearance: none;
     -moz-appearance: none;
     -webkit-appearance: none;
@@ -46,31 +47,28 @@
     color: var(--light-text);
     font-size: 0.8rem;
     font-family: inherit;
-    padding: 0.5rem 0.75rem;
+    padding: 0.5rem 2rem 0.5rem 0.75rem;
     box-sizing: border-box;
-    width: 85px;
+    width: 100%;
+    text-align: right;
 }
 
-#stats
-    .progress-bar-container
-    .input-container
-    input::-webkit-inner-spin-button {
+#stats .input-container input::-webkit-inner-spin-button {
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
 }
 
-#stats .progress-bar-container .input-container:not(:hover) input {
+#stats .input-container:not(:hover) input {
     background-color: unset;
     border-color: transparent;
 }
 
-#stats .progress-bar-container .input-container .suffix {
+#stats .input-container .suffix {
     position: absolute;
     right: 0.75rem;
     top: 50%;
     transform: translateY(-50%);
-    cursor: pointer;
     color: var(--light-text);
     font-size: 0.8rem;
 }

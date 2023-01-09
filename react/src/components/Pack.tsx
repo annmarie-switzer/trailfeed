@@ -8,14 +8,17 @@ import {
     ArrowDown,
     ArrowUp,
     BarChart2,
-    Feather
+    Droplet,
+    Feather,
+    Hash,
+    Watch
 } from 'react-feather';
 import { Tooltip } from './Tooltip';
 
 export const Pack = () => {
     const { maxCalories, maxOunces, selection } = useContext(AppContext);
 
-    const { calories, ounces } = calculatedTotals(selection);
+    const { calories, ounces, water_ml, minutes } = calculatedTotals(selection);
     const calsPerOunce =
         calories > 0 && ounces > 0 ? (calories / ounces).toFixed(2) : 0;
 
@@ -24,30 +27,30 @@ export const Pack = () => {
 
     return (
         <div id="pack">
-            <div className="stats-container">
-                <div className="stat calories">
-                    <Activity />
-                    <span>{calories.toLocaleString()}</span>
-                    {notEnoughCalories && (
-                        <Tooltip text="You're below your calorie target. Add more food to your pack.">
-                            <ArrowUp color="var(--fg)" />
-                        </Tooltip>
-                    )}
+            <div className="summary">
+                <div className="grid-item">
+                    <Hash size={16} />
+                    {selection.reduce((sum, item) => (sum += item.count), 0)}
                 </div>
-
-                <div className="stat ounces">
-                    <Feather />
-                    <span>{ounces.toLocaleString()}</span>
-                    {tooHeavy && (
-                        <Tooltip text="You've exceeded your target weight. Try swapping out meals for more calorie dense options.">
-                            <ArrowDown color="var(--fg)" />
-                        </Tooltip>
-                    )}
+                <div className="grid-item">
+                    <Activity size={16} />
+                    <span>{calories} cals</span>
                 </div>
-
-                <div className="stat calsPerOunce">
-                    <BarChart2 />
-                    <span>{calsPerOunce}</span>
+                <div className="grid-item">
+                    <Feather size={16} />
+                    <span>{ounces.toFixed(1)} oz</span>
+                </div>
+                <div className="grid-item">
+                    <BarChart2 size={16} />
+                    <span>{calsPerOunce} cal/oz</span>
+                </div>
+                <div className="grid-item">
+                    <Droplet size={16} />
+                    <span>{water_ml} mL</span>
+                </div>
+                <div className="grid-item">
+                    <Watch size={16} />
+                    <span>{minutes} min</span>
                 </div>
             </div>
 

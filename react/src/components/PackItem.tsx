@@ -11,7 +11,7 @@ type PackItemProps = {
 };
 
 export const PackItem = ({ meal, idx }: PackItemProps) => {
-    const { selection, setSelection } = useContext(AppContext);
+    const { setSelection } = useContext(AppContext);
 
     const onSpinnerClick = (dir: 'increment' | 'decrement') => {
         setSelection((curr) => {
@@ -26,7 +26,7 @@ export const PackItem = ({ meal, idx }: PackItemProps) => {
     };
 
     const deselect = (meal: MealSource) => {
-        setSelection(selection.filter((s) => s.id !== meal.id));
+        setSelection((curr) => curr.filter((s) => s.id !== meal.id));
     };
 
     return (

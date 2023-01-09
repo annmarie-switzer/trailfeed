@@ -34,6 +34,7 @@ export const Checkbox = ({
         >
             <input
                 type="checkbox"
+                checked={checked}
                 value={value}
                 style={{
                     backgroundColor: `${checked ? color : ''}`,

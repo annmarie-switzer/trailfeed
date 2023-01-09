@@ -1,9 +1,8 @@
-import { useContext, useEffect, useState } from 'react';
+import { ChangeEvent, useContext, useEffect, useState } from 'react';
 import './Stats.css';
 import { AppContext } from '../App';
 import { calculatedTotals } from '../utils';
-import { Activity, Feather, Minus, Plus } from 'react-feather';
-import clsx from 'clsx';
+import { Activity, Feather } from 'react-feather';
 
 export const Stats = () => {
     const { maxCalories, setMaxCalories, maxOunces, setMaxOunces, selection } =
@@ -30,6 +29,14 @@ export const Stats = () => {
         });
     }, [selection, maxCalories, maxOunces]);
 
+    const onChange = (e: ChangeEvent<HTMLInputElement>) => {
+        const { name, value } = e.target;
+        localStorage.setItem(name, value);
+        e.target.name === 'trailfeedMaxCalories'
+            ? setMaxCalories(Number(value))
+            : setMaxOunces(Number(value));
+    };
+
     return (
         <div id="stats">
             <div className="progress-bar-container calories">
@@ -46,9 +53,10 @@ export const Stats = () => {
                 <div className="input-container">
                     <input
                         type="number"
+                        name="trailfeedMaxCalories"
                         min="1"
                         defaultValue={maxCalories}
-                        onChange={(e) => setMaxCalories(Number(e.target.value))}
+                        onChange={onChange}
                     />
                     <span className="suffix">cal</span>
                 </div>
